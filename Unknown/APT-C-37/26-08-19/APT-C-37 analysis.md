@@ -1,4 +1,4 @@
-# Unknown APT in the MiddleEast
+# APT-C-37 campaign in the Middle East
 ## Table of Contents
 * [Malware analysis](#Malware-analysis)
   + [Initial vector](#Initial-vector)
@@ -21,58 +21,58 @@
 ## Malware analysis <a name="Malware-analysis"></a>
 ### Initial vector <a name="Initial-vector"></a>
 ###### The initial vector use an SFX executable, who drop a lnk file for the persistence, a vbs file and the docx file for decoys the victim. 
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/strings.png "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/strings.png "")
 ###### We can note that the topic of the document only for decoy the victims is about a scandal in the Hamas leaders.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/content.png "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/content.png "")
 ###### Here the translation in english of the content of the document.
 ###### A new scandal for a Hamas leader <br> In the difficult circumstances of our people in the Gaza Strip, and what the head of the family suffers in order to earn a living, but financial and moral corruption does not end in this stray rogue in the name of religion. <br> We received leaked news that RA, a Hamas leader in the northern Gaza Strip, was interrogated on charges of financial embezzlement. Investigations show that he has an affair with a girl. As the private source said to us, he was stopped from practicing any political or movement activity after this incident. <br> Question how long ????????????????? <br> For more details please email us at the following email. <br> palemptn@yahoo[.]com
 ###### We can note too that the email address is valid and invite to send a mail about this event.
 ###### We can also note the multiples possibilities for push the persistence and options.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/lnkfile.png "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/lnkfile.png "")
 ###### This execute the vbs file for push the persistence in the startup menu, hide it in changing these attributes and launch the persistence (lnk file)
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/VBScode.png "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/VBScode.png "")
 ###### This download the VB script and execute it by mshta call.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/lnk.PNG "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/lnk.PNG "")
 ###### On the VB code, we can observed that use BITS functionality for download by a job the JS script to execute on the victim. Secondly, this checks the architecture of the system and executes the correct path of wscript and push the windows out the screen.
 ### Loader <a name="loader"></a>
 ###### We can see that use function for decode the commands with an array of bytes.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/encodeJS.png "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/encodeJS.png "")
 ###### For decode the string, we use the next function used by the backdoor for decode the commands.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/decodeJS.png "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/decodeJS.png "")
 ###### You can now change the encoded commands.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/decStr.png "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/decStr.png "")
 ###### Once the encoded strings removed, we have the following code :
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/lay1dec.png "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/lay1dec.png "")
 ###### As anti-forensic method, a method which can know if determiner if a debugger is present.
- ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/zoomdebug.PNG "")	
+ ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/zoomdebug.PNG "")	
 ###### Finally, we can observe a Wscript execution with a function splter which split for getting an array of bytes, convert to ASCII and after execute the script with execute call.
 ###### By the following PowerShell script, we can get the second layer that is the JS Backdoor.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/declayer.png "")	
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/declayer.png "")	
 ### JS Backdoor <a name="Backdoor"></a>
 ###### Firstly, the script get the system informations about the system of the victim and send to one the list of C2 in the logical sense (not random call on the list of C2) with the suffix "/is-ready". The backdoor uses a while loop for rest in communication with C2 by sending a pulse with the system information of the victim.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/FirstAnal.png "")	
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/FirstAnal.png "")	
 ###### This send the data with the following structure to the C2 (Here from the Anyrun sandbox) :
 `C4BA3647<|>USER-PC<|>admin<|>Microsoft Windows 7 Professional <|>plus<|>nan-av<|>` 
 ###### We can note that the USB spread option isn't used on this sample. The structure of the reply to the C2 is the next :
 `[volumeserialnumber]<|>[computername]<|>[username]<|>plus<|>[AV product (yes -> name or no ->nan-av)]<|>[usbspreading option (= "")]<|>`
 ###### In a second time, when a response of the C2 was given and use a switch structure for execute the command.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/secAnal.png "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/secAnal.png "")
 ###### Now, we analyse all functions used by this switch. As first function, we can see a function used by others functions of the script and used for sending the data to the C2.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/postfunc.PNG "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/postfunc.PNG "")
 ###### We can observe after a group of functions who use the WQL queries by the WMI for getting the system informations, this is used by the attacker as profiling the victim.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/infofunc.PNG "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/infofunc.PNG "")
 ###### After, a function is used by the attacker for download an executable file.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/downfunc.PNG "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/downfunc.PNG "")
 ###### In the same idea for the attacker, a function which give the possibility to read the bytes of files in a buffer and send it to the C2 is present.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/upfunc.PNG "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/upfunc.PNG "")
 ###### The next function give to the attacker to have the list drives on the computer.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/listdrivesfunc.PNG "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/listdrivesfunc.PNG "")
 ###### Another function can enumerate the paths of folders, files and to give in more the attributes of them.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/dirfunc.PNG "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/dirfunc.PNG "")
 ###### And third function is used for getting the list of the process running in the computer.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/processfunc.PNG "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/processfunc.PNG "")
 ###### The last function exit the process with a kill signal by taskkill call.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/exitfunc.PNG "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/exitfunc.PNG "")
 
 ###### We can resume the list of commands of the backdoor :
 |Command|Description|
@@ -96,34 +96,34 @@
 
 ## Cyber kill chain <a name="Cyber-kill-chain"></a>
 ###### The process graph resume the cyber kill chain used by the attacker.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/cyber.PNG "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/cyber.PNG "")
 
 ## Cyber Threat Intel <a name="Cyber-Threat-Intel"></a>
 ### Origin of the method for the JS Backdoor <a name="Origin"></a>
 ###### Firstly, the method for load the JS Backdoor is edited from a post published in 2015 on a forum for show a method for the both architecture for the development of a worm.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/Post.PNG "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/Post.PNG "")
 ###### We can see that the name of the instance is changed and the html tags are removed. If we add the notes from the malware analysis, we can conclude that the malware has been edited in emergency.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/matchcode.PNG "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/matchcode.PNG "")
 
 ### APT-C-37 Campaign <a name="APT"></a>
 ###### In March 2019, a new campaign analysed by 360 Core Security in March 2019 of APT-C-37 show the analysis of the H-worm.We can note that as obfuscation is based on the utilisation of the functions Mid for extract the characters and some replace for change the characters for getting the script to execute. We can note too that the level of complexity of the obfuscation is very low and can be easily analysed and detected.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/geZ6pXr1.png "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/geZ6pXr1.png "")
 ###### In the same forum, we can found on a mega link the source code of the VB RAT Fkn0wned in April 2018 used by the same campaign on of the APT. With the code of H-worm like the analysis of 2013, we can show that APT-C-37 have probably get the resources from this forum for launches their operations.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/codeRAT.png "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/codeRAT.png "")
 ##### The recent sample of H-worm have many removed and edited functions compared at the original version like remove the persistence, the function Sleep ...
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/oIdfwmrN.png "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/oIdfwmrN.png "")
 ###### On the IOC, we can recognize the structure used by the H-worm with "is-ready".
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/fnVYrkD1.png "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/fnVYrkD1.png "")
 ###### The goals of this campaign and since the detection in 2015 is to use RAT for android and windows systems for spying. The last operation attacks Amaq media and Al Swarm News Agency websites which are used for the propaganda of ISIS (Salafism). The group have used a group of words for pick, the interest of the victims, for example, the app is named "زوجات الرسول" (in english "The Wives of the Prophet").
 
 ###### If this time, APT-C-37 attack the Hamas (Sunnite) for spying, we can adding on the profile that the group target all the Muslim religions and that a future operation against Hezbollah (Shiite) will be coming one day ? Or this APT is based Shiite and target all the others armed organizations with the different Muslim religions are targetted?
 
 ###### In addition of this and the date of submission, this sample has been used in a campaign of profiling. In the submissions, we can observe some samples matching this own sample.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/parents.png "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/parents.png "")
 ###### The informations of the sandbox show the similarities in the structure of the URL and C2 and the aba, dyndns domains.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/infolast.png "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/infolast.png "")
 ###### On the matching YARA rule, we can conclude that the campaign since at least May 2019.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/rule.png "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/rule.png "")
 
 ###### The fact that the month is May is interesting.The 3 May 2019, after two Israeli soldiers were injured by sniper fire in the Gaza Strip during the weekly protests at the Gaza–Israel border. In response, the Israeli Air Force carried out an airstrike an Hamas post, killing two Palestinians that have provoke the military response by a hundred rockets. On 5 May 2019, Israel by the help of the Unit 8200 of Military Intelligence (have done Stuxnet and Duqu) have suspected Hamas cyber-attack and reply by immediate air strike (this rest still suspected, no report analyzing the exploiting tools, technologies and objectives targeted).
 
@@ -135,14 +135,14 @@
 ###### Like all recent conflicts, communication networks are used to send false news and propaganda or to create it because people can not understand the situation. For example, recently, we could hear that a false evacuation of wounded was launched against Hezbollah for pushing to stop firing, but that is to ignore, guerrilla warfare and the outcome of recent conflicts where it isn't about rockets that destroyed military equipment, but Israeli forces that sabotaged their own equipment by the fear of new recruits and lack of experience. In the same vein, fear of rocket fire on a city can't be realistic, Hezbollah given the priority to garrisons of the border army, infrastructure that a better choice due this have the capacities to destroying the guerilla, this argument is only valid in Israel to prepare the people for the possibilities of declaring war.
 
 ###### In this way, some images were sent in both sides to use this factor as propaganda vector. For example, an image taken with a drone from the netanyahu window was published on social media at for purposes of spreading retaliatory capabilities. If we see the picture with the naked eye, we can see that the shadow of the drone is not indicated in the wall inside the room, the facade is a decoration, false coordinates and the blur apply to the entire photo.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/c654ede55e275431042d32334f8cfd3a5526cb72.196671-600.png "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/c654ede55e275431042d32334f8cfd3a5526cb72.196671-600.png "")
 ###### With the ELA algorithm, we can see the last modifications on the pictures. In using this it, we can see all the precedents elements are added at the original picture (probably a meeting with members of government).
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/c654ede55e275431042d32334f8cfd3a5526cb72.196671-ela.png "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/c654ede55e275431042d32334f8cfd3a5526cb72.196671-ela.png "")
 ###### In same time, other pictures are released about decoy targets, with the ELA algorithm, we can see that the multiple compressions by the algorithms, the picture is very dark and the pictures are only modify for writing the indicators of interest.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/EDOYGiAXsAEA4Kq.jpg%20large.jpg "")
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/aa18205de56e2cbe15471c3cc1530e587ab975a0.35923-ela-600.png "")
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/EDOYGWjWsAAsfM1.jpg%20large.jpg "")
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/3fb1c19ecfe9c11d779b8dae397cd781b64c56ef.21349-ela.png "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/EDOYGiAXsAEA4Kq.jpg%20large.jpg "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/aa18205de56e2cbe15471c3cc1530e587ab975a0.35923-ela-600.png "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/EDOYGWjWsAAsfM1.jpg%20large.jpg "")
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/3fb1c19ecfe9c11d779b8dae397cd781b64c56ef.21349-ela.png "")
 ###### Recently, in the same way for develop the feeling of fear, Israel government have claimed that Iran build precision missiles, this rest to prove it but the scheme of reflexion is the same, a war of fear and misinformation.
 
 ### The drone attack, a result of the information campaign ? <a name="Result"></a>
@@ -207,8 +207,9 @@
 ## Links <a name="Links"></a>
 ###### Original tweet: [https://twitter.com/Timele9527/status/1166188375109296128](https://twitter.com/Timele9527/status/1166188375109296128) <a name="Original-Tweet"></a>
 ###### Links Anyrun: <a name="Links-Anyrun"></a>
-* [فضيحة جديدة لأحد قيادات حماس.zip (A new scandal of one of the leaders of Hamas.zip)](https://app.any.run/tasks/59ed8062-cf77-4d73-81bd-19cb26b7c7c6/)
-* [xyx.jse](https://app.any.run/tasks/baa4f59c-969b-4617-b926-2d41da5e18b0/)
+* [فضيحة جديدة لأحد قيادات حماس.zip (A new scandal of one of the leaders of Hamas.zip)](https://app.any.run/tasks/59ed8062-cf77-4d73-81bd-19cb26b7c7c6)
+* [xyx.jse](https://app.any.run/tasks/baa4f59c-969b-4617-b926-2d41da5e18b0)
+* [7d989a9a3faef377f2556e090014f96ba3bf8a8299ba256d30fab41710499a7c](https://app.any.run/tasks/db144694-cd40-4697-ab47-d9179ad0932e)
 ###### Documents: <a name="Documents"></a>
 * [Evaluating ELA](http://fotoforensics.com/tutorial-ela.php)
 * [Analysis of APT-C-37](http://blogs.360.cn/post/analysis-of-apt-c-37.html)
