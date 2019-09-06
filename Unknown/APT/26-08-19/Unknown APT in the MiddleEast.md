@@ -6,9 +6,11 @@
   + [JS Backdoor](#Backdoor)
 * [Cyber Threat Intel](#Cyber-Threat-Intel)
   + [Origin of the method for the JS Backdoor](#Origin)
+  + [APT-C-37 Campaign](#APT)
   + [A army in perdition, an difficult situation](#Army)
   + [A war of misinformation](#War)
   + [The drone attack, a result of the information campaign ?](#Result)
+  + [Finally ?](#Finally)
 * [Indicators Of Compromise (IOC)](#IOC)
 * [References MITRE ATT&CK Matrix](#Ref-MITRE-ATTACK)
 * [Links](#Links)
@@ -100,40 +102,54 @@
 ### Origin of the method for the JS Backdoor <a name="Origin"></a>
 ###### Firstly, the method for load the JS Backdoor is edited from a post published in 2015 on a forum for show a method for the both architecture for the development of a worm.
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/Post.PNG "")
-###### We can see that the name of the instance is changed and the html tags are removed.If we add the notes from the malware analysis, we can conclude that the malware has been edited in emergency.
+###### We can see that the name of the instance is changed and the html tags are removed. If we add the notes from the malware analysis, we can conclude that the malware has been edited in emergency.
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/matchcode.PNG "")
 
-### APT-C37 Campaign <a name="APT"></a>
-###### In March 2019, a new compagin analysed by 360 in March 2019 of APT-C37 show the analysis of the H-worm.We can note that as ofuscation is based on the utilisation of the functions Mid for extact the characters and some replace for change the characters for get the script to execute. We can note too that the level of complexity of the obfuscation is very low and can be easily analysed and detected. 
+### APT-C-37 Campaign <a name="APT"></a>
+###### In March 2019, a new campaign analysed by 360 Core Security in March 2019 of APT-C-37 show the analysis of the H-worm.We can note that as obfuscation is based on the utilisation of the functions Mid for extract the characters and some replace for change the characters for getting the script to execute. We can note too that the level of complexity of the obfuscation is very low and can be easily analysed and detected.
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/geZ6pXr1.png "")
-###### In the same forum, we can found on a mega link the source code of the VB RAT Fkn0wned in April 2018 used by the same campaign on of the APT. With the code of H-worm like the analysis of 2013, we can show that APT-C37 have probably get the ressource from this forum for launch their operations.
+###### In the same forum, we can found on a mega link the source code of the VB RAT Fkn0wned in April 2018 used by the same campaign on of the APT. With the code of H-worm like the analysis of 2013, we can show that APT-C-37 have probably get the resources from this forum for launches their operations.
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/codeRAT.png "")
-##### The recent sample of H-worm have many removed and edited functions compared at the original version like remove the persistence, the function Sleep ..
+##### The recent sample of H-worm have many removed and edited functions compared at the original version like remove the persistence, the function Sleep ...
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/oIdfwmrN.png "")
-###### On the IOC, we can recognize the structure used by the H-worm with "is-ready"
+###### On the IOC, we can recognize the structure used by the H-worm with "is-ready".
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/fnVYrkD1.png "")
+###### The goals of this campaign and since the detection in 2015 is to use RAT for android and windows systems for spying. The last operation attacks Amaq media and Al Swarm News Agency websites which are used for the propaganda of ISIS (Salafism). The group have used a group of words for pick, the interest of the victims, for example, the app is named "زوجات الرسول" (in english "The Wives of the Prophet").
+
+###### If this time, APT-C-37 attack the Hamas (Sunnite) for spying, we can adding on the profile that the group target all the Muslim religions and that a future operation against Hezbollah (Shiite) will be coming one day ? Or this APT is based Shiite and target all the others armed organizations with the different Muslim religions are targetted?
+
+###### In addition of this and the date of submission, this sample has been used in a campaign of profiling. In the submissions, we can observe some samples matching this own sample.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/parents.png "")
+###### The informations of the sandbox show the similarities in the structure of the URL and C2 and the aba, dyndns domains.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/infolast.png "")
+###### On the matching YARA rule, we can conclude that the campaign since at least May 2019.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/rule.png "")
+
+###### The fact that the month is May is interesting.The 3 May 2019, after two Israeli soldiers were injured by sniper fire in the Gaza Strip during the weekly protests at the Gaza–Israel border. In response, the Israeli Air Force carried out an airstrike an Hamas post, killing two Palestinians that have provoke the military response by a hundred rockets. On 5 May 2019, Israel by the help of the Unit 8200 of Military Intelligence (have done Stuxnet and Duqu) have suspected Hamas cyber-attack and reply by immediate air strike (this rest still suspected, no report analyzing the exploiting tools, technologies and objectives targeted).
+
 ### A army in perdition, an difficult situation <a name="Army"></a>
 ###### Since the last decade, the inexperience of the army on military issues, rigid doctrine, misunderstanding of the adversary, over-reliance on air and all-technological operations, loss of skills in the IDF, hesitations of unit commanders, the belief - erroneous - that the Israeli population would not accept the possible losses, a reorganized but deficient logistics, the non-mastery of communication. If we add the Syria situation and the result of the confrontation in 2006 who have add new enemies against Israel, this creates a difficult situation for these leaders.
-###### Recently, during the election period, each action or precious opportunity can be used for that purpose or to develop a doctrine such as the creation of housing in the colonies.
+###### We can recall the manifestations against Netanyahu immunity between February at May 2019 who have weakened the popularity rating. Recently, during the election period, each action or precious opportunity can be used for that purpose or to develop a doctrine such as the creation of housing in the colonies.
+
 ### A war of misinformation <a name="War"></a>
 ###### Like all recent conflicts, communication networks are used to send false news and propaganda or to create it because people can not understand the situation. For example, recently, we could hear that a false evacuation of wounded was launched against Hezbollah for pushing to stop firing, but that is to ignore, guerrilla warfare and the outcome of recent conflicts where it isn't about rockets that destroyed military equipment, but Israeli forces that sabotaged their own equipment by the fear of new recruits and lack of experience. In the same vein, fear of rocket fire on a city can't be realistic, Hezbollah given the priority to garrisons of the border army, infrastructure that a better choice due this have the capacities to destroying the guerilla, this argument is only valid in Israel to prepare the people for the possibilities of declaring war.
 
 ###### In this way, some images were sent in both sides to use this factor as propaganda vector. For example, an image taken with a drone from the netanyahu window was published on social media at for purposes of spreading retaliatory capabilities. If we see the picture with the naked eye, we can see that the shadow of the drone is not indicated in the wall inside the room, the facade is a decoration, false coordinates and the blur apply to the entire photo.
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/c654ede55e275431042d32334f8cfd3a5526cb72.196671-600.png "")
-###### With the ELA algorithm, we can see the last modifications on the pictures. In using this it, we can see all the precedents elements are added at the original picture (probably a meeting with members of government).![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/c654ede55e275431042d32334f8cfd3a5526cb72.196671-ela.png "")
+###### With the ELA algorithm, we can see the last modifications on the pictures. In using this it, we can see all the precedents elements are added at the original picture (probably a meeting with members of government).
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/c654ede55e275431042d32334f8cfd3a5526cb72.196671-ela.png "")
 ###### In same time, other pictures are released about decoy targets, with the ELA algorithm, we can see that the multiple compressions by the algorithms, the picture is very dark and the pictures are only modify for writing the indicators of interest.
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/EDOYGiAXsAEA4Kq.jpg%20large.jpg "")
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/aa18205de56e2cbe15471c3cc1530e587ab975a0.35923-ela-600.png "")
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/EDOYGWjWsAAsfM1.jpg%20large.jpg "")
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/3fb1c19ecfe9c11d779b8dae397cd781b64c56ef.21349-ela.png "")
 ###### Recently, in the same way for develop the feeling of fear, Israel government have claimed that Iran build precision missiles, this rest to prove it but the scheme of reflexion is the same, a war of fear and misinformation.
+
 ### The drone attack, a result of the information campaign ? <a name="Result"></a>
-###### We have got confirmation that the drones used for the operation are trapped with explosives for explode at the moment that the enemies recovers it, that indicate that the Israel know that in these regions the enemies is present and valuable targets can be attainable. In addition of this and the date of submission, this sample has been used in a campaign of profiling. In the submissions, we can observe some samples matching this own sample.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/parents.png "")
-###### The informations of the sandbox show the similarities in the structure of the URL and C2 and the aba, dyndns domains.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/infolast.png "")
-###### On the matching YARA rule, we can conclude that the campaign since at least May 2019.
-![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT/26-08-19/Images/rule.png "")
+###### We have got confirmation that the drones used for the operation are trapped with explosives for explode at the moment that the enemies recovers it, that indicate that the Israel know that in these regions the enemies is present and valuable targets can be attainable. In the comparing with the past, we can note that probably some operations of spying are active as survey by the fact of the ideology of "no injury" and use all the aims for avoid victims on the Israeli forces or civilians.
+
+### Finally ?<a name="Finally"></a>
+###### The APT-C-37 on the objectives and methods match but if this APT-C-37, we can show the great increase on the capacity to obfuscate and TTPs. If the Hamas is actor as trap for Israel, this wrong idea and give an opportunity to destabilize the guerrilla. And for Israel, this possible that use it for do a profiling campaign against the Hamas with the recent events in the last months.
 ## References MITRE ATT&CK Matrix <a name="Ref-MITRE-ATTACK"></a>
 ###### List of all the references with MITRE ATT&CK Matrix
 
@@ -196,4 +212,6 @@
 ###### Documents: <a name="Documents"></a>
 * [Evaluating ELA](http://fotoforensics.com/tutorial-ela.php)
 * [Analysis of APT-C-37](http://blogs.360.cn/post/analysis-of-apt-c-37.html)
+* [Now You See Me - H-worm by Houdini](https://www.fireeye.com/blog/threat-research/2013/09/now-you-see-me-h-worm-by-houdini.html)
 * [Pulse alienvault about IP C2 in March 2019](https://otx.alienvault.com/indicator/ip/66.85.157.86)
+
