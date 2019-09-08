@@ -116,16 +116,25 @@
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/fnVYrkD1.png "")
 ###### The goals of this campaign and since the detection in 2015 is to use RAT for android and windows systems for spying. The last operation attacks Amaq media and Al Swarm News Agency websites which are used for the propaganda of ISIS (Salafism). The group have used a group of words for pick, the interest of the victims, for example, the app is named "زوجات الرسول" (in english "The Wives of the Prophet").
 
-###### If this time, APT-C-37 attack the Hamas (Sunnite) for spying, we can adding on the profile that the group target all the Muslim religions and that a future operation against Hezbollah (Shiite) will be coming one day ? Or this APT is based Shiite and target all the others armed organizations with the different Muslim religions are targetted?
-
 ###### In addition of this and the date of submission, this sample has been used in a campaign of profiling. In the submissions, we can observe some samples matching this own sample.
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/parents.png "")
 ###### The informations of the sandbox show the similarities in the structure of the URL and C2 and the aba, dyndns domains.
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/infolast.png "")
+###### This sample spotted early August use the same TTPs, IPs and domains used, this again an edited version of H-worm who is used. 
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/spotted.png "")
+###### The document is a decoy too and talk about a new investigation on an incident in the Gaza Strip.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/contentold.png "")
+###### Here the translation in english of the content of the document.
+###### In the name of of Allah the Merciful<br>And don't take account of God, oblivious to what the oppressors do, but delays them for a day in which you see the vision.<br>A statement issued by the sons of the martyr, God willing "Mohamed Ali Abdel Qader Radwan"<br>We, the sons of the martyr Mohammed Ali Abdel Qader Radwan, were surprised as everyone was surprised in the Gaza Strip; the news abuzz with social media networks;<br>A representative of the family of martyr Mohammed Ali Abdel Qader Radwan, who was martyred in the invasion of Beirut on 03.11.1984<br>Accordingly, we are the sons of the martyr condemn and condemn this act, which is tantamount to rape our right to pilgrimage, and we believe that the decision of Dr. Anas for Hajj travel is invalid and fraud and fading.<br>Especially since the declared justification for the press today that the martyr's sons have given their nephew the right to do Hajj is not true, and he has nothing to do with the truth.<br>No one has entrusted Anas to travel on his behalf, and there is no official authorization or waiver from the martyr's sons, especially Anas; Outside the Gaza Strip.<br>Accordingly, we are martyrs' family.<br>Regretting the situation reached by some .. We call on the Foundation for the Care of the Families of the Martyrs and the Wounded represented by its President His Excellency Minister / Intisar Minister to instruct and give the order to investigate the incident the subject of the statement and our fairness.<br>We also call on the Ministry of Awqaf and Hamas to reconsider the following:<br>Dr.Ismail Said Radwan.<br>Dr. Anas Ismail Radwan.<br>They take the platforms and teach people religion.<br>About the sons of the martyr<br>Legal Advisor / Ibrahim Mohamed Ali Radwan.
+
+###### Dr. Ismail Said Radwan is a Hamas leader and Minister of Awqaf and Religious Affairs in the Hamas government headed by Ismail Haniyeh, who controls Gaza. He previously served as Hamas' media spokesman, and is the chairman of the Al - Aqsa Media Network.Anas Radwan is son of Hamas' senior official Ismail Radwan.
+
+###### We can note that at this time, this target now Hamas and in the same way of using non-existent events with keywords already used by this group ("Martyrs", "investigate", "incident", "religion", "decision", "justification").
+
 ###### On the matching YARA rule, we can conclude that the campaign since at least May 2019.
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/rule.png "")
 
-###### The fact that the month is May is interesting.The 3 May 2019, after two Israeli soldiers were injured by sniper fire in the Gaza Strip during the weekly protests at the Gaza–Israel border. In response, the Israeli Air Force carried out an airstrike an Hamas post, killing two Palestinians that have provoke the military response by a hundred rockets. On 5 May 2019, Israel by the help of the Unit 8200 of Military Intelligence (have done Stuxnet and Duqu) have suspected Hamas cyber-attack and reply by immediate air strike (this rest still suspected, no report analyzing the exploiting tools, technologies and objectives targeted).
+###### The fact that the month is May is interesting. The 3 May 2019, after two Israeli soldiers were injured by sniper fire in the Gaza Strip during the weekly protests at the Gaza–Israel border. In response, the Israeli Air Force carried out an airstrike an Hamas post, killing two Palestinians that have provoke the military response by a hundred rockets. On 5 May 2019, Israel by the help of the Unit 8200 of Military Intelligence (have done Stuxnet and Duqu) have suspected Hamas cyber-attack and reply by immediate air strike (this rest still suspected, no report analyzing the exploiting tools, technologies and objectives targeted).
 
 ### A army in perdition, an difficult situation <a name="Army"></a>
 ###### Since the last decade, the inexperience of the army on military issues, rigid doctrine, misunderstanding of the adversary, over-reliance on air and all-technological operations, loss of skills in the IDF, hesitations of unit commanders, the belief - erroneous - that the Israeli population would not accept the possible losses, a reorganized but deficient logistics, the non-mastery of communication. If we add the Syria situation and the result of the confrontation in 2006 who have add new enemies against Israel, this creates a difficult situation for these leaders.
@@ -149,7 +158,7 @@
 ###### We have got confirmation that the drones used for the operation are trapped with explosives for explode at the moment that the enemies recovers it, that indicate that the Israel know that in these regions the enemies is present and valuable targets can be attainable. In the comparing with the past, we can note that probably some operations of spying are active as survey by the fact of the ideology of "no injury" and use all the aims for avoid victims on the Israeli forces or civilians.
 
 ### Finally ?<a name="Finally"></a>
-###### The APT-C-37 on the objectives and methods match but if this APT-C-37, we can show the great increase on the capacity to obfuscate and TTPs. If the Hamas is actor as trap for Israel, this wrong idea and give an opportunity to destabilize the guerrilla. And for Israel, this possible that use it for do a profiling campaign against the Hamas with the recent events in the last months.
+###### The APT-C-37 TTPs and methods of decoys the victim match. We can show the great increase on the capacity to obfuscate and operational capabilities. The reason of spying precisely the Muslim armies rest unknown and the matching with the events between Israel and the Hamas and Hezbollah is very troubled. The objectives and the organization rest very blurred but this rest possible that the group can be manipulating by countries or group of people for their own objectives.
 ## References MITRE ATT&CK Matrix <a name="Ref-MITRE-ATTACK"></a>
 ###### List of all the references with MITRE ATT&CK Matrix
 
@@ -202,7 +211,7 @@
 |http[:]//mmksba.simple-url.com:4422/is-enum-process|HTTP/HTTPS requests|
 |http[:]//mmksba.dyndns.org:4455/is-enum-process|HTTP/HTTPS requests|
 
-###### This can be exported as JSON format [Export in JSON](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Israel/APT/Unknown/26-08-19/IOC_Israel_04-09-19.json)	
+###### This can be exported as JSON format [Export in JSON](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/IOC_APT-C-37_04-09-19.json)	
 
 ## Links <a name="Links"></a>
 ###### Original tweet: [https://twitter.com/Timele9527/status/1166188375109296128](https://twitter.com/Timele9527/status/1166188375109296128) <a name="Original-Tweet"></a>
