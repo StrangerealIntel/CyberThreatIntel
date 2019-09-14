@@ -1,0 +1,94 @@
+[
+    {
+        "Indicator":  "PO # 8872521.xlt",
+        "Description":  "51a0e2aac8a0d7460e2a326a9c372f3d1ba3871e6f365f122f3d72cd271a5a3b"
+    },
+    {
+        "Indicator":  "Scan001.xls",
+        "Description":  "0ec07af14a5338805ed45bcc0a90b20811fd0c9b57ab0f5e1cfd97cd1696c1c2"
+    },
+    {
+        "Indicator":  "bin2.exe",
+        "Description":  "c04d776b341acb3d02270a4f883c8b08a66b183779dea79c1b7e11f3906ce616"
+    },
+    {
+        "Indicator":  "67.199.248.14",
+        "Description":  "IP requested"
+    },
+    {
+        "Indicator":  "172.217.22.97",
+        "Description":  "IP requested"
+    },
+    {
+        "Indicator":  "67.199.248.10",
+        "Description":  "IP requested"
+    },
+    {
+        "Indicator":  "67.199.248.11",
+        "Description":  "IP requested"
+    },
+    {
+        "Indicator":  "216.170.126.139",
+        "Description":  "IP C2"
+    },
+    {
+        "Indicator":  "bitly.com",
+        "Description":  "Domain requested"
+    },
+    {
+        "Indicator":  "sxasxasxssaxxsasxasx.blogspot.com",
+        "Description":  "Domain requested"
+    },
+    {
+        "Indicator":  "pastebin.com",
+        "Description":  "Domain requested"
+    },
+    {
+        "Indicator":  "http://216.170.126.139/Panel/10/index.php",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://pastebin.com/raw/BrH6UFRc",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://bitly.com/6xdfsSXsh6",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://pastebin.com/raw/UZEbWMK9",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://pastebin.com/raw/nhcP3XgH",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://bit.ly/loahsh78bhidasyiuasaaki",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://pastebin.com/raw/5y7H3LSz",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://pastebin.com/raw/TqsXJZaM",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://pastebin.com/raw/3MuLJLWZ",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://pastebin.com/raw/dkrjWec2",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://pastebin.com/raw/j8mRken0",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://pastebin.com/raw/bgTGtxHc",
+        "Description":  "HTTP/HTTPS requests"
+    }
+]
