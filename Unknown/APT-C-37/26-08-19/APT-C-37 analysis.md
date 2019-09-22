@@ -3,7 +3,7 @@
 * [Malware analysis](#Malware-analysis)
   + [Initial vector](#Initial-vector)
   + [Loader](#loader)
-  + [JS Backdoor](#Backdoor)
+  + [VB Backdoor](#Backdoor)
 * [Cyber Threat Intel](#Cyber-Threat-Intel)
   + [Origin of the method for the JS Backdoor](#Origin)
   + [APT-C-37 Campaign](#APT)
@@ -46,9 +46,9 @@
 ###### As anti-forensic method, a method which can know if determiner if a debugger is present.
  ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/zoomdebug.PNG "")	
 ###### Finally, we can observe a Wscript execution with a function splter which split for getting an array of bytes, convert to ASCII and after execute the script with execute call.
-###### By the following PowerShell script, we can get the second layer that is the JS Backdoor.
+###### By the following PowerShell script, we can get the second layer that is the VB Backdoor.
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/declayer.png "")	
-### JS Backdoor <a name="Backdoor"></a>
+### VB Backdoor <a name="Backdoor"></a>
 ###### Firstly, the script get the system informations about the system of the victim and send to one the list of C2 in the logical sense (not random call on the list of C2) with the suffix "/is-ready". The backdoor uses a while loop for rest in communication with C2 by sending a pulse with the system information of the victim.
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Unknown/APT-C-37/26-08-19/Images/FirstAnal.png "")	
 ###### This send the data with the following structure to the C2 (Here from the Anyrun sandbox) :
