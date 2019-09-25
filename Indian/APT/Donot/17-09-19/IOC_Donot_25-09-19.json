@@ -1,0 +1,250 @@
+[
+    {
+        "Indicator":  "86ccedaa93743e83787f53e09e376713.docx",
+        "Description":  "36eb4d0e5f2435e6a01d10ac9e0b362e49de990ac841ba536f63d5be76e99794"
+    },
+    {
+        "Indicator":  "d2263c15dfcccfef16ecf1c1c9304064befddf49cdbbd40abd12513481d7faf7.docx",
+        "Description":  "d2263c15dfcccfef16ecf1c1c9304064befddf49cdbbd40abd12513481d7faf7"
+    },
+    {
+        "Indicator":  "01d85719c5fec354431881f304307bb5521ecf6cb50eec4d3ec40d103dd3d3ae.docx",
+        "Description":  "01d85719c5fec354431881f304307bb5521ecf6cb50eec4d3ec40d103dd3d3ae"
+    },
+    {
+        "Indicator":  "pk_17e3a134ee4bcb50a9f608409853628ac619fd24cffd8d15868cf96ce63bb775",
+        "Description":  "17e3a134ee4bcb50a9f608409853628ac619fd24cffd8d15868cf96ce63bb775"
+    },
+    {
+        "Indicator":  "A1719.docx",
+        "Description":  "6b5d8a52ca5c9e90339c6c0f574dd5f6c4aaa63c88cf974d8caf6e3690259c14"
+    },
+    {
+        "Indicator":  "57ecda52cfb12afa08e84fe86cd61a95.zip",
+        "Description":  "557cdd4332765a5d223693f5c1e605bae17464919fd57f9a62a86e33cb07be7e"
+    },
+    {
+        "Indicator":  "Scan0012.docx",
+        "Description":  "5a19a1df087e0cc12e554b04dc383fb50b7c4a926ac34611acb43ab3cc4404e9"
+    },
+    {
+        "Indicator":  "kb8989476.rtf",
+        "Description":  "51dfa1d8c62598b0d03f77faa57887dcdeb0075216c35f5018609fbcb82c8672"
+    },
+    {
+        "Indicator":  "C:\\Windows\\Tasks\\wordfile.exe",
+        "Description":  "9a3061631ff634d8f573b36c885e41f8d4508c53f372c858b8b484b1f928b49f"
+    },
+    {
+        "Indicator":  "wine.exe",
+        "Description":  "bb5d713e81f782fc1bbd636eb97689e2010e71f4219ef80b90d979a6045b345a"
+    },
+    {
+        "Indicator":  "C:\\Windows\\Tasks\\A64.dll",
+        "Description":  "894bd1b82b451fd08d8ac3a3d4e8e248bbc1c153c557aebdfeaa7e1ffafef4d6"
+    },
+    {
+        "Indicator":  "C:\\Windows\\Tasks\\Serviceflow.exe",
+        "Description":  "ecbaac40bd504defe4f5eaba468e53de10e99f4dca5d05790d26e3ee4e5ce37f"
+    },
+    {
+        "Indicator":  "C:\\Windows\\Tasks\\sinter.exe",
+        "Description":  "6584b9e3849142d9c479ca58a0098636b556220e76b1ae1376f56dbdb80feb56"
+    },
+    {
+        "Indicator":  "EFILE",
+        "Description":  "b64691a3fff3b17eb1a169180f470bf1ea36c7793fe36e93ba8aad55fe4a5a83"
+    },
+    {
+        "Indicator":  "DFILE",
+        "Description":  "746b2a03a6413f97b66fc96c3e12204488f13f0c4b2255bee427b54291a9a639"
+    },
+    {
+        "Indicator":  "DFILE-",
+        "Description":  "ddc7d7cdc8ceb6a9c5cc776ccd7916cd4c16612aa54c5e0a9827303c6ab38eef"
+    },
+    {
+        "Indicator":  "EFILE-",
+        "Description":  "ed4a1c94b4e3b813ac352446aded7a7bbe1698cba436451a7d54b0bc55bf5b52"
+    },
+    {
+        "Indicator":  "DOCS",
+        "Description":  "322f48a07af27b22f9cd29f14abe390349262ac9db901759b03553fe0d71446e"
+    },
+    {
+        "Indicator":  "DOCSN",
+        "Description":  "c0a23116c1c7ced59ff8eae5ee96a48d436dd2e5b435a291003889d2ed9489e1"
+    },
+    {
+        "Indicator":  "DOCSN-1",
+        "Description":  "0ed911e6d672e8a830d13b2f62a06a74dd7bfff82a31cc8a5c169f2689c4255b"
+    },
+    {
+        "Indicator":  "XLSS",
+        "Description":  "365b35cff4e0314c6fa2bb5cd66d6040efba93b5857d5536bd6fea4d871afe33"
+    },
+    {
+        "Indicator":  "XLSSN",
+        "Description":  "cea33a195f791bb5db28d53b3a81dd407e107aa33a913475d07080df6167e7c6"
+    },
+    {
+        "Indicator":  "XLSSN-1",
+        "Description":  "f345c969b58aeda8e78743db529f3a0ff81ba227880bd90d46e47bf9a37b932b"
+    },
+    {
+        "Indicator":  "en-content.com",
+        "Description":  "Domain requested"
+    },
+    {
+        "Indicator":  "bsodsupport.icu",
+        "Description":  "Domain requested"
+    },
+    {
+        "Indicator":  "cloud-storage-service.com",
+        "Description":  "Domain requested"
+    },
+    {
+        "Indicator":  "office360-pub.16mb.com",
+        "Description":  "Domain requested"
+    },
+    {
+        "Indicator":  "noitfication-office-client.890m.com",
+        "Description":  "Domain requested"
+    },
+    {
+        "Indicator":  "plug.msplugin.icu",
+        "Description":  "Domain requested"
+    },
+    {
+        "Indicator":  "mscheck.icu",
+        "Description":  "Domain requested"
+    },
+    {
+        "Indicator":  "sdn.host",
+        "Description":  "Domain requested"
+    },
+    {
+        "Indicator":  "178.62.186.233",
+        "Description":  "IP requested"
+    },
+    {
+        "Indicator":  "178.62.188.63",
+        "Description":  "IP requested"
+    },
+    {
+        "Indicator":  "156.67.222.128",
+        "Description":  "IP requested"
+    },
+    {
+        "Indicator":  "159.89.104.38",
+        "Description":  "IP requested"
+    },
+    {
+        "Indicator":  "157.230.213.81",
+        "Description":  "IP requested"
+    },
+    {
+        "Indicator":  "146.185.139.134",
+        "Description":  "IP requested"
+    },
+    {
+        "Indicator":  "http://en-content.com/SecurityM/EFILE",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://en-content.com/SecurityM/DFILE",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://en-content.com/SecurityM/DFILE-",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://en-content.com/SecurityM/EFILE-",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://en-content.com/SecurityM/LIN",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://bsodsupport.icu/ScanSecurity/DOCS",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://bsodsupport.icu/ScanSecurity/DOCSN",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://bsodsupport.icu/ScanSecurity/DOCSN-1",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://bsodsupport.icu/ScanSecurity/XLSS",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://bsodsupport.icu/ScanSecurity/XLSSN",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://bsodsupport.icu/ScanSecurity/XLSSN-1",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://cloud-storage-service.com/pub/officex32x64/kb8989476",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://noitfication-office-client.890m.com/fcfdae-9dfc335ca-bd10/NHSORE/jjhl",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://plug.msplugin.icu/MicrosoftSecurityScan/DOCSDOC",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://mscheck.icu/SecurityScan/XLSS",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://sdn.host/MicrosoftSecurityScan/11MVEM1X",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://sdn.host/MicrosoftSecurityScan/FRSI080222F",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "support.worldupdate.live",
+        "Description":  "Doamin C2"
+    },
+    {
+        "Indicator":  "account-support.site",
+        "Description":  "Doamin C2"
+    },
+    {
+        "Indicator":  "skillsnew.top",
+        "Description":  "Doamin C2"
+    },
+    {
+        "Indicator":  "mystrylust.pw",
+        "Description":  "Doamin C2"
+    },
+    {
+        "Indicator":  "216.170.126.139",
+        "Description":  "IP C2"
+    },
+    {
+        "Indicator":  "46.105.40.12",
+        "Description":  "IP C2"
+    },
+    {
+        "Indicator":  "82.196.7.221",
+        "Description":  "IP C2"
+    },
+    {
+        "Indicator":  "37.139.28.208",
+        "Description":  "IP C2"
+    }
+]
