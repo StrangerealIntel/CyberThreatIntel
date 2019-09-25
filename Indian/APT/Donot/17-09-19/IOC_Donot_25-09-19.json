@@ -52,6 +52,10 @@
         "Description":  "6584b9e3849142d9c479ca58a0098636b556220e76b1ae1376f56dbdb80feb56"
     },
     {
+        "Indicator":  "C:\\ProgramData\\AudioDriver64\\Olmapi32.dll",
+        "Description":  "bc362886422771ee4059284095c49da865ffaf73d2dbb1de3cf5f2ace568617d"
+    },
+    {
         "Indicator":  "EFILE",
         "Description":  "b64691a3fff3b17eb1a169180f470bf1ea36c7793fe36e93ba8aad55fe4a5a83"
     },
@@ -216,20 +220,24 @@
         "Description":  "HTTP/HTTPS requests"
     },
     {
+        "Indicator":  "http://account-support.site/supp/accsite/cod.php",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
         "Indicator":  "support.worldupdate.live",
-        "Description":  "Doamin C2"
+        "Description":  "Domain C2"
     },
     {
         "Indicator":  "account-support.site",
-        "Description":  "Doamin C2"
+        "Description":  "Domain C2"
     },
     {
         "Indicator":  "skillsnew.top",
-        "Description":  "Doamin C2"
+        "Description":  "Domain C2"
     },
     {
         "Indicator":  "mystrylust.pw",
-        "Description":  "Doamin C2"
+        "Description":  "Domain C2"
     },
     {
         "Indicator":  "216.170.126.139",
