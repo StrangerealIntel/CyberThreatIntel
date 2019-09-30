@@ -1,0 +1,102 @@
+[
+    {
+        "Indicator":  "TNT Collection Request BH7 297745.js",
+        "Description":  "5e3ddf08616d4d0e7ba2a42af8e51e30e184eccb931ce36515cf5b24f3eb538d"
+    },
+    {
+        "Indicator":  "BANK DETAILS CONFIRMATION_PDF.js",
+        "Description":  "2f3541dd71b6c3f2cc4ef9f3a6dd36df1749ac4c062dfca7d955ac93bad8f53f"
+    },
+    {
+        "Indicator":  "vvvv.js",
+        "Description":  "09e9c9b722e63fa6f2d5b3e2949fb0a4d0cc42183b8e1c3030ecd46691a866b4"
+    },
+    {
+        "Indicator":  "kl-plugin.exe",
+        "Description":  "272e64291748fa8be01109faa46c0ea919bf4baf4924177ea6ac2ee0574f1c1a"
+    },
+    {
+        "Indicator":  "bpvpl.tar.gz",
+        "Description":  "27bd6db946dd85de546f6fb9b80658e46ecd327136773c949cd212ddfd52aa4e"
+    },
+    {
+        "Indicator":  "mapv.tar.gz",
+        "Description":  "bfcde7f66c042845af095b5600d1e7a383926e2836624f7eb1690b078e9cfe28"
+    },
+    {
+        "Indicator":  "rd-plugin.exe",
+        "Description":  "d65a3033e440575a7d32f4399176e0cdb1b7e4efa108452fcdde658e90722653"
+    },
+    {
+        "Indicator":  "2813.noip.me",
+        "Description":  "Domain C2"
+    },
+    {
+        "Indicator":  "tcoolsoul.com",
+        "Description":  "Domain C2"
+    },
+    {
+        "Indicator":  "ip-api.com",
+        "Description":  "Domain requested"
+    },
+    {
+        "Indicator":  "brothersjoy.nl",
+        "Description":  "Domain requested"
+    },
+    {
+        "Indicator":  "doughnut-snack.live",
+        "Description":  "Domain requested"
+    },
+    {
+        "Indicator":  "http://pluginsrv1.duckdns.org:7757/is-ready",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://ip-api.com/json/",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://www.tcoolsoul.com:1765/is-ready",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://doughnut-snack.live/mapv.tar.gz",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://doughnut-snack.live/klplu.tar.gz",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://doughnut-snack.live/bpvpl.tar.gz",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://doughnut-snack.live/rdplu1.tar.gz",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "http://185.247.228.159:1765/open-rdp",
+        "Description":  "1280x720"
+    },
+    {
+        "Indicator":  "79.134.225.100",
+        "Description":  "IP requested"
+    },
+    {
+        "Indicator":  "192.169.69.25",
+        "Description":  "IP requested"
+    },
+    {
+        "Indicator":  "172.245.14.10",
+        "Description":  "IP requested"
+    },
+    {
+        "Indicator":  "185.194.141.58",
+        "Description":  "IP C2"
+    },
+    {
+        "Indicator":  "185.247.228.159",
+        "Description":  "IP C2"
+    }
+]
