@@ -105,7 +105,7 @@
     },
     {
         "Indicator":  "office365-update-eu.com",
-        "Description":  "Domain Requested"
+        "Description":  "Domain C2"
     },
     {
         "Indicator":  "Receipt 0787.xls",
@@ -125,7 +125,7 @@
     },
     {
         "Indicator":  "windows-wsus-en.com",
-        "Description":  "Domain Requested"
+        "Description":  "Domain C2"
     },
     {
         "Indicator":  "Xerox Scan_84676113847687.XLS",
