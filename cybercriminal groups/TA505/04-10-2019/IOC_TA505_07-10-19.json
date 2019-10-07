@@ -172,27 +172,27 @@
         "Description":  "34242C2D4A3EF625A6DA375B85B34A3FD3CAFB04442A438378D1153FD355159C"
     },
     {
-        "Indicator":  "cdn-004.dropbox-download.com",
+        "Indicator":  "dropbox-download.com",
         "Description":  "Domain Requested"
     },
     {
-        "Indicator":  "https://dropboxdownload.com",
+        "Indicator":  "https://dropbox-download.com",
         "Description":  "HTTP/HTTPS requests"
     },
     {
-        "Indicator":  "https://dropboxdownload.com/?05041770570340",
+        "Indicator":  "https://dropbox-download.com/?05041770570340",
         "Description":  "HTTP/HTTPS requests"
     },
     {
-        "Indicator":  "https://dropboxdownload.com/?05610068412737",
+        "Indicator":  "https://dropbox-download.com/?05610068412737",
         "Description":  "HTTP/HTTPS requests"
     },
     {
-        "Indicator":  "https://dropboxdownload.com/?35277620367160",
+        "Indicator":  "https://dropbox-download.com/?35277620367160",
         "Description":  "HTTP/HTTPS requests"
     },
     {
-        "Indicator":  "https://dropboxdownload.com/download.php",
+        "Indicator":  "https://dropbox-download.com/download.php",
         "Description":  "HTTP/HTTPS requests"
     },
     {
