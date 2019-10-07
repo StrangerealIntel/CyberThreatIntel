@@ -202,9 +202,5 @@
     {
         "Indicator":  "windows-msd-update.com",
         "Description":  "Domain C2"
-    },
-    {
-        "Indicator":  "www.dropbox.com",
-        "Description":  "Domain Requested"
     }
 ]
