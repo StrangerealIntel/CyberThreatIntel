@@ -1,0 +1,138 @@
+[
+    {
+        "Indicator":  "104.19.197.151",
+        "Description":  "IP Requested"
+    },
+    {
+        "Indicator":  "104.19.199.151",
+        "Description":  "IP Requested"
+    },
+    {
+        "Indicator":  "147.135.204.64",
+        "Description":  "IP Requested"
+    },
+    {
+        "Indicator":  "18.194.14.44",
+        "Description":  "IP Requested"
+    },
+    {
+        "Indicator":  "183.111.138.244",
+        "Description":  "IP Requested"
+    },
+    {
+        "Indicator":  "185.33.87.27",
+        "Description":  "IP Requested"
+    },
+    {
+        "Indicator":  "192.99.211.205",
+        "Description":  "IP Requested"
+    },
+    {
+        "Indicator":  "3ee37a570cc968ca2ad5a99f920c9332",
+        "Description":  "D8EA1BAE84345D1A432E872811E9ECBCF84DE0BA6CB36053039A839DFBB7097C"
+    },
+    {
+        "Indicator":  "44a20233b3c3b1defcd7484d241c5be6",
+        "Description":  "09A887F08C7F252E642805DDFF5F1FDC390F675E603C994C3C06C055C55B0637"
+    },
+    {
+        "Indicator":  "53b2c9d906fc9075fa375295c5bdcf5b",
+        "Description":  "0776289CAC9F64211D5E5DDF14973157160DDCFBE2979D2E40638C4E03238558"
+    },
+    {
+        "Indicator":  "89c3a79864a0f0fa5a6cd3f87e8bd3271d1265b4d632bb32bb6be02425b4fe78",
+        "Description":  "89C3A79864A0F0FA5A6CD3F87E8BD3271D1265B4D632BB32BB6BE02425B4FE78"
+    },
+    {
+        "Indicator":  "C:\\Users\\admin\\AppData\\Roaming\\{97B34601-5B4A-40AF-8963-D8C75594998B} - 1.dll\r",
+        "Description":  "0af713ab3d6d17cd6b96d78fac2677fe3b5b0051cf8b673478bd767e7553c238"
+    },
+    {
+        "Indicator":  "C:\\Users\\admin\\AppData\\Roaming\\module_p1.dll\r",
+        "Description":  "5645BCA0C08E0660F6CA7D39BE8D2E72719F60861734326D08B2236126D04B29"
+    },
+    {
+        "Indicator":  "C:\\Users\\admin\\AppData\\Roaming\\module_p2.dll\r",
+        "Description":  "C16D2A23A27C1E9EAE34D01613C4BAB0FE4871F1D8A72D5C5B40E43B0F24D95C"
+    },
+    {
+        "Indicator":  "c6d17efb69bd4a7ac8f9dc11f810c30b",
+        "Description":  "77D8E6C621EA96AF5A677397FE367DC60689D7F4F40B0A60A198F1D117A9A47A"
+    },
+    {
+        "Indicator":  "Cheque.xls",
+        "Description":  "375159A45823FF4EAFBA0C364209EB7C35B353E3C64B69978C136CF41B67D570"
+    },
+    {
+        "Indicator":  "chogoon.com",
+        "Description":  "Domain Requested"
+    },
+    {
+        "Indicator":  "doc 6172.xls",
+        "Description":  "564CF47E84589D5E130E0502B403DF4E9648B9AFEA47372D0F9B8FD91FF6505C"
+    },
+    {
+        "Indicator":  "ed0cde28ce66713974e339715bdde62b",
+        "Description":  "CBAAB49338F8F2A9F56575702D9943A3DAFD78EF7812FABFF3B2E2899A460A12"
+    },
+    {
+        "Indicator":  "f46e2c2925e6196fae3112fd0bcbb8c2",
+        "Description":  "AD5910E44A63C0FC02376277D28D306A236CB87BCC0FA08B3569069BB5D58A6B"
+    },
+    {
+        "Indicator":  "https://chogoon.com/srt/gedp4",
+        "Description":  "https://chogoon.com/srt/gedp4"
+    },
+    {
+        "Indicator":  "https://windows-wsus-en.com/version",
+        "Description":  "URL Requested"
+    },
+    {
+        "Indicator":  "Invoice 7173.xls",
+        "Description":  "BAEE4D4F8838CD7107977D960E4478279E9F321D21CB15126C38AA8204629561"
+    },
+    {
+        "Indicator":  "J_280586",
+        "Description":  "D8EA1BAE84345D1A432E872811E9ECBCF84DE0BA6CB36053039A839DFBB7097C"
+    },
+    {
+        "Indicator":  "LET 7833.xls",
+        "Description":  "544154ED4B0495EBD44210AC6EAC4B5D7B9C9BE36B61D21482616433BE1915DD"
+    },
+    {
+        "Indicator":  "Letter 7711.xls",
+        "Description":  "E7379BB7A4B46E2378D5722FD2C8F4AE31A2AE15D5A9006609EE3E8D26199D89"
+    },
+    {
+        "Indicator":  "office365-update-eu.com",
+        "Description":  "Domain Requested"
+    },
+    {
+        "Indicator":  "Receipt 0787.xls",
+        "Description":  "564CF47E84589D5E130E0502B403DF4E9648B9AFEA47372D0F9B8FD91FF6505C"
+    },
+    {
+        "Indicator":  "Receipt 4685 YJLJ.xls",
+        "Description":  "564CF47E84589D5E130E0502B403DF4E9648B9AFEA47372D0F9B8FD91FF6505C"
+    },
+    {
+        "Indicator":  "sample1.xls",
+        "Description":  "6118EC7C0F06B45368DBD85B8F83958FC1F02F85E743F9CD82A1B877FBCCC140"
+    },
+    {
+        "Indicator":  "sample4.XLS",
+        "Description":  "566745CE483F3DC1744C757DD7348CE0844BAF5DB8CDF28F242CCD86B91496C0"
+    },
+    {
+        "Indicator":  "windows-wsus-en.com",
+        "Description":  "Domain Requested"
+    },
+    {
+        "Indicator":  "Xerox Scan_84676113847687.XLS",
+        "Description":  "8741346FB8D6C2F4CA80FA2B176F162AF620F86C5FFC895C84346BE22BDAA976"
+    },
+    {
+        "Indicator":  "Xerox.csv",
+        "Description":  "566745CE483F3DC1744C757DD7348CE0844BAF5DB8CDF28F242CCD86B91496C0"
+    }
+]
