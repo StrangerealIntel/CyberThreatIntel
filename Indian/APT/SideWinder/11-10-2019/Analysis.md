@@ -10,7 +10,7 @@
   + [Link Anyrun](#Links-Anyrun)
 
 ## Malware analysis <a name="Malware-analysis"></a>
-###### The initial vector is a malicious excel file which used an XLM macro (macro v4). This uses a function for launch the payload when the excel windows is active (selected as primary window). As first action, this executes the module 1.
+###### The initial vector is a malicious RTF file which use 
 ![alt text]()
 
 ## Cyber Threat Intel <a name="Cyber-Threat-Intel"></a>
