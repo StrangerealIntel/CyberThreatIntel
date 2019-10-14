@@ -11,19 +11,19 @@
         "Indicator":  "C:\\ProgramData\\AuthyFiles\\write.exe\r",
         "Description":  "45BD87A5803916409A0D824BEEFAFB1FAF49D52E0BA9C0E8014E82EAA17E7659"
     },
-	{
+    {
         "Indicator":  "1.a",
         "Description":  "c5feee527bb90926949c572bfe3fceb862727a9f5cee1fc580a11558253d624e"
     },
-	{
+    {
         "Indicator":  "Authy",
         "Description":  "99542270c355bdaef251fefeaf88c5ff747e3837501735887e7b2b7b54e2e2f2"
     },
-	{
+    {
         "Indicator":  "178.62.190.33",
         "Description":  "IP C2"
     },
-	{
+    {
         "Indicator":  "trans-can.net",
         "Description":  "Domain C2"
     }
