@@ -61,9 +61,15 @@
 ###### List of all the Indicators Of Compromise (IOC)
 |Indicator|Description|
 | ------------- |:-------------:|
-|||
+|zhengce.doc|b1417d7ee62878ef75381e4a3a4f388ac08ac4d4bbd9999b126345691e82b0c2|
+|C:\ProgramData\AuthyFiles\PROPSYS.dll|4e12d1bf1a631b8045e267671c0340b8da61777480692c4ce396f932f6bd4023|
+|C:\ProgramData\AuthyFiles\write.exe|45BD87A5803916409A0D824BEEFAFB1FAF49D52E0BA9C0E8014E82EAA17E7659|
+|1.a|c5feee527bb90926949c572bfe3fceb862727a9f5cee1fc580a11558253d624e|
+|Authy|99542270c355bdaef251fefeaf88c5ff747e3837501735887e7b2b7b54e2e2f2|
+|178.62.190.33|IP C2|
+|trans-can.net|Domain C2|
 
-###### This can be exported as JSON format [Export in JSON]()	
+###### This can be exported as JSON format [Export in JSON](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Indian/APT/SideWinder/11-10-2019/IOC-SideWinder-14-10-19.json)	
 
 ## Links <a name="Links"></a>
 ###### Original tweet: 
