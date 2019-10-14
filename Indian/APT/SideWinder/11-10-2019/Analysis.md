@@ -31,7 +31,18 @@
 ###### A second JSON file which content the list of the path of the document to steal and push on the C2 (target the xls, xlsx, doc, docx, pdf documents).
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Indian/APT/SideWinder/11-10-2019/Pictures/October%202019/ext2.png)
 ###### A file with the extension flc is used by the process as debug for the edition of the fls file.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Indian/APT/SideWinder/11-10-2019/Pictures/October%202019/extunsed.png)
 ### Same IP as C2 
+###### Like the last analysis (in August 2019), the group use the same domain and IP as C2, we can observed that is probably active since may 2019.
+|IP|Route|ASN|Organization|Country|City|Coordinates|
+| :---------------: | :---------------: | :---------------: |:---------------: |:---------------: |:---------------: |:---------------: |
+|178.62.190.33|178.62.128.0/18|AS14061|DigitalOcean, LLC|Netherlands|Amsterdam| 52.3740,4.8897|
+
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Indian/APT/SideWinder/11-10-2019/Pictures/October%202019/whois.png)
+### Still continue to target China
+###### Since the accord between China and Pakistan about the Kashmir crisis, the Indian APT SideWinder hasn't stopped attacking China, the last time this target the China event on the Chian's 2019 Defense White Paper and this time used to fake technical documentation.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Indian/APT/SideWinder/11-10-2019/Pictures/October%202019/eventchina1.png)
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Indian/APT/SideWinder/11-10-2019/Pictures/October%202019/eventchina2.png)
 
 ## Cyber kill chain <a name="Cyber-kill-chain"></a>
 ###### The process graphs resume all the cyber kill chains used by the attacker. 
