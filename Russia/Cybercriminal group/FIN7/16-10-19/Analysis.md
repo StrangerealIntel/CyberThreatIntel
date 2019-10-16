@@ -11,22 +11,22 @@
 ## Malware analysis <a name="Malware-analysis"></a>
 ###### The initial vector is a malicious xls which use a macro for extracts from the strings on the document the js script and execute it.
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Russia/Cybercriminal%20group/FIN7/16-10-19/Pictures/Macro.png)
-###### The first layer of the JS backdoor is a series of arrays where the second elements are used for giving the second layer of the backdoor.
+###### The first layer of the JS loader is a series of arrays where the second elements are used for giving the second layer of the loader.
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Russia/Cybercriminal%20group/FIN7/16-10-19/Pictures/layer1.png)
 ###### The first functions executed in the second layer is encoding the data to send at the C2.
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Russia/Cybercriminal%20group/FIN7/16-10-19/Pictures/layer2%20-%20decode.png)
 ##### The main sends a pulse to the C2 and wait for the instructions to perform.
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Russia/Cybercriminal%20group/FIN7/16-10-19/Pictures/layer2%20-%20main.png)
-###### The backdoor performs a discover action for list the DNS host of the list active network cards. This helps to prepare the DNS extraction for sending the data in the C2.
+###### The loader performs a discover action for list the DNS host of the list active network cards. This helps to prepare the DNS extraction for sending the data in the C2.
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Russia/Cybercriminal%20group/FIN7/16-10-19/Pictures/layer2%20-%20id.png)
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Russia/Cybercriminal%20group/FIN7/16-10-19/Pictures/layer2%20-%20id.png)
 
 ###### This use after a function for randomizing (4 letters or numbers) the sub part of the URL to domain the contact and the name of file for storage temporary the data in waiting to send it(as tmp file in the disk).
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Russia/Cybercriminal%20group/FIN7/16-10-19/Pictures/layer2%20-%20ns.png)
-###### In function of the hard-coded mode in backdoor, this sends the data via a DNS extraction or via HTTP.
+###### In function of the hard-coded mode in loader, this sends the data via a DNS extraction or via HTTP.
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Russia/Cybercriminal%20group/FIN7/16-10-19/Pictures/layer2%20-%20send.png)
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Russia/Cybercriminal%20group/FIN7/16-10-19/Pictures/layer2%20-%20dnsext.png)
-###### The IP used as C2 rest the same that the samples spotted early September.
+###### If the target is interesting, the group can perform custom commands and execute a backdoor on the computer. The IP used as C2 rest the same that the samples spotted early September.
 |IP|Route|ASN|Organization|Country|City|Coordinates|
 | :---------------: | :---------------: | :---------------: |:---------------: |:---------------: |:---------------: |:---------------: |
 |185.231.153.21| 185.231.153.0/24|AS48282|VDSINA VDS Hosting|Russia|Moscow|55.7386,37.6068|
