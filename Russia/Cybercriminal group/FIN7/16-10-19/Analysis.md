@@ -9,7 +9,7 @@
   + [Link Anyrun](#Links-Anyrun)
   + [Documents](#Documents)
 ## Malware analysis <a name="Malware-analysis"></a>
-###### The initial vector is a malicious xls which a macro, this extracts the string on the document and execute it.
+###### The initial vector is a malicious xls which use a macro for extracts from the strings on the document the js script and execute it.
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Russia/Cybercriminal%20group/FIN7/16-10-19/Pictures/Macro.png)
 ###### The first layer of the JS backdoor is a series of arrays where the second elements are used for giving the second layer of the backdoor.
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Russia/Cybercriminal%20group/FIN7/16-10-19/Pictures/layer1.png)
