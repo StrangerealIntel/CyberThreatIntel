@@ -45,6 +45,16 @@
 |moviedvdpower.com|Domain requested|
 |31.3.232.105|IP requested|
 |185.231.153.21|IP C2|
+|catering_list.xls|73d0b3cdff094bac4f965972a89872a11d60c5a58c0be9652d482808fa6d236e|
+|wcykafy.exe|bd7b57a9303f0156e0737e9768a70f841b222a3e07e1426ecccfffdf2737bfe9|
+|moviedvdpower.com|Domain C2|
+|31.3.232.105|IP C2|
+|8dd588a49d4e2c20a2c97f3726c0d2d85c5f6d402206c1f6dd2b33aea58565fc.exe|8dd588a49d4e2c20a2c97f3726c0d2d85c5f6d402206c1f6dd2b33aea58565fc|
+|8773aeb53d9034dc8de339651e61d8d6ae0a895c4c89b670d501db8dc60cd2d0.dll|8773aeb53d9034dc8de339651e61d8d6ae0a895c4c89b670d501db8dc60cd2d0|
+|DWrite.dll|18cc54e2fbdad5a317b6aeb2e7db3973cc5ffb01bbf810869d79e9cb3bf02bd5|
+|Malware.doc|ee0cb9e6de83f807ccf9c3a02b384c1fb6e59f7de720f1eaf37141bf0487f5e6|
+|Screenshot + payment.doc|75a75224e81423663dd66ce20f845a58d523b0948c9d5cf135d599324512103e|
+|doc1.doc|860a5e83c509ec6615a722cd62ba47a506f115743eeb03cc94b3d2b03cc0ecc0|
 
 ###### This can be exported as JSON format [Export in JSON](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Russia/Cybercriminal%20group/FIN7/16-10-19/IOC-FIN7-16-10-19.json)	
 
