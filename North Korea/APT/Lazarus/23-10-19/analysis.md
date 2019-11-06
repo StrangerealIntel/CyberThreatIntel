@@ -12,7 +12,9 @@
 ## Malware analysis <a name="Malware-analysis"></a>
 ###### The next analysis try to kept the recents events and a logicial improvement and technics of the group, this can go back in the past for compare it.
 ### CES 2020 incident (NukeSped)
-###### The initial vector of the infection begin by a current exploit in HWP (CVE-2015-6585) to execute an EPS script, this download and execute the next stage of the infection.
+###### We can see that the document target specifily the south korean exhibitors with the follow tittle "Application form for American Las Vegas CES 2020"
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/HWP/Doc.PNG)
+###### This initial vector of the infection begin by a current exploit in HWP (CVE-2015-6585) to execute an EPS script, this download and execute the next stage of the infection.
 ![alt text](https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/HWP/EPS.PNG)
 ###### This execute fisrtly a common trick RtlCaptureContext for have ability to register a top-level exception handler and avoid debbuging.
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/HWP/mal_anti-debug.png)
@@ -43,6 +45,18 @@
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/HWP/HWP-cert.png)
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/HWP/HWP-whois.png)
 ### HAL incident (JakyllHyde)
+###### The document specifically target the Hindustan Aeronautics Limited company (HAL) that the national aeronautics in India. This use false announcements for recruitment for target probably interesting profile or internal employees in asking for their opinion about announcements.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/Maldoc_cover.png)
+###### The attack vector is an maldoc which use a macro for drop and execute the implant. The first bloc is a declaration of function for load the future extracted dll.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/Maldoc_VBA_1.png)
+###### The next bloc have multiple functions like decode from the base 64 in binary and string, verify the path of folder/file, create a folder and extract the correct payload from the form in maldoc according to the OS.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/Maldoc_VBA_2.png)
+###### The following bloc have extraction functions (drop the lure) and for get the name of the lure and the dll.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/Maldoc_VBA_3.png)
+###### We can see the autoopen function for execute the macro at the opening of the document and the data of the malware in base 64.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/Maldoc_VBA_4.png)
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/Maldoc_VBA_5.png)
+
 
 ## Cyber kill chain <a name="Cyber-kill-chain"></a>
 ###### The process graphs resume all the cyber kill chains used by the attacker. 
