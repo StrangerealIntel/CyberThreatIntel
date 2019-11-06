@@ -11,7 +11,7 @@
 
 ## Malware analysis <a name="Malware-analysis"></a>
 ###### The next analysis try to kept the recents events and a logicial improvement and technics of the group, this can go back in the past for compare it.
-### CES 2020 (NukeSped)
+### CES 2020 incident (NukeSped)
 ###### The initial vector of the infection begin by a current exploit in HWP (CVE-2015-6585) to execute an EPS script, this download and execute the next stage of the infection.
 ![alt text](https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/HWP/EPS.PNG)
 ###### This execute fisrtly a common trick RtlCaptureContext for have ability to register a top-level exception handler and avoid debbuging.
@@ -27,13 +27,22 @@
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/HWP/mal_Options.png)
 ###### List of the languages used :
 |RFC4646/ISO 639 Ref|Lang|
-|:--:|:--:|
+|:-------------:|:-------------:|
 |Az-Arab|Azerbaijani in Arabic script|
 |de-CH|Swiss German|
 |en-US|English as used in the United States|
+###### Interesting to see that not only south korea language is choisen and show that the group target all exhibitors (more a hundred exhibitors only for South Korea). This think possibly that the group manage the event give hardware specifily for the shows to the customers, that explains why this to don't include specific language like South Korea. If the target is interesting for the group, this  can execute command and others tools in the computer infected.
 
-###### If the target is interesting for the group, this execute command and others tools in the computer infected.
-
+###### We can see in the list of all the domains used that this all as different cloud providers and are legit website hijacked by vulnerable wordpress.
+|IP|ASN|Organization|Route|City|Coordinates|Country|
+|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+|64.151.229.52|AS26753|In2net Network Inc.|64.151.192.0/18|Toronto|43.6861,-79.4025|Canada|
+|185.136.207.217|AS203377|LAB internet ve Bilisim Hizmetleri|185.136.207.0/24|Eskiehir|39.7767,30.5206|Turkey|
+|83.169.17.240|AS8972|Europe GmbH|83.169.16.0/21|Köln|50.9541,6.9103|Germany|
+###### We can confirmed it by the Whois records and by the certificats push on the websites know at all the sites have between up early August 2019 at September 2019.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/HWP/HWP-cert.png)
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/HWP/HWP-whois.png)
+### HAL incident (JakyllHyde)
 
 ## Cyber kill chain <a name="Cyber-kill-chain"></a>
 ###### The process graphs resume all the cyber kill chains used by the attacker. 
@@ -68,4 +77,5 @@
 
 * [Analysis of Powershell malware of Lazarus group](https://blog.alyac.co.kr/2388 )
 * [Cryptocurrency businesses still being targeted by Lazarus](https://securelist.com/cryptocurrency-businesses-still-being-targeted-by-lazarus/90019/)
-
+###### Ressources :
+* [List of South Korea exhibitors in CES2020](https://www.ces.tech/Show-Floor/Exhibitor-Directory.aspx?searchTerm=&sortBy=country&filter=South%20Korea)
