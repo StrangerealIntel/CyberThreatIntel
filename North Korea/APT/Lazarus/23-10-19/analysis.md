@@ -79,8 +79,27 @@
 ###### Like the last incident, Lazarus group try to get high technologies, this possible that the interest is the fact that HAL is in cooperation for product and use the new french militairy aircraft (Rafale) in the India country.
 
 ### OSX Malwares (OSX.Yort)
-
-
+###### The initial vector of the infection is a maldoc with a VBA macro, this have two sections one for infected MacOSX and one for Windows. We can see the declaration of the functions for MacOSX and one of four splitted functions for get the payload on the Windows version 
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Maldoc-VBA-1.PNG)
+###### Here, we can observe the initiation of the payloads according with the OS in the AutoOpen (Run a macro when Excel or Word document is open).
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Maldoc-VBA-2.PNG)
+###### The backdoor consists of a single loop which creates a session for waiting the orders of the C2.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Mal-main.png)
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Mal-mainloop.png)
+###### Many functions for send and get data are derived of a common based code with a specific action as perform at the final.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/functionscom.PNG)
+###### Foreach, this initiate and push the paramerters for communicate with the C2.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Mal-weboptions.png)
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19-Maldoc2/Mal_option.png)
+###### This can reply to the C2 like a pulse for alert at is still up (ReplyDie), download a file (ReplyDown), download and execute a file (ReplyExec), execute a command (Replycmd) or open another CLI (ReplyOtherShellCmd).
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Mal-replydie.png)
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Mal-ReplyDown.png)
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Mal-ReplyExec.png)
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Mal-Replycmd.png)
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Mal-ReplyOtherShellCmd.png)
+###### We can see on the data pushed on the C2 that a xor is performed with the ```"0xAA"``` value.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Mal-Pushdata.png)
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Mal-xor.png)
 
 ## Cyber kill chain <a name="Cyber-kill-chain"></a>
 ###### The process graphs resume all the cyber kill chains used by the attacker. 
