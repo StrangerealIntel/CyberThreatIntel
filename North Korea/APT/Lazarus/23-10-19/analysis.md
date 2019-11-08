@@ -83,7 +83,7 @@
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Maldoc-VBA-1.PNG)
 ###### Here, we can observe the initiation of the payloads according with the OS in the AutoOpen (Run a macro when Excel or Word document is open).
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Maldoc-VBA-2.PNG)
-###### The backdoor consists of a single loop which creates a session for waiting the orders of the C2.
+###### The backdoor consists of a single loop which load the configuration and create a session for waiting the orders of the C2. The configuration can be update and the malware can be sleep for a delay given by the C2.
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Mal-main.png)
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Mal-mainloop.png)
 ###### Many functions for send and get data are derived of a common based code with a specific action as perform at the final.
@@ -100,6 +100,25 @@
 ###### We can see on the data pushed on the C2 that a xor is performed with the ```"0xAA"``` value.
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Mal-Pushdata.png)
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Mal-xor.png)
+###### The malware don't have a persistence but by the fact that can execute command, the attacker can decide push a persistence if this neccessary, a function is performed when the attack close the session for return that the backdoor is correctly closed.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Mal-destroysession.png)
+###### This according with the Kaspersky analysis of Yort on the functions of the backdoor:
++ ###### Set sleep time (delay between C2 interactions)
++ ###### Exit session
++ ###### Collect basic host information
++ ###### Check malware status
++ ###### Show current malware configuration
++ ###### Update malware configuration
++ ###### Execute system shell command
++ ###### Download & Upload files
+
+###### Another sample of Yort have been spotted with a reedited installer of Flash Player, on the strings, we can observed that is the version 10.2 that is rebuilded.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19-Maldoc2/Mal_version.PNG)
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19-Maldoc2/Mal_version2.PNG)
+
+
+
+
 
 ## Cyber kill chain <a name="Cyber-kill-chain"></a>
 ###### The process graphs resume all the cyber kill chains used by the attacker. 
