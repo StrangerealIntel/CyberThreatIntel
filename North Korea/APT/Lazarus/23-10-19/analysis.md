@@ -700,7 +700,24 @@ function PulsetoC2($rid)
 	return $trigger
 }
 ```
-
+###### As final, the both backdoor have the same functionalities and use the same common infrastructure for the both platforms targetted.
+### Nuclear's plant incident (DTrack)
+###### On the stings, we can observe a function timestamp who return a date of version, this is an of the sqllite version of the C librairies (3.21), this can be an reuse code of one of stealer of the group for a new stealer.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/SQLite-Version-string.PNG)
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/SQLite-Version.PNG)
+###### The malware pivoting in the infrastructure and get an elevation in the privileges by the remote access to administrative shares (C$) with a like a default password "abcd@123".
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Mal-Actions-1.png)
+###### The sensitive operations to do on the computer have an indicative CCS_, this can be a code identifier for this custom payload of DTrack. CCS can be acronym Cabinet Committee on Security (CCS) of the Central Government of India.
+###### Dtrack have the capacity to get the mac address and infos on the network card adapter.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Mal-Get-Mac.png)
+###### As strealer, Dtrack can get the data of web broswer (Chrome and Firefox), this parsed the history, stored password and the URL. URl is interesting due to many company push in the deploiement in the new computer in the domain, the intranet links, adminstrative links or links to console like SCADA, it's a good method for environmental recognition.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Mal-StealActions.png)
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Mal-Get-History-1.png)
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Mal-Get-History-2.png)
+###### Once this done, Dtrack list the disks and the files on the disks and write it in a local tmp file with the password , this password is common at all the operations of the lazarus group.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Mal-GetDisks.png)
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Exp-Pass.png)
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Exp-Data.PNG)
 
 
 
@@ -726,13 +743,16 @@ function PulsetoC2($rid)
 * [https://twitter.com/Rmy_Reserve/status/1188235835956551680](https://twitter.com/Rmy_Reserve/status/1188235835956551680) 
 * [https://twitter.com/a_tweeter_user/status/1188811977851887616](https://twitter.com/a_tweeter_user/status/1188811977851887616) 
 * [https://twitter.com/spider_girl22/status/1187288313285079040](https://twitter.com/spider_girl22/status/1187288313285079040) 
-* [https://twitter.com/objective_see/status/1187094701729443840](https://twitter.com/objective_see/status/1187094701729443840) 
+* [https://twitter.com/objective_see/status/1187094701729443840](https://twitter.com/objective_see/status/1187094701729443840)
+* [https://twitter.com/TweeterCyber/status/1191391454981177344](https://twitter.com/TweeterCyber/status/1191391454981177344)
+
 ###### Links Anyrun: <a name="Links-Anyrun"></a>
 * [6850189bbf5191a76761ab20f7c630ef.xls](https://app.any.run/tasks/27ea35e6-6211-468d-9b8a-8c4cf22764ce)
 * [JD-HAL-Manager.doc](https://app.any.run/tasks/42c972b1-ec38-4637-9354-9de930ff50b2)
 * [public.dll](https://app.any.run/tasks/9eb78213-df55-44c3-9465-e58eb0869e58)
 * [CES2020 참관단.hwp](https://app.any.run/tasks/31be34b3-4d72-4831-8b76-6dfebe729b84)
 * [6850189bbf5191a76761ab20f7c630ef.xls](https://app.any.run/tasks/a766e70e-b07f-4a59-80fb-b18597d85b08)
+* [a0664ac662802905329ec6ab3b3ae843f191e6555b707f305f8f5a0599ca3f68.exe](https://app.any.run/tasks/6396ddf7-4000-4ffb-92ea-bc33612ec8c0)
 
 ###### External analysis: <a name="Analysis"></a>
 
