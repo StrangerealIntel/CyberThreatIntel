@@ -1,4 +1,4 @@
-*
+/*
    YARA Rule Set
    Author: Arkbird_SOLG
    Date: 2019-10-26
