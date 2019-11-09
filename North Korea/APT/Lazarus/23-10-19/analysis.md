@@ -115,8 +115,13 @@
 ###### Another sample of Yort have been spotted with a reedited installer of Flash Player, on the strings, we can observed that is the version 10.2 that is rebuilded.
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19-Maldoc2/Mal_version.PNG)
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19-Maldoc2/Mal_version2.PNG)
-
-
+###### We can see in the main function that install the legit Flash player, the checker software for update for avoid to become suspicious to the user and launch the backdoor.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19-Maldoc2/Mal_entry.png)
+###### This loading the configuration and options of the Yort, the rest is the same that the previous sample of Yort. 
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19-Maldoc2/Mal_Command.PNG)
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19-Maldoc2/Mal_option.png)
+### Powershell Backdoor (PowerShell/NukeSped)
+###### Now, see the Windows version, this use Powershell language for the backdoor 
 
 
 
