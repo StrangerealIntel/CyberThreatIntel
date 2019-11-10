@@ -56,6 +56,7 @@
 ###### We can see the autoopen function for execute the macro at the opening of the document and the data of the malware in base 64.
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/Maldoc_VBA_4.png)
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/Maldoc_VBA_5.png)
+###### The macro used is one of macros avalaible in the open source github tool "Macro_pack".
 ###### The backdoor begins to do the reconnaissance actions like list the process,system informations(Username, ComputerName ...)   
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/mal_process.png)
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/mal_systeminfos.png)
@@ -714,14 +715,17 @@ function PulsetoC2($rid)
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Mal-StealActions.png)
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Mal-Get-History-1.png)
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Mal-Get-History-2.png)
-###### Once this done, Dtrack list the disks and the files on the disks and write it in a local tmp file with the password , this password is common at all the operations of the lazarus group.
+###### Once this done, Dtrack list the disks and the files on the disks and write it in a local tmp file with the password ```dkwero38oerA^t@#``` , this password is common at all the operations of the lazarus group.
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Mal-GetDisks.png)
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Exp-Pass.png)
 ![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Exp-Data.PNG)
-
-
-
-
+###### But the custom Dtrack malware don't perform logs and don't have a C2 URL to contact compared at the normal version, this is disable for more stealth. Here, differnce between normal and custom Dtrack reference.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/log.png)
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Ref.png)
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Noref.png)
+###### This can give a problem with Yara Rule due to the strings are the same just the execution are disable. The fact that malware don't contact suggests that the other backdoor was already used to launch Dtrack and recover the data. It has been reported that North Korea's Kimsuky Group is attempting to develop a new design for the next generation of advanced heavy water reactors who burns thorium into the fuel core and they attacked many Indian nuclear physicists in this way.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Art.PNG)
+###### For conclude North Korea, try to get avanced technologies in multiples sectors aeronautics, space, energetic, but also useful energetic independence in the current situation that could lead to an international blockade.
 ## Cyber kill chain <a name="Cyber-kill-chain"></a>
 ###### The process graphs resume all the cyber kill chains used by the attacker. 
 ![alt text]()
@@ -760,3 +764,8 @@ function PulsetoC2($rid)
 * [Cryptocurrency businesses still being targeted by Lazarus](https://securelist.com/cryptocurrency-businesses-still-being-targeted-by-lazarus/90019/)
 ###### Ressources :
 * [List of South Korea exhibitors in CES2020](https://www.ces.tech/Show-Floor/Exhibitor-Directory.aspx?searchTerm=&sortBy=country&filter=South%20Korea)
+* [North Korea's Kimsuky Group informations](https://twitter.com/issuemakerslab/status/1123291956333834244)
+* [North Korean hackers sent hacking emails to Atomic Energy Commission of India(AECI) and the Secretary to the Government of India and the Director of the Bhabha Atomic Research Centre(BARC)](https://twitter.com/issuemakerslab/status/1190539805454520320)
+* [Some of the malware made by North Korea to attack India were based on the example source code of the South Korean book](https://twitter.com/issuemakerslab/status/1190818549633187840)
+* [github macro_pack ](https://github.com/sevagas/macro_pack)
+* [North Korean hackers attack India Nuclear power plant followed by space research institute](http://www.newsis.com/view/?id=NISX20191107_0000823158&cID=10101&pID=10100)
