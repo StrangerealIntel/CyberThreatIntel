@@ -34,7 +34,7 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/HWP/mal_finfFile.png">
 </p>
-<h6> The RAT push the cookie settings and guid for the identification in the C2.
+<h6> The RAT push the cookie settings and guid for the identification in the C2. </h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/HWP/mal_pushguid.png">
 </p>
@@ -138,7 +138,7 @@
 </p>
 <h6> Like the last incident, Lazarus group try to get high technologies, this possible that the interest is the fact that HAL is in cooperation for product and use the new french militairy aircraft (Rafale) in the India country.</h6>
 
-### OSX Malwares (OSX.Yort)
+<h3> OSX Malwares (OSX.Yort) </h3>
 <h6> The initial vector of the infection is a maldoc with a VBA macro, this have two sections one for infected MacOSX and one for Windows. We can see the declaration of the functions for MacOSX and one of four splitted functions for get the payload on the Windows version </h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Maldoc-VBA-1.PNG">
@@ -823,6 +823,14 @@ function PulsetoC2($rid)
 ```
 
 <h6> As final, the both backdoor have the same functionalities and use the same common infrastructure for the both platforms targetted.</h6>
+<h6>List of the domains contacted</h6>
+
+|Domain|IP|ASN|Organization|Route|City|Coordinates|Country|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|crabbedly.club|37.72.175.226|AS29802|SWIFTWAY-CLIENT-NEW-YORK|37.72.174.0/23|New York City|40.7143,-74.0060|United States|
+|craypot.live|23.227.199.96|AS35017|Swiftway Communications, Inc|23.227.192.0/21 |Chicago|41.8500,-87.6500|United States|
+|indagator.club|185.236.203.211|AS9009|M247 LTD Copenhagen Infrastructure|185.236.203.0/24|Ballerup|55.7317,12.3633|Denmark|
+
 <h3> Nuclear's plant incident (DTrack)</h3>
 <h6> On the stings, we can observe a function timestamp who return a date of version, this is an of the sqllite version of the C librairies (3.21), this can be an reuse code of one of stealer of the group for a new stealer.</h6>
 <p align="center">
@@ -835,7 +843,7 @@ function PulsetoC2($rid)
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Mal-Actions-1.png">
 </p>
-<h6> The sensitive operations to do on the computer have an indicative CCS_, this can be a code identifier for this custom payload of DTrack. CCS can be acronym Cabinet Committee on Security (CCS) of the Central Government of India.
+<h6> The sensitive operations to do on the computer have an indicative CCS_, this can be a code identifier for this custom payload of DTrack. CCS can be acronym Cabinet Committee on Security (CCS) of the Central Government of India. </h6>
 <h6> Dtrack have the capacity to get the mac address and infos on the network card adapter.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Mal-Get-Mac.png">
@@ -861,7 +869,7 @@ function PulsetoC2($rid)
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Exp-Data.PNG">
 </p>
-<h6> But the custom Dtrack malware don't perform logs and don't have a C2 URL to contact compared at the normal version, this is disable for more stealth. Here, differnce between normal and custom Dtrack reference.</h6>
+<h6> But the custom Dtrack malware don't perform logs and don't have a C2 URL to contact compared at the normal version, this is disable for more stealth. Here, an example  on the difference between normal and custom DTrack reference.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/log.png">
 </p>
@@ -887,7 +895,7 @@ function PulsetoC2($rid)
 
 <h2> Indicators Of Compromise (IOC) <a name="IOC"></a></h2>
 <h6> List of all the Indicators Of Compromise (IOC)</h6>
-<h3> CES 2020 incident</h3>
+<h3> CES 2020 incident (NukeSped)</h3>
 
 |Indicator|Description|
 | ------------- |:-------------:|
@@ -901,7 +909,7 @@ function PulsetoC2($rid)
 |83.169.17.240|IP C2|
 
 <h6> This can be exported as JSON format <a href="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Json/CES2020.json">Export in JSON</a></h6>
-<h3> HAL incident </h3>
+<h3> HAL incident (JakyllHyde)</h3>
 
 |Indicator|Description|
 | ------------- |:-------------:|
@@ -911,7 +919,42 @@ function PulsetoC2($rid)
 |193.70.64.163|IP C2|	
 
 <h6> This can be exported as JSON format <a href="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Json/HAL.json">Export in JSON</a></h6>
+<h3> OSX Malwares (OSX.Yort) / Powershell backdoor</h3>
 
+|Indicator|Description|
+| ------------- |:-------------:|
+|샘플_기술사업계획서(벤처기업평가용).doc|761BCFF9401BED2ACE80B85C43B230294F41FC4D1C0DD1FF454650B624CF239D|
+|mt.dat|F9FFB15A6BF559773B0DF7D8A89D9440819AB285F17A7B0A98626C14164D170F|
+|snphhuatvsbkw.ps1|4503A194E5064595E36EF01ED87C24203ACCE56F308AF23E2563E71F890B0188|
+|연인심리테스트.xls|A7FF0DFC2456BAA80E6291619E0CA480CC8F071F42845EB8316483E077947339|
+|sopiiubuvsclwukz.ps1|360431100AA6DA78B577CC8B4606FA66E6191056FAC7C42929ABEC5A4402DA7A|
+|Flash Player|735365EF9AA6CCA946CFEF9A4B85F68E7F9F03011DA0CF5F5AB517A381E40D02|
+|hxxps://crabbedly[.]club/board[.]php|HTTP/HTTPS requests|
+|hxxps://craypot[.]live/board[.]php|HTTP/HTTPS requests|
+|hxxps://indagator[.]club/board[.]php|HTTP/HTTPS requests|
+|crabbedly[.]club|Domain C2|
+|craypot[.]live|Domain C2|
+|indagator[.]club|Domain C2|
+|37.72.175.226|IP C2|
+|23.227.199.96|IP C2|
+|185.236.203.211|IP C2|
+|hxxps://towingoperations[.]com/chat/chat[.]php|HTTP/HTTPS requests|
+|hxxps://baseballcharlemagnelegardeur[.]com/wp-content/languages/common[.]php|HTTP/HTTPS requests|
+|hxxps://www[.]tangowithcolette[.]com/pages/common[.]php|HTTP/HTTPS requests|
+
+<h6> This can be exported as JSON format <a href="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Json/OSX-Powershell.json">Export in JSON</a></h6>
+<h3> Nuclear's plant incident (DTrack)</h3>
+
+|Indicator|Comments|
+| ------------- |:-------------:|
+|bfb39f486372a509f307cde3361795a2f9f759cbeb4cac07562dcbaebc070364.exe|BFB39F486372A509F307CDE3361795A2F9F759CBEB4CAC07562DCBAEBC070364|
+|sct.exe|3cc9d9a12f3b884582e5c4daf7d83c4a510172a836de90b87439388e3cde3682|
+|$R0C7TZX.DMP|93a01fbbdd63943c151679d037d32b1d82a55d66c6cb93c40ff63f2b770e5ca9|
+|process.0xffffe800239e8080.0x3d0000.dmp|a0664ac662802905329ec6ab3b3ae843f191e6555b707f305f8f5a0599ca3f68|
+|dtrack.exe|bfb39f486372a509f307cde3361795a2f9f759cbeb4cac07562dcbaebc070364|
+|process.0xffffe800239e8080.0x890000.dmp|c5c1ca4382f397481174914b1931e851a9c61f029e6b3eb8a65c9e92ddf7aa4c|
+
+<h6> This can be exported as JSON format <a href="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Json/DTrack.json">Export in JSON</a></h6>
 <h2>Links <a name="Links"></a></h2>
 <h6> Originals tweets: </h6>
 
