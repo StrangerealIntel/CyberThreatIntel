@@ -888,24 +888,60 @@ function PulsetoC2($rid)
 <h6> The process graphs resume cyber kill chains used by the attacker in the differents incidents </h6>
 <ul>
 	<li> Powershell agents
-<p align="center">
+<p align="left">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/cyber/cyber-power.PNG">
 </p></li><li> HAL incident
-<p align="center">
+<p align="left">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/cyber/cyber-HAL.PNG">
 </p></li><li> Nuclear's plant incident
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/cyber/cyber-Nuclear.PNG">
 </p></li>
 
-
-
-
 <h2> References MITRE ATT&CK Matrix <a name="Ref-MITRE-ATTACK"></a></h2>
 <h6> List of all the references with MITRE ATT&CK Matrix</h6>
-
+<h3>CES 2020</h3>
 |Enterprise tactics|Technics used|Ref URL|
 | :---------------: |:-------------| :------------- |
+|Persistence|T1179 - Hooking|https://attack.mitre.org/wiki/Technique/T1179|
+|Privilege Escalation|T1179 - Hooking<br/>T1055 - Process Injection|https://attack.mitre.org/wiki/Technique/T1179<br/>https://attack.mitre.org/wiki/Technique/T1055|
+|Defense Evasion|T1112 - Modify Registry<br/>T1055 - Process Injection|https://attack.mitre.org/wiki/Technique/T1112<br/>https://attack.mitre.org/wiki/Technique/T1055|
+|Credential Access|T1179 - Hooking|https://attack.mitre.org/wiki/Technique/T1179|
+|Discovery|T1010 - Application Window Discovery<br/>T1082 - System Information Discovery<br/>T1124 - System Time Discovery|https://attack.mitre.org/wiki/Technique/T1010<br/>https://attack.mitre.org/wiki/Technique/T1082<br/>https://attack.mitre.org/wiki/Technique/T1124|
+|Collection|T1115 - Clipboard Data|https://attack.mitre.org/wiki/Technique/T1115|
+<h3> HAL </h3>
+|Enterprise tactics|Technics used|Ref URL|
+| :---------------: |:-------------| :------------- |
+|Execution|Rundll32|https://attack.mitre.org/techniques/T1085/|
+|Persistence|Registry Run Keys / Startup Folder|https://attack.mitre.org/techniques/T1060/|
+|Defense Evasion|Rundll32|https://attack.mitre.org/techniques/T1085/|
+|Discovery|Query Registry|https://attack.mitre.org/techniques/T1012/|	
+<h3> Powershell backdoor </h3>
+|Enterprise tactics|Technics used|Ref URL|
+| :---------------: |:-------------| :------------- |
+|Execution|Scripting<br>PowerShell|https://attack.mitre.org/techniques/T1064/<br>https://attack.mitre.org/techniques/T1086/|
+|Defense Evasion|Scripting|https://attack.mitre.org/techniques/T1064/|
+|Discovery|Account Discovery<br/>System Information Discovery<br/>System Time Discovery<br/>Query Registry|https://attack.mitre.org/techniques/T1087/<br/>https://attack.mitre.org/techniques/T1082/<br/>https://attack.mitre.org/techniques/T1124/<br/>https://attack.mitre.org/techniques/T1012/|
+|Collection|Data from Local System https://attack.mitre.org/techniques/T1005/|
+|Command And Control|Data Encoding|https://attack.mitre.org/techniques/T1132/|
+|Exfiltration|Data Encrypted|https://attack.mitre.org/techniques/T1022/|
+
+<h3> MacOS backdoor </h3>
+|Enterprise tactics|Technics used|Ref URL|
+| :---------------: |:-------------| :------------- |
+|Execution|Scripting|https://attack.mitre.org/techniques/T1064/|
+|Defense Evasion|Scripting|https://attack.mitre.org/techniques/T1064/|
+|Discovery|Account Discovery<br/>System Information Discovery<br/>System Time Discovery<br/>Query Registry|https://attack.mitre.org/techniques/T1087/<br/>https://attack.mitre.org/techniques/T1082/<br/>https://attack.mitre.org/techniques/T1124/<br/>https://attack.mitre.org/techniques/T1012/|
+|Collection|Data from Local System https://attack.mitre.org/techniques/T1005/|
+|Command And Control|Data Encoding|https://attack.mitre.org/techniques/T1132/|
+|Exfiltration|Data Encrypted|https://attack.mitre.org/techniques/T1022/|
+
+<h3>DTrack</h3>
+|Enterprise tactics|Technics used|Ref URL|
+| :---------------: |:-------------| :------------- |
+|Execution|Command-Line Interface|https://attack.mitre.org/techniques/T1059/|
+|Defense Evasion|Disabling Security Tools|https://attack.mitre.org/techniques/T1089/|
+|Discovery|System Network Configuration Discovery<br>System Network Connections Discovery<br>Process Discovery|https://attack.mitre.org/techniques/T1016/<br>https://attack.mitre.org/techniques/T1049/<br>https://attack.mitre.org/techniques/T1057/|
 
 <h2> Indicators Of Compromise (IOC) <a name="IOC"></a></h2>
 <h6> List of all the Indicators Of Compromise (IOC)</h6>
@@ -1006,6 +1042,7 @@ function PulsetoC2($rid)
 * [CES2020 참관단.hwp](https://app.any.run/tasks/31be34b3-4d72-4831-8b76-6dfebe729b84)
 * [B578CCF307D55D3267F98349E20ECFF1.dll](https://app.any.run/tasks/a766e70e-b07f-4a59-80fb-b18597d85b08)
 * [a0664ac662802905329ec6ab3b3ae843f191e6555b707f305f8f5a0599ca3f68.exe](https://app.any.run/tasks/6396ddf7-4000-4ffb-92ea-bc33612ec8c0)
+* [dtrack.exe](https://app.any.run/tasks/239f222b-4916-4bda-b185-91885d5f9a54)
 
 <h6> External analysis: <a name="Analysis"></a></h6>
 
