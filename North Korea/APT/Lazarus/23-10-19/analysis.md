@@ -384,7 +384,7 @@ function GetResponseC2($netobject,$mxz)
 }
 ```
 
-<h6> The both next functions use the same XOR value ```"0xAA"``` for encryt and decrypt data from the C2. We can note again that the same XOR value that in the MacOS backdoor.</h6>
+###### The both next functions use the same XOR value ```"0xAA"``` for encryt and decrypt data from the C2. We can note again that the same XOR value that in the MacOS backdoor.
 
 ``` powershell
 function PushDatatoC2($tid,$rid,$bd,$DatatoC2_Length,$url)
@@ -850,7 +850,8 @@ function PulsetoC2($rid)
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Mal-Get-History-2.png">
 </p>
-<h6> Once this done, Dtrack list the disks and the files on the disks and write it in a local tmp file with the password ```dkwero38oerA^t@#``` , this password is common at all the operations of the lazarus group.</h6>
+
+###### Once this done, Dtrack list the disks and the files on the disks and write it in a local tmp file with the password ```dkwero38oerA^t@#``` , this password is common at all the operations of the lazarus group.
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Mal-GetDisks.png">
 </p>
