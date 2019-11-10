@@ -1,0 +1,26 @@
+[
+    {
+        "Indicator":  "bfb39f486372a509f307cde3361795a2f9f759cbeb4cac07562dcbaebc070364.exe",
+        "Description":  "BFB39F486372A509F307CDE3361795A2F9F759CBEB4CAC07562DCBAEBC070364"
+    },
+    {
+        "Indicator":  "sct.exe",
+        "Description":  "3cc9d9a12f3b884582e5c4daf7d83c4a510172a836de90b87439388e3cde3682"
+    },
+    {
+        "Indicator":  "$R0C7TZX.DMP",
+        "Description":  "93a01fbbdd63943c151679d037d32b1d82a55d66c6cb93c40ff63f2b770e5ca9"
+    },
+    {
+        "Indicator":  "process.0xffffe800239e8080.0x3d0000.dmp",
+        "Description":  "a0664ac662802905329ec6ab3b3ae843f191e6555b707f305f8f5a0599ca3f68"
+    },
+    {
+        "Indicator":  "dtrack.exe",
+        "Description":  "bfb39f486372a509f307cde3361795a2f9f759cbeb4cac07562dcbaebc070364"
+    },
+    {
+        "Indicator":  "process.0xffffe800239e8080.0x890000.dmp",
+        "Description":  "c5c1ca4382f397481174914b1931e851a9c61f029e6b3eb8a65c9e92ddf7aa4c"
+    }
+]
