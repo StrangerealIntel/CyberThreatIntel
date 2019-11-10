@@ -901,6 +901,7 @@ function PulsetoC2($rid)
 <h2> References MITRE ATT&CK Matrix <a name="Ref-MITRE-ATTACK"></a></h2>
 <h6> List of all the references with MITRE ATT&CK Matrix</h6>
 <h3>CES 2020</h3>
+
 |Enterprise tactics|Technics used|Ref URL|
 | :---------------: |:-------------| :------------- |
 |Persistence|T1179 - Hooking|https://attack.mitre.org/wiki/Technique/T1179|
@@ -909,14 +910,18 @@ function PulsetoC2($rid)
 |Credential Access|T1179 - Hooking|https://attack.mitre.org/wiki/Technique/T1179|
 |Discovery|T1010 - Application Window Discovery<br/>T1082 - System Information Discovery<br/>T1124 - System Time Discovery|https://attack.mitre.org/wiki/Technique/T1010<br/>https://attack.mitre.org/wiki/Technique/T1082<br/>https://attack.mitre.org/wiki/Technique/T1124|
 |Collection|T1115 - Clipboard Data|https://attack.mitre.org/wiki/Technique/T1115|
+
 <h3> HAL </h3>
+
 |Enterprise tactics|Technics used|Ref URL|
 | :---------------: |:-------------| :------------- |
-|Execution|Rundll32|https://attack.mitre.org/techniques/T1085/|
-|Persistence|Registry Run Keys / Startup Folder|https://attack.mitre.org/techniques/T1060/|
-|Defense Evasion|Rundll32|https://attack.mitre.org/techniques/T1085/|
-|Discovery|Query Registry|https://attack.mitre.org/techniques/T1012/|	
+|Execution|Rundll32|https://attack.mitre.org/techniques/T1085|
+|Persistence|Registry Run Keys / Startup Folder|https://attack.mitre.org/techniques/T1060|
+|Defense Evasion|Rundll32|https://attack.mitre.org/techniques/T1085|
+|Discovery|Query Registry|https://attack.mitre.org/techniques/T1012|
+
 <h3> Powershell backdoor </h3>
+
 |Enterprise tactics|Technics used|Ref URL|
 | :---------------: |:-------------| :------------- |
 |Execution|Scripting<br>PowerShell|https://attack.mitre.org/techniques/T1064/<br>https://attack.mitre.org/techniques/T1086/|
@@ -927,6 +932,7 @@ function PulsetoC2($rid)
 |Exfiltration|Data Encrypted|https://attack.mitre.org/techniques/T1022/|
 
 <h3> MacOS backdoor </h3>
+
 |Enterprise tactics|Technics used|Ref URL|
 | :---------------: |:-------------| :------------- |
 |Execution|Scripting|https://attack.mitre.org/techniques/T1064/|
@@ -937,6 +943,7 @@ function PulsetoC2($rid)
 |Exfiltration|Data Encrypted|https://attack.mitre.org/techniques/T1022/|
 
 <h3>DTrack</h3>
+
 |Enterprise tactics|Technics used|Ref URL|
 | :---------------: |:-------------| :------------- |
 |Execution|Command-Line Interface|https://attack.mitre.org/techniques/T1059/|
