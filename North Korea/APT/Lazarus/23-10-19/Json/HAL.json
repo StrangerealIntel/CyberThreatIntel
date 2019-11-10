@@ -1,0 +1,18 @@
+[
+    {
+        "Indicator":  "JD-HAL-Manager.doc",
+        "Description":  "1A172D92638E6FDB2858DCCA7A78D4B03C424B7F14BE75C2FD479F59049BC5F9"
+    },
+    {
+        "Indicator":  "thumnail.db",
+        "Description":  "26A2FA7B45A455C311FD57875D8231C853EA4399BE7B9344F2136030B2EDC4AA"
+    },
+    {
+        "Indicator":  "curiofirenze.com",
+        "Description":  "Domain C2"
+    },
+    {
+        "Indicator":  "193.70.64.163",
+        "Description":  "IP C2"
+    }
+]
