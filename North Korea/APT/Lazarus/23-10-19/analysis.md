@@ -955,6 +955,24 @@ function PulsetoC2($rid)
 |process.0xffffe800239e8080.0x890000.dmp|c5c1ca4382f397481174914b1931e851a9c61f029e6b3eb8a65c9e92ddf7aa4c|
 
 <h6> This can be exported as JSON format <a href="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Json/DTrack.json">Export in JSON</a></h6>
+<h3>DTrack</h3>
+
+|Indicator|Comments|
+| ------------- |:-------------:|
+|8765888a825223f427756dce79956720.virobj|ee9cd8decf752a47eefe24369a806976dce8ac2c29a8271c68bc407326fb19a9
+|dtrack|dfa984f8d6bfc4ae3920954ec8b768e3d5a9cc4349966a9d16f8bef658f83fcd|
+|d.exe|4701cc722f03253fb332747f951fff4c4ff023e13096a7e090a22b95c70efbf3|
+|mal|1ba8cba6337da612d1db2cdfe1b44f6110741d91ba696a5b125ebd3e9b081ed7|
+|out|d0b970e8052a4e3a353e99f8f2f4f6436298e473466ca407c353715ec10c3087|
+|process.0xffffe800239e8080.0x890000.dmp|c5c1ca4382f397481174914b1931e851a9c61f029e6b3eb8a65c9e92ddf7aa4c|
+|flicker_free|4f71c62df0163d301cbc96e70771ebec2d4410679240c1d94183f5e10879c2f1|
+|process.0xffffe800239e8080.0x3d0000.dm|a0664ac662802905329ec6ab3b3ae843f191e6555b707f305f8f5a0599ca3f68|
+|sct.jpg|51ac3966b48c91947de4ce51a90aee9deb730d86cedf8c863d9dcdf0fb322537|
+|sct.exe|3cc9d9a12f3b884582e5c4daf7d83c4a510172a836de90b87439388e3cde3682|
+|dtrack.exe.bin|bfb39f486372a509f307cde3361795a2f9f759cbeb4cac07562dcbaebc070364|
+
+<h6> This can be exported as JSON format <a href="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Json/Others_Dtrack.json">Export in JSON</a></h6>
+
 <h2>Links <a name="Links"></a></h2>
 <h6> Originals tweets: </h6>
 
