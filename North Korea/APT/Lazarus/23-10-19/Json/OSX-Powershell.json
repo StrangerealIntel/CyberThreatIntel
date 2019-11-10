@@ -1,0 +1,74 @@
+[
+    {
+        "Indicator":  "샘플_기술사업계획서(벤처기업평가용).doc",
+        "Description":  "761BCFF9401BED2ACE80B85C43B230294F41FC4D1C0DD1FF454650B624CF239D"
+    },
+    {
+        "Indicator":  "mt.dat",
+        "Description":  "F9FFB15A6BF559773B0DF7D8A89D9440819AB285F17A7B0A98626C14164D170F"
+    },
+    {
+        "Indicator":  "snphhuatvsbkw.ps1",
+        "Description":  "4503A194E5064595E36EF01ED87C24203ACCE56F308AF23E2563E71F890B0188"
+    },
+    {
+        "Indicator":  "연인심리테스트.xls",
+        "Description":  "A7FF0DFC2456BAA80E6291619E0CA480CC8F071F42845EB8316483E077947339"
+    },
+    {
+        "Indicator":  "sopiiubuvsclwukz.ps1",
+        "Description":  "360431100AA6DA78B577CC8B4606FA66E6191056FAC7C42929ABEC5A4402DA7A"
+    },
+    {
+        "Indicator":  "Flash Player",
+        "Description":  "735365EF9AA6CCA946CFEF9A4B85F68E7F9F03011DA0CF5F5AB517A381E40D02"
+    },
+    {
+        "Indicator":  "https://crabbedly.club/board.php",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "https://craypot.live/board.php",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "https://indagator.club/board.php",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "crabbedly.club",
+        "Description":  "Domain C2"
+    },
+    {
+        "Indicator":  "craypot.live",
+        "Description":  "Domain C2"
+    },
+    {
+        "Indicator":  "indagator.club",
+        "Description":  "Domain C2"
+    },
+    {
+        "Indicator":  "37.72.175.226",
+        "Description":  "IP C2"
+    },
+    {
+        "Indicator":  "23.227.199.96",
+        "Description":  "IP C2"
+    },
+    {
+        "Indicator":  "185.236.203.211",
+        "Description":  "IP C2"
+    },
+    {
+        "Indicator":  "https://towingoperations.com/chat/chat.php",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "https://baseballcharlemagnelegardeur.com/wp-content/languages/common.php",
+        "Description":  "HTTP/HTTPS requests"
+    },
+    {
+        "Indicator":  "https://www.tangowithcolette.com/pages/common.php",
+        "Description":  "HTTP/HTTPS requests"
+    }
+]
