@@ -875,7 +875,7 @@ function PulsetoC2($rid)
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Art.PNG">
 </p>
 <h6> For conclude North Korea, try to get avanced technologies in multiples sectors aeronautics, space, energetic, but also useful energetic independence in the current situation that could lead to an international blockade.</h6>
-## Cyber kill chain <a name="Cyber-kill-chain"></a>
+	<h2> Cyber kill chain <a name="Cyber-kill-chain"></a></h2>
 <h6> The process graphs resume all the cyber kill chains used by the attacker. </h6>
 
 <h2> References MITRE ATT&CK Matrix <a name="Ref-MITRE-ATTACK"></a></h2>
@@ -899,7 +899,7 @@ function PulsetoC2($rid)
 |185.136.207.217|IP C2|
 |83.169.17.240|IP C2|
 
-<h6> This can be exported as JSON format [Export in JSON](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Json/CES2020.json)</h6>
+<h6> This can be exported as JSON format <a href="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Json/CES2020.json">Export in JSON</a></h6>
 <h3> HAL incident </h3>
 
 |Indicator|Description|
@@ -909,7 +909,7 @@ function PulsetoC2($rid)
 |curiofirenze.com|Domain C2|
 |193.70.64.163|IP C2|	
 
-<h6> This can be exported as JSON format [Export in JSON](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Json/HAL.json)
+<h6> This can be exported as JSON format <a href="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Json/HAL.json">Export in JSON</a></h6>
 
 <h2>Links <a name="Links"></a></h2>
 <h6> Originals tweets: </h6>
