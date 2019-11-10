@@ -885,7 +885,21 @@ function PulsetoC2($rid)
 </p>
 <h6> For conclude North Korea, try to get avanced technologies in multiples sectors aeronautics, space, energetic, but also useful energetic independence in the current situation that could lead to an international blockade.</h6>
 	<h2> Cyber kill chain <a name="Cyber-kill-chain"></a></h2>
-<h6> The process graphs resume all the cyber kill chains used by the attacker. </h6>
+<h6> The process graphs resume cyber kill chains used by the attacker in the differents incidents </h6>
+<ul>
+	<li> Powershell agents
+<p align="center">
+  <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/cyber/cyber-power.PNG">
+</p></li><li> HAL incident
+<p align="center">
+  <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/cyber/cyber-HAL.PNG">
+</p></li><li> Nuclear's plant incident
+<p align="center">
+  <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/cyber/cyber-Nuclear.PNG">
+</p></li>
+
+
+
 
 <h2> References MITRE ATT&CK Matrix <a name="Ref-MITRE-ATTACK"></a></h2>
 <h6> List of all the references with MITRE ATT&CK Matrix</h6>
@@ -972,7 +986,8 @@ function PulsetoC2($rid)
 |dtrack.exe.bin|bfb39f486372a509f307cde3361795a2f9f759cbeb4cac07562dcbaebc070364|
 
 <h6> This can be exported as JSON format <a href="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Json/Others_Dtrack.json">Export in JSON</a></h6>
-
+<h2>Yara Rules<a name="Yara"></a></h2>
+<h6> A list of YARA Rule is available <a href="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/YARA_Rule_Lazarus_October_2019.yar">here</a></h6>
 <h2>Links <a name="Links"></a></h2>
 <h6> Originals tweets: </h6>
 
@@ -989,12 +1004,12 @@ function PulsetoC2($rid)
 * [JD-HAL-Manager.doc](https://app.any.run/tasks/42c972b1-ec38-4637-9354-9de930ff50b2)
 * [public.dll](https://app.any.run/tasks/9eb78213-df55-44c3-9465-e58eb0869e58)
 * [CES2020 참관단.hwp](https://app.any.run/tasks/31be34b3-4d72-4831-8b76-6dfebe729b84)
-* [6850189bbf5191a76761ab20f7c630ef.xls](https://app.any.run/tasks/a766e70e-b07f-4a59-80fb-b18597d85b08)
+* [B578CCF307D55D3267F98349E20ECFF1.dll](https://app.any.run/tasks/a766e70e-b07f-4a59-80fb-b18597d85b08)
 * [a0664ac662802905329ec6ab3b3ae843f191e6555b707f305f8f5a0599ca3f68.exe](https://app.any.run/tasks/6396ddf7-4000-4ffb-92ea-bc33612ec8c0)
 
 <h6> External analysis: <a name="Analysis"></a></h6>
 
-* [Analysis of Powershell malware of Lazarus group](https://blog.alyac.co.kr/2388 )
+* [Analysis of Powershell malware of Lazarus group](https://blog.alyac.co.kr/2388)
 * [Cryptocurrency businesses still being targeted by Lazarus](https://securelist.com/cryptocurrency-businesses-still-being-targeted-by-lazarus/90019/)
 
 <h6> Ressources : </h6>
