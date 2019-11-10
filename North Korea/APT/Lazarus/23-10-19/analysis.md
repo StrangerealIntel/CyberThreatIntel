@@ -52,15 +52,16 @@
 |Az-Arab|Azerbaijani in Arabic script|
 |de-CH|Swiss German|
 |en-US|English as used in the United States|
-<h6> Interesting to see that not only south korea language is choisen and show that the group target all exhibitors (more a hundred exhibitors only for South Korea). This think possibly that the group manage the event give hardware specifily for the shows to the customers, that explains why this to don't include specific language like South Korea. If the target is interesting for the group, this  can execute command and others tools in the computer infected.
+<h6> Interesting to see that not only south korea language is choisen and show that the group target all exhibitors (more a hundred exhibitors only for South Korea). This think possibly that the group manage the event give hardware specifily for the shows to the customers, that explains why this to don't include specific language like South Korea. If the target is interesting for the group, this  can execute command and others tools in the computer infected.</h6>
 
 <h6> We can see in the list of all the domains used that this all as different cloud providers and are legit website hijacked by vulnerable wordpress.</h6>
+
 |IP|ASN|Organization|Route|City|Coordinates|Country|
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
 |64.151.229.52|AS26753|In2net Network Inc.|64.151.192.0/18|Toronto|43.6861,-79.4025|Canada|
 |185.136.207.217|AS203377|LAB internet ve Bilisim Hizmetleri|185.136.207.0/24|Eskiehir|39.7767,30.5206|Turkey|
 |83.169.17.240|AS8972|Europe GmbH|83.169.16.0/21|Köln|50.9541,6.9103|Germany|
-<h6> We can confirmed it by the Whois records and by the certificats push on the websites know at all the sites have between up early August 2019 at September 2019.
+<h6> We can confirmed it by the Whois records and by the certificats push on the websites know at all the sites have between up early August 2019 at September 2019.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/HWP/HWP-cert.png">
 </p>
@@ -127,10 +128,11 @@
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/mal_deletekey.png">
 </p>
 <h6> The backdoor contact the following IP :</h6>
+
 |IP|ASN|Organization|Route|City|Coordinates|Country|
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
 |193.70.64.163|AS16276|thetiscloud.it|193.70.0.0/17| San Donato Milanese|45.4105,9.2684|Italy|
-<h6> By the certificates, we can see that the website is up since 2018, seems be a legit website hijacked.
+<h6> By the certificates, we can see that the website is up since 2018, seems be a legit website hijacked.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/MAL-Cert.png">
 </p>
@@ -190,15 +192,17 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Mal-destroysession.png">
 </p>
-<h6> This according with the Kaspersky analysis of Yort on the functions of the backdoor:</h6>
-+ <h6> Set sleep time (delay between C2 interactions)
-+ <h6> Exit session
-+ <h6> Collect basic host information
-+ <h6> Check malware status
-+ <h6> Show current malware configuration
-+ <h6> Update malware configuration
-+ <h6> Execute system shell command
-+ <h6> Download & Upload files
+ <h6>This according with the Kaspersky analysis of Yort on the functions of the backdoor:</h6>
+ <ul> 
+	 <li> Set sleep time (delay between C2 interactions)</li>
+	 <li> Exit session</li>
+	 <li> Collect basic host information</li>
+	 <li> Check malware status</li>
+	 <li> Show current malware configuration</li>
+	 <li> Update malware configuratiov
+	 <li> Execute system shell command</li>
+	 <li> Download & Upload files</li>
+</ul>
 
 <h6> Another sample of Yort have been spotted with a reedited installer of Flash Player, on the strings, we can observed that is the version 10.2 that is rebuilded.</h6>
 <p align="center">
@@ -230,6 +234,7 @@ $global:nup=0
 $global:nwct=0
 ``` 
 <h6> The backdoor execute a while loop until that the order to destroy the session push to the value of the variable "breakvalue" at 0.</h6>
+
 ``` powershell
 function main()
 {
@@ -249,7 +254,9 @@ function main()
 try{Remove-Item -Path $MyInvocation.MyCommand.Source}catch{}
 main
 ``` 
+
 <h6> In function of the result of the id push by the C2, this execute the following actions in the infected computer.</h6>
+
 ``` powershell
 function command($url)
 {
@@ -286,7 +293,9 @@ function command($url)
 }
 
 ``` 
+
 <h6> The next bloc content the functions for copy the bytes and convert from different encoding the data.</h6>
+
 ``` powershell
 function CopyBytes($DatatoCopy,$dst,$dstOffset)
 {
@@ -301,7 +310,9 @@ function CopyBytes_UTF8($DatatoCopy,$dst,$dstOffset)
 function ConverttoInt32($buffer,$Offset){ return [System.BitConverter]::ToInt32($buffer,$Offset) }
 function Get_UTF8Bytes($Data){ return [System.Text.ASCIIEncoding]::UTF8.GetBytes($Data) }
 ``` 
+
 <h6> The following functions are for send and get the data from the C2. We can note that the user agent is the same that the MacOS backdoor.</h6>
+
 ``` powershell
 function senddata($tid,$rid,$array_data,$DatatoC2_Length,$url)
 {
@@ -335,7 +346,6 @@ function senddata($tid,$rid,$array_data,$DatatoC2_Length,$url)
 	}
 	catch{return $null}
 }
-
 function GetResponseC2($netobject,$mxz)
 {
 	try
@@ -373,7 +383,9 @@ function GetResponseC2($netobject,$mxz)
 	catch{return $null}
 }
 ```
+
 <h6> The both next functions use the same XOR value ```"0xAA"``` for encryt and decrypt data from the C2. We can note again that the same XOR value that in the MacOS backdoor.</h6>
+
 ``` powershell
 function PushDatatoC2($tid,$rid,$bd,$DatatoC2_Length,$url)
 {
@@ -387,7 +399,9 @@ function DecryptC2Data($netobject,$mxz)
 	return $DataC2
 }
 ```
-<h6> Like the MacOS backdoor, we observe that the back have multiple mods for communicate with the C2 and depends of the initial reply of the C2.</h6>
+
+###### Like the MacOS backdoor, we observe that the back have multiple mods for communicate with the C2 and depends of the initial reply of the C2.</h6>
+
 ``` powershell
 function updatemod1()
 {
@@ -448,7 +462,9 @@ function updatemod3($nmsg)
 	return $trigger
 }
 ```
+
 <h6> This have the possiblity to set in standby the backdoor, close the current session and get the system informations.</h6>
+
 ``` powershell
 function slp($buf)
 {
@@ -510,7 +526,9 @@ function Set-SysInfo()
 	return $trigger
 }
 ```
+
 <h6> This can get the actions and push the actions to do on the system.</h6>
+
 ``` powershell
 
 function Get-actions()
@@ -558,7 +576,9 @@ function Set-actions($buf)
 	return $trigger
 }
 ```
+
 <h6> The attacker can perform a specific action in another CLI.</h6>
+
 ``` powershell
 function Set-command($buf)
 {
@@ -632,7 +652,9 @@ function Set-command($buf)
 	return $trigger
 }
 ```
+
 <h6> Finally, this can download and upload files on the C2, send a pulse to the C2, push a trigger and launch a new process ( like push an additionnal tool).</h6>
+
 ``` powershell
 function upload($buf)
 {
@@ -799,6 +821,7 @@ function PulsetoC2($rid)
 	return $trigger
 }
 ```
+
 <h6> As final, the both backdoor have the same functionalities and use the same common infrastructure for the both platforms targetted.</h6>
 <h3> Nuclear's plant incident (DTrack)</h3>
 <h6> On the stings, we can observe a function timestamp who return a date of version, this is an of the sqllite version of the C librairies (3.21), this can be an reuse code of one of stealer of the group for a new stealer.</h6>
@@ -864,6 +887,7 @@ function PulsetoC2($rid)
 <h2> Indicators Of Compromise (IOC) <a name="IOC"></a></h2>
 <h6> List of all the Indicators Of Compromise (IOC)</h6>
 <h3> CES 2020 incident</h3>
+
 |Indicator|Description|
 | ------------- |:-------------:|
 |Lazarus.hwp|D4F055D170FD783AE4F010DF64CFD18D8FA9A971378298EB6E863C60F57B93E3|
@@ -877,16 +901,19 @@ function PulsetoC2($rid)
 
 <h6> This can be exported as JSON format [Export in JSON](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Json/CES2020.json)</h6>
 <h3> HAL incident </h3>
+
 |Indicator|Description|
 | ------------- |:-------------:|
 |JD-HAL-Manager.doc|1A172D92638E6FDB2858DCCA7A78D4B03C424B7F14BE75C2FD479F59049BC5F9|
 |thumnail.db|26A2FA7B45A455C311FD57875D8231C853EA4399BE7B9344F2136030B2EDC4AA|
 |curiofirenze.com|Domain C2|
 |193.70.64.163|IP C2|	
+
 <h6> This can be exported as JSON format [Export in JSON](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Json/HAL.json)
 
 <h2>Links <a name="Links"></a></h2>
 <h6> Originals tweets: </h6>
+
 * [https://twitter.com/RedDrip7/status/1186562944311517184](https://twitter.com/RedDrip7/status/1186562944311517184) <a name="Original-Tweet"></a>
 * [https://twitter.com/Rmy_Reserve/status/1188235835956551680](https://twitter.com/Rmy_Reserve/status/1188235835956551680) 
 * [https://twitter.com/a_tweeter_user/status/1188811977851887616](https://twitter.com/a_tweeter_user/status/1188811977851887616) 
@@ -895,6 +922,7 @@ function PulsetoC2($rid)
 * [https://twitter.com/TweeterCyber/status/1191391454981177344](https://twitter.com/TweeterCyber/status/1191391454981177344)
 
 <h6> Links Anyrun: <a name="Links-Anyrun"></a></h6>
+
 * [6850189bbf5191a76761ab20f7c630ef.xls](https://app.any.run/tasks/27ea35e6-6211-468d-9b8a-8c4cf22764ce)
 * [JD-HAL-Manager.doc](https://app.any.run/tasks/42c972b1-ec38-4637-9354-9de930ff50b2)
 * [public.dll](https://app.any.run/tasks/9eb78213-df55-44c3-9465-e58eb0869e58)
@@ -908,6 +936,7 @@ function PulsetoC2($rid)
 * [Cryptocurrency businesses still being targeted by Lazarus](https://securelist.com/cryptocurrency-businesses-still-being-targeted-by-lazarus/90019/)
 
 <h6> Ressources : </h6>
+
 * [List of South Korea exhibitors in CES2020](https://www.ces.tech/Show-Floor/Exhibitor-Directory.aspx?searchTerm=&sortBy=country&filter=South%20Korea)
 * [North Korea's Kimsuky Group informations](https://twitter.com/issuemakerslab/status/1123291956333834244)
 * [North Korean hackers sent hacking emails to Atomic Energy Commission of India(AECI) and the Secretary to the Government of India and the Director of the Bhabha Atomic Research Centre(BARC)](https://twitter.com/issuemakerslab/status/1190539805454520320)
