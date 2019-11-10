@@ -1,0 +1,34 @@
+[
+    {
+        "Indicator":  "Lazarus.hwp",
+        "Description":  "D4F055D170FD783AE4F010DF64CFD18D8FA9A971378298EB6E863C60F57B93E3"
+    },
+    {
+        "Indicator":  "public.avi",
+        "Description":  "CCAFBCFF1596E3DFD28DCB97A5BA85E6845E69464742EDFE136FE09BBEC86BA1"
+    },
+    {
+        "Indicator":  "juliesoskin.com",
+        "Description":  "Domain C2"
+    },
+    {
+        "Indicator":  "necaled.com",
+        "Description":  "Domain C2"
+    },
+    {
+        "Indicator":  "valentinsblog.de",
+        "Description":  "Domain C2"
+    },
+    {
+        "Indicator":  "64.151.229.52",
+        "Description":  "IP C2"
+    },
+    {
+        "Indicator":  "185.136.207.217",
+        "Description":  "IP C2"
+    },
+    {
+        "Indicator":  "83.169.17.240",
+        "Description":  "IP C2"
+    }
+]
