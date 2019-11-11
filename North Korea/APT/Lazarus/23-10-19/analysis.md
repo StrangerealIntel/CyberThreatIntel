@@ -927,7 +927,7 @@ function PulsetoC2($rid)
 |Execution|Scripting<br>PowerShell|https://attack.mitre.org/techniques/T1064/<br>https://attack.mitre.org/techniques/T1086/|
 |Defense Evasion|Scripting|https://attack.mitre.org/techniques/T1064/|
 |Discovery|Account Discovery<br/>System Information Discovery<br/>System Time Discovery<br/>Query Registry|https://attack.mitre.org/techniques/T1087/<br/>https://attack.mitre.org/techniques/T1082/<br/>https://attack.mitre.org/techniques/T1124/<br/>https://attack.mitre.org/techniques/T1012/|
-|Collection|Data from Local System https://attack.mitre.org/techniques/T1005/|
+|Collection|Data from Local System|https://attack.mitre.org/techniques/T1005/|
 |Command And Control|Data Encoding|https://attack.mitre.org/techniques/T1132/|
 |Exfiltration|Data Encrypted|https://attack.mitre.org/techniques/T1022/|
 
@@ -937,8 +937,8 @@ function PulsetoC2($rid)
 | :---------------: |:-------------| :------------- |
 |Execution|Scripting|https://attack.mitre.org/techniques/T1064/|
 |Defense Evasion|Scripting|https://attack.mitre.org/techniques/T1064/|
-|Discovery|Account Discovery<br/>System Information Discovery<br/>System Time Discovery<br/>Query Registry|https://attack.mitre.org/techniques/T1087/<br/>https://attack.mitre.org/techniques/T1082/<br/>https://attack.mitre.org/techniques/T1124/<br/>https://attack.mitre.org/techniques/T1012/|
-|Collection|Data from Local System https://attack.mitre.org/techniques/T1005/|
+|Discovery|Account Discovery<br/>System Information Discovery<br/>System Time Discovery|https://attack.mitre.org/techniques/T1087/<br/>https://attack.mitre.org/techniques/T1082/<br/>https://attack.mitre.org/techniques/T1124/|
+|Collection|Data from Local System|https://attack.mitre.org/techniques/T1005/|
 |Command And Control|Data Encoding|https://attack.mitre.org/techniques/T1132/|
 |Exfiltration|Data Encrypted|https://attack.mitre.org/techniques/T1022/|
 
@@ -1031,6 +1031,10 @@ function PulsetoC2($rid)
 <h6> This can be exported as JSON format <a href="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Json/Others_Dtrack.json">Export in JSON</a></h6>
 <h2>Yara Rules<a name="Yara"></a></h2>
 <h6> A list of YARA Rule is available <a href="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/YARA_Rule_Lazarus_October_2019.yar">here</a></h6>
+<h2>Knowledge Graph<a name="Knowledge"></a></h2>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/CTI.png">
+</p>
 <h2>Links <a name="Links"></a></h2>
 <h6> Originals tweets: </h6>
 
