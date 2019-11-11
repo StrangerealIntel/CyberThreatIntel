@@ -1,18 +1,30 @@
 # A Look into the Lazarus Group's Operations in October 2019
 ## Table of Contents
 * [Malware analysis](#Malware-analysis)
+  + [CES 2020 incident (NukeSped)](#CES2020)
+  + [HAL incident (JakyllHyde)](#HAL)
+  + [OSX Malwares (OSX.Yort)](#OSX)
+  + [Powershell Backdoor (PowerShell/NukeSped)](#Power)
+  + [Nuclear's plant incident (DTrack)](#Dtrack) 
 * [Cyber kill chain](#Cyber-kill-chain)
 * [Indicators Of Compromise (IOC)](#IOC)
+  + [CES 2020 incident (NukeSped)](#IOC-CES)
+  + [HAL incident (JakyllHyde)](#IOC-HAL)
+  + [OSX Malwares (OSX.Yort)](#IOC-OSX)
+  + [Powershell Backdoor (PowerShell/NukeSped)](#IOC-Power)
+  + [Nuclear's plant incident (DTrack)](#IOC-DTrack)
 * [References MITRE ATT&CK Matrix](#Ref-MITRE-ATTACK)
+* [Knowledge Graph](#Knowledge)
 * [Links](#Links)
-  + [Original Tweet](#Original-Tweet)
+  + [Originals Tweets](#Original-Tweet)
   + [Link Anyrun](#Links-Anyrun)
   + [External analysis](#Analysis)
+  + [Ressources](#Ressources)
 
-<h2> Malware analysis <a name="Malware-analysis"></a></h2>
+<h2>Malware analysis <a name="Malware-analysis"></a></h2>
 <h6>The next analysis tries to keep the recent events and a logical improvement and technics of the group, this could go back in the past for comparing it.</h6>
-<h3> CES 2020 incident (NukeSped)</h3>
-<h6> We can see that the document target specifically the south korean exhibitors with the following tittle "Application form for American Las Vegas CES 2020"</h6>
+<h3>CES 2020 incident (NukeSped)</h3><a name="CES2020"></a>
+<h6>We can see that the document target specifically the south korean exhibitors with the following tittle "Application form for American Las Vegas CES 2020"</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/HWP/Doc.PNG" >
 </p>
@@ -68,16 +80,16 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/HWP/HWP-whois.png">
 </p>
-<h3> HAL incident (JakyllHyde)</h3>
-<h6> The document specifically targets the Hindustan Aeronautics Limited Company (HAL) that the national aeronautics in India. This use false announcements for recruitment for targets probably interesting profile or internal employees in asking for their opinion about announcements.</h6>
+<h3>HAL incident (JakyllHyde)</h3><a name="HAL"></a>
+<h6>The document specifically targets the Hindustan Aeronautics Limited Company (HAL) that the national aeronautics in India. This use false announcements for recruitment for targets probably interesting profile or internal employees in asking for their opinion about announcements.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/Maldoc_cover.png">
 </p>
-<h6> The attack vector is an maldoc which use a macro for drop and execute the implant. The first bloc is a declaration of function for load the future extracted dll.</h6>
+<h6>The attack vector is an maldoc which use a macro for drop and execute the implant. The first bloc is a declaration of function for load the future extracted dll.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/Maldoc_VBA_1.png">
 </p>
-<h6> The next bloc has multiple functions like decode from the base 64 in binary and string, verify the path of the folder/file, create a folder and extract the correct payload from the form in maldoc according to the OS.</h6>
+<h6>The next bloc has multiple functions like decode from the base 64 in binary and string, verify the path of the folder/file, create a folder and extract the correct payload from the form in maldoc according to the OS.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/Maldoc_VBA_2.png">
 </p>
@@ -138,7 +150,7 @@
 </p>
 <h6>Like the last incident, Lazarus group try to get high technologies, this possible that the interest is the fact that HAL is in cooperation for product and use the new french military aircraft (Rafale) in the India country.</h6>
 
-<h3> OSX Malwares (OSX.Yort) </h3>
+<h3>OSX Malwares (OSX.Yort)</h3><a name="OSX"></a>
 <h6>The initial vector of the infection is a maldoc with a VBA macro, this has two sections one for infected MacOSX and one for Windows. We can see the declaration of the functions for MacOSX and one of four spitted functions for getting the payload on the Windows version.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Maldoc-VBA-1.PNG">
@@ -222,8 +234,8 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19-Maldoc2/Mal_option.png">
 </p>
-<h3> Powershell Backdoor (PowerShell/NukeSped)</h3>
-<h6> Now, see the Windows version, this use Powershell language for the backdoor, the first bloc of the malware is the global values for the configuration, list of URL to contact and control values.</h6>
+<h3>Powershell Backdoor (PowerShell/NukeSped)</h3><a name="Power"></a>
+<h6>Now, see the Windows version, this use Powershell language for the backdoor, the first bloc of the malware is the global values for the configuration, list of URL to contact and control values.</h6>
 
 ``` powershell
 $global:breakvalue=1
@@ -831,7 +843,7 @@ function PulsetoC2($rid)
 |craypot.live|23.227.199.96|AS35017|Swiftway Communications, Inc|23.227.192.0/21 |Chicago|41.8500,-87.6500|United States|
 |indagator.club|185.236.203.211|AS9009|M247 LTD Copenhagen Infrastructure|185.236.203.0/24|Ballerup|55.7317,12.3633|Denmark|
 
-<h3> Nuclear's plant incident (DTrack)</h3>
+<h3>Nuclear's plant incident (DTrack)</h3><a name="Dtrack"></a>
 <h6>On the stings, we can observe a function timestamp who return a date of the version, this is an of the sqllite version of the C libraries (3.21), this can be a reuse code of one of the stealers of the group for a new stealer.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/SQLite-Version-string.PNG">
@@ -900,7 +912,7 @@ function PulsetoC2($rid)
 
 <h2> References MITRE ATT&CK Matrix <a name="Ref-MITRE-ATTACK"></a></h2>
 <h6> List of all the references with MITRE ATT&CK Matrix</h6>
-<h3>CES 2020</h3>
+<h3>CES 2020</h3><a name="IOC-CES"></a>
 
 |Enterprise tactics|Technics used|Ref URL|
 | :---------------: |:-------------| :------------- |
@@ -911,7 +923,7 @@ function PulsetoC2($rid)
 |Discovery|T1010 - Application Window Discovery<br/>T1082 - System Information Discovery<br/>T1124 - System Time Discovery|https://attack.mitre.org/wiki/Technique/T1010<br/>https://attack.mitre.org/wiki/Technique/T1082<br/>https://attack.mitre.org/wiki/Technique/T1124|
 |Collection|T1115 - Clipboard Data|https://attack.mitre.org/wiki/Technique/T1115|
 
-<h3> HAL </h3>
+<h3> HAL</h3><a name="IOC-HAL"></a>
 
 |Enterprise tactics|Technics used|Ref URL|
 | :---------------: |:-------------| :------------- |
@@ -920,7 +932,7 @@ function PulsetoC2($rid)
 |Defense Evasion|Rundll32|https://attack.mitre.org/techniques/T1085|
 |Discovery|Query Registry|https://attack.mitre.org/techniques/T1012|
 
-<h3> Powershell backdoor </h3>
+<h3> Powershell backdoor </h3><a name="IOC-Power"></a>
 
 |Enterprise tactics|Technics used|Ref URL|
 | :---------------: |:-------------| :------------- |
@@ -931,7 +943,7 @@ function PulsetoC2($rid)
 |Command And Control|Data Encoding|https://attack.mitre.org/techniques/T1132/|
 |Exfiltration|Data Encrypted|https://attack.mitre.org/techniques/T1022/|
 
-<h3> MacOS backdoor </h3>
+<h3> MacOS backdoor </h3><a name="IOC-OSX"></a>
 
 |Enterprise tactics|Technics used|Ref URL|
 | :---------------: |:-------------| :------------- |
@@ -942,7 +954,7 @@ function PulsetoC2($rid)
 |Command And Control|Data Encoding|https://attack.mitre.org/techniques/T1132/|
 |Exfiltration|Data Encrypted|https://attack.mitre.org/techniques/T1022/|
 
-<h3>DTrack</h3>
+<h3>DTrack</h3><a name="IOC-DTrack"></a>
 
 |Enterprise tactics|Technics used|Ref URL|
 | :---------------: |:-------------| :------------- |
@@ -1031,13 +1043,13 @@ function PulsetoC2($rid)
 <h6> This can be exported as JSON format <a href="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Json/Others_Dtrack.json">Export in JSON</a></h6>
 <h2>Yara Rules<a name="Yara"></a></h2>
 <h6> A list of YARA Rule is available <a href="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/YARA_Rule_Lazarus_October_2019.yar">here</a></h6>
-<h2>Knowledge Graph<a name="Knowledge"></a></h2>
+<h2>Knowledge Graph<a name="Knowledge"></a></h2><a name="Know"></a>
 <h6>The following diagram shows the relationships of the techniques used by the groups and their corresponding malware:</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/CTI.png">
 </p>
 <h2>Links <a name="Links"></a></h2>
-<h6> Originals tweets: </h6>
+<h6> Originals tweets: </h6><a name="tweet"></a>
 
 * [https://twitter.com/RedDrip7/status/1186562944311517184](https://twitter.com/RedDrip7/status/1186562944311517184) <a name="Original-Tweet"></a>
 * [https://twitter.com/Rmy_Reserve/status/1188235835956551680](https://twitter.com/Rmy_Reserve/status/1188235835956551680) 
@@ -1061,7 +1073,7 @@ function PulsetoC2($rid)
 * [Analysis of Powershell malware of Lazarus group](https://blog.alyac.co.kr/2388)
 * [Cryptocurrency businesses still being targeted by Lazarus](https://securelist.com/cryptocurrency-businesses-still-being-targeted-by-lazarus/90019/)
 
-<h6> Ressources : </h6>
+<h6> Ressources : </h6><a name="Ressources"></a>
 
 * [List of South Korea exhibitors in CES2020](https://www.ces.tech/Show-Floor/Exhibitor-Directory.aspx?searchTerm=&sortBy=country&filter=South%20Korea)
 * [North Korea's Kimsuky Group informations](https://twitter.com/issuemakerslab/status/1123291956333834244)
