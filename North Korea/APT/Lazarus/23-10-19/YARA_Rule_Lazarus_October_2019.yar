@@ -198,7 +198,7 @@ rule APT_Lazarus_PS1_Malware_Oct19_2 {
       8 of them
 }
 
-rule APT_Lazarus_macOS_Malware_Oct19_1 {
+rule APT_Lazarus_macOS_Yort_Malware_Oct19_1 {
    meta:
       description = "mt.dat"
       author = "Arkbird_SOLG"
@@ -229,7 +229,7 @@ rule APT_Lazarus_macOS_Malware_Oct19_1 {
       8 of them
 }
 
-rule APT_Lazarus_macOS_Malware_Oct19_2 {
+rule APT_Lazarus_macOS_Yort_Malware_Oct19_2 {
    meta:
       description = "Flash Player"
       author = "Arkbird_SOLG"
@@ -259,4 +259,72 @@ rule APT_Lazarus_macOS_Malware_Oct19_2 {
    condition:
       uint16(0) == 0xfacf and filesize < 100KB and
       8 of them
+}
+import "pe"
+
+rule APT_Lazarus_DTrack_Malware_Oct19_1 {
+   meta:
+      description = " - file dfa984f8d6bfc4ae3920954ec8b768e3d5a9cc4349966a9d16f8bef658f83fcd.exe"
+      author = "Arkbird_SOLG"
+      reference = "https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/North%20Korea/APT/Lazarus/23-10-19/analysis.md"
+      date = "2019-11-11"
+      hash1 = "dfa984f8d6bfc4ae3920954ec8b768e3d5a9cc4349966a9d16f8bef658f83fcd"
+   strings:
+      $x1 = "start= auto error= ignore binpath= \"cmd.exe /k start %s\"" fullword ascii
+      $s2 = "C:\\Windows\\system32\\dwwin.exe" fullword ascii
+      $s3 = "%s\\shell32.dll" fullword ascii
+      $s4 = "C:\\baxmc\\cjedymh.exe" fullword ascii
+      $s5 = "og02.LOG" fullword ascii
+      $s6 = "FCorExitProcess" fullword ascii
+      $s7 = "%s\\~%d.tmp" fullword ascii
+      $s8 = "%s\\%c.tmp" fullword ascii
+      $s9 = "http://katawaku.jp/bbs/data/theme/profile2.php" fullword ascii
+      $s10 = "http://www.totalmateria.net/wp/profile2.php" fullword ascii
+      $s11 = "http://www.materialindia.in/wp/wp-main/gallery/profile2.php" fullword ascii
+      $s12 = "lmateria.net/wp/profile2.php" fullword ascii
+      $s13 = "ontrolSet\\Services\\%s" fullword ascii
+      $s14 = "constructor or from DllMain." fullword ascii
+      $s15 = "%s?id=%s%s" fullword ascii
+      $s16 = "ku.jp/bbs/data/theme/profile2.php" fullword ascii
+      $s17 = "p://www.materialindia.in/wp/wp-main/gallery/profile2.php" fullword ascii
+      $s18 = "%d%d%s%s" fullword ascii
+      $s19 = "hnonaj" fullword ascii
+      $s20 = "cusvdu" fullword ascii
+   condition:
+      uint16(0) == 0x5a4d and filesize < 4000KB and
+      ( pe.imphash() == "a8c077416295c5e1fcd589e3db3cc972" or ( 1 of ($x*) or 4 of them ) )
+}
+import "pe"
+
+rule APT_Lazarus_DTrack_Custom_Malware_Oct19_1  {
+   meta:
+      description = " - file bfb39f486372a509f307cde3361795a2f9f759cbeb4cac07562dcbaebc070364.exe"
+      author = "Arkbird_SOLG"
+      reference = "https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/North%20Korea/APT/Lazarus/23-10-19/analysis.md"
+      date = "2019-11-11"
+      hash1 = "bfb39f486372a509f307cde3361795a2f9f759cbeb4cac07562dcbaebc070364"
+   strings:
+      $x1 = "Execute_%s.log" fullword ascii
+      $x2 = "move /y %s \\\\10.38.1.35\\C$\\Windows\\Temp\\MpLogs\\" fullword ascii
+      $s3 = "CCS_shell32.dll" fullword ascii
+      $s4 = "%s\\%s\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles" fullword ascii
+      $s5 = "Usage: .system COMMAND" fullword ascii
+      $s6 = "CCS_/c ping -n 3 127.0.0.1 >NUL & echo EEEE > \"%s\"" fullword ascii
+      $s7 = "Usage: .log FILENAME" fullword ascii
+      $s8 = "CCS_kernel32.dll" fullword ascii
+      $s9 = "CCS_Advapi32.dll" fullword ascii
+      $s10 = "CCS_Wtsapi32.dll" fullword ascii
+      $s11 = "CCS_shlwapi.dll" fullword ascii
+      $s12 = "CCS_Iphlpapi.dll" fullword ascii
+      $s13 = "CCS_urlmon.dll" fullword ascii
+      $s14 = "CCS_ntdll.dll" fullword ascii
+      $s15 = "CCS_wininet.dll" fullword ascii
+      $s16 = "Usage: .dump ?--preserve-rowids? ?--newlines? ?LIKE-PATTERN?" fullword ascii
+      $s17 = "Usage %s sub-command ?switches...?" fullword ascii
+      $s18 = "%s\\%s\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\History" fullword ascii
+      $s19 = "C:\\Documents and Settings" fullword ascii
+      $s20 = "Error: unable to process SQL: %s" fullword ascii
+   condition:
+      uint16(0) == 0x5a4d and filesize < 2000KB and
+      ( pe.imphash() == "75171549224b4292974d6ee3cf397db8" or ( 1 of ($x*) or 4 of them ) )
 }
