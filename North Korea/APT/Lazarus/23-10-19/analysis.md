@@ -10,21 +10,21 @@
   + [External analysis](#Analysis)
 
 <h2> Malware analysis <a name="Malware-analysis"></a></h2>
-<h6> The next analysis try to kept the recents events and a logicial improvement and technics of the group, this can go back in the past for compare it.</h6>
+<h6>The next analysis tries to keep the recent events and a logical improvement and technics of the group, this could go back in the past for comparing it.</h6>
 <h3> CES 2020 incident (NukeSped)</h3>
-<h6> We can see that the document target specifily the south korean exhibitors with the follow tittle "Application form for American Las Vegas CES 2020"</h6>
+<h6> We can see that the document target specifically the south korean exhibitors with the following tittle "Application form for American Las Vegas CES 2020"</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/HWP/Doc.PNG" >
 </p>
-<h6> This initial vector of the infection begin by a current exploit in HWP (CVE-2015-6585) to execute an EPS script, this download and execute the next stage of the infection.</h6>
+<h6> This initial vector of the infection begins by a current exploit in HWP (CVE-2015-6585) to execute an EPS script, this download and execute the next stage of the infection.</h6>
 <p align="center">
   <img src="https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/HWP/EPS.PNG">
 </p>
-<h6> This execute fisrtly a common trick RtlCaptureContext for have ability to register a top-level exception handler and avoid debbuging.</h6>
+<h6> This firstly executes a common trick RtlCaptureContext for having ability to register a top-level exception handler and avoid debugging.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/HWP/mal_anti-debug.png">
 </p>
-<h6> Once this done, the malware execute a series of actions like list the disks, process, files and push it in differents files as temp file in waiting to send the data to C2.</h6>
+<h6>Once this done, the malware execute a series of actions like list the disks, process, files and push it in differents files as temp file in waiting to send the data to C2.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/HWP/mal_sysinfo.png">
 </p>
@@ -34,11 +34,11 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/HWP/mal_finfFile.png">
 </p>
-<h6> The RAT push the cookie settings and guid for the identification in the C2. </h6>
+<h6> The RAT push the cookie settings and Guid for the identification in the C2. </h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/HWP/mal_pushguid.png">
 </p>
-<h6> This push the list of C2 address to contact, the languages to understand and begin the contact with the C2 in giving the host info. </h6>
+<h6>This pushes the list of C2 address to contact, the languages to understand and begin the contact with the C2 in giving the host info.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/HWP/mal_address.png">
 </p>
@@ -52,7 +52,7 @@
 |Az-Arab|Azerbaijani in Arabic script|
 |de-CH|Swiss German|
 |en-US|English as used in the United States|
-<h6> Interesting to see that not only south korea language is choisen and show that the group target all exhibitors (more a hundred exhibitors only for South Korea). This think possibly that the group manage the event give hardware specifily for the shows to the customers, that explains why this to don't include specific language like South Korea. If the target is interesting for the group, this  can execute command and others tools in the computer infected.</h6>
+<h6>Interesting to see that not only south korea language is chosen and show that the group target all exhibitors (more a hundred exhibitors only for South Korea). This thinks possibly that the group manage the event give hardware specifically for the shows to the customers, that explains why this to don't include specific language like South Korea. If the target is interesting for the group, this can execute command and other tools in the computer infected.</h6>
 
 <h6> We can see in the list of all the domains used that this all as different cloud providers and are legit website hijacked by vulnerable wordpress.</h6>
 
@@ -69,7 +69,7 @@
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/HWP/HWP-whois.png">
 </p>
 <h3> HAL incident (JakyllHyde)</h3>
-<h6> The document specifically target the Hindustan Aeronautics Limited company (HAL) that the national aeronautics in India. This use false announcements for recruitment for target probably interesting profile or internal employees in asking for their opinion about announcements.</h6>
+<h6> The document specifically targets the Hindustan Aeronautics Limited Company (HAL) that the national aeronautics in India. This use false announcements for recruitment for targets probably interesting profile or internal employees in asking for their opinion about announcements.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/Maldoc_cover.png">
 </p>
@@ -77,11 +77,11 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/Maldoc_VBA_1.png">
 </p>
-<h6> The next bloc have multiple functions like decode from the base 64 in binary and string, verify the path of folder/file, create a folder and extract the correct payload from the form in maldoc according to the OS.</h6>
+<h6> The next bloc has multiple functions like decode from the base 64 in binary and string, verify the path of the folder/file, create a folder and extract the correct payload from the form in maldoc according to the OS.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/Maldoc_VBA_2.png">
 </p>
-<h6> The following bloc have extraction functions (drop the lure) and for get the name of the lure and the dll.</h6>
+<h6>The following bloc has extraction functions (drop the lure) and for getting the name of the lure and the dll.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/Maldoc_VBA_3.png">
 </p>
@@ -92,22 +92,22 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/Maldoc_VBA_5.png">
 </p>
-<h6> The macro used is one of macros avalaible in the open source github tool "Macro_pack".</h6>
-<h6> The backdoor begins to do the reconnaissance actions like list the process,system informations(Username, ComputerName ...)  </h6> 
+<h6>The macro used is one of the macros available in the open source github tool "Macro_pack".</h6>
+<h6>The backdoor begins to do the reconnaissance actions like lists the process, system informations(Username, ComputerName ...)</h6> 
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/mal_process.png">
 </p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/mal_systeminfos.png">
 </p>
-<h6> After this list all the disks on the computer and all the files in current working directories in waiting the order of the C2.</h6>
+<h6>After this list all the disks on the computer and all the files in current working directories in waiting the order of the C2.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/mal_disk.png">
 </p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/mal_getinfos.png">
 </p>
-<h6> This have the possibility to intercepts keystrokes (push it in temporary file), make screenshots, send interesting files by stream of bytes data.</h6>
+<h6>This has the possibility to intercepts keystrokes (push it in temporary file), make screenshots, send interesting files by stream of bytes data.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/mal_keyboard.png">
 </p>
@@ -117,7 +117,7 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/mal_getimage.png">
 </p>
-<h6> If the attacker wants this can push and remove the persistence performed by a Startup key.</h6>
+<h6>If the attacker wants, this can push and remove the persistence performed by a Startup key.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/mal_writeKey.PNG">
 </p>
@@ -127,45 +127,45 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/mal_deletekey.png">
 </p>
-<h6> The backdoor contact the following IP :</h6>
+<h6>The backdoor contacts the following IP :</h6>
 
 |IP|ASN|Organization|Route|City|Coordinates|Country|
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
 |193.70.64.163|AS16276|thetiscloud.it|193.70.0.0/17| San Donato Milanese|45.4105,9.2684|Italy|
-<h6> By the certificates, we can see that the website is up since 2018, seems be a legit website hijacked.</h6>
+<h6>By the certificates, we can see that the website is up since 2018, seems be a legit website hijacked.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19/MAL-Cert.png">
 </p>
-<h6> Like the last incident, Lazarus group try to get high technologies, this possible that the interest is the fact that HAL is in cooperation for product and use the new french militairy aircraft (Rafale) in the India country.</h6>
+<h6>Like the last incident, Lazarus group try to get high technologies, this possible that the interest is the fact that HAL is in cooperation for product and use the new french military aircraft (Rafale) in the India country.</h6>
 
 <h3> OSX Malwares (OSX.Yort) </h3>
-<h6> The initial vector of the infection is a maldoc with a VBA macro, this have two sections one for infected MacOSX and one for Windows. We can see the declaration of the functions for MacOSX and one of four splitted functions for get the payload on the Windows version </h6>
+<h6>The initial vector of the infection is a maldoc with a VBA macro, this has two sections one for infected MacOSX and one for Windows. We can see the declaration of the functions for MacOSX and one of four spitted functions for getting the payload on the Windows version.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Maldoc-VBA-1.PNG">
 </p>
-<h6> Here, we can observe the initiation of the payloads according with the OS in the AutoOpen (Run a macro when Excel or Word document is open).</h6>
+<h6>Here, we can observe the initiation of the payloads according with the OS in the AutoOpen (Run a macro when Excel or Word document is open).</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Maldoc-VBA-2.PNG">
 </p>
-<h6> The backdoor consists of a single loop which load the configuration and create a session for waiting the orders of the C2. The configuration can be update and the malware can be sleep for a delay given by the C2.</h6>
+<h6>The backdoor consists of a single loop which loads the configuration and creates a session for waiting the orders of the C2. The configuration can be update and the malware can be sleep for a delay given by the C2.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Mal-main.png">
 </p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Mal-mainloop.png">
 </p>
-<h6> Many functions for send and get data are derived of a common based code with a specific action as perform at the final.</h6>
+<h6>Many functions for sending and get data are derived from a common based code with a specific action as perform at the final.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/functionscom.PNG">
 </p>
-<h6> Foreach, this initiate and push the paramerters for communicate with the C2.</h6>
+<h6>For each of them, this initiates and pushes the parameters for communicate with the C2.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Mal-weboptions.png">
 </p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19-Maldoc2/Mal_option.png">
 </p>
-<h6> This can reply to the C2 like a pulse for alert at is still up (ReplyDie), download a file (ReplyDown), download and execute a file (ReplyExec), execute a command (Replycmd) or open another CLI (ReplyOtherShellCmd).</h6>
+<h6>This can reply to the C2 like a pulse for alert at is still up (ReplyDie), download a file (ReplyDown), download and execute a file (ReplyExec), execute a command (Replycmd) or open another CLI (ReplyOtherShellCmd).</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Mal-replydie.png">
 </p>
@@ -181,18 +181,18 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Mal-ReplyOtherShellCmd.png">
 </p>
-<h6> We can see on the data pushed on the C2 that a xor is performed with the ```"0xAA"``` value.</h6>
+<h6>We can see on the data pushed on the C2 that a xor is performed with the ```"0xAA"``` value.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Mal-Pushdata.png">
 </p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Mal-xor.png">
 </p>
-<h6> The malware don't have a persistence but by the fact that can execute command, the attacker can decide push a persistence if this neccessary, a function is performed when the attack close the session for return that the backdoor is correctly closed.</h6>
+<h6>The malware doesn't have a persistence but by the fact that can execute command, the attacker can decide push a persistence if this necessary, a function is performed when the attack close the session for return that the backdoor is correctly closed.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/march%202019/Mal-destroysession.png">
 </p>
- <h6>This according with the Kaspersky analysis of Yort on the functions of the backdoor:</h6>
+ <h6>This is according with the Kaspersky analysis of Yort on the functions of the backdoor:</h6>
  <ul> 
 	 <li> Set sleep time (delay between C2 interactions)</li>
 	 <li> Exit session</li>
@@ -204,18 +204,18 @@
 	 <li> Download & Upload files</li>
 </ul>
 
-<h6> Another sample of Yort have been spotted with a reedited installer of Flash Player, on the strings, we can observed that is the version 10.2 that is rebuilded.</h6>
+<h6>Another sample of Yort has been spotted with a reedited installer of Flash Player, on the strings. We can observed that is the version 10.2 that is rebuilt.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19-Maldoc2/Mal_version.PNG">
 </p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19-Maldoc2/Mal_version2.PNG">
 </p>
-<h6> We can see in the main function that install the legit Flash player, the checker software for update for avoid to become suspicious to the user and launch the backdoor.</h6>
+<h6>We can see in the main function that install the legit Flash player, the checker software for the updates for avoid to become suspicious to the user and launch the backdoor.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19-Maldoc2/Mal_entry.png">
 </p>
-<h6> This loading the configuration and options of the Yort, the rest is the same that the previous sample of Yort. </h6>
+<h6>This loading the configuration and options of the Yort, the rest is the same that the previous sample of Yort.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/27-10-19-Maldoc2/Mal_Command.PNG">
 </p>
@@ -233,7 +233,7 @@ $global:url="https://crabbedly.club/board.php","https://craypot.live/board.php",
 $global:nup=0
 $global:nwct=0
 ``` 
-<h6> The backdoor execute a while loop until that the order to destroy the session push to the value of the variable "breakvalue" at 0.</h6>
+<h6>The backdoor executes a while loop until that the order to destroy the session push to the value of the variable "breakvalue" at 0.</h6>
 
 ``` powershell
 function main()
@@ -255,7 +255,7 @@ try{Remove-Item -Path $MyInvocation.MyCommand.Source}catch{}
 main
 ``` 
 
-<h6> In function of the result of the id push by the C2, this execute the following actions in the infected computer.</h6>
+<h6>In function of the result of the id push by the C2, this executes the following actions in the infected computer.</h6>
 
 ``` powershell
 function command($url)
@@ -294,7 +294,7 @@ function command($url)
 
 ``` 
 
-<h6> The next bloc content the functions for copy the bytes and convert from different encoding the data.</h6>
+<h6>The next bloc content the functions for copy the bytes and convert from different encoding the data.</h6>
 
 ``` powershell
 function CopyBytes($DatatoCopy,$dst,$dstOffset)
@@ -311,7 +311,7 @@ function ConverttoInt32($buffer,$Offset){ return [System.BitConverter]::ToInt32(
 function Get_UTF8Bytes($Data){ return [System.Text.ASCIIEncoding]::UTF8.GetBytes($Data) }
 ``` 
 
-<h6> The following functions are for send and get the data from the C2. We can note that the user agent is the same that the MacOS backdoor.</h6>
+<h6>The following functions are for sending and get the data from the C2. We can note that the user agent is the same that the MacOS backdoor.</h6>
 
 ``` powershell
 function senddata($tid,$rid,$array_data,$DatatoC2_Length,$url)
@@ -384,7 +384,7 @@ function GetResponseC2($netobject,$mxz)
 }
 ```
 
-###### The both next functions use the same XOR value ```"0xAA"``` for encryt and decrypt data from the C2. We can note again that the same XOR value that in the MacOS backdoor.
+###### The both next functions use the same XOR value ```"0xAA"``` for encrypt and decrypt data from the C2. We can note again that the same XOR value that in the MacOS backdoor.
 
 ``` powershell
 function PushDatatoC2($tid,$rid,$bd,$DatatoC2_Length,$url)
@@ -400,7 +400,7 @@ function DecryptC2Data($netobject,$mxz)
 }
 ```
 
-###### Like the MacOS backdoor, we observe that the back have multiple mods for communicate with the C2 and depends of the initial reply of the C2.</h6>
+###### Like the MacOS backdoor, we observe that the back has multiple mods for communicate with the C2 and depends of the initial reply of the C2.
 
 ``` powershell
 function updatemod1()
@@ -463,7 +463,7 @@ function updatemod3($nmsg)
 }
 ```
 
-<h6> This have the possiblity to set in standby the backdoor, close the current session and get the system informations.</h6>
+<h6>This has the possibility to set in standby the backdoor, close the current session and get the system informations.</h6>
 
 ``` powershell
 function slp($buf)
@@ -527,7 +527,7 @@ function Set-SysInfo()
 }
 ```
 
-<h6> This can get the actions and push the actions to do on the system.</h6>
+<h6>This can get the actions and push the actions to do on the system.</h6>
 
 ``` powershell
 
@@ -577,7 +577,7 @@ function Set-actions($buf)
 }
 ```
 
-<h6> The attacker can perform a specific action in another CLI.</h6>
+<h6>The attacker can perform a specific action in another CLI.</h6>
 
 ``` powershell
 function Set-command($buf)
@@ -653,7 +653,7 @@ function Set-command($buf)
 }
 ```
 
-<h6> Finally, this can download and upload files on the C2, send a pulse to the C2, push a trigger and launch a new process ( like push an additionnal tool).</h6>
+<h6>Finally, this can download and upload files on the C2, send a pulse to the C2, push a trigger and launch a new process (like push an additional tool).</h6>
 
 ``` powershell
 function upload($buf)
@@ -823,7 +823,7 @@ function PulsetoC2($rid)
 ```
 
 <h6> As final, the both backdoor have the same functionalities and use the same common infrastructure for the both platforms targetted.</h6>
-<h6>List of the domains contacted</h6>
+<h6>List of the domains contacted :h6>
 
 |Domain|IP|ASN|Organization|Route|City|Coordinates|Country|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -832,23 +832,23 @@ function PulsetoC2($rid)
 |indagator.club|185.236.203.211|AS9009|M247 LTD Copenhagen Infrastructure|185.236.203.0/24|Ballerup|55.7317,12.3633|Denmark|
 
 <h3> Nuclear's plant incident (DTrack)</h3>
-<h6> On the stings, we can observe a function timestamp who return a date of version, this is an of the sqllite version of the C librairies (3.21), this can be an reuse code of one of stealer of the group for a new stealer.</h6>
+<h6>On the stings, we can observe a function timestamp who return a date of the version, this is an of the sqllite version of the C libraries (3.21), this can be a reuse code of one of the stealers of the group for a new stealer.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/SQLite-Version-string.PNG">
 </p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/SQLite-Version.PNG">
 </p>
-<h6> The malware pivoting in the infrastructure and get an elevation in the privileges by the remote access to administrative shares (C$) with a like a default password "abcd@123".</h6>
+<h6>The malware pivoting in the infrastructure and get an elevation in the privileges by the remote access to administrative shares (C$) with a like a default password "abcd@123".</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Mal-Actions-1.png">
 </p>
-<h6> The sensitive operations to do on the computer have an indicative CCS_, this can be a code identifier for this custom payload of DTrack. CCS can be acronym Cabinet Committee on Security (CCS) of the Central Government of India. </h6>
-<h6> Dtrack have the capacity to get the mac address and infos on the network card adapter.</h6>
+<h6>The sensitive operations to do on the computer have an indicative CCS_, this can be a code identifier for this custom payload of DTrack. CCS can be the acronym Cabinet Committee on Security (CCS) of the Central Government of India.</h6>
+<h6>Dtrack have the capacity to get the mac address and informations of network card adapter.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Mal-Get-Mac.png">
 </p>
-<h6> As strealer, Dtrack can get the data of web broswer (Chrome and Firefox), this parsed the history, stored password and the URL. URl is interesting due to many company push in the deploiement in the new computer in the domain, the intranet links, adminstrative links or links to console like SCADA, it's a good method for environmental recognition.</h6>
+<h6>As stealer, Dtrack can get the data of the web browsers (Chrome and Firefox), this parsed the history, stored password and the URL. URl is interesting due to many company pushes in the deployment in the new computer in the domain, the intranet links, administrative links or links to console like SCADA, it's a good method for environmental recognition.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Mal-StealActions.png">
 </p>
@@ -869,7 +869,7 @@ function PulsetoC2($rid)
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Exp-Data.PNG">
 </p>
-<h6> But the custom Dtrack malware don't perform logs and don't have a C2 URL to contact compared at the normal version, this is disable for more stealth. Here, an example  on the difference between normal and custom DTrack reference.</h6>
+<h6>But the custom Dtrack malware don't perform logs and don't have a C2 URL to contact compared at the normal version, this is disabling for more stealth. Here, an example on the difference between normal and custom DTrack reference.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/log.png">
 </p>
@@ -879,13 +879,13 @@ function PulsetoC2($rid)
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Noref.png">
 </p>
-<h6> This can give a problem with Yara Rule due to the strings are the same just the execution are disable. The fact that malware don't contact suggests that the other backdoor was already used to launch Dtrack and recover the data. It has been reported that North Korea's Kimsuky Group is attempting to develop a new design for the next generation of advanced heavy water reactors who burns thorium into the fuel core and they attacked many Indian nuclear physicists in this way.</h6>
+<h6>This can give a problem with Yara Rule due to the strings are the same just the execution are disabling. The fact that malware doesn't contact suggests that the other backdoor was already used to launch Dtrack and recover the data. It has been reported that North Korea's Kimsuky Group is attempting to develop a new design for the next generation of advanced heavy water reactors who burns thorium into the fuel core and they attacked many Indian nuclear physicists in this way.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/29-10-19/Art.PNG">
 </p>
-<h6> For conclude North Korea, try to get avanced technologies in multiples sectors aeronautics, space, energetic, but also useful energetic independence in the current situation that could lead to an international blockade.</h6>
+<h6>For concluding North Korea, try to get advanced technologies in multiples sectors aeronautics, space, energetic but also useful energetic independence in the current situation that could lead to an international blockade.</h6>
 	<h2> Cyber kill chain <a name="Cyber-kill-chain"></a></h2>
-<h6> The process graphs resume cyber kill chains used by the attacker in the differents incidents </h6>
+<h6>The process graphs resume cyber kill chains used by the attacker in the differents incidents :</h6>
 <ul>
 	<li> Powershell agents
 <p align="left">
@@ -1032,6 +1032,7 @@ function PulsetoC2($rid)
 <h2>Yara Rules<a name="Yara"></a></h2>
 <h6> A list of YARA Rule is available <a href="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/YARA_Rule_Lazarus_October_2019.yar">here</a></h6>
 <h2>Knowledge Graph<a name="Knowledge"></a></h2>
+<h6>The following diagram shows the relationships of the techniques used by the groups and their corresponding malware:</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/CTI.png">
 </p>
