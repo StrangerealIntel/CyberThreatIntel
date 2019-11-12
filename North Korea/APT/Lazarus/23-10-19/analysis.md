@@ -28,7 +28,7 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/HWP/Doc.PNG" >
 </p>
-<h6> This initial vector of the infection begins by a current exploit in HWP (CVE-2015-6585) to execute an EPS script, this download and execute the next stage of the infection.</h6>
+<h6> This initial vector of the infection begins by a current exploit in HWP (CVE-2017-8291) allow a remote command execution via .rsdparams type confusion with a "/OutputFile (%pipe%" substring in a crafted .eps document.This download and execute the next stage of the infection.</h6>
 <p align="center">
   <img src="https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/North%20Korea/APT/Lazarus/23-10-19/Analysis/HWP/EPS.PNG">
 </p>
