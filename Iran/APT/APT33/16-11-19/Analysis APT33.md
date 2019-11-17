@@ -166,14 +166,40 @@ try {main} catch {}
 <h6> APT33 have since get an watch out for new open-source tools that can be used in their operations. By example, APT33 have been used in the new exploit on winrar archive found by Checkpoint for the campagn of February 2019.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Iran/APT/APT33/16-11-19/Analysis/Info-1.PNG">
-  
 </p>
-<h6></h6>
+<h6>One year ago the same TTPs have begin to show to use fake page who redirect on the offers jobs from the real portal carrers of the companies. Aramco Services Company have been usurped for APT33 the only difference is POSHC2 have remplace the refective loader of the dll.</h6>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Iran/APT/APT33/16-11-19/Analysis/old-1.PNG">
+</p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Iran/APT/APT33/16-11-19/Analysis/old-2.PNG">
+</p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Iran/APT/APT33/16-11-19/Analysis/job.png">
+</p>
+<h6>This can be give an idea of the original way used by APT33, that probably an HTA file used on a spear-phishing compagn.</h6>
+<h2> Cyber kill chain <a name="Cyber-kill-chain"></a></h2>
+<h6>The process graph resume cyber kill chains used by the attacker :</h6>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Iran/APT/APT33/16-11-19/Analysis/cyber.PNG">
+</p>
 <h2> Indicators Of Compromise (IOC) <a name="IOC"></a></h2>
 <h6> List of all the Indicators Of Compromise (IOC)</h6>
+
 <h2> References MITRE ATT&CK Matrix <a name="Ref-MITRE-ATTACK"></a></h2>
+
+|Enterprise tactics|Technics used|Ref URL|
+| :---------------: |:-------------| :------------- |
+|Execution|Command-Line Interface<br>Scripting<br>PowerShell<br>Execution through API|https://attack.mitre.org/techniques/T1059/<br>https://attack.mitre.org/techniques/T1064/<br>https://attack.mitre.org/techniques/T1086/<br>https://attack.mitre.org/techniques/T1106/|
+|Defense Evasion|Scripting<br>Modify Registry|https://attack.mitre.org/techniques/T1064/<br>https://attack.mitre.org/techniques/T1112/|
+|Discovery|Query Registry|https://attack.mitre.org/techniques/T1012/|
+<h6> This can be exported as JSON format <a href="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/Json/Others_Dtrack.json">Export in JSON</a></h6>
+<h2>Yara Rules<a name="Yara"></a></h2>
+<h6> A list of YARA Rule is available <a href="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/YARA_Rule_Lazarus_October_2019.yar">here</a></h6>
 <h2>Knowledge Graph<a name="Knowledge"></a></h2><a name="Know"></a>
 <h6>The following diagram shows the relationships of the techniques used by the groups and their corresponding malware:</h6>
+
+<h2>Links <a name="Links"></a></h2>
 <h6> Original tweet: </h6><a name="tweet"></a>
 
 * [https://twitter.com/CTI_Marc/status/1194573048625729536](https://twitter.com/CTI_Marc/status/1194573048625729536) 
