@@ -1,0 +1,14 @@
+[
+    {
+        "Indicator":  "JobDescription.vbe",
+        "Description":  "92e66acd62dfb1632f6e4ccb90a343cb8b8e2f4fb7c9bfa9ae0745db0748223b"
+    },
+    {
+        "Indicator":  "213.227.155.25",
+        "Description":  "IP requested"
+    },
+    {
+        "Indicator":  "http://213.227.155.25/site.htm",
+        "Description":  "URL requested"
+    }
+]
