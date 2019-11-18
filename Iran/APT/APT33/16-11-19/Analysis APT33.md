@@ -198,7 +198,9 @@ try {main} catch {}
 <h6> A list of YARA Rule is available <a href="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/23-10-19/YARA_Rule_Lazarus_October_2019.yar">here</a></h6>
 <h2>Knowledge Graph<a name="Knowledge"></a></h2><a name="Know"></a>
 <h6>The following diagram shows the relationships of the techniques used by the groups and their corresponding malware:</h6>
-
+<p align="center">
+  <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Iran/APT/APT33/16-11-19/Analysis/know-APT33.png">
+</p>
 <h2>Links <a name="Links"></a></h2>
 <h6> Original tweet: </h6><a name="tweet"></a>
 
