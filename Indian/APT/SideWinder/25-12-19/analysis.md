@@ -13,10 +13,57 @@
   + [Ressources](#Ressources)
 
 <h2>Malware analysis <a name="Malware-analysis"></a></h2>
-<h6>The initial vector</h6>
+<h6>The initial vector is an RTF file who use an well-know vulnerability (CVE-2017-11882) for execute a js script (1.a) form the package of OLE objects. </h6>
 <p align="center">
-  <img src="">
+  <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Indian/APT/SideWinder/25-12-19/Pictures/RTF_objects.PNG">
 </p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Indian/APT/SideWinder/25-12-19/Pictures/obj1.PNG">
+</p>
+<h6>We can observe on the code of the exploit that jump and rebuild the command to execute. </h6>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Indian/APT/SideWinder/25-12-19/Pictures/obj2.PNG">
+</p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Indian/APT/SideWinder/25-12-19/Pictures/exploit.png">
+</p>
+<h6>As first, we can observe that a series of functions are used for obfuscate the criticals parts of the script.</h6>
+```javascript
+		var OaXQT = ActiveXObject;
+		var cRKGlc = String.fromCharCode;
+		function RDDb(str) 
+    {
+			var b64 = "ABCDEFGHIJKLMNOPQRSTUVWXY"+"Zabcdefghijklmnopqrstuvwxyz0123456789+/="
+			var b, result = "", r1, r2, i = 0;
+			for (; i < str.length;) 
+      {
+				b = b64.indexOf(str.charAt(i++)) << 18 | b64.indexOf(str.charAt(i++)) << 12 |
+					(r1 = b64.indexOf(str.charAt(i++))) << 6 | (r2 = b64.indexOf(str.charAt(i++)));
+				result += r1 === 64 ? cRKGlc(b >> 16 & 255) :
+					r2 === 64 ? cRKGlc(b >> 16 & 255, b >> 8 & 255) :
+					cRKGlc(b >> 16 & 255, b >> 8 & 255, b & 255);
+		  }
+			return result;
+		};
+		function SJnEuQM (key, bytes){
+			var res = [];
+			for (var i = 0; i < bytes.length; ) {
+				for (var j = 0; j < key.length; j++) {
+					res.push(cRKGlc((bytes.charCodeAt(i)) ^ key.charCodeAt(j)));
+					i++;
+					if (i >= bytes.length) {
+						j = key.length;
+					}
+				}
+			}
+			return res.join("")
+			}
+		function EvpTXkLe(bsix){
+		return SJnEuQM(keeee,RDDb(bsix))
+		}
+		var keeee = SJnEuQM("YjfT",RDDb("altWY2"+"hcV2xq"+"XA=="));
+```
+
 <h2>Threat Intelligence</h2><a name="Intel"></a></h2>
 <h2> Cyber kill chain <a name="Cyber-kill-chain"></a></h2>
 <h6>The process graph resume cyber kill chains used by the attacker :</h6>
@@ -61,3 +108,4 @@
 <h6> Resources : </h6><a name="Ressources"></a>
 
 * [The SideWinder campaign continue](https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/Indian/APT/SideWinder/11-10-2019/Analysis.md)
+* [CVE-2017-11882](https://github.com/embedi/CVE-2017-11882)dz
