@@ -1,0 +1,30 @@
+[
+    {
+        "Id":  "T1012",
+        "Name":  "Query Registry",
+        "Type":  "Discovery ",
+        "Description":  "Adversaries may interact with the Windows Registry to gather information about the system, configuration, and installed software.",
+        "URL":  "https://attack.mitre.org/techniques/T1012/"
+    },
+    {
+        "Id":  "T1060",
+        "Name":  "Registry Run Keys / Startup Folder",
+        "Type":  "Persistence ",
+        "Description":  "Adding an entry to the \"run keys\" in the Registry or startup folder will cause the program referenced to be executed when a user logs in. These programs will be executed under the context of the user and will have the account\u0027s associated permissions level.",
+        "URL":  "https://attack.mitre.org/techniques/T1060/"
+    },
+    {
+        "Id":  "T1129",
+        "Name":  "Execution through Module Load",
+        "Type":  "Execution ",
+        "Description":  "The Windows module loader can be instructed to load DLLs from arbitrary local paths and arbitrary Universal Naming Convention (UNC) network paths. This functionality resides in NTDLL.dll and is part of the Windows Native API which is called from functions like CreateProcess(), LoadLibrary(), etc. of the Win32 API.",
+        "URL":  "https://attack.mitre.org/techniques/T1129/"
+    },
+    {
+        "Id":  "T1203",
+        "Name":  "Exploitation for Client Execution",
+        "Type":  "Execution ",
+        "Description":  "Vulnerabilities can exist in software due to unsecure coding practices that can lead to unanticipated behavior. Adversaries can take advantage of certain vulnerabilities through targeted exploitation for the purpose of arbitrary code execution. Oftentimes the most valuable exploits to an offensive toolkit are those that can be used to obtain code execution on a remote system because they can be used to gain access to that system. Users will expect to see files related to the applications they commonly used to do work, so they are a useful target for exploit research and development because of their high utility.",
+        "URL":  "https://attack.mitre.org/techniques/T1203/"
+    }
+]
