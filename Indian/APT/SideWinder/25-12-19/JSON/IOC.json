@@ -1,0 +1,30 @@
+[
+    {
+        "Indicator":  "c733dba9451c632c19aaad8d1de61e905dac88453b0839e8900777e121de1755",
+        "Description":  "1.a"
+    },
+    {
+        "Indicator":  "87882b884afd4bd6d4da1fb5e3f87d728f128f75fae32a2720fe899ac7f23f5d",
+        "Description":  "Policy on Embedded Systems.rtf"
+    },
+    {
+        "Indicator":  "957a7b669d73ed4219fca89ebc5d49739f530f6df5828ef48bec900bd132ff9b",
+        "Description":  "Policy on Embedded Systems.rtf.LNK"
+    },
+    {
+        "Indicator":  "eced0cc93d6e244dce7533168dbb5aec896f8d05959e498c47a8a02dd8221d6f",
+        "Description":  "bGAzMs.tmp"
+    },
+    {
+        "Indicator":  "e8910fc0736187889b27011848baf12ffbc306aa2fcb487451cab5af58d96c62",
+        "Description":  "Duser.bin"
+    },
+    {
+        "Indicator":  "185.225.17.40",
+        "Description":  "IP C2"
+    },
+    {
+        "Indicator":  "ap1-acl.net",
+        "Description":  "Domain C2"
+    }
+]
