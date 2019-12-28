@@ -1,7 +1,13 @@
 # SideWinder same targets, same TTPs, time to counter-attack ! 
 ## Table of Contents
 * [Malware analysis](#Malware-analysis)
+  + [The initial vector](#Initial)
+  + [JS Script](#JS)
+  + [EFS REKEY](#EFS)
+  + [The loader](#loader)
+  + [The final implant](#implant)
 * [Threat Intelligence](#Intel)
+  + [Military activities in India](#Military)
 * [Cyber kill chain](#Cyber-kill-chain)
 * [Indicators Of Compromise (IOC)](#IOC)
 * [Yara Rules](#Yara)
@@ -13,6 +19,8 @@
   + [Ressources](#Ressources)
 
 <h2>Malware analysis <a name="Malware-analysis"></a></h2>
+<h3>The initial vector<a name="Initial"></a></h3>
+
 <h6>The initial vector is an RTF file who use an well-know vulnerability (CVE-2017-11882) for execute a js script (1.a) form the package of OLE objects. </h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Indian/APT/SideWinder/25-12-19/Pictures/RTF_objects.PNG">
@@ -27,6 +35,7 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Indian/APT/SideWinder/25-12-19/Pictures/exploit.png">
 </p>
+<h3>JS Script<a name="JS"></a></h3>
 <h6>As first, we can observe that a series of functions are used for obfuscate the criticals parts of the script.</h6>
 
 ```javascript
@@ -168,6 +177,7 @@ finally{window.close();}
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Indian/APT/SideWinder/25-12-19/Pictures/comC2.PNG">
 </p>
+<h3>EFS REKEY<a name="EFS"></a></h3>
 <h6>The first software is a legit wizard EFS REKEY of Microsoft know as rekeywiz.exe. This can do the certificates for the EFS, we can confirm it on the code of the software.</h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Indian/APT/SideWinder/25-12-19/Pictures/leg_cert_EFS_keys.png">
@@ -175,6 +185,7 @@ finally{window.close();}
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Indian/APT/SideWinder/25-12-19/Pictures/leg_load_EFS_keys.png">
 </p>
+<h3>The loader<a name="loader"></a></h3>
 <h6> On the dotnet loader, we can load an instance from the code extracted by the module. This module use an xor in a loop of the bytes for get the payload to execute. </h6>
 
 ```csharp
@@ -245,6 +256,7 @@ for ($i = 0; $i -lt $array2.length; $i++)
 }
 [System.IO.File]::WriteAllBytes("path to save", $array2)
 ```
+<h3>The final implant<a name="implant"></a></h3>
 <h6>Once this done, we can see that the payload have 4 modules, the first one get the list of the disks, infos and the list of the files of them</h6>
 
 ```csharp
@@ -1470,6 +1482,16 @@ namespace SystemApp
 ```
 
 <h2>Threat Intelligence</h2><a name="Intel"></a></h2>
+<h3> Military activities in India <a name="Military"></a></h2>
+<h6> The year 2019 was bad for India, constantly attacked by Pakistan, China and North Korea on these different production environments and on these industrial secrets like aerospace, aviation and the energy sector for example. Recently, a series of military exercises take place as reported by <a href="https://twitter.com/detresfa_">detresfa_ by</a> India :
+<ul>
+	<li>https://twitter.com/detresfa_/status/1207638846483005440</li>
+	<li>https://twitter.com/detresfa_/status/1205876465029414913</li>
+	<li>https://twitter.com/detresfa_/status/1204020783132987392</li>
+	<li>https://twitter.com/detresfa_/status/1203213226462154752</li>
+</ul>	
+<h6>India seems to resume activities by trapping these too curious people with a document weaponized with the content of a old security measure of 2017 (the content of the document can be viewed <a href="https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/Indian/APT/SideWinder/25-12-19/Ressources/content_Policy_on_Embedded_Systems.txt">here</a>)</h6>
+
 <h2> Cyber kill chain <a name="Cyber-kill-chain"></a></h2>
 <h6>The process graph resume cyber kill chains used by the attacker :</h6>
 <p align="center">
