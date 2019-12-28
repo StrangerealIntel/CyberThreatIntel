@@ -1498,8 +1498,8 @@ namespace SystemApp
 <h6>For resume, the list of extension and roles of the files dropped in the computer :</h6>
 
 |Extension|Data|
-| :---------------: | :---------------: | 
-|.sif|System informations of the victim| 
+| :---------------: | :--------------- | 
+|.sif|System informations of the victim, Users rights...| 
 |.flc|List of the files on the computer| 
 |.fls|List of the files selected to send to the C2| 
 |.err|Common extension for throws an exeception in the current process of crawling of informations and data| 
