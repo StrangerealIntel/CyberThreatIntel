@@ -1,0 +1,54 @@
+Tele 23022476  				Integrated Headquarters of Ministry of Defence (Navy)
+							        Directorate of Aircraft Systems
+							        New Delhi - 110011
+							
+AR/2340/IT/Policy  		13 Jan 17
+
+The Flag Officer Commanding-in-Chief
+Western Naval Command
+Shahid Bhagat Singh Road, Mumbai – 400023
+
+The Flag Officer Commanding-in-Chief
+Eastern Naval Command
+Vishakhapatnam – 530 014
+
+The Flag Officer Commanding-in-Chief
+Southern Naval Command
+Kochi – 682 004
+
+SECURITY OF EMBEDDED SYSTEMS / SPECIAL IT ASSETS – AVIATION
+
+1.	Refer to the following:
+(a) NO 38/13 on Cyber Security.
+(b) IHQ MoD (N) / DASE letter AR/2304/IT/Policy dated 21 Feb 16.
+2.	Background.	Large numbers of systems installed on the various aircarfts in Indian Navy are based on programmable device/ embedded systems. These systems compromise of numerous hardware, software, communication, media and protocols. Further, a majority of equipment on the new generation aircraft are based on embedded systems with customized software and RTOS (Real Time Operating System).	The requirement to safeguard these system from cyber security compromise has necessitated promulgation of institutionalized procedure for ensuring seamless operation of these specialized IT system.
+3.	System Specific Policies.	Generic guidelines to be adhered to on cyber security of embedded systems onboard naval aircrafts is placed at enclosure to this letter. The generic policy letter contains actions to be taken by the Administrator, User and Maintainer for ensuring seamless and fail safe operations of embedded system onboard naval aircraft. However, the Class Authority is required to promulgate systems specific standard operating procedures for all systems on board IN Aircrafts based on the stipulated guidelines.
+4.	Standard Operating Procedures.	HQ is to issue Standard Operating Procedure in consultation with the Command and ensure strict adherence. In addition, relevant portions of the SOPs are to be displayed prominently next to the equipment / devices.
+5.	Command and Operational Authorities are to ensure that these policies are adhered to by all unit for ensuring safe operation of embedded systems onboard aircrafts.
+6.	Feedback on implementation of the policy guidelines is to be rendered by 30 Sep 17.
+(KM Seghal)
+Commodore
+
+Principal Director
+Internal: ACNS (AM) ACOM (IT) CSO (Navy)
+Enclosure to IHQ MoD (Navy)
+Letter AR/2340/IT/Policy dated 13 Jan 17
+CYBER SECURITY POLICY FOR AIRCRAFT EMBEDDED SYSTEMS
+1.1.	Scope. The policy applies to all systems used on aircraft which have equipment based on embedded systems with customized software and RTOS (Real Time Operating Systems) loaded on different types of media.
+2.1.	Risk Assessment. The process of identifying, analyzing and assessing the risk in Risk Management Embedded Systems on aircraft is to be documented. This may be carried out is consultation with Command and the OEM.
+3.1.   Roles and Responsibilty. Security of Embedded systems can only be ensured if roles, responsibility, authority and accountability pertaining to the system and its sub-assemblies are be clearly established. Procedures need to be instituted to ensure that personnel (both uniform and civilian) who have access to embedded systems do not compromise these systems either willfully, or by accident. The following roles and responsibilities (along with ‘Do’ and Don’ts’) are to be clearly articulated in the SOP:-
+3.1.1 System Administrator. One officer/ sailor is to be designated as the System Administrator, who is to be responsible for administration of the embedded systems. Record of Handing/ taking over of System Administrator is to be maintained.
+3.1.2 Maintainer. The roles and responsibilities of maintainers are to be clearly laid down, along with procedures to undertake routine and special maintenance. Particular emphasis is to be accorded to process that involve removal of programmable units and data storage devices to workshop/ OEM premises.
+3.1.3 Users. All users of embedded systems are to be fully conversant with the SOPs related to operation of the system, and response to fault conditions. The level of access and specific tasks to be performed by users are to be laid down in SOPs, with particular regard to cyber security.
+3.1.4 Training Officer. Towards ensuring the availability of fully conversant team, a systematic training capsule course with respect to cyber security needs to be formulated and incorporated in the abinitio training courses. Further, being a part of continuous training program, regular training of personnel in this respect thereafter will be the responsibility of the Training Officer. The conduct of the training is to be documented and produced during training inspection.
+4.1  Physical Security. Physical access to equipment with embedded software on aircraft must be controlled to prevent, detect and minimize the effect of un-authorised access. This is to be achieved through the following:-
+4.1.1 Asset Management. The first step towards managing assets is to identify and documents all IT hardware that is associated with the system. Portable devices are to be taken on charge and placed under the custody of a nominated personnel. Security of IT components is to be ensured through appropriate procedures and technical controls, based on the importance of the asset and the perceived cyber security risk.
+4.1.2 Access control Measures.  Physical access to embedded systems is to be controlled using suitable mechanism, to ensure that only authorized personnel with valid authentication are permitted to interact with such systems.
+5.1     Communication Interface.  Communication interfaces could result in compromise of information and could also provide an illegitimate entry point for disruptive activity. These interfaces are to be identified.
+6.1     Network Security.    Aircraft Embedded Systems may be connected over network for communication. Networks and its associated components are required to be safeguarded. 
+7.1	Cyber Security Audits.  Regular and periodic audits are to be undertaken to assure that policies and procedures are being adhered to by all concerned. The following are to be ensured:-
+	7.1.1 Internal Audits.  Internal Audits of this special IT system are to be carried out once every quarter by a team of officers and sailors.
+7.1.2 External Audits.  External audits teams are to be constituted by the Command, who are to undertake audits of these special systems so as to ensure that all systems of aircraft and air stations are subjected to an external audit at least once every year.
+	7.1.3 Audit Report. One copy of audit report of external audit is to be forwarded to CSO (Navy).
+8.1	Incident Reports. Mechanisms to detect security violations and compromise should be implemented where applicable. Incident Report is to be raised in accordance with extant orders if any compromise is suspected or presence of malware is detected on any of the components of embedded systems to enable detailed study of the compromise and formulation of preventive solutions.
+9.1	Review of Security Policy.	The respective Commands to forward the points for reviewing the policy to IHQ MoD (Navy). The same would be approved and promulgated in consultation with IHQ.
