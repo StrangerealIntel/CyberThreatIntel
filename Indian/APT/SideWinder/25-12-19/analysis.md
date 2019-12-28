@@ -1482,8 +1482,37 @@ namespace SystemApp
 ```
 
 <h2>Threat Intelligence</h2><a name="Intel"></a></h2>
-<h3> Military activities in India <a name="Military"></a></h2>
-<h6> The year 2019 was bad for India, constantly attacked by Pakistan, China and North Korea on these different production environments and on these industrial secrets like aerospace, aviation and the energy sector for example. Recently, a series of military exercises take place as reported by <a href="https://twitter.com/detresfa_">detresfa_ by</a> India :
+<h3> Files push in Appdata<a name="Files"></a></h3>
+
+###### The stealer stock in the disk multiples files with differents results of the operations perform on the computer:
+ + A file with a sif extension :
+###### This content the system and user account informations steal by the backdoor and which send to the C2 when the connection is etablish (JSON file).
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Indian/APT/SideWinder/11-10-2019/Pictures/October%202019/ext1.png)
++ Another file with the fls extension :
+###### A second JSON file which content the list of the path of the document to steal and push on the C2 (target the xls, xlsx, doc, docx, pdf documents).
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Indian/APT/SideWinder/11-10-2019/Pictures/October%202019/ext2.png)
+###### A file with the extension flc is used by the process as debug for the edition of the fls file.
+![alt text](https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Indian/APT/SideWinder/11-10-2019/Pictures/October%202019/extunsed.png)
+
+<h6>For resume the list of extension and roles of the files dropped in the computer</h6>
+
+|Extension|Data|
+| :---------------: | :---------------: | 
+|.sif|System informations of the victim| 
+|.flc|List of the files on the computer| 
+|.fls|List of the files selected to send to the C2| 
+|.err|Common extension for throws an exeception in the current process of crawling of informations and data| 
+
+###### The C2 domain is the only one recorded on the IP hosted for the operations and probably active since late October 2019. A interesting thing to related at the C2 in india is this wait generally a month before the operations, which would go back to the beginnings of the operation in mid-december.
+|Hostname|IP|Route|ASN|Organization|Country|City|Coordinates|
+| :---------------: | :---------------: | :---------------: | :---------------: |:---------------: |:---------------: |:---------------: |:---------------: |
+|no-rdns.mivocloud.com|185.225.17.40| 185.225.16.0/22|AS39798|MivoCloud|Romania|Iaşi|47.1667,27.6000|
+<p align="center">
+  <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Indian/APT/SideWinder/25-12-19/Pictures/whois.PNG">
+</p>
+<h3> Military activities in India <a name="Military"></a></h3>
+<h6> The year 2019 was bad for India, constantly attacked by Pakistan, China and North Korea on these different production environments and on these industrial secrets like aerospace, aviation and the energy sector for example. Recently, a series of military exercises by India take place as reported by <a href="https://twitter.com/detresfa_">detresfa_</a>:</h6>
+
 <ul>
 	<li>https://twitter.com/detresfa_/status/1207638846483005440</li>
 	<li>https://twitter.com/detresfa_/status/1205876465029414913</li>
@@ -1511,6 +1540,7 @@ namespace SystemApp
 | :---------------: |:-------------| :------------- |
 |Execution|Execution through Module Load<br>Exploitation for Client Execution|https://attack.mitre.org/techniques/T1129/<br>https://attack.mitre.org/techniques/T1203/|
 |Persistence|Registry Run Keys / Startup Folder|https://attack.mitre.org/techniques/T1060/|
+|Credential Access|Credentials in Files|https://attack.mitre.org/techniques/T1081/|
 |Discovery|Query Registry|https://attack.mitre.org/techniques/T1012/|
 
 <h6> This can be exported as JSON format <a href="https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/Indian/APT/SideWinder/25-12-19/JSON/MITRE_ref.json">Export in JSON</a></h6>
@@ -1535,5 +1565,5 @@ namespace SystemApp
 <h6> Resources : </h6><a name="Ressources"></a>
 
 * [The SideWinder campaign continue](https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/Indian/APT/SideWinder/11-10-2019/Analysis.md)
-* [CVE-2017-11882](https://github.com/embedi/CVE-2017-11882)dz
+* [CVE-2017-11882](https://github.com/embedi/CVE-2017-11882)
 * [A repo for matching on known c2 and exfil traffic keywords](https://github.com/silence-is-best/c2db)
