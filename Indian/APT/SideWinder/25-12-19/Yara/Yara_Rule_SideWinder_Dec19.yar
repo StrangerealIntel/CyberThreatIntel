@@ -13,7 +13,7 @@ rule APT_SideWinder_LNK_Dec19_1 {
       $s1 = "@shell32.dll,-21769" fullword wide
       $s2 = "S-1-5-21-1302019708-1500728564-335382590-1000" fullword wide
       $s3 = "@shell32.dll,-21813" fullword wide
-	  $s4 = "[..\\..\\..\\..\\..\\Desktop\\" fullword wide
+      $s4 = "[..\\..\\..\\..\\..\\Desktop\\" fullword wide
       $s5 = ".rtf" fullword wide
    condition:
       uint16(0) == 0x004c and filesize < 3KB and all of them
@@ -62,9 +62,9 @@ rule APT_SideWinder_NET_Loader_Dec19_1 {
       $s2 = ".tmp          " fullword wide
       $s3 = "FileRipper" fullword ascii
       $s4 = "pluginAssembly" fullword ascii
-	  $s5 = "InitGadgets" fullword ascii
-	  $s6 = "Start" fullword ascii
-	  $s7 = "Program" fullword ascii
+      $s5 = "InitGadgets" fullword ascii
+      $s6 = "Start" fullword ascii
+      $s7 = "Program" fullword ascii
    condition:
       uint16(0) == 0x5a4d and filesize < 20KB and ( pe.exports("FileRipper") or all of them )
 }
@@ -78,28 +78,28 @@ rule APT_SideWinder_JS_Dec19_1 {
       hash1 = "c733dba9451c632c19aaad8d1de61e905dac88453b0839e8900777e121de1755"
    strings:
       $s1 = "ABCDEFGHIJKLMNOPQRSTUVWXY"
-	  $s2 = "Zabcdefghijklmnopqrstuvwxyz0123456789+/=" ascii
+      $s2 = "Zabcdefghijklmnopqrstuvwxyz0123456789+/=" ascii
       $s3 = "window.resizeTo(1, 1)" ascii 
-	  $s4 = "window.moveTo(-1000, -1200)" ascii 
-	  $s5 = "new Enumerator(" ascii 
-	  $s6 = "](x,y" ascii 
-	  $s7 = "finally{window.close();}" ascii 
-	  $s8 = "^ key." ascii
-	  $s9 = ".GetFolder(" ascii
-	  $s10 = ".Environment(" ascii
-	  $s11 = "(key, bytes){" ascii
-	  $s12 = "TransformFinalBlock(" ascii
-	  $s13 = "GetByteCount_2(" ascii
-	  $s14 = "GetBytes_4(" ascii
-	  $s15 = "ActiveXObject;" ascii
-	  $s16 = "String.fromCharCode;" ascii
-	  $s17 = ".join("")" ascii
-	  $s18 = ".Position = 0;" ascii
-	  $s19 = ".charCodeAt(" ascii
-	  $s20 = "& 255" ascii
-	  $s21 = ".charAt(" ascii 
-	  $s22 = ".GetSpecialFolder(" ascii
-	  $s23 = ".atEnd() == false)" ascii
+      $s4 = "window.moveTo(-1000, -1200)" ascii 
+      $s5 = "new Enumerator(" ascii 
+      $s6 = "](x,y" ascii 
+      $s7 = "finally{window.close();}" ascii 
+      $s8 = "^ key." ascii
+      $s9 = ".GetFolder(" ascii
+      $s10 = ".Environment(" ascii
+      $s11 = "(key, bytes){" ascii
+      $s12 = "TransformFinalBlock(" ascii
+      $s13 = "GetByteCount_2(" ascii
+      $s14 = "GetBytes_4(" ascii
+      $s15 = "ActiveXObject;" ascii
+      $s16 = "String.fromCharCode;" ascii
+      $s17 = ".join("")" ascii
+      $s18 = ".Position = 0;" ascii
+      $s19 = ".charCodeAt(" ascii
+      $s20 = "& 255" ascii
+      $s21 = ".charAt(" ascii 
+      $s22 = ".GetSpecialFolder(" ascii
+      $s23 = ".atEnd() == false)" ascii
    condition:
       uint16(0) == 0x090a and filesize < 3000KB and all of them
 }
