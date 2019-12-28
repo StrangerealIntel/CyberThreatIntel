@@ -7,6 +7,7 @@
   + [The loader](#loader)
   + [The final implant](#implant)
 * [Threat Intelligence](#Intel)
+  + [Files push in Appdata](#Files)
   + [Military activities in India](#Military)
 * [Cyber kill chain](#Cyber-kill-chain)
 * [Indicators Of Compromise (IOC)](#IOC)
@@ -1531,8 +1532,15 @@ namespace SystemApp
 
 |Indicator|Description|
 | ------------- |:-------------:|
-|||
-<h6> The IOC can be exported in <a href="">JSON</a></h6>
+|c733dba9451c632c19aaad8d1de61e905dac88453b0839e8900777e121de1755|1.a|
+|87882b884afd4bd6d4da1fb5e3f87d728f128f75fae32a2720fe899ac7f23f5d|Policy on Embedded Systems.rtf|
+|957a7b669d73ed4219fca89ebc5d49739f530f6df5828ef48bec900bd132ff9b|Policy on Embedded Systems.rtf.LNK|
+|eced0cc93d6e244dce7533168dbb5aec896f8d05959e498c47a8a02dd8221d6f|bGAzMs.tmp|
+|e8910fc0736187889b27011848baf12ffbc306aa2fcb487451cab5af58d96c62|Duser.bin|
+|185.225.17.40|IP C2|
+|ap1-acl.net|Domain C2|
+
+<h6> The IOC can be exported in <a href="https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/Indian/APT/SideWinder/25-12-19/JSON/IOC.json">JSON</a></h6>
 
 <h2> References MITRE ATT&CK Matrix <a name="Ref-MITRE-ATTACK"></a></h2>
 
@@ -1545,7 +1553,7 @@ namespace SystemApp
 
 <h6> This can be exported as JSON format <a href="https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/Indian/APT/SideWinder/25-12-19/JSON/MITRE_ref.json">Export in JSON</a></h6>
 <h2>Yara Rules<a name="Yara"></a></h2>
-<h6> A list of YARA Rule is available <a href="">here</a></h6>
+<h6> YARA Rules are available <a href="https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/Indian/APT/SideWinder/25-12-19/Yara/Yara_Rule_SideWinder_Dec19.yar">here</a></h6>
 <h2>Knowledge Graph<a name="Knowledge"></a></h2><a name="Know"></a>
 <h6>The following diagram shows the relationships of the techniques used by the groups and their corresponding malware:</h6>
 <p align="center">
@@ -1559,8 +1567,6 @@ namespace SystemApp
 <h6> Links Anyrun: <a name="Links-Anyrun"></a></h6>
 
 * [Policy on Embedded Systems.doc](https://app.any.run/tasks/1fac2867-012c-4298-af36-a4810d9b72db)
-* [adsfa.rtf](https://app.any.run/tasks/72ec8c7c-5542-48fe-8400-ba840de9c0bd)
-* [out.rtf](https://app.any.run/tasks/34c8345c-b661-4ca5-ba15-58dcc4e6d968)
 
 <h6> Resources : </h6><a name="Ressources"></a>
 
