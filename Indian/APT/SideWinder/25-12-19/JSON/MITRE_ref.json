@@ -14,6 +14,13 @@
         "URL":  "https://attack.mitre.org/techniques/T1060/"
     },
     {
+        "Id":  "T1081",
+        "Name":  "Credentials in Files",
+        "Type":  "Credential Access ",
+        "Description":  "Adversaries may search local file systems and remote file shares for files containing passwords. These can be files created by users to store their own credentials, shared credential stores for a group of individuals, configuration files containing passwords for a system or service, or source code/binary files containing embedded passwords.",
+        "URL":  "https://attack.mitre.org/techniques/T1081/"
+    },
+    {
         "Id":  "T1129",
         "Name":  "Execution through Module Load",
         "Type":  "Execution ",
