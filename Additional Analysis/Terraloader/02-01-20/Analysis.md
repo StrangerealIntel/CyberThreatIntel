@@ -642,7 +642,7 @@ function main()
  <h6>By debug, this give the following parameters : </h6>
  
 |Variable|Value|
-| ------------- |:-------------:|
+| :-------------: |:-------------:|
 |i|200|
 |lim|3|
 |index|18|
