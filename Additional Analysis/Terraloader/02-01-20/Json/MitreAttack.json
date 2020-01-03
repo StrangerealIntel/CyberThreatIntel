@@ -1,0 +1,30 @@
+[
+    {
+        "Id":  "T1012",
+        "Name":  "Query Registry",
+        "Type":  "Discovery ",
+        "Description":  "Adversaries may interact with the Windows Registry to gather information about the system, configuration, and installed software.",
+        "URL":  "https://attack.mitre.org/techniques/T1012/"
+    },
+    {
+        "Id":  "T1117",
+        "Name":  "Regsvr32",
+        "Type":  "Defense Evasion, Execution ",
+        "Description":  "Regsvr32.exe is a command-line program used to register and unregister object linking and embedding controls, including dynamic link libraries (DLLs), on Windows systems. Regsvr32.exe can be used to execute arbitrary binaries.",
+        "URL":  "https://attack.mitre.org/techniques/T1117/"
+    },
+    {
+        "Id":  "T1129",
+        "Name":  "Execution through Module Load",
+        "Type":  "Execution ",
+        "Description":  "The Windows module loader can be instructed to load DLLs from arbitrary local paths and arbitrary Universal Naming Convention (UNC) network paths. This functionality resides in NTDLL.dll and is part of the Windows Native API which is called from functions like CreateProcess(), LoadLibrary(), etc. of the Win32 API.",
+        "URL":  "https://attack.mitre.org/techniques/T1129/"
+    },
+    {
+        "Id":  "T1130",
+        "Name":  "Install Root Certificate",
+        "Type":  "Defense Evasion ",
+        "Description":  "Root certificates are used in public key cryptography to identify a root certificate authority (CA). When a root certificate is installed, the system or application will trust certificates in the root\u0027s chain of trust that have been signed by the root certificate. Certificates are commonly used for establishing secure TLS/SSL communications within a web browser. When a user attempts to browse a website that presents a certificate that is not trusted an error message will be displayed to warn the user of the security risk. Depending on the security settings, the browser may not allow the user to establish a connection to the website.",
+        "URL":  "https://attack.mitre.org/techniques/T1130/"
+    }
+]
