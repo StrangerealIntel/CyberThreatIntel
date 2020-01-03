@@ -983,9 +983,11 @@ CN=thawte SHA256 Code Signing CA, O="thawte, Inc.", C=US 259e2142575482b958a102a
 
 |Indicator|Description|
 | ------------- |:-------------:|
-|||
+|569590b6fc4ec9d482223f7cb077973084cfcb7a22b64aa9e75047ca9bc09eb6|Job Description.js|
+|91697faf2e820b809f75991df861e34635f8f31f931f8a4b03d7d9a4e8d4ee56|dll payload|	
+|4e03abcc149e9d36f2645033e17ec215f454bc494304b30975ed5639ad26caea|Decoy document|
 
-<h6> The IOC can be exported in <a href="">JSON</a></h6>
+<h6> The IOC can be exported in <a href="https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/Additional%20Analysis/Terraloader/02-01-20/Json/IOC.json">JSON</a></h6>
 
 <h2> References MITRE ATT&CK Matrix <a name="Ref-MITRE-ATTACK"></a></h2>
 
@@ -995,7 +997,7 @@ CN=thawte SHA256 Code Signing CA, O="thawte, Inc.", C=US 259e2142575482b958a102a
 |Defense Evasion|Regsvr32<br>Install Root Certificate|https://attack.mitre.org/techniques/T1117/<br>https://attack.mitre.org/techniques/T1130/|
 |Discovery|Query Registry|https://attack.mitre.org/techniques/T1012/|
 
-<h6> This can be exported as JSON format <a href="">Export in JSON</a>https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/Additional%20Analysis/Terraloader/02-01-20/Json/MitreAttack.json</h6>
+<h6> This can be exported as JSON format <a href="https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/Additional%20Analysis/Terraloader/02-01-20/Json/MitreAttack.json">Export in JSON</a></h6>
 <h2>Links <a name="Links"></a></h2>
 <h6> Original tweet: </h6><a name="tweet"></a>
 
