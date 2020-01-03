@@ -933,11 +933,41 @@ function exec_pay()
     }
 }
 ``` 
+<h3>Additionnal Informations</h3>
+<h6>In the certificate of the signed js script, several interesting information is present. The RSA public key was randomly generated and did not import directly. The certificate was issued on March 15, 2019 and uses "thawte, Inc." as the organization name.</h6>
+
+```json
+ProviderType         : PROV_RSA_AES
+KeyNumber            : 1
+CryptoKeySecurity    :
+RandomlyGenerated    : True
+KeyExchangeAlgorithm : RSA-PKCS1-KeyEx
+KeySize              : 2048
+PersistKeyInCsp      : False
+Algorithm            : RSA
+Key                  : 48 130 1 10 2 130 1 1 0 191 20 81 76 181 16 114 2 236 246 10 207 164 118 97 68 174 146 162 65 42 15 128 85 156 37 60 45 186 3 52 169 103 113 194 240 124 8 38 16 69 59 105 225 140 199 198 24 217 73 230 158 41 135 7  
+                       114 239 187 204 83 134 244 169 114 51 183 179 5 76 24 212 163 204 239 148 157 38 178 194 227 123 170 34 158 91 127 171 177 87 153 88 77 118 222 204 39 84 98 159 183 59 83 108 30 21 154 234 30 188 94 177 54 91 217   
+                       128 24 126 96 90 61 4 49 231 169 227 199 179 136 234 22 115 104 94 130 4 227 247 233 76 211 36 172 247 25 147 194 178 37 201 7 24 89 212 165 241 220 85 36 113 35 138 86 127 233 106 189 129 158 216 50 166 197 196    
+                       214 10 105 102 199 131 109 75 178 168 232 190 49 210 1 241 27 130 179 51 140 25 151 126 50 35 184 37 29 163 240 90 245 184 12 118 201 161 193 236 2 42 92 87 222 205 207 200 153 9 169 111 227 141 201 195 198 148     
+                       207 199 212 109 164 68 158 131 47 9 169 94 96 192 95 89 59 144 247 203 252 40 68 149 159 2 3 1 0 1
+```
+
+```json
+Creation_Date       Expiration_Date     Signature_Algorithm
+-------------       ---------------     -------------------
+15/03/2019 01:00:00 15/03/2020 00:59:59 sha256RSA
+```
+
+```json
+IssuerName                                               Hash                                     Version SerialNumber
+----------                                               ----                                     ------- ------------
+CN=thawte SHA256 Code Signing CA, O="thawte, Inc.", C=US 259e2142575482b958a102aa64129fe7d3f9035a       3 3309fadb8da0ed2efa1e1d691e36022d
+```
 
 <h2> Cyber kill chain <a name="Cyber-kill-chain"></a></h2>
 <h6>The process graph resume cyber kill chains used by the attacker :</h6>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Indian/APT/SideWinder/25-12-19/Pictures/Cyber.png">
+  <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Additional%20Analysis/Terraloader/02-01-20/pictures/cyber.png">
 </p>
 <h2> Indicators Of Compromise (IOC) <a name="IOC"></a></h2>
 <h6> List of all the Indicators Of Compromise (IOC)</h6>
