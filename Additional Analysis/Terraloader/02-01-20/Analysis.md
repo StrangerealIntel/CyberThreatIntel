@@ -5,6 +5,7 @@
   + [Second layer](#second)
   + [Additionnal Informations](#infos)
 * [Cyber kill chain](#Cyber-kill-chain)
+* [Events graph](#graph)
 * [Indicators Of Compromise (IOC)](#IOC)
 * [References MITRE ATT&CK Matrix](#Ref-MITRE-ATTACK)
 * [Links](#Links)
@@ -891,7 +892,7 @@ function main()
 }
 ``` 
 
-<h6>Finally drop the document and dll and execute it.</h6>
+<h6>Finally drops the document and dll and execute it.</h6>
 
 ```javascript
 function exec_pay()
@@ -939,7 +940,7 @@ function exec_pay()
 }
 ``` 
 <h3>Additionnal Informations<a name="infos"></a></h3>
-<h6>In the certificate of the signed js script, some interesting informations are present. The RSA public key was randomly generated and did not import directly. The certificate was issued on March 15, 2019, and uses "thawte, Inc." as the organization name.</h6>
+<h6>In the certificate of the signed js script, some interesting informations are present. The RSA public key was randomly generated and didn't import directly. The certificate was issued on March 15, 2019, and uses "thawte, Inc." as the organization name.</h6>
 
 ```json
 ProviderType         : PROV_RSA_AES
@@ -968,7 +969,7 @@ IssuerName                                               Hash                   
 ----------                                               ----                                     ------- ------------
 CN=thawte SHA256 Code Signing CA, O="thawte, Inc.", C=US 259e2142575482b958a102aa64129fe7d3f9035a       3 3309fadb8da0ed2efa1e1d691e36022d
 ```
-###### In addition, this is interesting to see that the loader hasn't been the code similarity and some parts have developed by different people, this can be code pick at forums or requested an developed by another person. As example, the code uses all the time ```C i = i + 1``` for increments the index or process, on the RC4 decryption method, this uses the condensed version ```C i += 1``` for all the operations of increments.
+###### In addition, this is interesting to see that the loader hasn't been the code similarity and some parts have developed by different people, this can be code picked from forums or requested and developed by another person. As example, the code uses all the time ``` i = i + 1 ``` for increments the index or process, on the RC4 decryption method, this uses the condensed version ``` i += 1 ``` for all the operations of increments.
 
 <h6>This seems want target the pension fund of First Atlantic Health Care organization, a copy fo the decoy document can be viewed <a href="https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/Additional%20Analysis/Terraloader/02-01-20/Document.txt">here</a>.</h6>
 
@@ -978,6 +979,12 @@ CN=thawte SHA256 Code Signing CA, O="thawte, Inc.", C=US 259e2142575482b958a102a
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Additional%20Analysis/Terraloader/02-01-20/pictures/cyber.png">
 </p>
+<h2>Events graph<a name="graph"></a></h2>
+<h6>This graph shows the events during the execution of the cyber kill chains :</h6>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Additional%20Analysis/Terraloader/02-01-20/pictures/Terraloader.png">
+</p>
+
 <h2> Indicators Of Compromise (IOC) <a name="IOC"></a></h2>
 <h6> List of all the Indicators Of Compromise (IOC)</h6>
 
