@@ -1,0 +1,14 @@
+[
+    {
+        "Indicator":  "569590b6fc4ec9d482223f7cb077973084cfcb7a22b64aa9e75047ca9bc09eb6",
+        "Description":  "Job Description.js"
+    },
+    {
+        "Indicator":  "91697faf2e820b809f75991df861e34635f8f31f931f8a4b03d7d9a4e8d4ee56",
+        "Description":  "dll payload"
+    },
+    {
+        "Indicator":  "4e03abcc149e9d36f2645033e17ec215f454bc494304b30975ed5639ad26caea",
+        "Description":  "Decoy document"
+    }
+]
