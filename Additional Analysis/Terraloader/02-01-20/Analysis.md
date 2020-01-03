@@ -15,7 +15,7 @@
 
 <h2>Malware analysis <a name="Malware-analysis"></a></h2>
 <h3>First layer<a name="first"></a></h3>
-<h6>This analysis presents a JavaScript loader (Terraloader) using many arrays, calculations and variables in memory for making harder the analysis and lowering the detection rate on antivirus. This loader has two stagers.</h6>
+<h6>This analysis presents a JavaScript loader (Terraloader) using many arrays, calculations and variables in memory for making harder the analysis and lowering the detection rate on antivirus. This loader has two stagers. this follows the analysis of <a href="https://twitter.com/VK_Intel">Vitali Kremez</a>(cf links [tweet + anyrun]).</h6>
 <h6>The first block of the payload is the globals values used for decode the first layer, this gives the tab of values as key, the offset, the base of characters and the rest for initialized the variables used for the second stage.</h6>
 
 ```javascript
@@ -653,7 +653,7 @@ function main()
 |index|18|
 |offset|21|
 |tab|[98,72,102,109,106,112,83,117,101,117,65,79,115,68,88,116,104,108,49,57,57]|
- 
+
 <h6>Once this done, this check again for be ensure that the process have been done and launch the second layer.</h6>
 
  ```javascript 
@@ -680,7 +680,7 @@ main();
 ```
 
 <h6>List of the main objects used for the second layer : </h6>
-
+  
 |Variable|Role|
 | :-------------: |:-------------:|
 |blawp868|Second layer payload|
@@ -1013,7 +1013,7 @@ CN=thawte SHA256 Code Signing CA, O="thawte, Inc.", C=US 259e2142575482b958a102a
 <h6> Links Anyrun: <a name="Links-Anyrun"></a></h6>
 
 * [Job Description.js](https://app.any.run/tasks/1b909852-114b-4a4c-8b90-f36016501d6d)
-
+* [frexjobs malicious site](https://app.any.run/tasks/d562b62c-3b2f-4cc1-b4df-29bd0d977c44)
 <h6> Resources : </h6><a name="Ressources"></a>
 
 * [Analysis of TerraLoader sample from Vitali Kremez](https://twitter.com/VK_Intel/status/1211758023376592896)
