@@ -1,0 +1,14 @@
+[
+    {
+        "Indicator":  "Criteria of Army Officers.doc",
+        "Description":  "1cb726eab6f36af73e6b0ed97223d8f063f8209d2c25bed39f010b4043b2b8a1"
+    },
+    {
+        "Indicator":  "ulhtagnias.exe",
+        "Description":  "d2c46e066ff7802cecfcb7cf3bab16e63827c326b051dc61452b896a673a6e67"
+    },
+    {
+        "Indicator":  "198.46.177.73",
+        "Description":  "IP C2"
+    }
+]
