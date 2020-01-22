@@ -1,0 +1,30 @@
+[
+    {
+        "Id":  "T1012",
+        "Name":  "Query Registry",
+        "Type":  "Discovery ",
+        "Description":  "Adversaries may interact with the Windows Registry to gather information about the system, configuration, and installed software.",
+        "URL":  "https://attack.mitre.org/techniques/T1012/"
+    },
+    {
+        "Id":  "T1065",
+        "Name":  "Uncommonly Used Port",
+        "Type":  "Command And Control ",
+        "Description":  "Adversaries may conduct C2 communications over a non-standard port to bypass proxies and firewalls that have been improperly configured.",
+        "URL":  "https://attack.mitre.org/techniques/T1065/"
+    },
+    {
+        "Id":  "T1064",
+        "Name":  "Scripting",
+        "Type":  "Defense Evasion",
+        "Description":  "Adversaries may use scripts to aid in operations and perform multiple actions that would otherwise be manual. Scripting is useful for speeding up operational tasks and reducing the time required to gain access to critical resources. Some scripting languages may be used to bypass process monitoring mechanisms by directly interacting with the operating system at an API level instead of calling other programs. Common scripting languages for Windows include VBScript and PowerShell but could also be in the form of command-line batch scripts.",
+        "URL":  "https://attack.mitre.org/techniques/T1064/"
+    },
+    {
+        "Id":  "T1064",
+        "Name":  "Scripting",
+        "Type":  "Execution",
+        "Description":  "Adversaries may use scripts to aid in operations and perform multiple actions that would otherwise be manual. Scripting is useful for speeding up operational tasks and reducing the time required to gain access to critical resources. Some scripting languages may be used to bypass process monitoring mechanisms by directly interacting with the operating system at an API level instead of calling other programs. Common scripting languages for Windows include VBScript and PowerShell but could also be in the form of command-line batch scripts.",
+        "URL":  "https://attack.mitre.org/techniques/T1064/"
+    }
+]
