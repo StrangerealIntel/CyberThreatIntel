@@ -6,7 +6,6 @@
 * [Indicators Of Compromise (IOC)](#IOC)
 * [Yara Rules](#Yara)
 * [References MITRE ATT&CK Matrix](#Ref-MITRE-ATTACK)
-* [Knowledge Graph](#Knowledge)
 * [Links](#Links)
   + [Original Tweet](#tweet)
   + [Link Anyrun](#Links-Anyrun)
@@ -270,9 +269,112 @@ public void ulhtagniasports_switch()
  catch{this.port_sn = 0;}
  }
 ```
-<h2>Threat Intelligence</h2><a name="Intel"></a></h2>
-<h2> Cyber kill chain <a name="Cyber-kill-chain"></a></h2>
+<h5>Addionnal informations :</h5>
+<ul>
+  <li>ulhtagnias.exe</li>
+  <p align="center">
+<table>
+  <tr>
+    <td>pdb path</td>
+    <td>g:\ulhtagnias\ulhtagnias\obj\Debug\ulhtagnias.pdb</td>
+  </tr>
+  <tr>
+    <td>Compilation time</td>
+    <td>09/01/2020 21:21:34</td>
+  </tr>
+</table>
+</p>
+  <li>Special Benefits.docx</li>
+  <p align="center">
+<table>
+  <tr>
+    <td>Creator</td>
+    <td>Dell-R</td>
+  </tr>
+   <tr>
+    <td>Last Modified By</td>
+    <td>Bipin</td>
+  </tr>
+    <tr>
+    <td>Creation date</td>
+    <td>2020-01-15 10:02:00</td>
+  </tr>
+    <tr>
+    <td>Last Modified Date</td>
+    <td>2020-01-17 04:41:00</td>
+  </tr>
+  <tr>
+    <td>Software used</td>
+    <td>Microsoft Office Word 12.0 (2007)</td>
+  </tr>
+</table>
+</p>
+  <li>Criteria of Army Officers.doc</li>
+   <p align="center">
+<table>
+  <tr>
+    <td>Creator</td>
+    <td>Bipin</td>
+  </tr>
+   <tr>
+    <td>Last Modified By</td>
+    <td>Bipin</td>
+  </tr>
+    <tr>
+    <td>Creation date</td>
+    <td>2020-01-12 07:14:43/td>
+  </tr>
+    <tr>
+    <td>Last Modified Date</td>
+    <td>2020-01-12 07:14:43</td>
+  </tr>
+  <tr>
+    <td>Software used</td>
+    <td>Microsoft Office Word 12.0 (2007)</td>
+  </tr>
+</table>
+</p>
+  <li>7All Selected list.xls</li>
+   <p align="center">
+<table>
+  <tr>
+    <td>Creator</td>
+    <td></td>
+  </tr>
+   <tr>
+    <td>Last Modified By</td>
+    <td></td>
+  </tr>
+    <tr>
+    <td>Creation date</td>
+    <td>2020-01-12 07:04:53/td>
+  </tr>
+    <tr>
+    <td>Last Modified Date</td>
+    <td>2020-01-12 07:08:59</td>
+  </tr>
+  <tr>
+    <td>Software used</td>
+    <td>Microsoft Office Word 12.0 (2007)</td>
+  </tr>
+</table>
+</p>
+</ul> 
 
+
+
+
+<h2>Threat Intelligence</h2><a name="Intel"></a></h2>
+<h6>This operation uses the recent event of the 72nd year of the independence of the Indian armed forces. The Transparant Tribe group specializes in its field of attack in the Indian armed forces. </h6>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Pakistan/APT/Transparent%20Tribe/22-01-20/picture/lure.png">
+</p>
+<h6>The main purpose of this operation is not to obtain more information from arms tests since the lasts month by the various Indian armed groups but, first of all, to collect identities and credentials to conduct more extensive operations. come.</h6>
+<h2> Cyber kill chain <a name="Cyber-kill-chain"></a></h2>
+<h6>This process graph represent the cyber kill chain of the maldoc vector.</h6>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Pakistan/APT/Transparent%20Tribe/22-01-20/picture/cyber.png">
+</p>
 <h2> Indicators Of Compromise (IOC) <a name="IOC"></a></h2>
 <h6> List of all the Indicators Of Compromise (IOC)</h6>
 
@@ -296,11 +398,6 @@ public void ulhtagniasports_switch()
 <h6> This can be exported as JSON format <a href="https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/Pakistan/APT/Transparent%20Tribe/22-01-20/json/Mitre-APT36-22-01-20.json">Export in JSON</a></h6>
 <h2>Yara Rules<a name="Yara"></a></h2>
 <h6> A list of YARA Rule is available <a href="">here</a></h6>
-<h2>Knowledge Graph<a name="Knowledge"></a></h2><a name="Know"></a>
-<h6>The following diagram shows the relationships of the techniques used by the groups and their corresponding malware:</h6>
-<p align="center">
-  <img src="">
-</p>
 <h2>Links <a name="Links"></a></h2>
 <h6> Original tweet: </h6><a name="tweet"></a>
 
