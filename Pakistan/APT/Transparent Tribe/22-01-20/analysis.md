@@ -12,7 +12,7 @@
   + [Ressources](#Ressources)
 
 <h2>Malware analysis <a name="Malware-analysis"></a></h2>
-<h6> The initial vector is from a decoy document probably shared from a spear-phishing, this document have two links for download additionnal informations. The both maldoc , this use a macro for extract and execute the PE file depends on the version of the operating system.</h6>
+<h6>The initial vector is from a decoy document probably shared from a spear-phishing (a copy of the content can be viewed <a href="https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/Pakistan/APT/Transparent%20Tribe/22-01-20/Content_Decoy.txt">here</a>), this document have two links for download additionals informations. The both maldoc , this uses a macro for extract and executes the PE file depends on the version of the operating system.</h6>
 
 ```vb
 Sub unMoferzip(Fname As Variant, FileNameFolder As Variant)
@@ -59,7 +59,7 @@ Sub MoferfileLdr()
 End Sub
 ```
 
-<h6>The .NET implant begin to load the recon actions, push a timer for sleep the process and try to join the C2. </h6>
+<h6>The .NET implant begins to load the recon actions, push a timer for sleep the process and try to join the C2. </h6>
 
 ```csharp
 public void ulhtagniasdo_start()
@@ -76,7 +76,7 @@ public void ulhtagniasdo_start()
 }
 ```
 
-<h6>Once the connexion is etablish with the C2, this send the informations of user, system, sensible AV (who detect it easily) and this repertory (here from a trace of the TCP stream of an Anyrun sandbox)</h6>
+<h6>Once the connexion is establish with the C2, this sends the informations of the user, system, sensible AV (who detect it easily) and this repertory (here from a trace of the TCP stream of an Anyrun sandbox)</h6>
 
 ``` .....info=command.....ulhtagnias-info=user8....|USER-PC|admin||6>1|S.P.1.3|| ||C:\ProgramData\DeIA-WIR\.....clping=Ping.....clping=Ping```
 
@@ -213,12 +213,12 @@ public static string ulhtagniasOsname()
 </table> 
 </p>
 
-<h6>On the RAT, one of two byte array is used for triggered the detection of a sensible AV</h6>
+<h6>On the RAT, one of two byte array is used for triggering the detection of a sensible AV.</h6>
 
 ```csharp
 public static byte[] encAvs = new byte[]{98,100,115,115,61,66,105,116,32,68,101,102,101,110,100,101,114,44,111,110,108,105,110,101,110,116,61,81,46,72,101,97,108,44,98,100,97,103,101,110,116,61,66,105,116,32,68,101,102,101,110,100,101,114,32,65,103,101,110,116,44,109,115,115,101,99,101,115,61,77,83,32,69,115,115,101,110,116,105,97,108,115,44,102,115,115,109,51,50,61,70,83,101,99,117,114,101,44,97,118,112,61,75,97,115,112,101,114,115,107,121,44,97,118,103,110,116,61,65,118,105,114,97,44,115,112,98,98,99,115,118,99,61,83,121,109,97,110,116,101,99,44,117,112,100,97,116,101,114,117,105,61,77,99,65,102,101,101,44,97,118,103,117,105,61,65,86,71,44,97,118,103,99,99,61,65,86,71,44,109,98,97,109,61,65,110,116,32,77,97,108,119,97,114,101,44,97,118,97,115,116,117,105,61,65,118,97,115,116,44,97,118,97,115,116,61,65,118,97,115,116};
 ```
-<h6>This can easily viewable in oneliner (UTF8 + Getstring) and show the list of sensible AV to detect</h6>
+<h6>This can be easily viewable in an oneliner (UTF8 + Getstring) and show the list of sensible AV to detect.</h6>
   
 ```csharp
 PS> ([System.Text.Encoding]::UTF8.GetString($encAvs)).split(",")
@@ -238,14 +238,14 @@ avastui=Avast
 avast=Avast 
  ```
   
-<h6>With the same logic, we can get the content of the second array which get the IP of the C2 to contact</h6>
+<h6>With the same logic, we can get the content of the second array which get the IP of the C2 to contact.</h6>
 
 ```csharp
 PS> ([System.Text.Encoding]::UTF8.GetString($tab)).split(",")   
 198.46.177.73
 ```
 
-<h6>Some identifiers like name of user, defaultIP and logname can be found </h6>
+<h6>Some identifiers like the name of user, default IP and logname can be found.</h6>
 
 ```csharp
 public static string ulhtagniasmainApp = "ulhtagnias|ulhtagnias".Split(new char[]{'|'})[0];
@@ -254,7 +254,7 @@ public static string ulhtagniasremvUser = "drlarmn|ulhtagnias".Split(new char[]{
 public static string ulhtagniasfilesLogs = "rndlbes".Split(new char[]{'|'})[0];}
 public static string ulhtagniasdefaultP = "122.200.110.101|ulhtagnias".Split(new char[]{'|'})[0];
 ```
-<h6>This connect on the default port (6421) and can switch depending on the needs of the operations</h6>
+<h6>This connects on the default port (6421) and can switch depending on the needs of the operations.</h6>
 
 ```csharp
 public static int[] ports = new int[]{6421,4920,10422,14823,16824};
@@ -280,7 +280,7 @@ public void ulhtagniasports_switch()
   </tr>
   <tr>
     <td>Compilation time</td>
-    <td>09/01/2020 21:21:34</td>
+    <td>2020-01-09 21:21:34</td>
   </tr>
 </table>
 </p>
@@ -322,7 +322,7 @@ public void ulhtagniasports_switch()
   </tr>
     <tr>
     <td>Creation date</td>
-    <td>2020-01-12 07:14:43/td>
+    <td>2020-01-12 07:14:43</td>
   </tr>
     <tr>
     <td>Last Modified Date</td>
@@ -347,7 +347,7 @@ public void ulhtagniasports_switch()
   </tr>
     <tr>
     <td>Creation date</td>
-    <td>2020-01-12 07:04:53/td>
+    <td>2020-01-12 07:04:53</td>
   </tr>
     <tr>
     <td>Last Modified Date</td>
@@ -360,16 +360,15 @@ public void ulhtagniasports_switch()
 </table>
 </p>
 </ul> 
-
-
+<h5>Several interesting things are to be reported. Firstly, the NET implant was designed first for the event, secondly, the maldoc are planned before the idea of the decoy document to download them. The Bipin account often comes up in Transparent Tribe campaigns, possibly it is responsible for the development of malicious tools, in this logic the other "Dell-R" account would be responsible for the templates of the decoys.The fact that the document is delivered after the celebration is not a problem in the logic that it should be given as a reward after the event, so the team could hang longer than if it would have an announcement related only to the day of the event.</h5>
 
 
 <h2>Threat Intelligence</h2><a name="Intel"></a></h2>
-<h6>This operation uses the recent event of the 72nd year of the independence of the Indian armed forces. The Transparant Tribe group specializes in its field of attack in the Indian armed forces. </h6>
+<h6>This operation uses the recent event of the 72nd year of the independence of the Indian armed forces. The Transparent Tribe group specializes in its field of attack in the Indian armed forces. </h6>
 <p align="center">
   <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/Pakistan/APT/Transparent%20Tribe/22-01-20/picture/lure.png">
 </p>
-<h6>The main purpose of this operation is not to obtain more information from arms tests since the lasts month by the various Indian armed groups but, first of all, to collect identities and credentials to conduct more extensive operations. come.</h6>
+<h6>The main purpose of this operation isn't to obtain more information from arms tests since the lasts month by the various Indian armed groups but, first of all, to collect identities and credentials to conduct more extensive operations.</h6>
 <h2> Cyber kill chain <a name="Cyber-kill-chain"></a></h2>
 <h6>This process graph represent the cyber kill chain of the maldoc vector.</h6>
 <p align="center">
@@ -380,7 +379,9 @@ public void ulhtagniasports_switch()
 
 |Indicator|Description|
 | ------------- |:-------------:|
+|Special Benefits.docx|6c9c6966ce269bbcab164aca3c3f0231af1f7b26a18e5abc927b2ccdd9499368|
 |Criteria of Army Officers.doc|1cb726eab6f36af73e6b0ed97223d8f063f8209d2c25bed39f010b4043b2b8a1|
+|7All Selected list.xls|2aa160726037e80384672e89968ab4d2bd3b7f5ca3dfa1b9c1ecc4d1647a63f0|
 |ulhtagnias.exe|d2c46e066ff7802cecfcb7cf3bab16e63827c326b051dc61452b896a673a6e67|
 |198.46.177.73|IP C2|
 
