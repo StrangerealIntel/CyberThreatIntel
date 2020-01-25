@@ -398,7 +398,7 @@ public void ulhtagniasports_switch()
 
 <h6> This can be exported as JSON format <a href="https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/Pakistan/APT/Transparent%20Tribe/22-01-20/json/Mitre-APT36-22-01-20.json">Export in JSON</a></h6>
 <h2>Yara Rules<a name="Yara"></a></h2>
-<h6> A list of YARA Rule is available <a href="">here</a></h6>
+<h6> A list of YARA Rule is available <a href="https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/Pakistan/APT/Transparent%20Tribe/22-01-20/yara/YARA_Rule_APT36_Jan_2020.yar">here</a></h6>
 <h2>Links <a name="Links"></a></h2>
 <h6> Original tweet: </h6><a name="tweet"></a>
 
