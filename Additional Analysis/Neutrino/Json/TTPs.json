@@ -1,0 +1,51 @@
+[
+    {
+        "Id":  "T1012",
+        "Name":  "Query Registry",
+        "Type":  "Discovery ",
+        "Description":  "Adversaries may interact with the Windows Registry to gather information about the system, configuration, and installed software.",
+        "URL":  "https://attack.mitre.org/techniques/T1012/"
+    },
+    {
+        "Id":  "T1059",
+        "Name":  "Command-Line Interface",
+        "Type":  "Execution ",
+        "Description":  "Command-line interfaces provide a way of interacting with computer systems and is a common feature across many types of operating system platforms. One example command-line interface on Windows systems is cmd, which can be used to perform a number of tasks including execution of other software. Command-line interfaces can be interacted with locally or remotely via a remote desktop application, reverse shell session, etc. Commands that are executed run with the current permission level of the command-line interface process unless the command includes process invocation that changes permissions context for that execution (e.g. Scheduled Task).",
+        "URL":  "https://attack.mitre.org/techniques/T1059/"
+    },
+    {
+        "Id":  "T1060",
+        "Name":  "Registry Run Keys / Startup Folder",
+        "Type":  "Persistence ",
+        "Description":  "Adding an entry to the \"run keys\" in the Registry or startup folder will cause the program referenced to be executed when a user logs in. These programs will be executed under the context of the user and will have the account\u0027s associated permissions level.",
+        "URL":  "https://attack.mitre.org/techniques/T1060/"
+    },
+    {
+        "Id":  "T1082",
+        "Name":  "System Information Discovery",
+        "Type":  "Discovery ",
+        "Description":  "An adversary may attempt to get detailed information about the operating system and hardware, including version, patches, hotfixes, service packs, and architecture.",
+        "URL":  "https://attack.mitre.org/techniques/T1082/"
+    },
+    {
+        "Id":  "T1089",
+        "Name":  "Disabling Security Tools",
+        "Type":  "Defense Evasion ",
+        "Description":  "Adversaries may disable security tools to avoid possible detection of their tools and activities. This can take the form of killing security software or event logging processes, deleting Registry keys so that tools do not start at run time, or other methods to interfere with security scanning or event reporting.",
+        "URL":  "https://attack.mitre.org/techniques/T1089/"
+    },
+    {
+        "Id":  "T1106",
+        "Name":  "Execution through API",
+        "Type":  "Execution ",
+        "Description":  "Adversary tools may directly use the Windows application programming interface (API) to execute binaries. Functions such as the Windows API CreateProcess will allow programs and scripts to start other processes with proper path and argument parameters.",
+        "URL":  "https://attack.mitre.org/techniques/T1106/"
+    },
+    {
+        "Id":  "T1204",
+        "Name":  "User Execution",
+        "Type":  "Execution ",
+        "Description":  "An adversary may rely upon specific actions by a user in order to gain execution. This may be direct code execution, such as when a user opens a malicious executable delivered via Spearphishing Attachment with the icon and apparent extension of a document file. It also may lead to other execution techniques, such as when a user clicks on a link delivered via Spearphishing Link that leads to exploitation of a browser or application vulnerability via Exploitation for Client Execution. While User Execution frequently occurs shortly after Initial Access it may occur at other phases of an intrusion, such as when an adversary places a file in a shared directory or on a user\u0027s desktop hoping that a user will click on it.",
+        "URL":  "https://attack.mitre.org/techniques/T1204/"
+    }
+]
