@@ -1,0 +1,94 @@
+[
+    {
+        "Indicator":  "c4ad847c748521baaa76de1d2fbadd9c6f4801f2f3da72f75735c1262b92af3c",
+        "Description":  "impor.doc"
+    },
+    {
+        "Indicator":  "c0355c2a7241cb9f764297cf4e7e758116c82db35f909cf18091ec2085fe23ce",
+        "Description":  "jevgr.exe"
+    },
+    {
+        "Indicator":  "nurofenpanadol.su",
+        "Description":  "Domain C2"
+    },
+    {
+        "Indicator":  "ns.dotbit.me",
+        "Description":  "Domain C2"
+    },
+    {
+        "Indicator":  "alors.deepdns.cryptostorm.net",
+        "Description":  "Domain C2"
+    },
+    {
+        "Indicator":  "onyx.deepdns.cryptostorm.net",
+        "Description":  "Domain C2"
+    },
+    {
+        "Indicator":  "ns1.any.dns.d0wn.biz",
+        "Description":  "Domain C2"
+    },
+    {
+        "Indicator":  "ns1.random.dns.d0wn.biz",
+        "Description":  "Domain C2"
+    },
+    {
+        "Indicator":  "ns2.random.dns.d0wn.biz",
+        "Description":  "Domain C2"
+    },
+    {
+        "Indicator":  "civet.ziphaze.com",
+        "Description":  "Domain C2"
+    },
+    {
+        "Indicator":  "anyone.dnsrec.meo.ws",
+        "Description":  "Domain C2"
+    },
+    {
+        "Indicator":  "ist.fellig.org",
+        "Description":  "Domain C2"
+    },
+    {
+        "Indicator":  "ns1.sg.dns.d0wn.biz",
+        "Description":  "Domain C2"
+    },
+    {
+        "Indicator":  "ns2.fr.dns.d0wn.biz",
+        "Description":  "Domain C2"
+    },
+    {
+        "Indicator":  "ns1.nl.dns.d0wn.biz",
+        "Description":  "Domain C2"
+    },
+    {
+        "Indicator":  "178.17.170.133",
+        "Description":  "IP C2"
+    },
+    {
+        "Indicator":  "107.161.16.236",
+        "Description":  "IP C2"
+    },
+    {
+        "Indicator":  "46.254.21.69",
+        "Description":  "IP C2"
+    },
+    {
+        "Indicator":  "185.14.29.140",
+        "Description":  "IP C2"
+    },
+    {
+        "Indicator":  "37.187.0.40",
+        "Description":  "IP C2"
+    },
+    {
+        "Indicator":  "178.63.145.236",
+        "Description":  "IP C2"
+    },
+    {
+        "Indicator":  "95.85.9.86",
+        "Description":  "IP C2"
+    },
+    {
+        "Indicator":  "128.199.248.105",
+        "Description":  "IP C2"
+    }
+]
