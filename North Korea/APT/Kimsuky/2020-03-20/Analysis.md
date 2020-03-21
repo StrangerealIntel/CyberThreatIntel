@@ -417,7 +417,8 @@ main
 ```
    
 <h2>Threat Intelligence</h2><a name="Intel"></a></h2>
-#### Similarities between the different versions of kimsuky
+
+### Similarities between the different versions of kimsuky
 
 <h6>Some similarities can be observed :</h6>
 <ul>
@@ -448,6 +449,10 @@ main
 </tr>
 </table>
 </ul>
+
+<h6>As also noted by <a href="https://twitter.com/cyberwar_15">cyberwar15</a>, subdomains of the South Korean domain mireene.com are targeted.</h6>
+<img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Kimsuky/2020-03-20/Pictures/domain.png"></img>
+
 
 <h6>The domains have the same output IP too and are located in South Korea :</h6>
 
@@ -482,15 +487,24 @@ main
 <h2> Indicators Of Compromise (IOC) <a name="IOC"></a></h2>
 <h6> List of all the Indicators Of Compromise (IOC)</h6>
 
-|Indicator|Description|
-| ------------- |:-------------:|
-|Special Benefits.docx|6c9c6966ce269bbcab164aca3c3f0231af1f7b26a18e5abc927b2ccdd9499368|
-|Criteria of Army Officers.doc|1cb726eab6f36af73e6b0ed97223d8f063f8209d2c25bed39f010b4043b2b8a1|
-|7All Selected list.xls|2aa160726037e80384672e89968ab4d2bd3b7f5ca3dfa1b9c1ecc4d1647a63f0|
-|ulhtagnias.exe|d2c46e066ff7802cecfcb7cf3bab16e63827c326b051dc61452b896a673a6e67|
-|198.46.177.73|IP C2|
+|Type|Indicator|Description|
+|:-------------:| ------------- |:-------------:|
+|SHA-256|1fcd9892532813a27537f4e1a1c21ec0c110d6b3929602750ed77bbba7caa426|붙임. 전문가 칼럼 원고 작성 양식.doc|
+|SHA-256|828a5527e25e3cab4e97ed25ec2b3d2d7cdf22f868101a33802598cc974d6db4|flower01.ps1|
+|URL|http://mybobo.mygamesonline.org/flower01/flower01.ps1|URL delivery|
+|Domain|mybobo.mygamesonline.org|Domain C2|
+|IP|185.176.43.82|IP C2|
+|URL|http://mybobo.mygamesonline.org/flower01/post.php|URL C2|
+|SHA-256|7d2b9f391588cc07d9ba78d652819d32d3d79e5a74086b527c32126ad88b5015|COVID-19 and North Korea.docx|
+|URL|http://crphone.mireene.com/plugin/editor/Templates/normal.php?name=web|URL delivery|
+|SHA-256|144242e42335b015145100dbaebf902df3403244921cf81402f67778959c642|web.dotm|
+|URL|http://crphone.mireene.com/plugin/editor/Templates/filedown.php?name=v1|URL delivery|
+|SHA-256|0588510dddbd802a5a95fa299d8fa7235b0c270236cbaf51e5b57536222226bf|V1.py|
+|SHA-256|7f83912127f5b9680ff57581fc40123c21257bd8e186d7cab4c838a867bb137f|V60.py|
+|URL|http://crphone.mireene.com/plugin/editor/Templates/filedown.php?name=new|URL delivery|
+|URL|http://crphone.mireene.com/plugin/editor/Templates/upload.php|URL C2|
 
-<h6> The IOC can be exported in <a href="https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/Pakistan/APT/Transparent%20Tribe/22-01-20/json/ioc.json">JSON</a></h6>
+<h6> The IOC can be exported in <a href="https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/North%20Korea/APT/Kimsuky/2020-03-20/JSON/IOC-Kimsuky-2020-03-20.json">JSON</a></h6>
 
 <h2> References MITRE ATT&CK Matrix <a name="Ref-MITRE-ATTACK"></a></h2>
 
