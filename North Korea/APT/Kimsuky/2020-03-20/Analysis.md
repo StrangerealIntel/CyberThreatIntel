@@ -496,14 +496,15 @@ main
 
 |Enterprise tactics|Technics used|Ref URL|
 | :---------------: |:-------------| :------------- |
-|Discovery|Query Registry|https://attack.mitre.org/techniques/T1012/|
-|C&C|Uncommonly Used Port|https://attack.mitre.org/techniques/T1065/|
+|Execution|Scripting<br>PowerShell|https://attack.mitre.org/techniques/T1064/<br>https://attack.mitre.org/techniques/T1086/|
+|Persistence|Registry Run Keys / Startup Folder|https://attack.mitre.org/techniques/T1060/|
 |Defense Evasion|Scripting|https://attack.mitre.org/techniques/T1064/|
-|Execution|Scripting|https://attack.mitre.org/techniques/T1064/|
+|Discovery|Query Registry<br>Process Discovery<br>System Information Discovery|https://attack.mitre.org/techniques/T1012/<br>https://attack.mitre.org/techniques/T1057/<br>https://attack.mitre.org/techniques/T1082/|
 
-<h6> This can be exported as JSON format <a href="https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/Pakistan/APT/Transparent%20Tribe/22-01-20/json/Mitre-APT36-22-01-20.json">Export in JSON</a></h6>
+
+<h6> This can be exported as JSON format <a href="https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/North%20Korea/APT/Kimsuky/2020-03-20/JSON/Mitre-Kimsuky-2020-03-20.json">Export in JSON</a></h6>
 <h2>Yara Rules<a name="Yara"></a></h2>
-<h6> A list of YARA Rule is available <a href="https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/Pakistan/APT/Transparent%20Tribe/22-01-20/yara/YARA_Rule_APT36_Jan_2020.yar">here</a></h6>
+<h6> A list of YARA Rule is available <a href="https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/North%20Korea/APT/Kimsuky/2020-03-20/Rules/Yara_Rule_Kimsuky_2020_03_20.yar">here</a></h6>
 <h2>Links <a name="Links"></a></h2>
 <h6> Original tweets: </h6><a name="tweet"></a>
 
