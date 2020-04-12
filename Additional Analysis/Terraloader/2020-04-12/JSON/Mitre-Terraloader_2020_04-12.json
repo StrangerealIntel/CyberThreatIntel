@@ -1,0 +1,44 @@
+[
+    {
+        "Id":  "T1012",
+        "Name":  "Query Registry",
+        "Type":  "Discovery ",
+        "Description":  "Adversaries may interact with the Windows Registry to gather information about the system, configuration, and installed software.",
+        "URL":  "https://attack.mitre.org/techniques/T1012/"
+    },
+    {
+        "Id":  "T1047",
+        "Name":  "Windows Management Instrumentation",
+        "Type":  "Execution ",
+        "Description":  "Windows Management Instrumentation (WMI) is a Windows administration feature that provides a uniform environment for local and remote access to Windows system components. It relies on the WMI service for local and remote access and the server message block (SMB) and Remote Procedure Call Service (RPCS) for remote access. RPCS operates over port 135.",
+        "URL":  "https://attack.mitre.org/techniques/T1047/"
+    },
+    {
+        "Id":  "T1059",
+        "Name":  "Command-Line Interface",
+        "Type":  "Execution ",
+        "Description":  "Command-line interfaces provide a way of interacting with computer systems and is a common feature across many types of operating system platforms. One example command-line interface on Windows systems is cmd, which can be used to perform a number of tasks including execution of other software. Command-line interfaces can be interacted with locally or remotely via a remote desktop application, reverse shell session, etc. Commands that are executed run with the current permission level of the command-line interface process unless the command includes process invocation that changes permissions context for that execution (e.g. Scheduled Task).",
+        "URL":  "https://attack.mitre.org/techniques/T1059/"
+    },
+    {
+        "Id":  "T1060",
+        "Name":  "Registry Run Keys / Startup Folder",
+        "Type":  "Persistence ",
+        "Description":  "Adding an entry to the \"run keys\" in the Registry or startup folder will cause the program referenced to be executed when a user logs in. These programs will be executed under the context of the user and will have the account\u0027s associated permissions level.",
+        "URL":  "https://attack.mitre.org/techniques/T1060/"
+    },
+    {
+        "Id":  "T1129",
+        "Name":  "Execution through Module Load",
+        "Type":  "Execution ",
+        "Description":  "The Windows module loader can be instructed to load DLLs from arbitrary local paths and arbitrary Universal Naming Convention (UNC) network paths. This functionality resides in NTDLL.dll and is part of the Windows Native API which is called from functions like CreateProcess(), LoadLibrary(), etc. of the Win32 API.",
+        "URL":  "https://attack.mitre.org/techniques/T1129/"
+    },
+    {
+        "Id":  "T1130",
+        "Name":  "Install Root Certificate",
+        "Type":  "Defense Evasion ",
+        "Description":  "Root certificates are used in public key cryptography to identify a root certificate authority (CA). When a root certificate is installed, the system or application will trust certificates in the root\u0027s chain of trust that have been signed by the root certificate. Certificates are commonly used for establishing secure TLS/SSL communications within a web browser. When a user attempts to browse a website that presents a certificate that is not trusted an error message will be displayed to warn the user of the security risk. Depending on the security settings, the browser may not allow the user to establish a connection to the website.",
+        "URL":  "https://attack.mitre.org/techniques/T1130/"
+    }
+]
