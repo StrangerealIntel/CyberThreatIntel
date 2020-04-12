@@ -1,0 +1,22 @@
+[
+    {
+        "Type":  "SHA256",
+        "Indicator":  "dd61541351f8040c26cb1efdaef15fdb041498db7b2982ed5af47a07dea12151",
+        "Description":  "dd61541351f8040c26cb1efdaef15fdb041498db7b2982ed5af47a07dea12151.sct"
+    },
+    {
+        "Type":  "SHA256",
+        "Indicator":  "38f3a52e1ebd93db75f0fb6ce6172565cc0f27f0f86f32f470fa7a9c8de9f094",
+        "Description":  "23619.ocx"
+    },
+    {
+        "Type":  "Domain",
+        "Indicator":  "maps.doaglas.com",
+        "Description":  "Domain C2"
+    },
+    {
+        "Type":  "IP",
+        "Indicator":  "190.10.8.23",
+        "Description":  "IP C2"
+    }
+]
