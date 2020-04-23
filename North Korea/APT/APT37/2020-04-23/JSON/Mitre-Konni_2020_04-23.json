@@ -1,0 +1,65 @@
+[
+    {
+       "Id": "T1007",
+       "Name": "System Service Discovery",
+       "Type": "Discovery",
+       "Description": "Adversaries may try to get information about registered services. Commands that may obtain information about services using operating system utilities are \"sc,\" \"tasklist /svc\" using Tasklist, and \"net start\" using Net, but adversaries may also use other tools as well.",
+       "URL": "https://attack.mitre.org/techniques/T1007"
+    },
+    {
+       "Id": "T1012",
+       "Name": "Query Registry",
+       "Type": "Discovery",
+       "Description": "Adversaries may interact with the Windows Registry to gather information about the system, configuration, and installed software.",
+       "URL": "https://attack.mitre.org/techniques/T1012"
+    },
+    {
+       "Id": "T1031",
+       "Name": "Modify Existing Service",
+       "Type": "Persistence",
+       "Description": "Windows service configuration information, including the file path to the service\u0027s executable or recovery programs/commands, is stored in the Registry. Service configurations can be modified using utilities such as sc.exe and Reg.",
+       "URL": "https://attack.mitre.org/techniques/T1031"
+    },
+    {
+       "Id": "T1050",
+       "Name": "New Service",
+       "Type": "Persistence, Privilege Escalation",
+       "Description": "When operating systems boot up, they can start programs or applications called services that perform background system functions. A service\u0027s configuration information, including the file path to the service\u0027s executable, is stored in the Windows Registry.",
+       "URL": "https://attack.mitre.org/techniques/T1050"
+    },
+    {
+       "Id": "T1059",
+       "Name": "Command-Line Interface",
+       "Type": "Execution",
+       "Description": "Command-line interfaces provide a way of interacting with computer systems and is a common feature across many types of operating system platforms. One example command-line interface on Windows systems is cmd, which can be used to perform a number of tasks including execution of other software. Command-line interfaces can be interacted with locally or remotely via a remote desktop application, reverse shell session, etc. Commands that are executed run with the current permission level of the command-line interface process unless the command includes process invocation that changes permissions context for that execution (e.g. Scheduled Task).",
+       "URL": "https://attack.mitre.org/techniques/T1059"
+    },
+    {
+       "Id": "T1106",
+       "Name": "Execution through API",
+       "Type": "Execution",
+       "Description": "Adversary tools may directly use the Windows application programming interface (API) to execute binaries. Functions such as the Windows API CreateProcess will allow programs and scripts to start other processes with proper path and argument parameters.",
+       "URL": "https://attack.mitre.org/techniques/T1106"
+    },
+    {
+       "Id": "T1112",
+       "Name": "Modify Registry",
+       "Type": "Defense Evasion",
+       "Description": "Adversaries may interact with the Windows Registry to hide configuration information within Registry keys, remove information as part of cleaning up, or as part of other techniques to aid in Persistence and Execution.",
+       "URL": "https://attack.mitre.org/techniques/T1112"
+    },
+    {
+       "Id": "T1140",
+       "Name": "Deobfuscate/Decode Files or Information",
+       "Type": "Defense Evasion",
+       "Description": "Adversaries may use Obfuscated Files or Information to hide artifacts of an intrusion from analysis. They may require separate mechanisms to decode or deobfuscate that information depending on how they intend to use it. Methods for doing that include built-in functionality of malware, Scripting, PowerShell, or by using utilities present on the system.",
+       "URL": "https://attack.mitre.org/techniques/T1140"
+    },
+    {
+       "Id": "T1024",
+       "Name": "Custom Cryptographic Protocol",
+       "Type": "Command And Control",
+       "Description": "Adversaries may use a custom cryptographic protocol or algorithm to hide command and control traffic. A simple scheme, such as XOR-ing the plaintext with a fixed key, will produce a very weak ciphertext.",
+       "URL": "https://attack.mitre.org/techniques/T1024"
+    }	
+]
