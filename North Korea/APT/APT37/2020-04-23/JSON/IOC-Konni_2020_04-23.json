@@ -1,0 +1,57 @@
+[
+    {
+        "Type":  "SHA256",
+        "Indicator":  "1eaea49f4757583554c0db396647c3d5a51293266113c07e129b8e3d43f4ce18",
+        "Description":  "guidance.doc"
+    },
+    {
+        "Type":  "SHA256",
+        "Indicator":  "6f8ffb978fad488756970a5dfe8383d6442367560af5a37d8eebefd1eba169c9",
+        "Description":  "up.exe"
+    },
+    {
+        "Type":  "SHA256",
+        "Indicator":  "c06a18eca71f326cb1e5e87616599057f1e6489711dfee1467132addb006c779",
+        "Description":  "2.dat"
+    },
+    {
+        "Type":  "SHA256",
+        "Indicator":  "e7804c0ca8f74d57013a0ed4a9ace4cfafe6dbdc1ef6c04fb6355316bc6e3526",
+        "Description":  "3.dat"
+    },
+    {
+        "Type":  "SHA256",
+        "Indicator":  "2fb02c4641b719c1311baa453307f984deb1573fa2fc6216511b7d9fbf8bc93d",
+        "Description":  "4.dat"
+    },
+    {
+        "Type":  "SHA256",
+        "Indicator":  "7fb25809913eb39db69a23406a7899265bf9a1c836c644e0a945a03bd9e90477",
+        "Description":  "temp.cab"
+    },
+    {
+        "Type":  "SHA256",
+        "Indicator":  "37d8c5ce01bb0ca86673cdea782db09e0c54ae2643bec83eaea587a7775d0b53",
+        "Description":  "install.bat"
+    },
+    {
+        "Type":  "SHA256",
+        "Indicator":  "97cdd03d754c5a152617a1d26752d8258373b97aa52c6d3a6ae2dc4e0edd03c6",
+        "Description":  "wprint.ini"
+    },
+    {
+        "Type":  "SHA256",
+        "Indicator":  "11750157323eda18b1981399f37765cc0cf157f2b84a8b0656a921c9775c878c",
+        "Description":  "wprint.dll"
+    },
+    {
+        "Type":  "Domain",
+        "Indicator":  "mydownload-202001.c1.biz",
+        "Description":  "Domain C2"
+    },
+    {
+        "Type":  "IP",
+        "Indicator":  "185.176.43.92",
+        "Description":  "IP C2"
+    }
+]
