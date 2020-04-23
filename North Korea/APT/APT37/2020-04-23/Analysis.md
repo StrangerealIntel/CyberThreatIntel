@@ -1,4 +1,4 @@
-## APT 37 strike again 
+## APT 37 strike again ?
 ## Table of Contents
 * [Malware analysis](#Malware-analysis)
 * [Cyber kill chain](#Cyber-kill-chain)
@@ -10,7 +10,7 @@
   + [Articles](#Articles)
 
 <h2>Malware analysis <a name="Malware-analysis"></a></h2>
-<h6>The initial vector is an maldoc with a macro. This launches an auto-open method for decrypt the next stagger, save it and execute it in push as argument the URL to contact. This saves the modification on the document for avoiding to be executing a second time by the victim.</h6>
+<h6>The initial vector is an maldoc with a macro. This launches an auto-open method for decrypt the next stager, save it and execute it in push as argument the URL to contact. This saves the modification on the document for avoiding to be executing a second time by the victim.</h6>
 
 ```vb
 Private Sub Document_Open()
