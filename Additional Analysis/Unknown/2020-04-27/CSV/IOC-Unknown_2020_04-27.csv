@@ -1,0 +1,14 @@
+Type,Indicator,Description
+SHA-256,5c9cf2e4f2392a60cb7fe1d3ca94bda99968c7ee73f908dfc627a6b6d3dc404a,Перечень_документов.docx.lnk
+SHA-256,6e390175ef38af9caad11eafb6f6345fcb19b78bb958b395d8663bd8ed9670ec,Перечень_документов.docx
+SHA-256,ac95d34a008d0ec9deeb3d68afb16b2306a56b6bdc01810072a03b4f6a523586,load.php
+SHA-256,b66174a64c1235c274f6fcd6e1d78641d54ce032aa66e7686b6faf1eeb262237,one.zip
+SHA-256,752b9fe24c357a04b0bdcad4d09e96bbad1bddfac8e637491b4181085eb58632,Рекомендации_МИР.docx.lnk
+SHA-256,1b4883b3895e8d337dd625a08fc3e8a4aa73634cc0669a773503a5fadbe72acf,Рекомендации_МИР.docx
+URL,http://95.179.252.217/load.php,URL delievery
+URL,http://136.244.67.59/web/index.php?r=cmd,URL C2
+URL,http://95.179.252.217/web/index.php?r=cmd,URL C2
+Domain,schedule.winupdate.workers.dev,domain requested
+IP,95.179.252.217,IP C2
+IP,136.244.67.59,IP C2
+IP,104.31.70.75,IP requested
