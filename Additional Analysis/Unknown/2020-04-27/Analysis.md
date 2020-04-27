@@ -646,4 +646,4 @@ switch (${decrypTEd}))
 
 <h6>Articles <a name="Articles"></a></h6>
 
- + [Malware analysis: decoding Emotet, part 2](https://blog.malwarebytes.com/threat-analysis/2018/06/malware-analysis-decoding-emotet-part-2/
+ + [Malware analysis: decoding Emotet, part 2](https://blog.malwarebytes.com/threat-analysis/2018/06/malware-analysis-decoding-emotet-part-2/)
