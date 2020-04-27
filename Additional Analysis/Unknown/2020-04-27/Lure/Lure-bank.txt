@@ -1,0 +1,29 @@
+Filename : Рекомендации_МИР.docx
+Hash: 1b4883b3895e8d337dd625a08fc3e8a4aa73634cc0669a773503a5fadbe72acf
+Original Language: Russian
+
+SRO MiR, on the basis of a response from the Bank of Russia dated 03/27/2020, recommends for the period from March 30 to April 3, 2020:
+1. Limit the number of existing additional offices, as well as the number of employees directly in contact with customers;
+2. If this has not been done for any reason, equip all operating offices with basic protective equipment, such as skin antiseptics or disinfectant wipes. As extended recommendations, use the following recommendations of Rospotrebnadzor “Recommendations to employers on the prevention of coronavirus infection (СOVID-19) among employees” applicable to equipping the MFI client office. (here is the link);
+3. Set up special work schedules for offices, incl. with reduced working hours;
+4. To inform clients of the established schedules by sending messages to the LC on the websites of organizations, publications on the official websites of organizations, etc. SRO MiR is also ready to post relevant information on its resource. You can send it for publication to pr@npmir.ru;
+5. If existing borrowers go into arrears during the indicated period, do not charge fines and penalties under their microloan agreements;
+6. The remuneration of employees involved in the work, including in the remote format, in accordance with the Labor Code of the Russian Federation in double size or with the provision of time off.
+The list of applications for remote work in connection with the situation of the spread of the COVID-19 virus.
+Services for video conferencing
+Zoom This is a popular video calling service worldwide. There is a free (up to 40 minutes) and paid version. It works as a separate desktop and mobile application, also available in the web version.
+Google Meet. Due to the coronavirus, the company made the premium application options free for G Suite users until July 1: you can hold video conferences with 250 participants, stream for 100,000 people. Appointments can be recorded on Google Drive.
+Communication through instant messengers.
+Slack There is a free version. You can communicate in separate channels on topics or teams, as well as with individual users, write comments on messages. There is voice communication and integration with Google documents, Dropbox, Trello, etc.
+Telegram Cross-platform messenger that allows you to exchange messages and media files in many formats. There are versions for both Windows and Mac.
+Microsoft Teams Here you can chat, video calls, integrate with other applications, store and collaborate on files. Because of the COVID-19 virus, Microsoft is giving away the premium version of the service for six months for free.
+Services for working with text and tables.
+Google Docs and the G Suite Business Edition. This is a free text editor available to all Google users as well as businesses. Here you can read, comment and edit text files, tables, presentations together. Files are stored in the cloud on Google Drive, 15 GB of free space is allocated to users.
+Microsoft Office 365. This is a tool for working with Outlook mail, OneDrive file storage, as well as with Microsoft office applications like Word, Excel, PowerPoint, OneNote, SharePoint, Microsoft Teams online.
+Task managers.
+Jira. This is a paid teamwork service, subscription prices start at 700 rubles per month.
+Trello This is a free teamwork service. Here you can assign tasks to specific users, discuss them and monitor the progress of deadlines.
+Basecamp. There are group chats, to do-lists, discussion topics, and tasks. There is a free version limited to three projects, 20 users and 1 GB of space.
+Notion. There is mini CRM, to do-lists for users and task monitoring. There are free and paid versions.
+Monday.com This is a service for planning and tracking the progress of projects, taking into account the time spent.
+Please note that access to the company's local network for remote employees should be carried out exclusively through secure protocols and VPN services. Try to exclude direct remote access to critical systems, such as payment processing, servers that host application source codes. Visas. Try to exclude direct remote access to critical systems such as payment processing, servers that host application source codes.
