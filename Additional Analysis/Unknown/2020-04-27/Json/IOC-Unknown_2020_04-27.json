@@ -1,0 +1,67 @@
+[
+    {
+        "Type":  "SHA-256",
+        "Indicator":  "5c9cf2e4f2392a60cb7fe1d3ca94bda99968c7ee73f908dfc627a6b6d3dc404a",
+        "Description":  "Перечень_документов.docx.lnk"
+    },
+    {
+        "Type":  "SHA-256",
+        "Indicator":  "6e390175ef38af9caad11eafb6f6345fcb19b78bb958b395d8663bd8ed9670ec",
+        "Description":  "Перечень_документов.docx"
+    },
+    {
+        "Type":  "SHA-256",
+        "Indicator":  "ac95d34a008d0ec9deeb3d68afb16b2306a56b6bdc01810072a03b4f6a523586",
+        "Description":  "load.php"
+    },
+    {
+        "Type":  "SHA-256",
+        "Indicator":  "b66174a64c1235c274f6fcd6e1d78641d54ce032aa66e7686b6faf1eeb262237",
+        "Description":  "one.zip"
+    },
+    {
+        "Type":  "SHA-256",
+        "Indicator":  "752b9fe24c357a04b0bdcad4d09e96bbad1bddfac8e637491b4181085eb58632",
+        "Description":  "Рекомендации_МИР.docx.lnk"
+    },
+    {
+        "Type":  "SHA-256",
+        "Indicator":  "1b4883b3895e8d337dd625a08fc3e8a4aa73634cc0669a773503a5fadbe72acf",
+        "Description":  "Рекомендации_МИР.docx"
+    },
+    {
+        "Type":  "URL",
+        "Indicator":  "http://95.179.252.217/load.php",
+        "Description":  "URL delievery"
+    },
+    {
+        "Type":  "URL",
+        "Indicator":  "http://136.244.67.59/web/index.php?r=cmd",
+        "Description":  "URL C2"
+    },
+    {
+        "Type":  "URL",
+        "Indicator":  "http://95.179.252.217/web/index.php?r=cmd",
+        "Description":  "URL C2"
+    },
+    {
+        "Type":  "Domain",
+        "Indicator":  "schedule.winupdate.workers.dev",
+        "Description":  "domain requested"
+    },
+    {
+        "Type":  "IP",
+        "Indicator":  "95.179.252.217",
+        "Description":  "IP C2"
+    },
+    {
+        "Type":  "IP",
+        "Indicator":  "136.244.67.59",
+        "Description":  "IP C2"
+    },
+    {
+        "Type":  "IP",
+        "Indicator":  "104.31.70.75",
+        "Description":  "IP requested"
+    }
+]
