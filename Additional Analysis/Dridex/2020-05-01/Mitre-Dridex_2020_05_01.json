@@ -1,0 +1,23 @@
+[
+    {
+        "Id":  "T1012",
+        "Name":  "Query Registry",
+        "Type":  "Discovery",
+        "Description":  "Adversaries may interact with the Windows Registry to gather information about the system, configuration, and installed software.",
+        "URL":  "https://attack.mitre.org/techniques/T1012"
+    },
+    {
+        "Id":  "T1082",
+        "Name":  "System Information Discovery",
+        "Type":  "Discovery",
+        "Description":  "An adversary may attempt to get detailed information about the operating system and hardware, including version, patches, hotfixes, service packs, and architecture.",
+        "URL":  "https://attack.mitre.org/techniques/T1082"
+    },
+    {
+        "Id":  "T1085",
+        "Name":  "Rundll32",
+        "Type":  "Defense Evasion, Execution",
+        "Description":  "The rundll32.exe program can be called to execute an arbitrary binary. Adversaries may take advantage of this functionality to proxy execution of code to avoid triggering security tools that may not monitor execution of the rundll32.exe process because of whitelists or false positives from Windows using rundll32.exe for normal operations.",
+        "URL":  "https://attack.mitre.org/techniques/T1085"
+    }
+]
