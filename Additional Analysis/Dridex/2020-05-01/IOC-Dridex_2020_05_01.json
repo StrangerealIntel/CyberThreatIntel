@@ -1,0 +1,27 @@
+[
+    {
+        "Type":  "SHA-256",
+        "Indicator":  "ae2c52f5968abfb5b786d2d7227d726f5d19808c5611a813e90b2ca484e2414b",
+        "Description":  "9400537845275.xls"
+    },
+    {
+        "Type":  "SHA-256",
+        "Indicator":  "b1938195272321552d60b700ae5b79fab75541d187b2898b007fdf2dc72dda18",
+        "Description":  "bgrrcojo.dll"
+    },
+    {
+        "Type":  "URL",
+        "Indicator":  "https://rumetonare.com/?\u003cGUID\u003e",
+        "Description":  "URL delievery"
+    },
+    {
+        "Type":  "Domain",
+        "Indicator":  "rumetonare.com",
+        "Description":  "Domain delievery"
+    },
+    {
+        "Type":  "IP",
+        "Indicator":  "84.38.180.4",
+        "Description":  "IP requested"
+    }
+]
