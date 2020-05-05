@@ -1,0 +1,22 @@
+Type,Indicator,Description
+SHA-256,322aa22163954ff3ff017014e357b756942a2a762f1c55455c83fd594e844fdd,Boeing_DSS_SE.docx
+SHA-256,d7ef8935437d61c975feb2bd826d018373df099047c33ad7305585774a272625,17.dotm
+SHA-256,454734dca530d54c4e8f543bdd33b5eb4b50f3039a953b54281dc67a09af4ca6,wsuser.db
+SHA-256,58dbee783082d16052e79535b14f9ac82a39f327946510948c5e004700a8ea6b,OneDrive.lnk
+URL,https://www.astedams.it/uploads/template/17.dotm,URL delievery
+Domain,astedams.it,Domain C2
+IP,51.77.65.154,IP C2
+URL,https://www.astedams.it/include/inc-elenco-offerter.asp	,URL C2
+SHA-256,a3eca35d14b0e020444186a5faaba5997994a47af08580521f808b1bb83d6063,Boeing_PMS.docx
+SHA-256,1b0c82e71a53300c969da61b085c8ce623202722cf3fa2d79160dac16642303f,43.dotm
+SHA-256,bff4d04caeaf8472283906765df34421d657bd631f5562c902e82a3a0177d114,wsuser.db
+SHA-256,78adec96292db32579c119e290e952f74b6d0d863b6f7d897e7a29d4f99bd353,preview.lnk
+URL,https://www.sanlorenzoyacht.com/newsl/uploads/docs/43.dotm,URL delievery
+Domain,elite4print.com,Domain C2
+IP,192.169.250.185,IP C2
+URL,http://www.elite4print.com/admin/order/batchPdfs.asp,URL C2
+SHA-256,34b4546e3468238702df24794e598add494beaeacf95df10af54d88b3d241e8a,US-ROK Relations and Diplomatic Security.docx
+SHA-256,1076b25d5fa5cccdddcaf3f788789ae3c4ea9b034066693b6a0560af129ceda6,pubmaterial.dotm
+URL,https://od.lk/d/MzBfMjA1Njc0ODdf/pubmaterial.dotm,URL delievery
+SHA-256,37a3c01bb5eaf7ecbcfbfde1aab848956d782bb84445384c961edebe8d0e9969,onenote.db
+SHA-256,e884443eb5f34696b7192a0bf90e4d754565605d1b9104be59a0c186d0eb77e2,onenote.lnk
