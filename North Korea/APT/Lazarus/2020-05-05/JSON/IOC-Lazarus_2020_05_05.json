@@ -1,0 +1,107 @@
+[
+    {
+        "Type":  "SHA-256",
+        "Indicator":  "322aa22163954ff3ff017014e357b756942a2a762f1c55455c83fd594e844fdd",
+        "Description":  "Boeing_DSS_SE.docx"
+    },
+    {
+        "Type":  "SHA-256",
+        "Indicator":  "d7ef8935437d61c975feb2bd826d018373df099047c33ad7305585774a272625",
+        "Description":  "17.dotm"
+    },
+    {
+        "Type":  "SHA-256",
+        "Indicator":  "454734dca530d54c4e8f543bdd33b5eb4b50f3039a953b54281dc67a09af4ca6",
+        "Description":  "wsuser.db"
+    },
+    {
+        "Type":  "SHA-256",
+        "Indicator":  "58dbee783082d16052e79535b14f9ac82a39f327946510948c5e004700a8ea6b",
+        "Description":  "OneDrive.lnk"
+    },
+    {
+        "Type":  "URL",
+        "Indicator":  "https://www.astedams.it/uploads/template/17.dotm",
+        "Description":  "URL delievery"
+    },
+    {
+        "Type":  "Domain",
+        "Indicator":  "astedams.it",
+        "Description":  "Domain C2"
+    },
+    {
+        "Type":  "IP",
+        "Indicator":  "51.77.65.154",
+        "Description":  "IP C2"
+    },
+    {
+        "Type":  "URL",
+        "Indicator":  "https://www.astedams.it/include/inc-elenco-offerter.asp\t",
+        "Description":  "URL C2"
+    },
+    {
+        "Type":  "SHA-256",
+        "Indicator":  "a3eca35d14b0e020444186a5faaba5997994a47af08580521f808b1bb83d6063",
+        "Description":  "Boeing_PMS.docx"
+    },
+    {
+        "Type":  "SHA-256",
+        "Indicator":  "1b0c82e71a53300c969da61b085c8ce623202722cf3fa2d79160dac16642303f",
+        "Description":  "43.dotm"
+    },
+    {
+        "Type":  "SHA-256",
+        "Indicator":  "bff4d04caeaf8472283906765df34421d657bd631f5562c902e82a3a0177d114",
+        "Description":  "wsuser.db"
+    },
+    {
+        "Type":  "SHA-256",
+        "Indicator":  "78adec96292db32579c119e290e952f74b6d0d863b6f7d897e7a29d4f99bd353",
+        "Description":  "preview.lnk"
+    },
+    {
+        "Type":  "URL",
+        "Indicator":  "https://www.sanlorenzoyacht.com/newsl/uploads/docs/43.dotm",
+        "Description":  "URL delievery"
+    },
+    {
+        "Type":  "Domain",
+        "Indicator":  "elite4print.com",
+        "Description":  "Domain C2"
+    },
+    {
+        "Type":  "IP",
+        "Indicator":  "192.169.250.185",
+        "Description":  "IP C2"
+    },
+    {
+        "Type":  "URL",
+        "Indicator":  "http://www.elite4print.com/admin/order/batchPdfs.asp",
+        "Description":  "URL C2"
+    },
+    {
+        "Type":  "SHA-256",
+        "Indicator":  "34b4546e3468238702df24794e598add494beaeacf95df10af54d88b3d241e8a",
+        "Description":  "US-ROK Relations and Diplomatic Security.docx"
+    },
+    {
+        "Type":  "SHA-256",
+        "Indicator":  "1076b25d5fa5cccdddcaf3f788789ae3c4ea9b034066693b6a0560af129ceda6",
+        "Description":  "pubmaterial.dotm"
+    },
+    {
+        "Type":  "URL",
+        "Indicator":  "https://od.lk/d/MzBfMjA1Njc0ODdf/pubmaterial.dotm",
+        "Description":  "URL delievery"
+    },
+    {
+        "Type":  "SHA-256",
+        "Indicator":  "37a3c01bb5eaf7ecbcfbfde1aab848956d782bb84445384c961edebe8d0e9969",
+        "Description":  "onenote.db"
+    },
+    {
+        "Type":  "SHA-256",
+        "Indicator":  "e884443eb5f34696b7192a0bf90e4d754565605d1b9104be59a0c186d0eb77e2",
+        "Description":  "onenote.lnk"
+    }
+]
