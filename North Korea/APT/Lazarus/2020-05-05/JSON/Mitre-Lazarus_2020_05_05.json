@@ -1,0 +1,37 @@
+[
+    {
+        "Id":  "T1012",
+        "Name":  "Query Registry",
+        "Type":  "Discovery",
+        "Description":  "Adversaries may interact with the Windows Registry to gather information about the system, configuration, and installed software.",
+        "URL":  "https://attack.mitre.org/techniques/T1012"
+    },
+    {
+        "Id":  "T1060",
+        "Name":  "Registry Run Keys / Startup Folder",
+        "Type":  "Persistence",
+        "Description":  "Adding an entry to the \"run keys\" in the Registry or startup folder will cause the program referenced to be executed when a user logs in. These programs will be executed under the context of the user and will have the account\u0027s associated permissions level.",
+        "URL":  "https://attack.mitre.org/techniques/T1060"
+    },
+    {
+        "Id":  "T1085",
+        "Name":  "Rundll32",
+        "Type":  "Defense Evasion, Execution",
+        "Description":  "The rundll32.exe program can be called to execute an arbitrary binary. Adversaries may take advantage of this functionality to proxy execution of code to avoid triggering security tools that may not monitor execution of the rundll32.exe process because of whitelists or false positives from Windows using rundll32.exe for normal operations.",
+        "URL":  "https://attack.mitre.org/techniques/T1085"
+    },
+    {
+        "Id":  "T1129",
+        "Name":  "Execution through Module Load",
+        "Type":  "Execution",
+        "Description":  "The Windows module loader can be instructed to load DLLs from arbitrary local paths and arbitrary Universal Naming Convention (UNC) network paths. This functionality resides in NTDLL.dll and is part of the Windows Native API which is called from functions like CreateProcess(), LoadLibrary(), etc. of the Win32 API.",
+        "URL":  "https://attack.mitre.org/techniques/T1129"
+    },
+    {
+        "Id":  "T1081",
+        "Name":  "Credentials in Files",
+        "Type":  "Credential Access",
+        "Description":  "Adversaries may search local file systems and remote file shares for files containing passwords. These can be files created by users to store their own credentials, shared credential stores for a group of individuals, configuration files containing passwords for a system or service, or source code/binary files containing embedded passwords.It is possible to extract passwords from backups or saved virtual machines through Credential Dumping. (Citation: CG 2014) Passwords may also be obtained from Group Policy Preferences stored on the Windows Domain Controller.",
+        "URL":  "https://attack.mitre.org/techniques/T1081"
+    }
+]
