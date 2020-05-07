@@ -502,6 +502,7 @@ End Sub
 <li><a href="https://twitter.com/RedDrip7/status/1252433519046832129">https://twitter.com/RedDrip7/status/1252433519046832129</a></li>
 <li><a href="https://twitter.com/Timele9527/status/1253941585026314240">https://twitter.com/Timele9527/status/1253941585026314240</a></li>
 <li><a href="https://twitter.com/DeadlyLynn/status/1257504361577496576">https://twitter.com/DeadlyLynn/status/1257504361577496576</a></li>
+<li><a href="https://twitter.com/cyberwar_15/status/1258171139588714496">https://twitter.com/cyberwar_15/status/1258171139588714496</a></li>
 </ul>
 
 <h6> Links Anyrun: <a name="Links-Anyrun"></a></h6>
