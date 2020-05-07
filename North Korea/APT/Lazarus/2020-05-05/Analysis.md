@@ -170,6 +170,40 @@ Sub AutoOpen()
 End Sub
 ```
 
+<h6>On the command of the persistence, we can note the key and the increment used for AES, this increment is also used as ID victim where each ID is attributed to a target.</h6>
+
+<center>
+<table>
+<tr>
+<th>Key</th>
+<th>Increment</th>
+<th>Target</th>
+</tr>
+<tr>
+<td>S-6-81-3811-75432205-060098-6872</td>
+<td>17</td>
+<td>Boeing DSS</td>
+</tr>
+<tr>
+<td>S-6-81-3811-75432205-060098-6872</td>
+<td>61</td>
+<td>BAE/Lockheed Martin</td>
+</tr>
+<tr>
+<td>S-6-38-4412-76700627-315277-3247</td>
+<td>43</td>
+<td>Boeing PMS</td>
+</tr>
+<tr>
+<td>S-6-38-4412-76700627-315277-3247</td>
+<td>18</td>
+<td>ROK Army</td>
+</tr>
+<tr></tr>
+</table>
+</center>
+
+
 <h6>Liking supposed on the argument for launch the dll, this used the dll sqlite3 for parsing the SQLite databases and extract the informations. Each version released of the sqlite3.dll content a tracker for getting, the time of the build and the hash relative at this build (here on the X86 version).</h6>
 
 ```asm
@@ -178,7 +212,7 @@ End Sub
 0x1006ad6a ret
 ```
 
-<center><img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/2020-05-05/Pictures/Version.PNG"> </img></center>
+<center><img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/2020-05-05/Pictures/Version.PNG"></img></center>
 
 
 ###### The launch of the dll is ensured by the creation of a new thread and a rundll32 call.
@@ -218,6 +252,7 @@ End Sub
 ```
 
 <h6>The implant pushes the persistence in using the startup folder created by the dotm file. The Lazarus group continue to use the name of the products of Microsoft company as lure for the victim as lnk file.</h6>
+
 <center><img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/2020-05-05/Pictures/Persistence.png"></img></center>
 
 ###### The malware in more parse the SQLite database, use the function ```sqlite3_win32_is_nt```of the dll sqlite3 for getting the OS version of the victim.
@@ -263,6 +298,7 @@ End Sub
 ```
 
 <h6>Once this did, this executes the main function for getting the system informations.</h6>
+
 <center><img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/2020-05-05/Pictures/Get-Infos.png"> </img></center>
 
 ###### For getting the process running on the computer, the malware use the common method ```CreateToolhelp32Snapshot``` for create a snapshot of all the process and parse for have the modules and informations. 
@@ -278,9 +314,11 @@ End Sub
 <center><img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/2020-05-05/Pictures/PushHeader.png"> </img></center>
 
 <h6>Once this done, send the data by a POST request to the C2.</h6>
+
 <center><img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/2020-05-05/Pictures/SendData.png"> </img></center>
 
 <h6>For all the samples, this is the same TTPs used by the Lazarus group. On compare the date of creation, modification, template and the users, we can note that all grouped for one common operation.</h6>
+
 <center>
 <table>
 <tr>
@@ -346,9 +384,28 @@ End Sub
 <td>17.dotm</td>
 <td>Microsoft Office Word 16</td>
 </tr>
+<tr>
+<td>Senior_Design_Engineer.docx</td>
+<td>2020-04-13 18:44:00</td>
+<td>2020-05-06 14:04:00</td>
+<td>Windows User</td>
+<td>Windows User</td>
+<td>2CB4AF25.htm</td>
+<td>Microsoft Office Word 16</td>
+</tr>
+<tr>
+<td>61.dotm</td>
+<td>2020-04-13 18:42:00</td>
+<td>2020-05-06 14:12:00</td>
+<td>User</td>
+<td>Windows User</td>
+<td>61.dotm</td>
+<td>Microsoft Office Word 16</td>
+</tr>
 </table></center>
 
 <h6>The infrastructure of the C2 reuse again windows server, the same management panel of the IIS web server, all C2 are up since early February 2020.</h6>
+
 <center>
 <table>
 <tr>
@@ -371,31 +428,59 @@ End Sub
 </tr>
 </table></center>
 
+<h6>On the structure of the media on the maldocs, we can note that all the images and references are doubled maybe by wrong coding the builder.</h6>
+
+<center><img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/2020-05-05/Pictures/Error_builder.png"></img></center>
+
 <h2> Threat intelligence <a name="TI"></a></h2>
 <h3>Boeing</h3>
 <h6>The choice of the attack of the airbus is logical by the actualities on the Boeing group. With the COVID-19 event, the business with the possible customers become more harder, that an additional problem when we had the problem with the Boeing 737 MAX banned from flying following numerous crashes. The direction of the group has announced the possible massive cuts of jobs in the company. The group was to make the setting of priorities with these military and civil appliances and the communication of the economic result of the first quarter of the year 2020. On these tensions, it is obvious that the parts of the Human resources were knowingly targeted by pretending a possible job or communication for the staff.</h6>
+
 <center><img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/2020-05-05/Pictures/Boeing.png"></img></center>
+
 <h6>We can hypothesize about the target groups:
 <ul>
 <li>Research center in the Republic of Korea (Boeing Military)</li>
 <li>Boeing Defense, Space & Security</li>
-</ul></h6>
+</ul>
+</h6>
+<h3>Lockheed Martin</h3>
+<h6>As said earlier, South Korea negotiated the support contract for its F-35 fleet, Lockheed Martin had selected BAE Systems for build engineering and training facilities at Royal Air Force in Norfolk.</h6>
+
+<center><img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/2020-05-05/Pictures/Lockheed.png"></img></center>
+
+<h6>In view of the phishing campaign on the landing armies in South Korea, North Korea is interested in another event on the presentation at Future Armored Vehicles Weapon Systems 2020.</h6>
+
+<center><img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/2020-05-05/Pictures/event.png"></img></center>
+
+<h6>The maldoc for Lockheed Martin use a reedited cover of the annual report 2019 of BAE and Lockheed Martin.</h6>
+
+<center><img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/2020-05-05/Pictures/Cover-BAE.png"></img></center>
+
+<center><img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/2020-05-05/Pictures/Cover-Lockheed.png"></img></center>
+
 <h3>Korean Army</h3>
 <h6>April 2020 have been a full month in events on the ROK, despite the reduction in costs with events related to COVID-19 in the military events, the south korean airforce have planned to upgrade the actual F-16 and F-35 fleet for theirs operational support and equipment. An event for joint drill operation with the US air force was previously planned have been canceled due to the COVID-19 restriction.</h6>
+
 <center><img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/2020-05-05/Pictures/ROK-AIR-1.png"></img></center>
+
 <h6>This event has been used to become familiar with the recently arrived RQ-4 drones from South Korea. This improvement precedes the firing of short-range missiles a few days before the start of discussions about the elections in South Korea.</h6>
+
 <center><img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/2020-05-05/Pictures/ROK-AIR-2.png"></img></center>
+
 <h6>This event with also impacted the modification of the measures to protect tanks of the South Korean army, information that is interested in North Korea in the light of recent phishing campaigns in the land forces.</h6>
+
 <center><img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/2020-05-05/Pictures/ROK-Tank.png"></img></center>
+
 <h6>Likewise, recent changes have taken place in the South Korean Navy with the change of chief of naval operations to the hands with the new minesweeper ship and upgrade of Destroyers for the adapt the response of the threats to South Korea (Korea south, China ...). So many changes that attract the lusts of North Korea to learn more from the measures taken by South Korea. However, it can't be excluded that other countries are very interested in these famous measures such as China, which borders with North Korea and in these economic zones with South Korea.</h6>
 <center><img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/2020-05-05/Pictures/ROK-Navy.png"></img></center>
 
 
 <h2> Cyber kill chain <a name="Cyber-kill-chain"></a></h2>
 <h6>This process graph represent the cyber kill chain used by the attacker.</h6>
-<center>
-  <img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/2020-05-05/Pictures/killchain.png"></img>
-</center>
+
+<center><img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/North%20Korea/APT/Lazarus/2020-05-05/Pictures/killchain.png"></img></center>
+
 <h2> Indicators Of Compromise (IOC) <a name="IOC"></a></h2>
 <h6> The IOC can be exported in <a href="https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/North%20Korea/APT/Lazarus/2020-05-05/JSON/IOC-Lazarus_2020_05_05.json">JSON</a> and <a href="https://github.com/StrangerealIntel/CyberThreatIntel/blob/master/North%20Korea/APT/Lazarus/2020-05-05/CSV/IOC-Lazarus_2020_05_05.csv">CSV</a></h6>
 
@@ -438,4 +523,6 @@ End Sub
 <li><a href="https://navyrecognition.com/index.php/news/defence-news/2020/april-2020/8280-navy-of-south-korea-has-launched-4th-yangyang-class-minesweeper-ship-namhae-msh-575.html">Navy of South Korea has launched 4th Yangyang-class minesweeper ship Namhae MSH-575</a></li>
 <li><a href="https://navyrecognition.com/index.php/news/defence-news/2020/april-2020/8322-rok-ministry-of-national-defense-releases-video-footages-of-ddh-ii-class-destroyers.html">ROK Ministry of National Defense releases video footages of DDH-II Class Destroyers</a></li>
 <li><a href="https://www.nytimes.com/2020/04/14/world/asia/north-korea-fires-missiles.html">North Korea Fires Missiles as South’s Elections Loom</a></li>
+<li><a href="https://www.intelligent-aerospace.com/military/article/16539023/lockheed-martin-contracts-bae-systems-to-construct-f35-aircraft-engineering-facilities-at-raf-marham">Lockheed Martin contracts BAE Systems to construct F-35 aircraft engineering facilities at RAF Marham</a></li>
+<li><a href="https://armadainternational.com/2020/04/lockheed-martin-and-bae-systems-to-present-technical-briefings-at-future-armoured-vehicles-weapon-systems-2020/">Technical Briefings at Future Armoured Vehicles Weapon Systems 2020</a></li>
 </ul>
