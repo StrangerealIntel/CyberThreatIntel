@@ -1,6 +1,6 @@
-rule Lazarus_ELF_Dacls_May_2020_1 {
+rule Lazarus_MACH-O_Dacls_May_2020_1 {
    meta:
-      description = "Detect ELF RAT Dacls by the strings (May 2020)"
+      description = "Detect MACH-O RAT Dacls by the strings (May 2020)"
       author = "Arkbird_SOLG"
       reference = "https://twitter.com/philofishal/status/1257669351899086849"
       date = "2020-05-10"
