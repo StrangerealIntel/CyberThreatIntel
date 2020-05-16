@@ -1,0 +1,47 @@
+Date,Type,Indicator,Description
+2020-05-07,SHA-256,7837e15bf4d38996a3d85cdb16f425c4ec9f110fae80bc774f875db6229f1d5a,invoice_159306.js
+2020-05-07,SHA-256,f1f4f4bd35f78049015d1e3a87a4635dce044480b88f9d296f7a600c1365c2d0,invoice_159306.zip
+2020-05-07,Domain,softcheck3u.biz,Domain C2
+2020-05-07,IP,51.83.171.37,IP C2
+2020-05-07,URL,https://softcheck3u.biz/inc/server/gate.php,URL C2
+2020-05-07,SHA-256,6795f0a7bc63e5a0e58c6e800f4386eed41e05cc9c32fa60355be15544bda71f,invoice_159306.zip
+2020-05-07,SHA-256,91792ffa6909533367499c32adbbdf03960602734eed6bd2267aa27ecab0efc5,invoice_159306.js
+2020-05-05,SHA-256,4c01f02882154ccb2ce82f1da5533dc51b7b949cc2459a95eab24c4ee1d52510,SAMPLE.js
+2020-05-05,IP,51.83.171.37,IP C2
+2020-05-05,Domain,softcheck3u.biz,Domain C2
+2020-05-05,URL,https://softcheck3u.biz/inc/server/gate.php,URL C2
+2020-05-05,SHA-256,5cc8957a64f28870a956aab1a10ca94fdf5c8c8a7e299b71d2b1128edc04b0f9,invoice_1593066.js
+2020-05-05,SHA-256,b1516020bd5ebcf9b0f8ff9a7e6924a1763072b7438aea0a0e8e585fb74809a7,invoice_1593066.zip
+2020-05-05,URL,https://softcheck3u.biz/inc/server/gate.php,URL C2
+2020-05-05,IP,51.83.171.37,IP C2
+2020-05-05,Domain,softcheck3u.biz,Domain C2
+2020-05-05,SHA-256,6327035bdec77941d86b6b7ce6794e934235a7994c2235010de129a06b4082ca,invoice_15930610.js
+2020-05-05,URL,https://softcheck3u.biz/inc/server/gate.php,URL C2
+2020-05-05,IP,51.83.171.37,IP C2
+2020-05-05,Domain,softcheck3u.biz,Domain C2
+2020-02-25,SHA-256,9da43b6cca00d58be09f481d803b7cfbf051bb645a892049f1665f3b0c7bb58a,00001.js
+2020-02-25,URL,http://sissj.site/O/server/gate.php,URL C2
+2020-02-25,Domain,sissj.site,Domain C2
+2020-02-25,IP,54.36.185.104,IP C2
+2019-12-05,SHA-256,d1249f91152cdae3b44bdaf819f29dead89ea1783525c4ffc3619287588496a6,sssdlient.js
+2019-12-05,URL,http://sissj.site/8/server/gate.php,URL C2
+2019-12-05,Domain,sissj.site,Domain C2
+2019-12-05,IP,54.36.185.104,IP C2 
+2019-12-05,SHA-256,6530abff8bae2df855dc513a0dd02d5b06ac4e26d803760f6b9b51290719b088,Client.js
+2019-12-05,URL,http://sissj.site/O/server/gate.php,URL C2
+2019-12-05,IP,54.36.185.104,IP C2 
+2019-12-03,SHA-256,6c3bb047985ee9996e9cfc8ce03eaf5246538321acbd788dd0b8bab7cf0c8eed,8888.js
+2019-12-03,URL,http://sissj.site/8/server/gate.php,URL C2
+2019-12-03,IP,54.36.185.104,IP C2
+2019-12-02,SHA-256,37eadeb29765559e0931a41ac4c750b8a3e3c4a1df2c24797317429fbbcf8456,firefox.js
+2019-12-02,URL,http://sissj.site/O/server/gate.php,URL C2
+2019-12-02,IP,54.36.185.104,IP C2
+2019-09-06,SHA-256,fcc550358ddeae5061b3bdf1b720be49b39b78356e3cb189cfe26cd170ac7aa2,ml.exe
+2019-09-06,SHA-256,fd364d8ee051876c67ea160f898d846335219dbdbe2b6f983fd012fc17dfcaa6,n.vbs
+2019-09-06,IP,45.88.77.34,IP C2
+2019-09-06,Domain,sissj.space,Domain C2
+2019-09-06,URL,http://sissj.space/8/gate.php,URL C2
+2019-04-27,SHA-256,59d9349ef822c5bf6e3c6393a99315e602e80bde2b328434a2c2c2bc37c04ffa,7E6AC995F182FF2F2D797B359605725F.mlw
+2019-04-27,Domain,sissj.site,Domain C2
+2019-04-27,URL,http://sissj.site/O/server/gate.php,URL C2
+2019-04-27,IP,54.36.185.104,IP C2
