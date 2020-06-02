@@ -1,0 +1,62 @@
+[
+    {
+        "Date":  "2020-05-31",
+        "Type":  "URL",
+        "Indicator":  "http://apibazaarvoice.com/bv.js",
+        "Description":  "URL delivery"
+    },
+    {
+        "Date":  "2020-05-31",
+        "Type":  "Domain",
+        "Indicator":  "apibazaarvoice.com",
+        "Description":  "Domain C2"
+    },
+    {
+        "Date":  "2020-05-31",
+        "Type":  "IP",
+        "Indicator":  "104.248.46.244",
+        "Description":  "IP C2"
+    },
+    {
+        "Date":  "2020-05-31",
+        "Type":  "SHA-256",
+        "Indicator":  "1b7ccfa47d17eb3c1c54009596dcb803062e98f45d0bb4e4135ec2c9b25c0904",
+        "Description":  "bv.js"
+    },
+    {
+        "Date":  "2020-05-31",
+        "Type":  "Pattern",
+        "Indicator":  "\"https://apibazaarvoice.com/stylesheet.css?timestamp=[Base64_JSON]\"",
+        "Description":  " based pattern for extraction of the data"
+    },
+    {
+        "Date":  "2020-05-31",
+        "Type":  "URL",
+        "Indicator":  "https://www.happykid.in/image/catalog/d_blog_module/review/jjs.js",
+        "Description":  "URL delivery"
+    },
+    {
+        "Date":  "2020-05-31",
+        "Type":  "Domain",
+        "Indicator":  "happykid.in",
+        "Description":  "Domain delivery"
+    },
+    {
+        "Date":  "2020-05-31",
+        "Type":  "IP",
+        "Indicator":  "206.189.136.20",
+        "Description":  "IP delivery"
+    },
+    {
+        "Date":  "2020-05-31",
+        "Type":  "SHA-256",
+        "Indicator":  "45f9158aa35d3b9b7a34492ee3565ca68dd27c611069a37cd8db100e5e68825d",
+        "Description":  "jjs.js"
+    },
+    {
+        "Date":  "2020-05-31",
+        "Type":  "Pattern",
+        "Indicator":  "\"http://45.197.141.250/analytics.php?statistics_hash=[Base64_JSON]\"",
+        "Description":  " based pattern for extraction of the data"
+    }
+]
