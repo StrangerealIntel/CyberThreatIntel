@@ -1,0 +1,51 @@
+[
+    {
+        "Id":  "T1274",
+        "Name":  "Identify sensitive personnel information",
+        "Type":  "PRE-ATT&CK",
+        "Description":  "An adversary may identify sensitive personnel information not typically posted on a social media site, such as address, marital status, financial history, and law enforcement infractions. This could be conducted by searching public records that are frequently available for free or at a low cost online.",
+        "URL":  "https://attack.mitre.org/techniques/T1274"
+    },
+    {
+        "Id":  "T1056",
+        "Name":  "Input Capture",
+        "Type":  "Collection",
+        "Description":  "Adversaries can use methods of capturing user input for obtaining credentials for Valid Accounts and information Collection that include keylogging and user input field interception.",
+        "URL":  "https://attack.mitre.org/techniques/T1056/"
+    },
+    {
+        "Id":  "T1056",
+        "Name":  "Input Capture",
+        "Type":  "Credential Access",
+        "Description":  "Adversaries can use methods of capturing user input for obtaining credentials for Valid Accounts and information Collection that include keylogging and user input field interception.",
+        "URL":  "https://attack.mitre.org/techniques/T1056/"
+    },
+    {
+        "Id":  "T1064",
+        "Name":  "Scripting",
+        "Type":  "Defense Evasion",
+        "Description":  "Adversaries may use scripts to aid in operations and perform multiple actions that would otherwise be manual. Scripting is useful for speeding up operational tasks and reducing the time required to gain access to critical resources. Some scripting languages may be used to bypass process monitoring mechanisms by directly interacting with the operating system at an API level instead of calling other programs. Common scripting languages for Windows include VBScript and PowerShell but could also be in the form of command-line batch scripts.",
+        "URL":  "https://attack.mitre.org/techniques/T1064"
+    },
+    {
+        "Id":  "T1064",
+        "Name":  "Scripting",
+        "Type":  "Execution",
+        "Description":  "Adversaries may use scripts to aid in operations and perform multiple actions that would otherwise be manual. Scripting is useful for speeding up operational tasks and reducing the time required to gain access to critical resources. Some scripting languages may be used to bypass process monitoring mechanisms by directly interacting with the operating system at an API level instead of calling other programs. Common scripting languages for Windows include VBScript and PowerShell but could also be in the form of command-line batch scripts.",
+        "URL":  "https://attack.mitre.org/techniques/T1064"
+    },
+    {
+        "Id":  "T1102",
+        "Name":  "Command And Control",
+        "Type":  "Web Service",
+        "Description":  "Adversaries may use an existing, legitimate external Web service as a means for relaying commands to a compromised system.",
+        "URL":  "https://attack.mitre.org/techniques/T1102/"
+    },
+    {
+        "Id":  "T1102",
+        "Name":  "Command And Control",
+        "Type":  "Defense Evasion",
+        "Description":  "Adversaries may use an existing, legitimate external Web service as a means for relaying commands to a compromised system.",
+        "URL":  "https://attack.mitre.org/techniques/T1102/"
+    }
+]
