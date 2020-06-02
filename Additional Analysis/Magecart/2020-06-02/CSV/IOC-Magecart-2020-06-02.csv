@@ -1,0 +1,11 @@
+Type,Indicator,Description
+URL,http://apibazaarvoice.com/bv.js,URL delivery
+Domain,apibazaarvoice.com,Domain C2
+IP,104.248.46.244,IP C2
+SHA-256,1b7ccfa47d17eb3c1c54009596dcb803062e98f45d0bb4e4135ec2c9b25c0904,bv.js
+Pattern,"https://apibazaarvoice.com/stylesheet.css?timestamp=[Base64_JSON]", based pattern for extraction of the data
+URL,https://www.happykid.in/image/catalog/d_blog_module/review/jjs.js,URL delivery
+Domain,happykid.in,Domain delivery
+IP,206.189.136.20,IP delivery
+SHA-256,45f9158aa35d3b9b7a34492ee3565ca68dd27c611069a37cd8db100e5e68825d,jjs.js
+Pattern,"http://45.197.141.250/analytics.php?statistics_hash=[Base64_JSON]", based pattern for extraction of the data
