@@ -9,3 +9,4 @@ Date,Type,Indicator,Description
 2020-05-31,IP,206.189.136.20,IP delivery
 2020-05-31,SHA-256,45f9158aa35d3b9b7a34492ee3565ca68dd27c611069a37cd8db100e5e68825d,jjs.js
 2020-05-31,Pattern,"http://45.197.141.250/analytics.php?statistics_hash=[Base64_JSON]", based pattern for extraction of the data
+2020-05-31,IP,45.197.141.250,IP C2
