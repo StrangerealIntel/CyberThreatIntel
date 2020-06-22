@@ -1,0 +1,51 @@
+[
+    {
+        "Id":  "T1053",
+        "Name":  "Scheduled Task",
+        "Type":  "Execution, Persistence, Privilege Escalation",
+        "Description":  "Utilities such as at and schtasks, along with the Windows Task Scheduler, can be used to schedule programs or scripts to be executed at a date and time. A task can also be scheduled on a remote system, provided the proper authentication is met to use RPC and file and printer sharing is turned on. Scheduling a task on a remote system typically required being a member of the Administrators group on the the remote system.",
+        "URL":  "https://attack.mitre.org/techniques/T1053"
+    },
+    {
+        "Id":  "T1064",
+        "Name":  "Scripting",
+        "Type":  "Defense Evasion, Execution",
+        "Description":  "Adversaries may use scripts to aid in operations and perform multiple actions that would otherwise be manual. Scripting is useful for speeding up operational tasks and reducing the time required to gain access to critical resources. Some scripting languages may be used to bypass process monitoring mechanisms by directly interacting with the operating system at an API level instead of calling other programs. Common scripting languages for Windows include VBScript and PowerShell but could also be in the form of command-line batch scripts.",
+        "URL":  "https://attack.mitre.org/techniques/T1064"
+    },
+    {
+        "Id":  "T1081",
+        "Name":  "Credentials in Files",
+        "Type":  "Credential Access",
+        "Description":  "Adversaries may search local file systems and remote file shares for files containing passwords. These can be files created by users to store their own credentials, shared credential stores for a group of individuals, configuration files containing passwords for a system or service, or source code/binary files containing embedded passwords.",
+        "URL":  "https://attack.mitre.org/techniques/T1081"
+    },
+    {
+        "Id":  "T1086",
+        "Name":  "PowerShell",
+        "Type":  "Execution",
+        "Description":  "PowerShell is a powerful interactive command-line interface and scripting environment included in the Windows operating system. Adversaries can use PowerShell to perform a number of actions, including discovery of information and execution of code. Examples include the Start-Process cmdlet which can be used to run an executable and the Invoke-Command cmdlet which runs a command locally or on a remote computer.",
+        "URL":  "https://attack.mitre.org/techniques/T1086"
+    },
+    {
+        "Id":  "T1106",
+        "Name":  "Execution through API",
+        "Type":  "Execution",
+        "Description":  "Adversary tools may directly use the Windows application programming interface (API) to execute binaries. Functions such as the Windows API CreateProcess will allow programs and scripts to start other processes with proper path and argument parameters.",
+        "URL":  "https://attack.mitre.org/techniques/T1106"
+    },
+    {
+        "Id":  "T1129",
+        "Name":  "Execution through Module Load",
+        "Type":  "Execution",
+        "Description":  "The Windows module loader can be instructed to load DLLs from arbitrary local paths and arbitrary Universal Naming Convention (UNC) network paths. This functionality resides in NTDLL.dll and is part of the Windows Native API which is called from functions like CreateProcess(), LoadLibrary(), etc. of the Win32 API.",
+        "URL":  "https://attack.mitre.org/techniques/T1129"
+    },
+    {
+        "Id":  "T1500",
+        "Name":  "Compile After Delivery",
+        "Type":  "Defense Evasion",
+        "Description":  "Adversaries may attempt to make payloads difficult to discover and analyze by delivering files to victims as uncompiled code. Similar to Obfuscated Files or Information, text-based source code files may subvert analysis and scrutiny from protections targeting executables/binaries. These payloads will need to be compiled before execution; typically via native utilities such as csc.exe or GCC/MinGW.",
+        "URL":  "https://attack.mitre.org/techniques/T1500"
+    }
+]
