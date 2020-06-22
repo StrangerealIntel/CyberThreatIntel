@@ -1,0 +1,74 @@
+[
+    {
+        "Date":  "2020-06-15",
+        "Type":  "Domain",
+        "Indicator":  "z2uymda1mtk.top",
+        "Description":  "Domain C2"
+    },
+    {
+        "Date":  "2020-06-15",
+        "Type":  "Domain",
+        "Indicator":  "documento.smarterrealestateinvesting.com",
+        "Description":  "Domain delivery"
+    },
+    {
+        "Date":  "2020-06-15",
+        "Type":  "IP",
+        "Indicator":  "31.214.157.27",
+        "Description":  "IP delivery"
+    },
+    {
+        "Date":  "2020-06-15",
+        "Type":  "IP",
+        "Indicator":  "185.219.221.102",
+        "Description":  "IP C2"
+    },
+    {
+        "Date":  "2020-06-15",
+        "Type":  "SHA256",
+        "Indicator":  "ad6db438312eeb3bfbe14c3125ff4b649092a8177ef6c630b0164e73e6cd7d82",
+        "Description":  "WindowsIndexingService.vbs"
+    },
+    {
+        "Date":  "2020-06-18",
+        "Type":  "SHA256",
+        "Indicator":  "d16aaf5e84e8745618747d610a2edf8a20c9c57cce07e6838b70efca3bf7c66c",
+        "Description":  "MicrosoftWord_e880c7b8fb4b7601ce0583ec5d896d5e.zip"
+    },
+    {
+        "Date":  "2020-06-18",
+        "Type":  "Domain",
+        "Indicator":  "documento.selltokengarffhonda.com",
+        "Description":  "Domain delivery\t"
+    },
+    {
+        "Date":  "2020-06-18",
+        "Type":  "IP",
+        "Indicator":  "194.76.224.223",
+        "Description":  "IP delivery"
+    },
+    {
+        "Date":  "2020-06-18",
+        "Type":  "SHA256",
+        "Indicator":  "53a6c88f64902b236f85e866f5c43f3ab6c71c86b343ad417ff447805045c974",
+        "Description":  "layer1.vbs"
+    },
+    {
+        "Date":  "2020-06-18",
+        "Type":  "SHA256",
+        "Indicator":  "3169cc582064e827b9ca8ea650fab482b3cf2f97f30c842b1697b6e7af3cd3d9",
+        "Description":  "downloadstagger.ps1"
+    },
+    {
+        "Date":  "2020-06-18",
+        "Type":  "SHA256",
+        "Indicator":  "60e47b6ee3cd5fc611e2efd21427324ae1d044f3ab940353266a3ba85401b498",
+        "Description":  "layer2.ps1"
+    },
+    {
+        "Date":  "2020-06-18",
+        "Type":  "SHA256",
+        "Indicator":  "d905b8a215a9bf8f9e48c2d4456d9cf303bdb2340a6c5682950d5a7517762b19",
+        "Description":  "jasper180620.ps1"
+    }
+]
