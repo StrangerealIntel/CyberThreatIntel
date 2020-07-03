@@ -1,0 +1,158 @@
+[
+    {
+        "Date":  "2020-06-02",
+        "Type":  "SHA256",
+        "Indicator":  "9f1aeddcae9655772326a078b52b975b8d1117344fbac70791e3b771169a87c1",
+        "Description":  "New Health Protocols.v13.exe"
+    },
+    {
+        "Date":  "2020-06-02",
+        "Type":  "SHA256",
+        "Indicator":  "1f38eea8caf63ff911fa97f2a20328796a62fc760f24c7e6347753e8112bf92d",
+        "Description":  "Lojupazhyxy.exe"
+    },
+    {
+        "Date":  "2020-06-02",
+        "Type":  "SHA256",
+        "Indicator":  "98eedfc49e4de97b07db2c658f13e12acd4368f6edf15aaeca703a8d9708e8d9",
+        "Description":  "Jyhynyjegu.pdf"
+    },
+    {
+        "Date":  "2020-06-02",
+        "Type":  "IP",
+        "Indicator":  "185.244.149.202",
+        "Description":  "IP C2"
+    },
+    {
+        "Date":  "2020-06-02",
+        "Type":  "URL",
+        "Indicator":  "http://185.244.149.202/",
+        "Description":  "URL C2"
+    },
+    {
+        "Date":  "2020-06-10",
+        "Type":  "SHA256",
+        "Indicator":  "4a06605073504d70d71744e0dcdc08908ac5c1ac46bd42fec417afe2c58e02b4",
+        "Description":  "UNRWA-ServerRequest1145.exe"
+    },
+    {
+        "Date":  "2020-06-10",
+        "Type":  "SHA256",
+        "Indicator":  "deb25177464fb637e00aea4d87ffce2a3e4041ffe84747b8951999748f761757",
+        "Description":  "Raqygirula.exe"
+    },
+    {
+        "Date":  "2020-06-10",
+        "Type":  "SHA256",
+        "Indicator":  "b879d1fb6ed0c32eac85966e8e47334a0d207ce9067d5caae1552b23a3d3c4aa",
+        "Description":  "Jawaejifahi.pdf"
+    },
+    {
+        "Date":  "2020-06-10",
+        "Type":  "IP",
+        "Indicator":  "185.82.202.70",
+        "Description":  "IP C2"
+    },
+    {
+        "Date":  "2020-06-10",
+        "Type":  "URL",
+        "Indicator":  "http://185.82.202.70/",
+        "Description":  "URL C2"
+    },
+    {
+        "Date":  "2020-06-16",
+        "Type":  "SHA256",
+        "Indicator":  "bee97740637683931fa603f441358180a486a459aa54638c7d9f689c5e361e8f",
+        "Description":  "Corona Virüsü ve Siber Savunma8.exe"
+    },
+    {
+        "Date":  "2020-06-16",
+        "Type":  "SHA256",
+        "Indicator":  "92cb75c15da69fd6ef9368c03fd5001778d5fa1f7b024d63c84c13f501d5acd5",
+        "Description":  "Nodycohaeta.exe"
+    },
+    {
+        "Date":  "2020-06-16",
+        "Type":  "SHA256",
+        "Indicator":  "da06adfd2c3be0de51ddae60673c3e6d0d5a33d6fa5b8cb29f03d47c7cbff014",
+        "Description":  "Kytuqasylu.pdf"
+    },
+    {
+        "Date":  "2020-06-16",
+        "Type":  "SHA256",
+        "Indicator":  "b08c52cc398d2b8979822928efa3fedcc7e92e66e04ccf7b0b8f927569c531d2",
+        "Description":  "Invite3.exe"
+    },
+    {
+        "Date":  "2020-06-16",
+        "Type":  "SHA256",
+        "Indicator":  "7408075bbf433da260d2823213ddde1b2d47b5c89419bab4c6f1480f9d7976c8",
+        "Description":  "Pehixelaepae.exe"
+    },
+    {
+        "Date":  "2020-06-16",
+        "Type":  "SHA256",
+        "Indicator":  "8777c70517158cbab0c6bb6178001e3e84ccec03128e4b71f1cb75244d78c00e",
+        "Description":  "Jejytylavi.pdf"
+    },
+    {
+        "Date":  "2020-06-16",
+        "Type":  "SHA256",
+        "Indicator":  "39368534dc40589efd70f71e222b76c8a0cdb0bbf84248085d4dea4b285f9e41",
+        "Description":  "announcement.exe"
+    },
+    {
+        "Date":  "2020-06-16",
+        "Type":  "SHA256",
+        "Indicator":  "ed30edac02bf2b46f18e539665cb2b9d2c6ff5b8850bd98987b82a36c05167e2",
+        "Description":  "Cujaeraecamo.exe"
+    },
+    {
+        "Date":  "2020-06-16",
+        "Type":  "SHA256",
+        "Indicator":  "b9a0d2a6ac3b775300a74b56fde4b47f02bd09037ac1a655c5e93aae9143137a",
+        "Description":  "Kopexaekaeru.pdf"
+    },
+    {
+        "Date":  "2020-06-16",
+        "Type":  "IP",
+        "Indicator":  "185.106.122.72",
+        "Description":  "IP C2"
+    },
+    {
+        "Date":  "2020-06-16",
+        "Type":  "URL",
+        "Indicator":  "http://185.106.122.78/",
+        "Description":  "URL C2"
+    },
+    {
+        "Date":  "2020-06-25",
+        "Type":  "SHA256",
+        "Indicator":  "13c4055efd92dab5788c8bf8a437366b1bbb9a8324fdebb8480fed157125294f",
+        "Description":  "13c4055efd92dab5788c8bf8a437366b1bbb9a8324fdebb8480fed157125294f.exe"
+    },
+    {
+        "Date":  "2020-06-25",
+        "Type":  "SHA256",
+        "Indicator":  "72f487068c704b6d636ddd87990e25ce8cd5940244e581063f4c54afa4438212",
+        "Description":  "Jewypyryhi.exe"
+    },
+    {
+        "Date":  "2020-06-25",
+        "Type":  "SHA256",
+        "Indicator":  "2bad8456eec1c7e4b9153ec3abc7859cc5bd781dddd26e314150448651d2e5d3",
+        "Description":  "Lodolutaelae.pdf"
+    },
+    {
+        "Date":  "2020-06-25",
+        "Type":  "IP",
+        "Indicator":  "185.82.202.66",
+        "Description":  "IP C2"
+    },
+    {
+        "Date":  "2020-06-25",
+        "Type":  "URL",
+        "Indicator":  "http://185.82.202.66/",
+        "Description":  "URL C2"
+    }
+]
