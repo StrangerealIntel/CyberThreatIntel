@@ -65,7 +65,7 @@ rule Mal_BozokRAT_July2020_2 {
       author = "Arkbird_SOLG"
       reference = "https://github.com/StrangerealIntel/CyberThreatIntel/tree/master/Indian/APT/Patchwork/2020-07-23/Analysis.md"
       date = "2020-07-15"
-      hash1 = " cc8867a5fd62b82e817afc405807f88716960af5744040999b619b126a9ecf57"
+      hash1 = "cc8867a5fd62b82e817afc405807f88716960af5744040999b619b126a9ecf57"
    strings:
       $s1 = "ouemm/emm!!!!!!!!!!!!!" fullword ascii
       $s2 = "Vtfs43/emm"  fullword ascii 
