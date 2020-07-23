@@ -1,0 +1,67 @@
+[
+    {
+        "Enterprise tactics":  "Execution",
+        "Technics used":  "Execution through API",
+        "Ref URL":  "https://attack.mitre.org/techniques/T1106"
+    },
+    {
+        "Enterprise tactics":  "Execution",
+        "Technics used":  "User Execution",
+        "Ref URL":  "https://attack.mitre.org/techniques/T1204"
+    },
+    {
+        "Enterprise tactics":  "Execution",
+        "Technics used":  "Service Execution",
+        "Ref URL":  "https://attack.mitre.org/techniques/T1035"
+    },
+    {
+        "Enterprise tactics":  "Discovery",
+        "Technics used":  "Query Registry",
+        "Ref URL":  "https://attack.mitre.org/techniques/T1012"
+    },
+    {
+        "Enterprise tactics":  "Discovery",
+        "Technics used":  "Peripheral Device Discovery",
+        "Ref URL":  "https://attack.mitre.org/techniques/T1120"
+    },
+    {
+        "Enterprise tactics":  "Discovery",
+        "Technics used":  "File and Directory Discovery",
+        "Ref URL":  "https://attack.mitre.org/techniques/T1083"
+    },
+    {
+        "Enterprise tactics":  "Persistence",
+        "Technics used":  "Hooking",
+        "Ref URL":  "https://attack.mitre.org/techniques/T1179"
+    },
+    {
+        "Enterprise tactics":  "Persistence",
+        "Technics used":  "Registry Run Keys / Start Folder",
+        "Ref URL":  "https://attack.mitre.org/techniques/T1060"
+    },
+    {
+        "Enterprise tactics":  "Defense Evasion",
+        "Technics used":  "Modify Registry",
+        "Ref URL":  "https://attack.mitre.org/techniques/T1112"
+    },
+    {
+        "Enterprise tactics":  "Credential Access",
+        "Technics used":  "Hooking",
+        "Ref URL":  "https://attack.mitre.org/techniques/T1179"
+    },
+    {
+        "Enterprise tactics":  "Credential Access",
+        "Technics used":  "Input Capture",
+        "Ref URL":  "https://attack.mitre.org/techniques/T1056"
+    },
+    {
+        "Enterprise tactics":  "Lateral Movement",
+        "Technics used":  "Remote Desktop Protocol",
+        "Ref URL":  "https://attack.mitre.org/techniques/T1076"
+    },
+    {
+        "Enterprise tactics":  "Collection",
+        "Technics used":  "Input Capture",
+        "Ref URL":  "https://attack.mitre.org/techniques/T1056"
+    }
+]
