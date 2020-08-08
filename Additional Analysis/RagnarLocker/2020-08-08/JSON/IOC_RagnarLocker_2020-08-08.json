@@ -1,0 +1,26 @@
+[
+    {
+        "Date":  "2020-08-08",
+        "Type":  "SHA256",
+        "Indicator":  "e5620e1e5d15f097c1b6f972205ade6d6dbd93fd8ba3b1eeef4415c7fe4fd616",
+        "Description":  "OracleVA.msi"
+    },
+    {
+        "Date":  "2020-08-08",
+        "Type":  "SHA256",
+        "Indicator":  "55adf55ff4b5d6a9895e027ee5792fdf5881db3bf1a1f1325ab8a55e97eb979d",
+        "Description":  "va.exe"
+    },
+    {
+        "Date":  "2020-08-08",
+        "Type":  "SHA256",
+        "Indicator":  "a30106c1e25c79ebcdceef4702969c3944c292ff3e4ddcd71a1cc9f7d2714054",
+        "Description":  "install.bat"
+    },
+    {
+        "Date":  "2020-08-08",
+        "Type":  "SHA256",
+        "Indicator":  "5ee5fb0703e464671ab70cf51401263b02778b9bb86d21d136f3f095b2aaf43a",
+        "Description":  "micro.vdi"
+    }
+]
