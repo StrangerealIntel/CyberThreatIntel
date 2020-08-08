@@ -367,8 +367,7 @@ Virtualbox.xml :
 <h4>Now, we need to turn the VDI file which content the volume of the VM to an image of the volume IMG for to do a forensic introspection of the VM. For doing it, we use VBoxManage tool on Virtualbox folder for converting it in cloning the disk.</h4>
 
 ```bat
->VBoxManage.exe clonehd ".\filD45DC43C44044930A5265DB22D05BF15.vdi" ".\filD45DC43C44044930A5265DB22D05BF15.img
-.img" --format raw
+>VBoxManage.exe clonehd ".\filD45DC43C44044930A5265DB22D05BF15.vdi" ".\filD45DC43C44044930A5265DB22D05BF15.img" --format raw
 0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
 Clone medium created in format 'raw'. UUID: 9f347ed8-3f5f-46f0-b275-fd9c4120f09d
 ```
