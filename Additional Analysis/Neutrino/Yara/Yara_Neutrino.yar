@@ -36,6 +36,6 @@ rule Dropper_Neutrino_Feb_20 {
       $s19 = "x`FDbFdaFTcF^" fullword ascii
       $s20 = "jdXj2YC" fullword ascii
    condition:
-      uint16(0) == 0x5a4d and filesize < 300KB and
+      uint16(0) == 0x5a4d and filesize > 300KB and
       ( pe.imphash() == "934381a85d55af4033da1a769f2cce1d" or 8 of them )
 }
