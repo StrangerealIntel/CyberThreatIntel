@@ -24,7 +24,7 @@ rule APT_IceFog_dll_Nov19_1 {
       $s14 = "URPQQh|]" fullword ascii
       $s15  = "This indicates a bug in your application. It is most likely the result of calling an MSIL-compiled (/clr) function from a native" ascii
    condition:
-      uint16(0) == 0x5a4d and filesize < 200KB and
+      uint16(0) == 0x5a4d and filesize > 200KB and
       ( pe.imphash() == "cbc902098f5bd92d34971b49ccd07e0f" and pe.exports("startwork") or ( 1 of ($x*) or 4 of them ) )
 }
 
@@ -57,6 +57,6 @@ rule APT_IceFog_Maldoc_Nov19_1 {
       $s19 = "u227 ? ba bi\\uc1 \\u234 ?n gi\\uc1 \\u7899 ?i Vi\\uc1 \\u7879 ?t Nam - L\\uc1 \\u224 ?o - Trung Qu\\uc1 \\u7889 ?c, t\\uc1 \\u7" ascii
       $s20 = "\\alang1025 \\ltrch \\dbch \\af2 \\hich \\af0 \\loch \\f0 \\lang1066 \\langnp1066 \\langfe1033 \\langfenp1033 - }{\\i1 \\fs28 " ascii
    condition:
-      uint16(0) == 0x5c7b and filesize < 1000KB and
+      uint16(0) == 0x5c7b and filesize > 1000KB and
       1 of ($x*) and 4 of them
 }
