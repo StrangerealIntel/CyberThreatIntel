@@ -1,0 +1,50 @@
+[
+    {
+        "Date":  "2020-09-07",
+        "Type":  "SHA256",
+        "Indicator":  "cb04bfdeb1a12eaab0a0442ecdf62ce49d2c1daa5b4345412cf3462b9ab26803",
+        "Description":  "Malwarebytes-Setup.exe"
+    },
+    {
+        "Date":  "2020-09-07",
+        "Type":  "SHA256",
+        "Indicator":  "deda6786754d1521f22fefb69d7a3f50e0d8c143a4120ee49a0a318d3ba21f34",
+        "Description":  "sUs.com"
+    },
+    {
+        "Date":  "2020-09-07",
+        "Type":  "SHA256",
+        "Indicator":  "f69b99f6ae1f0b0c2fd0f0ae21bf01bcecaeb84f618f1bdc0016f0ce7ecb76d1",
+        "Description":  "QFfIDvIPtTOu.com"
+    },
+    {
+        "Date":  "2020-09-07",
+        "Type":  "SHA256",
+        "Indicator":  "7257ed4cb4be0136821b567607710b1c187e8914501f2c62f965456d22764338",
+        "Description":  "sVqHm.com"
+    },
+    {
+        "Date":  "2020-09-07",
+        "Type":  "SHA256",
+        "Indicator":  "b4a7ec2bc8704279113cbdc130f6f4887a5a411c93a006ad4b8276b5ef3e958f",
+        "Description":  "h"
+    },
+    {
+        "Date":  "2020-09-07",
+        "Type":  "IP",
+        "Indicator":  "217.8.117.29",
+        "Description":  "IP C2"
+    },
+    {
+        "Date":  "2020-09-07",
+        "Type":  "URL",
+        "Indicator":  "http://217.8.117.29/update.php",
+        "Description":  "URL delivery"
+    },
+    {
+        "Date":  "2020-09-07",
+        "Type":  "URl",
+        "Indicator":  "http://217.8.117.29/rss.php",
+        "Description":  "URL from extraction of the data to the C2"
+    }
+]
