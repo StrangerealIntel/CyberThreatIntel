@@ -1,0 +1,9 @@
+Date,Type,Indicator,Description
+2020-09-07,SHA256,cb04bfdeb1a12eaab0a0442ecdf62ce49d2c1daa5b4345412cf3462b9ab26803,Malwarebytes-Setup.exe
+2020-09-07,SHA256,deda6786754d1521f22fefb69d7a3f50e0d8c143a4120ee49a0a318d3ba21f34,"sUs.com"
+2020-09-07,SHA256,f69b99f6ae1f0b0c2fd0f0ae21bf01bcecaeb84f618f1bdc0016f0ce7ecb76d1,"QFfIDvIPtTOu.com"
+2020-09-07,SHA256,7257ed4cb4be0136821b567607710b1c187e8914501f2c62f965456d22764338,"sVqHm.com"
+2020-09-07,SHA256,b4a7ec2bc8704279113cbdc130f6f4887a5a411c93a006ad4b8276b5ef3e958f,h
+2020-09-07,IP,217.8.117.29,IP C2
+2020-09-07,URL,http://217.8.117.29/update.php,URL delivery
+2020-09-07,URl,http://217.8.117.29/rss.php,URL from extraction of the data to the C2
