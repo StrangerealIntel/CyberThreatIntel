@@ -277,7 +277,7 @@ return;
 ```
 // Example of dropped files on the disk
 %temp%\PaRyHBUIXlan.exe
-%temp%\PaRyHBUIXlan.exe
+%temp%\pBbowloYglan.exe
 %temp%\nXsTetgJilan.exe
 // Pattern 
 -> %temp%\\[a-zA-Z]{9}lan.exe
