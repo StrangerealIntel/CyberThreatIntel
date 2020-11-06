@@ -56,8 +56,7 @@ rule Mal_BadNews_2016_OPChina_1 {
       $s13 = "image/jpeg" fullword wide
       $s14 = "https://en.wikipnet/search.php" fullword ascii /* legit site used as test for connectivity*/
    condition:
-      uint16(0) == 0x5a4d and filesize > 70KB and ( pe.imphash() == "c71a34b50e03311fe548bb5a730e97ac" and ( pe.exports("JLI_AcceptableRelease") and pe.exports("JLI_ExactVersionId") and pe.exports("JLI_FreeManifest") and pe.exports("JLI_JarUnpackFile") and pe.exports("JLI_MemFree") and pe.exports("JLI_MemRealloc") ) and 12 of them
-}
+      uint16(0) == 0x5a4d and filesize > 70KB and ( pe.imphash() == "c71a34b50e03311fe548bb5a730e97ac" and ( pe.exports("JLI_AcceptableRelease") and pe.exports("JLI_ExactVersionId") and pe.exports("JLI_FreeManifest") and pe.exports("JLI_JarUnpackFile") and pe.exports("JLI_MemFree") and pe.exports("JLI_MemRealloc") and 12 of them)
 
 rule Mal_BozokRAT_July2020_2 {
    meta:
