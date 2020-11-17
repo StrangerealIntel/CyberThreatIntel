@@ -1,4 +1,4 @@
-## APT27 rest active ?
+## Rootkit 101
 ### Initital approach
 
 <h4>Thanks to <a href="https://twitter.com/KorbenD_Intel">KorbenD</a> for sharing the sample recently detected by Thor (<a href="https://www.virustotal.com/gui/file/cc1455e3a479602581c1c7dc86a0e02605a3c14916b86817960397d5a2f41c31/details">here</a>).</h4>
