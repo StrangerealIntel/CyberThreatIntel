@@ -642,7 +642,7 @@ case 0xc: // 0xc -> Remove to the DNS entry
 
 <h4>The method for hooking the files, process and bypass iptables are similiar to XOR DDoS in the rootkit feature and implementation of the structure. That isn't excludes that can be reversed or the code source have been intercepted and modified by China APT operators. </h4>
  <p align="center"><img src="https://raw.githubusercontent.com/StrangerealIntel/CyberThreatIntel/master/China/APT/APT27/2020-11-17/Pictures/slide.PNG"></img></p>
-<h4>The rest matches with some parts of the blackberry analysis about bronzeunion group but without the samples, hard to confirm it.</h4>
+<h4>The rest matches with some parts of the blackberry analysis about Bronze Union group and Winnti group but without the samples, hard to confirm it.</h4>
 <br/>
 <h4>About XOR DDoS, another Linux botnet malware focus Docker containers and IOT and called Kaiji are used on a side operation by another Threat Actor (TA) reported by Trend Micro. I thinking to be in link to this at the beginning but finally different, this show that a leak of the source code maybe have been intercepted and reused.</h4>
 
