@@ -1,0 +1,32 @@
+[
+    {
+        "Date":  "2021-03-27",
+        "Type":  "SHA256",
+        "Indicator":  "000a5e63109b3c653d63d84d03fe474242b987bfadda9aeaa200653fd2155a31",
+        "Description":  "th42.ttc"
+    },
+    {
+        "Date":  "2021-03-27",
+        "Type":  "SHA256",
+        "Indicator":  "fb55b26b8edee2431b35d0e28df5f223510a15344ede400a2f5c04a0d45e6b77",
+        "Description":  "9619.ocx"
+    },
+    {
+        "Date":  "2021-03-27",
+        "Type":  "SHA256",
+        "Indicator":  "d68740f454bd421f026f2bd6df2d6e054951259ca2c60a5a4cadde6762ce6d54",
+        "Description":  "7AF60BCC.txt"
+    },
+    {
+        "Date":  "2021-03-27",
+        "Type":  "SHA256",
+        "Indicator":  "4c9e54e565bae93b8148d9852035bab761ebc2aefe564c530581d5fff6ab1825",
+        "Description":  "3850FC6E77257.txt"
+    },
+    {
+        "Date":  "2021-03-27",
+        "Type":  "Domain",
+        "Indicator":  "d27qdop2sa027t.cloudfront.net",
+        "Description":  "Domain C2"
+    }
+]
